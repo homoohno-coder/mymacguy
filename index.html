@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Mac Guy — Wahed Tech Support · Los Angeles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0f0e;
+      --surface:   #131918;
+      --card:      #1a2120;
+      --border:    #2a3533;
+      --accent:    #3dffa0;
+      --accent2:   #00c97a;
+      --text:      #e8f0ee;
+      --muted:     #7a9690;
+      --heading:   #ffffff;
+      --danger:    #ff6b4a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, rgba(11,15,14,0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--heading);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #0b0f0e !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: #5fffb3 !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* glowing orb background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      top: -100px; right: -200px;
+      background: radial-gradient(circle, rgba(61,255,160,0.07) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+      margin-bottom: 32px;
+    }
+    .hero h1 em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent); color: #0b0f0e;
+      padding: 16px 32px; border-radius: 100px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(61,255,160,0);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(61,255,160,0.3);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--text);
+      padding: 16px 28px; border-radius: 100px;
+      border: 1px solid var(--border);
+      font-weight: 500; font-size: 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--muted); background: var(--surface); }
+
+    .hero-phone {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      color: var(--muted);
+      margin-top: 40px;
+    }
+    .hero-phone a { color: var(--text); text-decoration: none; }
+    .hero-phone a:hover { color: var(--accent); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      padding: 24px 48px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 40px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.875rem; color: var(--muted);
+    }
+    .trust-icon { font-size: 1.1rem; }
+    .trust-item strong { color: var(--text); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800; color: var(--heading);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+      margin-top: 64px;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .service-card {
+      background: var(--card);
+      padding: 40px 36px;
+      transition: background 0.2s;
+    }
+    .service-card:hover { background: #1f2b28; }
+    .service-icon {
+      font-size: 2rem; margin-bottom: 20px;
+      display: block;
+    }
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--heading); margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .service-card p {
+      color: var(--muted); font-size: 0.9rem; line-height: 1.65;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--surface); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 48px;
+      margin-top: 64px;
+    }
+    .step { position: relative; }
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem; font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 20px;
+      letter-spacing: -0.05em;
+    }
+    .step h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--heading); margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .step p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg);
+      display: flex; flex-wrap: wrap; gap: 80px; align-items: center;
+    }
+    .about-text { flex: 1; min-width: 300px; }
+    .about-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; color: var(--heading);
+      letter-spacing: -0.03em; line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .about-text h2 em {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic; font-weight: 400;
+      color: var(--accent);
+    }
+    .about-text p { color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+    .about-card {
+      flex: 0 0 320px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+    .stat { margin-bottom: 32px; }
+    .stat:last-child { margin-bottom: 0; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem; font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-label { color: var(--muted); font-size: 0.875rem; margin-top: 4px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); }
+    .contact-inner {
+      max-width: 640px;
+    }
+    .contact-methods {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      margin-top: 40px;
+    }
+    .contact-card {
+      display: flex; flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+      flex: 1; min-width: 200px;
+    }
+    .contact-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+    }
+    .contact-card-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .contact-card-label {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 6px;
+    }
+    .contact-card-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--heading);
+    }
+
+    .service-area {
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .service-area-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .service-area h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; color: var(--heading);
+      margin-bottom: 6px; font-size: 1rem;
+    }
+    .service-area p { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.8rem; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.8rem; }
+    footer a:hover { color: var(--text); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+    .hero h1      { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-sub     { animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-phone   { animation: fadeUp 0.6s 0.4s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      section { padding: 72px 24px; }
+      .trust-bar { padding: 20px 24px; }
+      footer { padding: 32px 24px; }
+      #about { flex-direction: column; gap: 40px; }
+      .about-card { flex: 1; width: 100%; }
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+  </style>
+
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#" class="nav-logo">my<span>mac</span>guy</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get Help Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <p class="hero-eyebrow">Los Angeles · Tech Support</p>
+    <h1>Your tech,<br><em>sorted.</em></h1>
+    <p class="hero-sub">
+      Real human support for Mac, iPhone, and all things Apple — by phone, remote, or in-person across Los Angeles.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:3109801964" class="btn-primary">
+        📞 Call Now
+      </a>
+      <a href="mailto:wahed@mymacguy.net" class="btn-secondary">
+        ✉️ Send an Email
+      </a>
+    </div>
+    <p class="hero-phone">Direct line: <a href="tel:3109801964">(310) 980-1964</a></p>
+  </section>
+
+  <!-- TRUST BAR -->
+
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">⚡</span><span><strong>Fast response</strong> — same day help available</span></div>
+    <div class="trust-item"><span class="trust-icon">🗺️</span><span>Serving <strong>Los Angeles</strong> & surrounding areas</span></div>
+    <div class="trust-item"><span class="trust-icon">🤝</span><span><strong>Human tech support</strong> — not a chatbot</span></div>
+    <div class="trust-item"><span class="trust-icon">🍎</span><span><strong>Apple specialist</strong> — Mac, iPhone, iPad, Apple TV</span></div>
+  </div>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+    <p class="section-label">What I do</p>
+    <h2 class="section-title">Support for every<br>Apple situation</h2>
+    <p class="section-sub">From a frozen Mac to a full setup — I handle it all so you don't have to.</p>
+
+```
+<div class="services-grid">
+  <div class="service-card">
+    <span class="service-icon">💻</span>
+    <h3>Mac Troubleshooting</h3>
+    <p>Slow performance, crashes, startup issues, software glitches — diagnosed and fixed fast.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">📱</span>
+    <h3>iPhone & iPad Support</h3>
+    <p>Setup, data transfer, software updates, iCloud issues, and everything in between.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🔐</span>
+    <h3>Security & Privacy</h3>
+    <p>Virus removal, password management, account recovery, and protecting your data.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">☁️</span>
+    <h3>iCloud & Backup</h3>
+    <p>Set up iCloud properly, recover lost files, and make sure everything is backed up.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">📡</span>
+    <h3>Network & Wi-Fi</h3>
+    <p>Slow internet, dead zones, router setup, and getting all your devices connected.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🖥️</span>
+    <h3>New Device Setup</h3>
+    <p>Migration from old Mac, email & app setup, and making sure your new device is ready to go.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🖨️</span>
+    <h3>Printers & Peripherals</h3>
+    <p>Printers refusing to work, external drives, monitors, and other connected devices.</p>
+  </div>
+  <div class="service-card">
+    <span class="service-icon">🎓</span>
+    <h3>One-on-One Training</h3>
+    <p>Learn at your own pace. I'll walk you through anything from basics to advanced features.</p>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section id="how">
+    <p class="section-label">Process</p>
+    <h2 class="section-title">Help in three<br>easy steps</h2>
+    <p class="section-sub">No appointments weeks away. No holding on the phone with a corporation. Just fast, personal help.</p>
+
+```
+<div class="steps">
+  <div class="step">
+    <div class="step-num">01</div>
+    <h3>Reach Out</h3>
+    <p>Call, text, or email. Describe your issue and I'll let you know the fastest way to get it resolved.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">02</div>
+    <h3>Pick Your Method</h3>
+    <p>Phone support, remote screen share, or in-person — whatever works best for your situation.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">03</div>
+    <h3>Problem Solved</h3>
+    <p>I'll walk you through exactly what happened and what was fixed, so you're never in the dark.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">04</div>
+    <h3>Ongoing Support</h3>
+    <p>Have a follow-up question? Reach back out. I'm here when you need me, not just during business hours.</p>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="about-text">
+      <p class="section-label">About</p>
+      <h2>Tech support<br>done <em>right</em></h2>
+      <p>I'm Wahed — an independent tech specialist based in Los Angeles. For years I've been helping individuals, families, and small businesses get the most out of their Apple devices without the headaches.</p>
+      <p>Unlike the Genius Bar or big-box stores, you get direct one-on-one attention with no ticket queue, no upsells, and no technobabble. Just clear, friendly help from someone who actually cares about solving your problem.</p>
+      <a href="tel:3109801964" class="btn-primary" style="display:inline-flex; margin-top: 32px;">📞 (310) 980-1964</a>
+    </div>
+    <div class="about-card">
+      <div class="stat">
+        <div class="stat-num">📍</div>
+        <div class="stat-label">Based in Los Angeles, CA<br>Serving the greater LA area</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Ways to get help<br>Phone · Remote · In-Person</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1:1</div>
+        <div class="stat-label">Personal attention every time<br>No call centers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Ready when<br>you are</h2>
+      <p class="section-sub">Whatever Apple problem you're dealing with — big or small — I'm ready to help. Reach out anytime.</p>
+
+```
+  <div class="contact-methods">
+    <a href="tel:3109801964" class="contact-card">
+      <div class="contact-card-icon">📞</div>
+      <div class="contact-card-label">Phone / Text</div>
+      <div class="contact-card-value">(310) 980-1964</div>
+    </a>
+    <a href="mailto:wahed@mymacguy.net" class="contact-card">
+      <div class="contact-card-icon">✉️</div>
+      <div class="contact-card-label">Email</div>
+      <div class="contact-card-value">wahed@mymacguy.net</div>
+    </a>
+  </div>
+
+  <div class="service-area">
+    <div class="service-area-icon">📍</div>
+    <div>
+      <h4>Service Area</h4>
+      <p>Based near 1032 S Highland Ave, Los Angeles, CA 90019. Available across the greater Los Angeles area for in-person visits, and anywhere via phone or remote support.</p>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div>
+      <div class="footer-logo">my<span>mac</span>guy</div>
+      <p style="margin-top:6px;">Wahed Tech Support · Los Angeles, CA</p>
+    </div>
+    <div style="display:flex; gap: 24px; flex-wrap:wrap;">
+      <a href="tel:3109801964">(310) 980-1964</a>
+      <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+    </div>
+    <p>© 2026 Wahed Tech Support. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
