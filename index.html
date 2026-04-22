@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mymacguy — Tech Support Refined</title>
+  <title>mymacguy.net — Apple Support Refined</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #ffffff;
-      --accent: #0071e3; /* San Francisco Blue */
+      --accent: #0071e3; 
       --text: #1d1d1f;
       --muted: #86868b;
-      --soft-tint: #f5f5f7;
-      --glass: rgba(255, 255, 255, 0.85);
+      --glass: rgba(255, 255, 255, 0.9);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -25,170 +24,172 @@
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
+      overflow-x: hidden;
     }
 
     /* ════════════════════════════════
-       CONTINUOUS BACKGROUND DEVICE
+       DYNAMIC MASSIVE BRANDING
     ════════════════════════════════ */
-    .device-watermark {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw; height: 80vh;
-      background-image: url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=2000');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.03; /* Barely there, very airy */
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* ════════════════════════════════
-       NAV (Minimalist Blur)
-    ════════════════════════════════ */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      padding: 20px 40px;
-      display: flex; justify-content: space-between; align-items: center;
+    header {
+      position: sticky; top: 0; z-index: 1000;
       background: var(--glass);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(40px);
+      padding: 40px 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       border-bottom: 1px solid rgba(0,0,0,0.03);
     }
 
-    .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.04em; text-decoration: none; color: var(--text); }
-    .logo span { font-weight: 300; color: var(--muted); }
+    /* Shrink effect on scroll handled via JS */
+    header.is-scrolled { padding: 15px 0; }
 
-    .nav-cta {
-      font-weight: 600; font-size: 0.9rem; color: var(--accent);
-      text-decoration: none; border: 1px solid var(--accent);
-      padding: 8px 20px; border-radius: 50px; transition: all 0.2s;
-    }
-    .nav-cta:hover { background: var(--accent); color: white; }
-
-    /* ════════════════════════════════
-       CONTINUOUS FLOW SECTIONS
-    ════════════════════════════════ */
-    section {
-      padding: 160px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
+    .brand-wrap {
+      max-width: 1400px; margin: 0 auto; padding: 0 40px;
       display: flex; flex-direction: column; align-items: center;
     }
 
-    .hero { height: 100vh; justify-content: center; text-align: center; }
+    .massive-logo {
+      font-weight: 800;
+      /* Dynamic sizing based on viewport width */
+      font-size: clamp(2rem, 8vw, 6rem); 
+      letter-spacing: -0.06em;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1;
+      transition: font-size 0.4s ease;
+    }
+    .massive-logo span.dot { color: var(--accent); }
+    .massive-logo span.ext { font-weight: 300; color: var(--muted); }
 
-    .hero h1 {
-      font-size: clamp(3.5rem, 12vw, 8rem);
-      font-weight: 800; letter-spacing: -0.06em; line-height: 0.9;
+    header.is-scrolled .massive-logo { font-size: clamp(1.2rem, 3vw, 2rem); }
+
+    /* ════════════════════════════════
+       CONTINUOUS BACKGROUND
+    ════════════════════════════════ */
+    .device-watermark {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 85vw; height: 85vh;
+      background-image: url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=2000');
+      background-size: contain; background-repeat: no-repeat; background-position: center;
+      opacity: 0.025; z-index: -1; pointer-events: none;
+    }
+
+    /* ════════════════════════════════
+       CONTENT BLOCKS
+    ════════════════════════════════ */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+    section { padding: 15vh 0; display: flex; flex-direction: column; justify-content: center; }
+
+    .hero-text { text-align: center; }
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800; letter-spacing: -0.05em; line-height: 1.1;
       margin-bottom: 30px;
     }
-
-    .hero p {
-      font-size: 1.5rem; font-weight: 400; color: var(--muted);
-      max-width: 700px; margin-bottom: 50px;
+    .hero-text p {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      color: var(--muted); max-width: 750px; margin: 0 auto;
     }
 
-    /* ════════════════════════════════
-       SERVICES (No Boxes, Just Lines)
-    ════════════════════════════════ */
-    .service-row {
-      width: 100%;
-      display: grid; grid-template-columns: 1fr 1.5fr;
-      padding: 60px 0;
-      border-top: 1px solid rgba(0,0,0,0.05);
+    .flow-item {
+      padding: 80px 0;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px;
     }
+    .flow-item h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.04em; }
+    .flow-item p { font-size: 1.1rem; color: var(--muted); line-height: 1.8; }
 
-    .service-row h3 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em; }
-    .service-row p { font-size: 1.1rem; color: var(--muted); }
-
-    /* ════════════════════════════════
-       CONTACT (Large & Friendly)
-    ════════════════════════════════ */
-    .contact-block {
-      text-align: center; padding-bottom: 200px;
+    .contact-cta { text-align: center; padding-bottom: 200px; }
+    .contact-cta a {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800; color: var(--text); text-decoration: none;
+      letter-spacing: -0.05em; transition: 0.3s;
     }
-
-    .contact-btn {
-      font-size: 2.5rem; font-weight: 800; color: var(--text);
-      text-decoration: none; letter-spacing: -0.04em;
-      transition: color 0.3s;
-    }
-    .contact-btn:hover { color: var(--accent); }
+    .contact-cta a:hover { color: var(--accent); }
 
     /* UTILS */
-    .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
-      .service-row { grid-template-columns: 1fr; gap: 20px; }
-      nav { padding: 15px 20px; }
-      section { padding: 100px 20px; }
+      .flow-item { grid-template-columns: 1fr; gap: 20px; }
+      .container { padding: 0 24px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="device-watermark"></div>
+  <div class="device-watermark" id="watermark"></div>
 
-  <nav>
-    <a href="#" class="logo">mymacguy<span>.net</span></a>
-    <a href="tel:3109801964" class="nav-cta">310.980.1964</a>
-  </nav>
+  <header id="mainHeader">
+    <div class="brand-wrap">
+      <a href="#" class="massive-logo">mymacguy<span class="dot">.</span><span class="ext">net</span></a>
+    </div>
+  </header>
 
-  <section class="hero">
-    <div class="reveal">
-      <h1>sorted.</h1>
-      <p>Independent Apple support for professionals and families. Expert Mac repair, network security, and personalized training.</p>
-      <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em;">
-        Scroll to explore
+  <div class="container">
+    
+    <section class="hero-text">
+      <div class="reveal">
+        <h1>Your tech, sorted.</h1>
+        <p>Expert Apple support and network consulting for the Los Angeles creative community. Personal attention, zero frustration.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services">
-    <div class="service-row reveal">
-      <h3>Infrastructure</h3>
-      <p>High-performance Mesh Wi-Fi systems, secure network gateways, and smart home integration that works the first time.</p>
-    </div>
-    <div class="service-row reveal">
-      <h3>Recovery</h3>
-      <p>Advanced data recovery, iCloud synchronization fixes, and bulletproof backup strategies for your most important memories.</p>
-    </div>
-    <div class="service-row reveal">
-      <h3>Consulting</h3>
-      <p>One-on-one workflow optimization, device purchasing advice, and security audits to keep your digital life private.</p>
-    </div>
-  </section>
+    <section id="flow">
+      <div class="flow-item reveal">
+        <h2>Systems</h2>
+        <p>Deep-level macOS and iOS troubleshooting. We fix the problems the Genius Bar can't, from database corruption to hardware integration.</p>
+      </div>
+      
+      <div class="flow-item reveal">
+        <h2>Networks</h2>
+        <p>Enterprise-grade Wi-Fi for residential spaces. Secure, high-speed architecture that covers every corner of your property.</p>
+      </div>
 
-  <section class="contact-block">
-    <div class="reveal">
-      <p style="margin-bottom: 20px; color: var(--muted); font-weight: 500;">Ready to fix the frustration?</p>
-      <a href="tel:3109801964" class="contact-btn">Get Help Now →</a>
-      <p style="margin-top: 60px; font-size: 0.8rem; color: var(--muted);">
-        Wahed Abdul Khaliqi • Los Angeles, CA • Serving the Greater Area
-      </p>
-    </div>
-  </section>
+      <div class="flow-item reveal">
+        <h2>Training</h2>
+        <p>Personalized sessions to master your workflow. No scripts, no judged questions—just practical knowledge tailored to you.</p>
+      </div>
+    </section>
+
+    <section class="contact-cta">
+      <div class="reveal">
+        <p style="color: var(--muted); margin-bottom: 20px; font-weight: 600;">Immediate Support</p>
+        <a href="tel:3109801964">310.980.1964 →</a>
+        <div style="margin-top: 100px; font-size: 0.8rem; color: var(--muted);">
+          Wahed Abdul Khaliqi • Tech Consultant • Los Angeles, CA
+        </div>
+      </div>
+    </section>
+
+  </div>
 
   <script>
-    // Intersection Observer for the smooth scroll-in effect
+    // Reveal Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('active');
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Simple parallax for the background device
+    // Scroll Effects: Shrink Header and Move Watermark
     window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const watermark = document.querySelector('.device-watermark');
-      watermark.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.05}px)) rotate(${scrolled * 0.01}deg)`;
+      const scroll = window.pageYOffset;
+      const header = document.getElementById('mainHeader');
+      const watermark = document.getElementById('watermark');
+
+      // Shrink Header
+      if (scroll > 50) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+
+      // Parallax Watermark
+      watermark.style.transform = `translate(-50%, calc(-50% + ${scroll * 0.05}px))`;
     });
   </script>
 
