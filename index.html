@@ -108,6 +108,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
+      min-height: 100svh; /* iOS Safari — accounts for browser chrome */
       display: grid;
       grid-template-rows: 1fr auto;
       padding: 0 48px;
@@ -390,19 +391,94 @@
     .reveal.visible { opacity: 1; transform: none; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 18px 24px; }
-      .nav-links li:not(:last-child) { display: none; }
-      .hero { padding: 0 24px; }
-      .hero-bottom { flex-direction: column; align-items: flex-start; }
-      #services, #how, #about, #contact { padding: 80px 24px; }
-      footer { padding: 28px 24px; }
-      .how-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-sidebar { flex-direction: row; flex-wrap: wrap; }
-      .about-stat { flex: 1; min-width: 130px; }
+
+    /* Tablet — iPad Mini, iPad Air, iPad Pro 11" (768px – 1024px) */
+    @media (max-width: 1024px) {
+      nav { padding: 20px 32px; }
+      .hero { padding: 0 32px; }
+      #services, #how, #about, #contact { padding: 96px 32px; }
+      footer { padding: 32px 32px; }
+
+      .hero-headline { font-size: clamp(3.5rem, 9vw, 7rem); }
+
+      .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .services-header p { max-width: 100%; }
+
+      .how-inner { grid-template-columns: 1fr; gap: 56px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-sidebar { flex-direction: row; flex-wrap: wrap; gap: 2px; }
+      .about-stat { flex: 1; min-width: 140px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
       .service-desc { display: none; }
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
+    }
+
+    /* Mobile — large phones, iPhone Pro Max (430px – 767px) */
+    @media (max-width: 767px) {
+      nav { padding: 16px 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .nav-logo { font-size: 0.95rem; }
+
+      .hero { padding: 0 20px; min-height: 100svh; }
+      .hero-content { padding-top: 110px; padding-bottom: 40px; }
+      .hero-eyebrow { font-size: 0.65rem; margin-bottom: 20px; }
+      .hero-headline { font-size: clamp(2.8rem, 13vw, 4.5rem); letter-spacing: -0.035em; }
+      .hero-headline .line2 { font-size: 0.65em; }
+      .hero-bottom {
+        flex-direction: column; align-items: flex-start;
+        gap: 24px; padding: 24px 0 44px;
+      }
+      .hero-tagline { font-size: 0.9rem; max-width: 100%; }
+      .hero-ctas { flex-direction: column; width: 100%; gap: 10px; }
+      .btn-main, .btn-ghost { width: 100%; justify-content: center; padding: 15px 20px; }
+
+      #services, #how, #about, #contact { padding: 72px 20px; }
+      footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+
+      .services-header { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 40px; }
+      .services-header h2 { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .service-row { gap: 14px; padding: 20px 0; }
+      .service-num { display: none; }
+      .service-desc { display: none; }
+      .service-name { font-size: clamp(1rem, 4.5vw, 1.3rem); }
+
+      .how-inner { grid-template-columns: 1fr; gap: 44px; }
+      .how-left h2 { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .how-left p { max-width: 100%; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-sidebar { flex-direction: column; gap: 2px; }
+      .about-stat { padding: 24px 20px; }
+      .about-stat-n { font-size: 2.4rem; }
+      .about-text h2 { font-size: clamp(1.9rem, 7.5vw, 2.8rem); }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-left h2 { font-size: clamp(2.4rem, 10vw, 3.6rem); }
+      .contact-item { padding: 18px 20px; gap: 14px; }
+      .contact-item-val { font-size: 0.95rem; }
+      .location-box { padding: 18px 20px; }
+
+      .footer-links { flex-direction: column; gap: 10px; }
+    }
+
+    /* Small phones — iPhone SE, iPhone 12 mini (< 390px) */
+    @media (max-width: 389px) {
+      nav { padding: 14px 16px; }
+      .hero { padding: 0 16px; }
+      .hero-headline { font-size: clamp(2.4rem, 14vw, 3.2rem); }
+      #services, #how, #about, #contact { padding: 60px 16px; }
+      footer { padding: 24px 16px; }
+      .service-icon { display: none; }
+      .btn-main, .btn-ghost { font-size: 0.85rem; padding: 14px 16px; }
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none; }
+      .hero-eyebrow, .hero-headline, .hero-bottom { animation: none; opacity: 1; transform: none; }
+      .marquee-track { animation: none; }
     }
 
     ::-webkit-scrollbar { width: 4px; }
