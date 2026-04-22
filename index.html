@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wahed Tech Support | Your tech, sorted.</title>
+  <title>mymacguy.net | Your tech, sorted.</title>
   <meta name="description" content="Reliable, on-demand tech support for Mac, iPhone, Wi-Fi, Microsoft 365, smart home, and home office systems in Los Angeles." />
   <meta name="theme-color" content="#ffffff" />
 
@@ -14,21 +14,19 @@
   <style>
     :root {
       --bg: #ffffff;
-      --bg-soft: rgba(255,255,255,0.74);
-      --surface: rgba(255,255,255,0.80);
-      --surface-strong: rgba(255,255,255,0.93);
-      --text: #0f1720;
-      --muted: #5d6977;
-      --line: rgba(15, 23, 32, 0.08);
-      --line-strong: rgba(15, 23, 32, 0.14);
-      --accent: #2F6BFF;
-      --accent-strong: #174EDB;
-      --accent-soft: #EAF1FF;
-      --accent-soft-2: rgba(47,107,255,0.08);
-      --shadow: 0 22px 60px rgba(10, 20, 30, 0.08);
+      --surface: rgba(255,255,255,0.88);
+      --surface-strong: rgba(255,255,255,0.96);
+      --text: #101820;
+      --muted: #5e6b78;
+      --line: rgba(16,24,32,0.08);
+      --line-strong: rgba(16,24,32,0.14);
+      --accent: #2f6bff;
+      --accent-strong: #174edb;
+      --accent-soft: #eaf1ff;
+      --shadow: 0 18px 48px rgba(10,20,30,0.08);
       --radius-xl: 28px;
       --radius-lg: 20px;
-      --max: 1240px;
+      --max: 1220px;
     }
 
     * {
@@ -44,18 +42,15 @@
     body {
       font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.94), rgba(255,255,255,0.98)),
+        radial-gradient(circle at 15% 12%, rgba(47,107,255,0.07), transparent 22%),
+        radial-gradient(circle at 82% 16%, rgba(90,170,255,0.06), transparent 20%),
+        url("images/hero-tech-overlay.png");
+      background-size: cover, cover, cover, cover;
+      background-position: center;
       min-height: 100vh;
       overflow-x: hidden;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.93), rgba(255,255,255,0.98)),
-        radial-gradient(circle at 15% 20%, rgba(47,107,255,0.08), transparent 22%),
-        radial-gradient(circle at 82% 16%, rgba(70,180,255,0.07), transparent 22%),
-        radial-gradient(circle at 50% 82%, rgba(120,120,255,0.05), transparent 26%),
-        url("images/hero-tech-overlay.png"),
-        url("data:image/svg+xml,%3Csvg width='1200' height='900' viewBox='0 0 1200 900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.22' stroke='%2391A4B9' stroke-width='1'%3E%3Cpath d='M100 170H370L440 240H760L830 170H1100'/%3E%3Cpath d='M120 400H300L350 450H620L710 360H1080'/%3E%3Cpath d='M80 650H280L340 590H700L780 670H1110'/%3E%3Cpath d='M220 90V290'/%3E%3Cpath d='M540 240V480'/%3E%3Cpath d='M840 140V360'/%3E%3Cpath d='M920 550V760'/%3E%3Cpath d='M430 550V760'/%3E%3Ccircle cx='220' cy='90' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='220' cy='290' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='540' cy='240' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='540' cy='480' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='840' cy='140' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='840' cy='360' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='920' cy='550' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='920' cy='760' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='430' cy='550' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='430' cy='760' r='8' fill='%23DCE7F0'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover, cover, cover, cover, cover, cover;
-      background-position: center;
-      background-repeat: no-repeat;
     }
 
     a {
@@ -64,8 +59,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .container {
@@ -73,17 +68,54 @@
       margin: 0 auto;
     }
 
+    .newsbar {
+      border-bottom: 1px solid rgba(16,24,32,0.06);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(16px);
+    }
+
+    .newsbar-inner {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .news-label {
+      color: var(--accent-strong);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      flex: 0 0 auto;
+      font-size: 0.75rem;
+    }
+
+    .news-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .news-link {
+      color: var(--accent-strong);
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
     .topbar {
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(255,255,255,0.86);
       backdrop-filter: blur(18px);
-      background: rgba(255,255,255,0.84);
-      border-bottom: 1px solid rgba(15,23,32,0.06);
+      border-bottom: 1px solid rgba(16,24,32,0.06);
     }
 
     .topbar-inner {
-      min-height: 76px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -95,8 +127,8 @@
       align-items: center;
       gap: 12px;
       font-weight: 700;
-      letter-spacing: -0.02em;
       color: #111;
+      letter-spacing: -0.02em;
     }
 
     .brand-mark {
@@ -108,14 +140,14 @@
       place-items: center;
       color: #fff;
       font-weight: 700;
-      box-shadow: 0 14px 28px rgba(47,107,255,0.22);
+      box-shadow: 0 12px 28px rgba(47,107,255,0.22);
       flex: 0 0 auto;
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
-      line-height: 1.05;
+      line-height: 1.04;
     }
 
     .brand-text span:first-child {
@@ -131,13 +163,13 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
     }
 
     nav a {
-      color: var(--muted);
       font-size: 0.96rem;
       font-weight: 500;
+      color: var(--muted);
       transition: color 0.18s ease;
     }
 
@@ -146,130 +178,103 @@
     }
 
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       min-height: 44px;
       padding: 0 18px;
       border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: var(--accent);
       color: #fff;
-      font-weight: 600;
+      font-weight: 700;
       box-shadow: 0 14px 30px rgba(47,107,255,0.20);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
     }
 
     .nav-cta:hover {
       transform: translateY(-1px);
       background: var(--accent-strong);
-      box-shadow: 0 18px 34px rgba(47,107,255,0.24);
+      box-shadow: 0 16px 34px rgba(47,107,255,0.24);
     }
 
     .hero {
-      padding: 56px 0 26px;
+      padding: 42px 0 28px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .hero-main,
-    .hero-side,
-    .section-card {
+    .hero-card {
       border: 1px solid var(--line);
       background: var(--surface);
       backdrop-filter: blur(20px);
       box-shadow: var(--shadow);
-    }
-
-    .hero-main {
       border-radius: var(--radius-xl);
-      padding: 42px;
-      position: relative;
       overflow: hidden;
-      min-height: 660px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      position: relative;
       isolation: isolate;
     }
 
-    .hero-main::before {
+    .hero-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom right, rgba(255,255,255,0.80), rgba(255,255,255,0.88)),
+        linear-gradient(to bottom right, rgba(255,255,255,0.86), rgba(255,255,255,0.94)),
         url("images/hero-workspace.jpg");
       background-size: cover;
       background-position: center;
-      opacity: 0.20;
+      opacity: 0.18;
       z-index: -2;
     }
 
-    .hero-main::after {
+    .hero-card::after {
       content: "";
       position: absolute;
-      inset: -18% auto auto 48%;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(47,107,255,0.14), transparent 65%);
-      pointer-events: none;
+      right: -120px;
+      top: -120px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(47,107,255,0.15), transparent 65%);
       z-index: -1;
+      pointer-events: none;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.82);
-      border: 1px solid var(--line);
-      color: #334155;
-      font-size: 0.9rem;
-      font-weight: 600;
-      width: fit-content;
+    .hero-inner {
+      padding: 46px 42px 40px;
+      display: grid;
+      gap: 22px;
     }
 
-    .eyebrow-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(47,107,255,0.12);
+    .hero-site {
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
     }
 
-    h1 {
-      margin-top: 22px;
+    .hero-title {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2.8rem, 5vw, 5.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.045em;
-      max-width: 11ch;
-      color: #101214;
+      font-size: clamp(2.8rem, 5vw, 5.7rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      color: #0f1419;
+      max-width: 10ch;
     }
 
     .hero-copy {
-      margin-top: 22px;
       max-width: 58ch;
       font-size: 1.08rem;
-      line-height: 1.7;
+      line-height: 1.72;
       color: #425063;
     }
 
     .hero-actions {
-      margin-top: 28px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
     }
 
     .btn {
-      min-height: 52px;
+      min-height: 54px;
       padding: 0 22px;
       border-radius: 999px;
       display: inline-flex;
@@ -277,7 +282,7 @@
       justify-content: center;
       font-weight: 700;
       font-size: 0.98rem;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
     }
 
     .btn:hover {
@@ -287,16 +292,15 @@
     .btn-primary {
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 18px 34px rgba(47,107,255,0.20);
+      box-shadow: 0 16px 34px rgba(47,107,255,0.22);
     }
 
     .btn-primary:hover {
       background: var(--accent-strong);
-      box-shadow: 0 20px 38px rgba(47,107,255,0.24);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.90);
       border: 1px solid var(--line-strong);
       color: var(--text);
     }
@@ -306,172 +310,64 @@
       background: #fff;
     }
 
-    .hero-contact {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(180px, 1fr));
-      gap: 14px;
-      max-width: 640px;
-    }
-
-    .contact-card {
-      padding: 18px 18px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.86);
-      border: 1px solid var(--line);
-      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(47,107,255,0.20);
-      box-shadow: 0 18px 34px rgba(15,23,32,0.06);
-    }
-
-    .contact-label {
-      font-size: 0.84rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .contact-value {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #111;
-      word-break: break-word;
-    }
-
-    .hero-bottom {
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(15,23,32,0.08);
+    .hero-tagline {
+      padding-top: 18px;
+      border-top: 1px solid rgba(16,24,32,0.08);
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      color: #506072;
-      font-size: 0.96rem;
+      gap: 10px;
     }
 
-    .hero-bottom span {
+    .hero-tagline span {
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.76);
+      background: rgba(255,255,255,0.80);
       border: 1px solid var(--line);
+      font-size: 0.94rem;
+      color: #506072;
     }
 
-    .hero-side {
-      border-radius: var(--radius-xl);
-      padding: 24px;
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 18px;
+    .divider-section {
+      padding: 12px 0 6px;
     }
 
-    .card {
-      border-radius: 22px;
-      background: var(--surface-strong);
-      border: 1px solid var(--line);
-      padding: 22px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    .divider-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(16,24,32,0.10), transparent);
     }
 
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 40px rgba(15,23,32,0.06);
+    .section {
+      padding: 26px 0;
     }
 
-    .card-kicker {
-      color: var(--accent);
-      font-size: 0.82rem;
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      color: var(--accent-strong);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
       font-weight: 700;
+      margin-bottom: 10px;
     }
 
-    .headline-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .headline-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), #77A7FF);
-    }
-
-    .headline-card h2 {
+    .section-title {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
-      line-height: 1.08;
+      font-size: clamp(1.8rem, 2.8vw, 3rem);
+      line-height: 1.06;
       letter-spacing: -0.03em;
-      margin-bottom: 12px;
     }
 
-    .headline-meta {
-      font-size: 0.95rem;
+    .section-copy {
       color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .headline-link {
-      margin-top: 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      color: var(--accent-strong);
-    }
-
-    .trust-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .trust-item {
-      display: grid;
-      grid-template-columns: 40px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 14px 0;
-      border-top: 1px solid rgba(15,23,32,0.06);
-    }
-
-    .trust-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .trust-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      background: var(--accent-soft);
-      display: grid;
-      place-items: center;
-      color: var(--accent-strong);
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .trust-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1rem;
-    }
-
-    .trust-item p {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    .services {
-      padding: 18px 0 24px;
+      max-width: 56ch;
+      line-height: 1.7;
     }
 
     .services-grid {
@@ -480,17 +376,18 @@
       gap: 18px;
     }
 
-    .section-card {
+    .card {
       border-radius: 24px;
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      box-shadow: var(--shadow);
+      padding: 24px;
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
-    .section-card:hover {
+    .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 22px 40px rgba(15,23,32,0.06);
+      box-shadow: 0 22px 44px rgba(10,20,30,0.07);
       border-color: rgba(47,107,255,0.16);
     }
 
@@ -515,155 +412,149 @@
       stroke-linejoin: round;
     }
 
-    .service-title {
-      font-weight: 700;
-      font-size: 1.08rem;
+    .card h3 {
+      font-size: 1.06rem;
       margin-bottom: 10px;
     }
 
-    .service-text {
+    .card p {
       color: var(--muted);
       line-height: 1.65;
       font-size: 0.95rem;
     }
 
-    .image-band {
-      padding: 8px 0 26px;
-    }
-
-    .image-band-wrap {
+    .trust-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
+      gap: 22px;
     }
 
-    .image-panel,
-    .quote-panel {
+    .trust-image {
+      min-height: 360px;
       border-radius: 28px;
       overflow: hidden;
+      position: relative;
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      background: var(--surface);
-    }
-
-    .image-panel {
-      min-height: 360px;
-      position: relative;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.10), rgba(255,255,255,0.18)),
+        linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0.18)),
         url("images/wahed-portrait.jpg");
       background-size: cover;
       background-position: center;
     }
 
-    .image-panel::after {
+    .trust-image::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 42%;
+      height: 45%;
       background: linear-gradient(to top, rgba(8,14,22,0.42), transparent);
     }
 
-    .image-caption {
+    .trust-caption {
       position: absolute;
       left: 24px;
-      bottom: 24px;
       right: 24px;
-      z-index: 2;
+      bottom: 24px;
       color: #fff;
+      z-index: 2;
     }
 
-    .image-caption small {
+    .trust-caption small {
       display: block;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       font-size: 0.76rem;
-      opacity: 0.92;
-      margin-bottom: 10px;
       font-weight: 700;
+      opacity: 0.94;
     }
 
-    .image-caption h3 {
+    .trust-caption h3 {
       font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.8rem, 2.4vw, 2.8rem);
-      line-height: 1.04;
+      font-size: clamp(1.8rem, 2.6vw, 2.9rem);
+      line-height: 1.05;
       letter-spacing: -0.03em;
     }
 
-    .quote-panel {
+    .trust-list-card {
+      background: linear-gradient(180deg, rgba(234,241,255,0.72), rgba(255,255,255,0.94));
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .trust-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(16,24,32,0.06);
+    }
+
+    .trust-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .trust-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 22px;
+    }
+
+    .about-card,
+    .contact-card {
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      box-shadow: var(--shadow);
       padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background:
-        linear-gradient(180deg, rgba(234,241,255,0.80), rgba(255,255,255,0.92));
     }
 
-    .section-label {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .quote-panel h3,
-    .about-left h3,
-    .about-right h3 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.8rem, 2.4vw, 2.8rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-    }
-
-    .quote-panel p,
-    .about-left p,
-    .about-right p,
-    .about-right li {
+    .about-card p,
+    .contact-card p,
+    .contact-list li {
       color: var(--muted);
       line-height: 1.72;
       font-size: 1rem;
     }
 
-    .about {
-      padding: 10px 0 70px;
-    }
-
-    .about-wrap {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-    }
-
-    .about-left,
-    .about-right {
-      border-radius: 28px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      padding: 30px;
-    }
-
-    .about-right {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(234,241,255,0.52));
-    }
-
-    .about-right ul {
+    .contact-list {
       list-style: none;
       display: grid;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 14px;
+      margin-top: 14px;
     }
 
-    .about-right li {
+    .contact-list li {
       padding-left: 18px;
       position: relative;
     }
 
-    .about-right li::before {
+    .contact-list li::before {
       content: "";
       width: 8px;
       height: 8px;
@@ -671,34 +562,37 @@
       background: var(--accent);
       position: absolute;
       left: 0;
-      top: 10px;
+      top: 11px;
     }
 
     footer {
-      padding: 20px 0 50px;
+      padding: 18px 0 50px;
       color: var(--muted);
       font-size: 0.95rem;
     }
 
     .footer-wrap {
+      border-top: 1px solid rgba(16,24,32,0.08);
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      border-top: 1px solid rgba(15,23,32,0.08);
-      padding-top: 20px;
+      gap: 16px;
     }
 
-    .muted-link:hover {
+    .footer-wrap a:hover {
       color: var(--accent-strong);
     }
 
     @media (max-width: 1080px) {
-      .hero-grid,
       .services-grid,
-      .image-band-wrap,
-      .about-wrap {
-        grid-template-columns: 1fr;
+      .trust-grid,
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -707,25 +601,17 @@
         display: none;
       }
 
-      .hero-main {
-        padding: 28px;
-        min-height: auto;
+      .hero-inner,
+      .card,
+      .about-card,
+      .contact-card {
+        padding: 24px;
       }
 
-      .hero-side,
-      .about-left,
-      .about-right,
-      .section-card,
-      .quote-panel {
-        padding: 22px;
-      }
-
-      .hero-contact {
+      .services-grid,
+      .trust-grid,
+      .about-grid {
         grid-template-columns: 1fr;
-      }
-
-      h1 {
-        max-width: 12ch;
       }
 
       .footer-wrap {
@@ -733,7 +619,7 @@
         align-items: flex-start;
       }
 
-      .image-panel {
+      .trust-image {
         min-height: 300px;
       }
     }
@@ -742,6 +628,7 @@
       html {
         scroll-behavior: auto;
       }
+
       * {
         transition: none !important;
       }
@@ -749,38 +636,45 @@
   </style>
 </head>
 <body>
+  <div class="newsbar">
+    <div class="container newsbar-inner">
+      <span class="news-label">Live Tech</span>
+      <span class="news-text" id="news-text">Loading current tech headline...</span>
+      <a class="news-link" id="news-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Read</a>
+    </div>
+  </div>
+
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#">
+      <a class="brand" href="#home">
         <div class="brand-mark">W</div>
         <div class="brand-text">
-          <span>Wahed Tech Support</span>
+          <span>mymacguy.net</span>
           <span>Reliable. On-Demand. Human.</span>
         </div>
       </a>
 
       <nav>
+        <a href="#home">Home</a>
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="mailto:wahed@mymacguy.net" class="nav-cta">Email Wahed</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:3109801964" class="nav-cta">Call</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-main">
-          <div>
-            <div class="eyebrow">
-              <span class="eyebrow-dot"></span>
-              Los Angeles tech support for real-world systems
-            </div>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-inner">
+            <div class="hero-site">mymacguy.net</div>
 
-            <h1>Your tech, sorted.</h1>
+            <h1 class="hero-title">Your tech, sorted.</h1>
 
             <p class="hero-copy">
-              Calm, senior-level support for Macs, iPhones, Wi-Fi, Microsoft 365, smart homes, printers, cameras, backups, and the maddening little failures that waste your day.
+              Calm, senior-level support for Mac, Wi-Fi, Microsoft 365, smart home, and business systems in Los Angeles.
             </p>
 
             <div class="hero-actions">
@@ -788,46 +682,121 @@
               <a class="btn btn-secondary" href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
             </div>
 
-            <div class="hero-contact">
-              <a class="contact-card" href="tel:3109801964">
-                <div class="contact-label">Call or text</div>
-                <div class="contact-value">(310) 980-1964</div>
-              </a>
-              <a class="contact-card" href="mailto:wahed@mymacguy.net">
-                <div class="contact-label">Email</div>
-                <div class="contact-value">wahed@mymacguy.net</div>
-              </a>
+            <div class="hero-tagline">
+              <span>Mac</span>
+              <span>Wi-Fi</span>
+              <span>Microsoft 365</span>
+              <span>Smart Home</span>
+              <span>Home Office</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="hero-bottom">
-            <span>Mac & iPhone</span>
-            <span>Networking & Wi-Fi</span>
-            <span>Microsoft 365</span>
-            <span>Smart Home</span>
-            <span>Home Office</span>
-            <span>Remote or On-Site</span>
+    <section class="divider-section">
+      <div class="container">
+        <div class="divider-line"></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Services</div>
+            <h2 class="section-title">What I handle</h2>
           </div>
+          <p class="section-copy">
+            Clear categories. Real work. No mystery pile of buzzwords pretending to be expertise.
+          </p>
         </div>
 
-        <aside class="hero-side">
-          <div class="card headline-card">
-            <div class="card-kicker">Tech headline now</div>
-            <h2 id="headline-title">Loading today’s headline...</h2>
-            <p class="headline-meta" id="headline-meta">
-              Pulling one current tech story for the homepage.
-            </p>
-            <a id="headline-link" class="headline-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
-              Read the story
-              <span aria-hidden="true">→</span>
-            </a>
+        <div class="services-grid">
+          <div class="card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="5" width="16" height="10" rx="2"></rect>
+                <path d="M10 19h4"></path>
+                <path d="M12 15v4"></path>
+              </svg>
+            </div>
+            <h3>Apple Support</h3>
+            <p>Mac, iPhone, iPad, iCloud, backups, migrations, syncing problems, and the small disasters Apple never warns people about.</p>
           </div>
 
           <div class="card">
-            <div class="card-kicker">Why clients stay</div>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.5 9a12 12 0 0 1 15 0"></path>
+                <path d="M7.5 12a8 8 0 0 1 9 0"></path>
+                <path d="M10.5 15a4 4 0 0 1 3 0"></path>
+                <circle cx="12" cy="18" r="1"></circle>
+              </svg>
+            </div>
+            <h3>Wi-Fi & Networking</h3>
+            <p>Router setup, coverage issues, office stability, smart-home connectivity, and network troubleshooting without the ritual sacrifice to consumer-grade hardware.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="4" width="7" height="7" rx="1.5"></rect>
+                <rect x="13" y="4" width="7" height="7" rx="1.5"></rect>
+                <rect x="4" y="13" width="7" height="7" rx="1.5"></rect>
+                <path d="M16.5 13v7"></path>
+                <path d="M13 16.5h7"></path>
+              </svg>
+            </div>
+            <h3>Business Systems</h3>
+            <p>Microsoft 365, email issues, user setup, printer and scanner problems, access issues, and small-office systems that should have been simple but aren’t.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 11.5 12 6l7 5.5"></path>
+                <path d="M7 10.5V19h10v-8.5"></path>
+                <path d="M10 19v-4h4v4"></path>
+              </svg>
+            </div>
+            <h3>Home Tech</h3>
+            <p>Smart TVs, cameras, lighting, audio, home office setups, and the stack of devices everyone expects to “just work.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="divider-section">
+      <div class="container">
+        <div class="divider-line"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Why clients call me</div>
+            <h2 class="section-title">Support with less wasted time</h2>
+          </div>
+          <p class="section-copy">
+            The point is not to sound impressive. The point is to solve the problem correctly, quickly, and without making your day worse.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-image">
+            <div class="trust-caption">
+              <small>Trusted support</small>
+              <h3>Real help for real systems.</h3>
+            </div>
+          </div>
+
+          <div class="card trust-list-card">
             <div class="trust-list">
               <div class="trust-item">
-                <div class="trust-icon">01</div>
+                <div class="trust-badge">01</div>
                 <div>
                   <strong>Fast diagnosis</strong>
                   <p>No endless script-reading. Real troubleshooting, quickly.</p>
@@ -835,7 +804,7 @@
               </div>
 
               <div class="trust-item">
-                <div class="trust-icon">02</div>
+                <div class="trust-badge">02</div>
                 <div>
                   <strong>Human support</strong>
                   <p>Reachable by phone, text, or email without being buried in a ticket maze.</p>
@@ -843,111 +812,61 @@
               </div>
 
               <div class="trust-item">
-                <div class="trust-icon">03</div>
+                <div class="trust-badge">03</div>
                 <div>
                   <strong>Best solution first</strong>
                   <p>If the smartest fix is outside my service, I’ll tell you that instead of inventing billable theater.</p>
                 </div>
               </div>
+
+              <div class="trust-item">
+                <div class="trust-badge">04</div>
+                <div>
+                  <strong>Remote or on-site</strong>
+                  <p>Support that fits the job instead of forcing every problem into the same box.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="services" id="services">
-      <div class="container services-grid">
-        <div class="section-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="5" width="16" height="10" rx="2"></rect>
-              <path d="M10 19h4"></path>
-              <path d="M12 15v4"></path>
-            </svg>
-          </div>
-          <div class="service-title">Apple Support</div>
-          <div class="service-text">Mac, iPhone, iPad, iCloud, migrations, backups, syncing problems, and weird device behavior that should not exist but does anyway.</div>
-        </div>
-
-        <div class="section-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4.5 9a12 12 0 0 1 15 0"></path>
-              <path d="M7.5 12a8 8 0 0 1 9 0"></path>
-              <path d="M10.5 15a4 4 0 0 1 3 0"></path>
-              <circle cx="12" cy="18" r="1"></circle>
-            </svg>
-          </div>
-          <div class="service-title">Wi-Fi & Networking</div>
-          <div class="service-text">Router setup, coverage issues, slow internet, VLAN-aware prosumer gear, office stability, and smart-home connectivity.</div>
-        </div>
-
-        <div class="section-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="4" width="7" height="7" rx="1.5"></rect>
-              <rect x="13" y="4" width="7" height="7" rx="1.5"></rect>
-              <rect x="4" y="13" width="7" height="7" rx="1.5"></rect>
-              <path d="M16.5 13v7"></path>
-              <path d="M13 16.5h7"></path>
-            </svg>
-          </div>
-          <div class="service-title">Business Systems</div>
-          <div class="service-text">Microsoft 365, email delivery issues, user setup, security hardening, printers, scanners, and small-office infrastructure.</div>
-        </div>
-
-        <div class="section-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 11.5 12 6l7 5.5"></path>
-              <path d="M7 10.5V19h10v-8.5"></path>
-              <path d="M10 19v-4h4v4"></path>
-            </svg>
-          </div>
-          <div class="service-title">Home Tech</div>
-          <div class="service-text">Smart TVs, cameras, lighting, audio, home office gear, and the stack of devices everyone expects to “just work.”</div>
         </div>
       </div>
     </section>
 
-    <section class="image-band">
-      <div class="container image-band-wrap">
-        <div class="image-panel">
-          <div class="image-caption">
-            <small>Trusted support</small>
-            <h3>Real help for real systems.</h3>
-          </div>
-        </div>
-
-        <div class="quote-panel">
-          <div class="section-label">How this works</div>
-          <h3>Technical support without the exhausting nonsense.</h3>
-          <p>
-            Practical troubleshooting. Clear communication. The right fix first. Whether it’s a Mac that refuses to behave, unstable office Wi-Fi, or a small-business Microsoft 365 mess, the goal is to get the system stable and keep your day moving.
-          </p>
-        </div>
+    <section class="divider-section">
+      <div class="container">
+        <div class="divider-line"></div>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="container about-wrap">
-        <div class="about-left">
-          <div class="section-label">About</div>
-          <h3>Senior-level support without the drama.</h3>
-          <p>
-            Wahed Tech Support helps people and small businesses get control of their systems again. The work is practical, direct, and built around reliability, not upselling. If something can be fixed simply, that’s the route. If it needs a deeper rebuild, that gets handled properly too.
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">Senior-level support without the drama</h2>
+          </div>
+          <p class="section-copy">
+            Practical troubleshooting. Clear communication. The right fix first. Astonishingly rare qualities online, apparently.
           </p>
         </div>
 
-        <div class="about-right">
-          <div class="section-label">What you can expect</div>
-          <h3>Clear answers. Smart fixes. Less wasted time.</h3>
-          <ul>
-            <li>Remote and on-site support in Los Angeles</li>
-            <li>Phone, email, and text-friendly communication</li>
-            <li>Business and residential clients welcome</li>
-            <li>Advice that prioritizes the right fix, not the longest invoice</li>
-          </ul>
+        <div class="about-grid">
+          <div class="about-card">
+            <p>
+              Wahed Tech Support helps people and small businesses get control of their systems again. The work is direct, practical, and built around reliability, not upselling. If something can be fixed simply, that’s the route. If it needs a deeper rebuild, that gets handled properly too.
+            </p>
+          </div>
+
+          <div class="contact-card" id="contact">
+            <div class="section-kicker">Contact</div>
+            <h2 class="section-title">Call, email, or text</h2>
+            <ul class="contact-list">
+              <li><a href="tel:3109801964">(310) 980-1964</a></li>
+              <li><a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a></li>
+              <li>Los Angeles | Hollywood | Santa Monica</li>
+              <li>Business and residential clients welcome</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -955,11 +874,11 @@
 
   <footer>
     <div class="container footer-wrap">
-      <div>© <span id="year"></span> Wahed Tech Support</div>
+      <div>© <span id="year"></span> mymacguy.net</div>
       <div>
-        <a class="muted-link" href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+        <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
         &nbsp;|&nbsp;
-        <a class="muted-link" href="tel:3109801964">(310) 980-1964</a>
+        <a href="tel:3109801964">(310) 980-1964</a>
       </div>
     </div>
   </footer>
@@ -968,9 +887,8 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     async function loadTechHeadline() {
-      const titleEl = document.getElementById("headline-title");
-      const metaEl = document.getElementById("headline-meta");
-      const linkEl = document.getElementById("headline-link");
+      const newsText = document.getElementById("news-text");
+      const newsLink = document.getElementById("news-link");
 
       try {
         const topIdsResponse = await fetch("https://hacker-news.firebaseio.com/v0/topstories.json");
@@ -989,10 +907,9 @@
           const title = (item && item.title ? item.title : "").toLowerCase();
 
           const techSignals = [
-            "ai", "openai", "apple", "google", "microsoft", "meta", "tesla",
-            "nvidia", "amazon", "startup", "software", "hardware", "chip",
-            "robot", "coding", "programming", "tech", "security", "internet",
-            "cloud", "iphone", "mac", "linux", "windows", "browser"
+            "ai", "openai", "apple", "google", "microsoft", "meta", "nvidia",
+            "amazon", "software", "hardware", "chip", "security", "internet",
+            "cloud", "iphone", "mac", "linux", "windows", "browser", "startup"
           ];
 
           const looksTech =
@@ -1014,25 +931,12 @@
 
         if (!chosen) throw new Error("No suitable story found");
 
-        const score = typeof chosen.score === "number" ? `${chosen.score} points` : "Top story";
-        const author = chosen.by ? ` by ${chosen.by}` : "";
-        const timeText = chosen.time
-          ? new Date(chosen.time * 1000).toLocaleString([], {
-              month: "short",
-              day: "numeric",
-              hour: "numeric",
-              minute: "2-digit"
-            })
-          : "recently";
-
-        titleEl.textContent = chosen.title;
-        metaEl.textContent = `${score}${author} • posted ${timeText}`;
-        linkEl.href = chosen.url;
-        linkEl.style.display = "inline-flex";
+        newsText.textContent = chosen.title;
+        newsLink.href = chosen.url;
+        newsLink.style.display = "inline-flex";
       } catch (error) {
-        titleEl.textContent = "Reliable tech support for Mac, Wi-Fi, Microsoft 365, and home office systems.";
-        metaEl.textContent = "If the live headline source fails, the page falls back cleanly instead of making the site look broken.";
-        linkEl.style.display = "none";
+        newsText.textContent = "Reliable tech support for Mac, Wi-Fi, Microsoft 365, and home office systems.";
+        newsLink.style.display = "none";
       }
     }
 
