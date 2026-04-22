@@ -1,782 +1,195 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mymacguy.net — Your tech, sorted.</title>
+  <title>mymacguy — Tech Support Refined</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:      #0c0c0b;
-      --bg2:     #111110;
-      --surface: #181816;
-      --border:  rgba(255,255,255,0.07);
-      --accent:  #c8f060;
-      --text:    #dedad0;
-      --muted:   rgba(222,218,208,0.4);
-      --heading: #f4f3ee;
+      --bg: #ffffff;
+      --accent: #0071e3; /* San Francisco Blue */
+      --text: #1d1d1f;
+      --muted: #86868b;
+      --soft-tint: #f5f5f7;
+      --glass: rgba(255, 255, 255, 0.85);
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
+      background-color: var(--bg);
       color: var(--text);
-      font-family: 'Outfit', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      cursor: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
     }
-
-    /* grain */
-    body::after {
-      content: '';
-      position: fixed; inset: 0; z-index: 9998; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.032;
-    }
-
-    /* cursor */
-    .cursor {
-      position: fixed; z-index: 9999; pointer-events: none;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); transform: translate(-50%,-50%);
-      mix-blend-mode: difference; transition: width .25s, height .25s;
-    }
-    .cursor-ring {
-      position: fixed; z-index: 9997; pointer-events: none;
-      width: 32px; height: 32px; border-radius: 50%;
-      border: 1px solid rgba(200,240,96,0.3);
-      transform: translate(-50%,-50%);
-    }
-    a:hover .cursor, body:has(a:hover) .cursor { width: 16px; height: 16px; }
 
     /* ════════════════════════════════
-       NAV
+       CONTINUOUS BACKGROUND DEVICE
+    ════════════════════════════════ */
+    .device-watermark {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw; height: 80vh;
+      background-image: url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=2000');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.03; /* Barely there, very airy */
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ════════════════════════════════
+       NAV (Minimalist Blur)
     ════════════════════════════════ */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 32px 56px;
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.03);
     }
-    nav::before {
-      content: ''; position: absolute; inset: 0; z-index: -1;
-      background: linear-gradient(to bottom, rgba(12,12,11,0.95) 0%, transparent 100%);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      color: var(--heading); text-decoration: none;
-      letter-spacing: -0.01em;
-    }
-    .nav-logo em { font-style: italic; font-weight: 400; color: var(--accent); }
-    .nav-right { display: flex; align-items: center; gap: 40px; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 0.75rem;
-      font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+
+    .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.04em; text-decoration: none; color: var(--text); }
+    .logo span { font-weight: 300; color: var(--muted); }
+
     .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: #0c0c0b;
-      padding: 10px 24px; border-radius: 100px;
-      font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.04em; text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
+      font-weight: 600; font-size: 0.9rem; color: var(--accent);
+      text-decoration: none; border: 1px solid var(--accent);
+      padding: 8px 20px; border-radius: 50px; transition: all 0.2s;
     }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(200,240,96,0.25); }
+    .nav-cta:hover { background: var(--accent); color: white; }
 
     /* ════════════════════════════════
-       HERO — full screen, minimal
+       CONTINUOUS FLOW SECTIONS
     ════════════════════════════════ */
-    .hero {
-      position: relative;
-      min-height: 100vh; min-height: 100svh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center;
-      overflow: hidden;
+    section {
+      padding: 160px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center;
     }
 
-    /* background photo — very subtle */
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1800&auto=format&fit=crop&q=60') center/cover no-repeat;
-      opacity: 0.055;
-    }
-    /* vignette */
-    .hero-vignette {
-      position: absolute; inset: 0; z-index: 1;
-      background: radial-gradient(ellipse 90% 90% at 50% 50%, transparent 30%, rgba(12,12,11,0.7) 100%);
-    }
-    /* fade bottom into next section */
-    .hero-fade {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 200px; z-index: 2;
-      background: linear-gradient(to bottom, transparent, var(--bg));
+    .hero { height: 100vh; justify-content: center; text-align: center; }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-weight: 800; letter-spacing: -0.06em; line-height: 0.9;
+      margin-bottom: 30px;
     }
 
-    .hero-inner {
-      position: relative; z-index: 3;
-      display: flex; flex-direction: column;
-      align-items: center; gap: 0;
-    }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 48px;
-    }
-    .hero-tag::before, .hero-tag::after {
-      content: ''; display: block;
-      width: 20px; height: 1px; background: var(--accent); opacity: 0.6;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4.5rem, 13vw, 12rem);
-      font-weight: 900; color: var(--heading);
-      line-height: 0.88; letter-spacing: -0.045em;
-      margin-bottom: 0;
-    }
-    .hero-title .dot { color: var(--accent); }
-    .hero-title .net {
-      font-weight: 400; font-style: italic;
-      color: rgba(244,243,238,0.35);
-      font-size: 0.6em; display: inline;
-    }
-
-    .hero-motto {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      font-style: italic; font-weight: 400;
-      color: rgba(244,243,238,0.38);
-      margin-top: 20px; letter-spacing: -0.01em;
-    }
-
-    .hero-cta-wrap {
-      margin-top: 64px;
-    }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--accent); color: #0c0c0b;
-      padding: 18px 44px; border-radius: 100px;
-      font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em;
-      text-decoration: none;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 16px 50px rgba(200,240,96,0.25); }
-    .hero-cta-arrow {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 28px; height: 28px; border-radius: 50%;
-      background: rgba(12,12,11,0.15);
-      font-size: 0.85rem;
-      transition: transform 0.2s;
-    }
-    .hero-cta:hover .hero-cta-arrow { transform: translateX(3px); }
-
-    /* scroll indicator */
-    .hero-scroll {
-      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: var(--muted); font-size: 0.65rem; letter-spacing: 0.14em;
-      text-transform: uppercase; animation: bounce 2.4s ease-in-out infinite;
-    }
-    .hero-scroll-line {
-      width: 1px; height: 36px;
-      background: linear-gradient(to bottom, var(--muted), transparent);
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%       { transform: translateX(-50%) translateY(6px); }
+    .hero p {
+      font-size: 1.5rem; font-weight: 400; color: var(--muted);
+      max-width: 700px; margin-bottom: 50px;
     }
 
     /* ════════════════════════════════
-       MARQUEE
+       SERVICES (No Boxes, Just Lines)
     ════════════════════════════════ */
-    .marquee-wrap {
-      overflow: hidden; padding: 18px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .service-row {
+      width: 100%;
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      padding: 60px 0;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
-    .marquee-track {
-      display: flex; white-space: nowrap;
-      animation: ticker 28s linear infinite;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    .marquee-item {
-      flex-shrink: 0; display: inline-flex; align-items: center; gap: 20px;
-      padding: 0 36px;
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
-    }
-    .mdot { width: 3px; height: 3px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .service-row h3 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em; }
+    .service-row p { font-size: 1.1rem; color: var(--muted); }
 
     /* ════════════════════════════════
-       SHARED SECTION STYLES
+       CONTACT (Large & Friendly)
     ════════════════════════════════ */
-    .section { padding: 140px 80px; }
-    .section-alt { background: var(--bg2); }
-
-    .section-label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 56px;
-    }
-    .section-label::before {
-      content: ''; width: 18px; height: 1px; background: var(--accent);
+    .contact-block {
+      text-align: center; padding-bottom: 200px;
     }
 
-    /* ════════════════════════════════
-       SERVICES
-    ════════════════════════════════ */
-    .services-head {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: end;
-      margin-bottom: 80px;
+    .contact-btn {
+      font-size: 2.5rem; font-weight: 800; color: var(--text);
+      text-decoration: none; letter-spacing: -0.04em;
+      transition: color 0.3s;
     }
-    .services-head h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
-      font-weight: 700; color: var(--heading);
-      letter-spacing: -0.03em; line-height: 1.0;
-    }
-    .services-head h2 em { font-style: italic; font-weight: 400; color: var(--muted); }
-    .services-head p {
-      color: var(--muted); font-size: 1rem; line-height: 1.8;
-      max-width: 380px; align-self: end;
-    }
+    .contact-btn:hover { color: var(--accent); }
 
-    .service-list { display: flex; flex-direction: column; }
-    .srow {
-      display: grid;
-      grid-template-columns: 48px 40px 1fr auto auto;
-      align-items: center; gap: 24px;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-      transition: padding-left 0.35s ease;
-      position: relative; overflow: hidden;
-    }
-    .srow:first-child { border-top: 1px solid var(--border); }
-    .srow::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(200,240,96,0.03) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.35s;
-    }
-    .srow:hover { padding-left: 16px; }
-    .srow:hover::after { opacity: 1; }
-    .srow:hover .sarrow { color: var(--accent); transform: translateX(6px); }
-    .snum {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
-    }
-    .sicon { font-size: 1.25rem; }
-    .sname {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.1rem, 2vw, 1.65rem);
-      font-weight: 700; color: var(--heading); letter-spacing: -0.02em;
-    }
-    .sdesc {
-      color: var(--muted); font-size: 0.85rem; max-width: 300px;
-      line-height: 1.6; text-align: right;
-    }
-    .sarrow {
-      color: var(--muted); font-size: 0.95rem;
-      transition: transform 0.3s, color 0.3s; min-width: 20px; text-align: right;
-    }
+    /* UTILS */
+    .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* ════════════════════════════════
-       PROCESS
-    ════════════════════════════════ */
-    .process-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;
+    @media (max-width: 768px) {
+      .service-row { grid-template-columns: 1fr; gap: 20px; }
+      nav { padding: 15px 20px; }
+      section { padding: 100px 20px; }
     }
-    .process-left h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 3.8vw, 3.8rem);
-      font-weight: 700; color: var(--heading);
-      letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 24px;
-    }
-    .process-left h2 em { font-style: italic; font-weight: 400; color: var(--muted); }
-    .process-left p { color: var(--muted); line-height: 1.82; font-size: 0.95rem; max-width: 380px; }
-    .process-left a {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 40px; color: var(--accent);
-      font-size: 0.78rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-      transition: gap 0.2s;
-    }
-    .process-left a:hover { gap: 14px; }
-
-    .step-list { display: flex; flex-direction: column; }
-    .step {
-      display: flex; gap: 28px; padding: 32px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .step:first-child { border-top: 1px solid var(--border); }
-    .step-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.68rem; color: var(--accent);
-      min-width: 24px; margin-top: 4px;
-    }
-    .step h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; font-weight: 700; color: var(--heading);
-      letter-spacing: -0.02em; margin-bottom: 10px;
-    }
-    .step p { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
-
-    /* ════════════════════════════════
-       ABOUT
-    ════════════════════════════════ */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 360px; gap: 100px; align-items: start;
-    }
-    .about-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 3.8vw, 3.8rem);
-      font-weight: 700; color: var(--heading);
-      letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 28px;
-    }
-    .about-text h2 em { font-style: italic; font-weight: 400; }
-    .about-text p {
-      color: var(--muted); line-height: 1.85; font-size: 0.95rem;
-      margin-bottom: 18px; max-width: 520px;
-    }
-    .about-text .btn-main { margin-top: 20px; }
-
-    .stat-stack { display: flex; flex-direction: column; gap: 2px; }
-    .stat-card {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 32px 28px; border-radius: 3px;
-    }
-    .stat-n {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem; font-weight: 900; color: var(--accent);
-      letter-spacing: -0.05em; line-height: 1; margin-bottom: 8px;
-    }
-    .stat-l { color: var(--muted); font-size: 0.8rem; line-height: 1.55; }
-
-    /* ════════════════════════════════
-       CONTACT
-    ════════════════════════════════ */
-    .contact-wrap {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start;
-    }
-    .contact-hed h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 5.5vw, 5.5rem);
-      font-weight: 900; color: var(--heading);
-      letter-spacing: -0.045em; line-height: 0.92;
-    }
-    .contact-hed h2 em { font-style: italic; font-weight: 400; display: block; }
-    .contact-hed p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-top: 24px; max-width: 340px; }
-
-    .contact-cards { display: flex; flex-direction: column; gap: 12px; padding-top: 8px; }
-    .ccard {
-      display: flex; align-items: center; gap: 20px;
-      padding: 24px 28px;
-      border: 1px solid var(--border); border-radius: 6px;
-      text-decoration: none;
-      transition: border-color 0.25s, transform 0.25s, background 0.25s;
-    }
-    .ccard:hover {
-      border-color: rgba(200,240,96,0.3);
-      background: rgba(200,240,96,0.025);
-      transform: translateX(6px);
-    }
-    .ccard-icon {
-      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
-      background: var(--surface); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
-    }
-    .ccard-body { flex: 1; }
-    .ccard-label {
-      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
-    }
-    .ccard-val {
-      font-family: 'Playfair Display', serif; font-size: 1.1rem;
-      font-weight: 700; color: var(--heading);
-    }
-    .ccard-arrow { color: var(--muted); transition: transform 0.2s, color 0.2s; }
-    .ccard:hover .ccard-arrow { transform: translateX(4px); color: var(--accent); }
-
-    .loc-box {
-      padding: 24px 28px; border: 1px solid var(--border);
-      border-radius: 6px; display: flex; gap: 16px; margin-top: 4px;
-    }
-    .loc-box-ico { font-size: 1rem; flex-shrink: 0; margin-top: 3px; }
-    .loc-box h4 {
-      font-family: 'Playfair Display', serif; font-weight: 700;
-      color: var(--heading); margin-bottom: 5px; font-size: 0.9rem;
-    }
-    .loc-box p { color: var(--muted); font-size: 0.8rem; line-height: 1.65; }
-
-    /* shared btn */
-    .btn-main {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent); color: #0c0c0b;
-      padding: 14px 30px; border-radius: 100px;
-      font-weight: 600; font-size: 0.88rem;
-      text-decoration: none; letter-spacing: 0.01em;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(200,240,96,0.22); }
-
-    /* ════════════════════════════════
-       FOOTER
-    ════════════════════════════════ */
-    footer {
-      padding: 36px 80px; border-top: 1px solid var(--border);
-      display: flex; flex-wrap: wrap; align-items: center;
-      justify-content: space-between; gap: 20px;
-    }
-    .foot-brand {
-      font-family: 'Playfair Display', serif; font-weight: 700;
-      font-size: 0.95rem; color: var(--heading); letter-spacing: -0.01em;
-    }
-    .foot-brand em { font-style: italic; color: var(--accent); }
-    .foot-links { display: flex; gap: 24px; }
-    footer a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
-    footer a:hover { color: var(--text); }
-    footer p { color: var(--muted); font-size: 0.76rem; }
-
-    /* ════════════════════════════════
-       ANIMATIONS
-    ════════════════════════════════ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-tag    { animation: fadeUp 0.7s 0.0s both; }
-    .hero-title  { animation: fadeUp 0.8s 0.12s both; }
-    .hero-motto  { animation: fadeUp 0.7s 0.22s both; }
-    .hero-cta-wrap { animation: fadeUp 0.7s 0.36s both; }
-    .hero-scroll { animation: fadeUp 0.6s 0.55s both; }
-
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.on { opacity: 1; transform: none; }
-
-    /* ════════════════════════════════
-       RESPONSIVE
-    ════════════════════════════════ */
-
-    /* Large tablet 900–1100px */
-    @media (max-width: 1100px) {
-      .section { padding: 120px 56px; }
-      footer { padding: 32px 56px; }
-      nav { padding: 28px 40px; }
-      .services-head { grid-template-columns: 1fr; gap: 20px; }
-      .services-head p { max-width: 100%; }
-      .sdesc { display: none; }
-    }
-
-    /* Tablet 768–900px */
-    @media (max-width: 900px) {
-      nav { padding: 22px 32px; }
-      .nav-links { display: none; }
-      .section { padding: 100px 40px; }
-      footer { padding: 28px 40px; }
-      .process-grid, .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 60px; }
-      .stat-stack { flex-direction: row; flex-wrap: wrap; gap: 2px; }
-      .stat-card { flex: 1; min-width: 130px; }
-      body { cursor: auto; }
-      .cursor, .cursor-ring { display: none; }
-    }
-
-    /* Mobile 480–767px */
-    @media (max-width: 767px) {
-      nav { padding: 18px 24px; }
-      .nav-logo { font-size: 0.9rem; }
-      .nav-cta { padding: 9px 18px; font-size: 0.72rem; }
-
-      .section { padding: 88px 24px; }
-      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 18px; }
-      .foot-links { flex-direction: column; gap: 10px; }
-
-      .hero-title { font-size: clamp(3.6rem, 15vw, 6rem); }
-      .hero-motto { font-size: clamp(1rem, 4vw, 1.5rem); margin-top: 14px; }
-      .hero-tag { margin-bottom: 36px; font-size: 0.62rem; }
-      .hero-cta-wrap { margin-top: 48px; }
-      .hero-cta { padding: 16px 36px; font-size: 0.9rem; }
-      .hero-scroll { bottom: 28px; }
-
-      .services-head h2 { font-size: clamp(2.2rem, 9vw, 3rem); }
-      .srow { grid-template-columns: 36px 1fr auto; gap: 14px; padding: 24px 0; }
-      .snum { display: none; }
-      .sicon { display: none; }
-      .sname { font-size: clamp(1rem, 4.5vw, 1.3rem); }
-
-      .process-left h2, .about-text h2 { font-size: clamp(2rem, 8.5vw, 2.8rem); }
-      .process-left p, .about-text p { max-width: 100%; }
-      .step { gap: 18px; padding: 24px 0; }
-
-      .contact-hed h2 { font-size: clamp(2.6rem, 11vw, 4rem); }
-      .ccard { padding: 18px 20px; gap: 14px; }
-      .ccard-val { font-size: 0.98rem; }
-      .loc-box { padding: 18px 20px; }
-
-      .stat-stack { flex-direction: column; }
-      .stat-card { padding: 26px 22px; }
-    }
-
-    /* Small phone <390px */
-    @media (max-width: 389px) {
-      nav { padding: 16px 18px; }
-      .section { padding: 72px 18px; }
-      footer { padding: 24px 18px; }
-      .hero-title { font-size: clamp(3rem, 16vw, 4.5rem); }
-      .hero-cta { padding: 15px 28px; font-size: 0.85rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .hero-tag, .hero-title, .hero-motto,
-      .hero-cta-wrap, .hero-scroll { animation: none; transition: none; opacity: 1; transform: none; }
-      .marquee-track { animation: none; }
-    }
-
-    ::-webkit-scrollbar { width: 3px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 10px; }
   </style>
-
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- ░░ NAV ░░ -->
+  <div class="device-watermark"></div>
 
   <nav>
-    <a href="#" class="nav-logo">mymacguy<em>.net</em></a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-      <a href="tel:3109801964" class="nav-cta">📞 Get Help</a>
-    </div>
+    <a href="#" class="logo">mymacguy<span>.net</span></a>
+    <a href="tel:3109801964" class="nav-cta">310.980.1964</a>
   </nav>
 
-  <!-- ░░ HERO — one job: open the door ░░ -->
-
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-vignette"></div>
-    <div class="hero-fade"></div>
-
-```
-<div class="hero-inner">
-  <p class="hero-tag">Los Angeles · Apple Tech Support</p>
-  <h1 class="hero-title">
-    mymacguy<span class="dot">.</span><span class="net">net</span>
-  </h1>
-  <p class="hero-motto">your tech, sorted.</p>
-  <div class="hero-cta-wrap">
-    <a href="tel:3109801964" class="hero-cta">
-      Call (310) 980-1964
-      <span class="hero-cta-arrow">→</span>
-    </a>
-  </div>
-</div>
-
-<div class="hero-scroll">
-  <div class="hero-scroll-line"></div>
-  scroll
-</div>
-```
-
-  </section>
-
-  <!-- ░░ MARQUEE ░░ -->
-
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span class="marquee-item"><span class="mdot"></span>Mac Troubleshooting</span>
-      <span class="marquee-item"><span class="mdot"></span>iPhone &amp; iPad Support</span>
-      <span class="marquee-item"><span class="mdot"></span>iCloud &amp; Backup</span>
-      <span class="marquee-item"><span class="mdot"></span>Network &amp; Wi-Fi</span>
-      <span class="marquee-item"><span class="mdot"></span>Security &amp; Privacy</span>
-      <span class="marquee-item"><span class="mdot"></span>New Device Setup</span>
-      <span class="marquee-item"><span class="mdot"></span>One-on-One Training</span>
-      <span class="marquee-item"><span class="mdot"></span>Same-Day Help</span>
-      <span class="marquee-item"><span class="mdot"></span>Mac Troubleshooting</span>
-      <span class="marquee-item"><span class="mdot"></span>iPhone &amp; iPad Support</span>
-      <span class="marquee-item"><span class="mdot"></span>iCloud &amp; Backup</span>
-      <span class="marquee-item"><span class="mdot"></span>Network &amp; Wi-Fi</span>
-      <span class="marquee-item"><span class="mdot"></span>Security &amp; Privacy</span>
-      <span class="marquee-item"><span class="mdot"></span>New Device Setup</span>
-      <span class="marquee-item"><span class="mdot"></span>One-on-One Training</span>
-      <span class="marquee-item"><span class="mdot"></span>Same-Day Help</span>
-    </div>
-  </div>
-
-  <!-- ░░ SERVICES ░░ -->
-
-  <section class="section" id="services">
-    <p class="section-label reveal">What I fix &amp; support</p>
-    <div class="services-head reveal">
-      <h2>Every Apple<br><em>problem, solved.</em></h2>
-      <p>From a frozen Mac to a full home setup — handled personally, explained without jargon.</p>
-    </div>
-    <div class="service-list reveal">
-      <div class="srow"><span class="snum">01</span><span class="sicon">💻</span><span class="sname">Mac Troubleshooting</span><span class="sdesc">Slow machines, crashes, startup issues — diagnosed fast.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">02</span><span class="sicon">📱</span><span class="sname">iPhone &amp; iPad Support</span><span class="sdesc">Setup, transfers, updates, iCloud issues and more.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">03</span><span class="sicon">🔐</span><span class="sname">Security &amp; Privacy</span><span class="sdesc">Virus removal, passwords, account recovery.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">04</span><span class="sicon">☁️</span><span class="sname">iCloud &amp; Backup</span><span class="sdesc">Set it up right. Recover lost files. Never lose data again.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">05</span><span class="sicon">📡</span><span class="sname">Network &amp; Wi-Fi</span><span class="sdesc">Dead zones, slow speeds, router setup.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">06</span><span class="sicon">🖥️</span><span class="sname">New Device Setup</span><span class="sdesc">Migration, email, apps — ready from day one.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">07</span><span class="sicon">🖨️</span><span class="sname">Printers &amp; Peripherals</span><span class="sdesc">Printers, drives, monitors, connected devices.</span><span class="sarrow">→</span></div>
-      <div class="srow"><span class="snum">08</span><span class="sicon">🎓</span><span class="sname">One-on-One Training</span><span class="sdesc">Learn at your pace. No judgement.</span><span class="sarrow">→</span></div>
-    </div>
-  </section>
-
-  <!-- ░░ PROCESS ░░ -->
-
-  <section class="section section-alt" id="process">
-    <p class="section-label reveal">How it works</p>
-    <div class="process-grid">
-      <div class="process-left reveal">
-        <h2>Simple<br><em>process.</em><br>Fast results.</h2>
-        <p>No appointments weeks out. No corporate hold music. Just fast, personal help from someone who knows Apple inside out.</p>
-        <a href="tel:3109801964">Call now →</a>
-      </div>
-      <div class="step-list reveal">
-        <div class="step">
-          <span class="step-n">01</span>
-          <div><h4>Reach Out</h4><p>Call, text, or email. Describe the issue — I'll tell you the fastest path.</p></div>
-        </div>
-        <div class="step">
-          <span class="step-n">02</span>
-          <div><h4>Pick Your Method</h4><p>Phone walkthrough, remote screen share, or in-person — your call.</p></div>
-        </div>
-        <div class="step">
-          <span class="step-n">03</span>
-          <div><h4>Problem Solved</h4><p>I'll explain exactly what happened and what was fixed. No mystery.</p></div>
-        </div>
-        <div class="step">
-          <span class="step-n">04</span>
-          <div><h4>Ongoing Support</h4><p>Follow-up questions are always welcome. I'm here when you need me.</p></div>
-        </div>
+    <div class="reveal">
+      <h1>sorted.</h1>
+      <p>Independent Apple support for professionals and families. Expert Mac repair, network security, and personalized training.</p>
+      <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em;">
+        Scroll to explore
       </div>
     </div>
   </section>
 
-  <!-- ░░ ABOUT ░░ -->
-
-  <section class="section" id="about">
-    <p class="section-label reveal">About</p>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <h2>Hi, I'm Wahed.<br><em>Your Mac Guy.</em></h2>
-        <p>I'm an independent Apple tech specialist based in Los Angeles. For years I've helped individuals, families, and small businesses get the most from their Apple devices — without the headaches.</p>
-        <p>Unlike the Genius Bar or big-box stores, you get direct one-on-one attention. No ticket queue, no upsells, no technobabble. Just clear, friendly help from someone who genuinely cares.</p>
-        <a href="tel:3109801964" class="btn-main">📞 Call (310) 980-1964</a>
-      </div>
-      <div class="stat-stack reveal">
-        <div class="stat-card">
-          <div class="stat-n">LA</div>
-          <div class="stat-l">Based in Los Angeles<br>Serving the greater area</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-n">3×</div>
-          <div class="stat-l">Ways to get help<br>Phone · Remote · In-Person</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-n">1:1</div>
-          <div class="stat-l">Personal attention every time<br>No call centers, ever</div>
-        </div>
-      </div>
+  <section id="services">
+    <div class="service-row reveal">
+      <h3>Infrastructure</h3>
+      <p>High-performance Mesh Wi-Fi systems, secure network gateways, and smart home integration that works the first time.</p>
+    </div>
+    <div class="service-row reveal">
+      <h3>Recovery</h3>
+      <p>Advanced data recovery, iCloud synchronization fixes, and bulletproof backup strategies for your most important memories.</p>
+    </div>
+    <div class="service-row reveal">
+      <h3>Consulting</h3>
+      <p>One-on-one workflow optimization, device purchasing advice, and security audits to keep your digital life private.</p>
     </div>
   </section>
 
-  <!-- ░░ CONTACT ░░ -->
-
-  <section class="section section-alt" id="contact">
-    <div class="contact-wrap">
-      <div class="contact-hed reveal">
-        <h2>Ready<br><em>when<br>you are.</em></h2>
-        <p>Whatever Apple problem you're facing — big or small — reach out. Same-day help often available.</p>
-      </div>
-      <div class="contact-cards reveal">
-        <a href="tel:3109801964" class="ccard">
-          <div class="ccard-icon">📞</div>
-          <div class="ccard-body">
-            <div class="ccard-label">Phone / Text</div>
-            <div class="ccard-val">(310) 980-1964</div>
-          </div>
-          <span class="ccard-arrow">→</span>
-        </a>
-        <a href="mailto:wahed@mymacguy.net" class="ccard">
-          <div class="ccard-icon">✉️</div>
-          <div class="ccard-body">
-            <div class="ccard-label">Email</div>
-            <div class="ccard-val">wahed@mymacguy.net</div>
-          </div>
-          <span class="ccard-arrow">→</span>
-        </a>
-        <div class="loc-box">
-          <div class="loc-box-ico">📍</div>
-          <div>
-            <h4>Service Area</h4>
-            <p>Near 1032 S Highland Ave, Los Angeles, CA 90019. In-person across greater LA. Phone &amp; remote support anywhere.</p>
-          </div>
-        </div>
-      </div>
+  <section class="contact-block">
+    <div class="reveal">
+      <p style="margin-bottom: 20px; color: var(--muted); font-weight: 500;">Ready to fix the frustration?</p>
+      <a href="tel:3109801964" class="contact-btn">Get Help Now →</a>
+      <p style="margin-top: 60px; font-size: 0.8rem; color: var(--muted);">
+        Wahed Abdul Khaliqi • Los Angeles, CA • Serving the Greater Area
+      </p>
     </div>
   </section>
-
-  <!-- ░░ FOOTER ░░ -->
-
-  <footer>
-    <div class="foot-brand">mymacguy<em>.net</em></div>
-    <div class="foot-links">
-      <a href="tel:3109801964">(310) 980-1964</a>
-      <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
-    </div>
-    <p>© 2026 Wahed Tech Support · Los Angeles</p>
-  </footer>
 
   <script>
-    // Cursor
-    const cur = document.getElementById('cursor');
-    const rng = document.getElementById('cursorRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove', e=>{mx=e.clientX;my=e.clientY;});
-    (function tick(){
-      if(cur){cur.style.left=mx+'px';cur.style.top=my+'px';}
-      rx+=(mx-rx)*0.14; ry+=(my-ry)*0.14;
-      if(rng){rng.style.left=rx+'px';rng.style.top=ry+'px';}
-      requestAnimationFrame(tick);
-    })();
-
-    // Scroll reveal
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach((e,i)=>{
-        if(e.isIntersecting){
-          setTimeout(()=>e.target.classList.add('on'), i*70);
-          io.unobserve(e.target);
+    // Intersection Observer for the smooth scroll-in effect
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
         }
       });
-    },{threshold:0.07});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Simple parallax for the background device
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const watermark = document.querySelector('.device-watermark');
+      watermark.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.05}px)) rotate(${scrolled * 0.01}deg)`;
+    });
   </script>
 
 </body>
