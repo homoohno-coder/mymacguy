@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mymacguy.net — Apple Support Refined</title>
+  <title>mymacguy.net</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
 
@@ -13,7 +13,6 @@
       --accent: #0071e3; 
       --text: #1d1d1f;
       --muted: #86868b;
-      --glass: rgba(255, 255, 255, 0.9);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,143 +23,140 @@
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
     /* ════════════════════════════════
-       DYNAMIC MASSIVE BRANDING
+       FIXED MINI NAV (Hidden initially)
     ════════════════════════════════ */
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      background: var(--glass);
-      backdrop-filter: blur(40px);
-      padding: 40px 0;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      border-bottom: 1px solid rgba(0,0,0,0.03);
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 2000;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      opacity: 0; visibility: hidden;
+      transition: all 0.4s ease;
     }
-
-    /* Shrink effect on scroll handled via JS */
-    header.is-scrolled { padding: 15px 0; }
-
-    .brand-wrap {
-      max-width: 1400px; margin: 0 auto; padding: 0 40px;
-      display: flex; flex-direction: column; align-items: center;
-    }
-
-    .massive-logo {
-      font-weight: 800;
-      /* Dynamic sizing based on viewport width */
-      font-size: clamp(2rem, 8vw, 6rem); 
-      letter-spacing: -0.06em;
-      text-decoration: none;
-      color: var(--text);
-      line-height: 1;
-      transition: font-size 0.4s ease;
-    }
-    .massive-logo span.dot { color: var(--accent); }
-    .massive-logo span.ext { font-weight: 300; color: var(--muted); }
-
-    header.is-scrolled .massive-logo { font-size: clamp(1.2rem, 3vw, 2rem); }
+    nav.visible { opacity: 1; visibility: visible; }
+    .nav-logo { font-weight: 800; text-decoration: none; color: var(--text); font-size: 1.1rem; }
+    .nav-logo span { color: var(--accent); }
 
     /* ════════════════════════════════
-       CONTINUOUS BACKGROUND
+       MASSIVE BRANDING HERO
     ════════════════════════════════ */
-    .device-watermark {
-      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 85vw; height: 85vh;
-      background-image: url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=2000');
-      background-size: contain; background-repeat: no-repeat; background-position: center;
-      opacity: 0.025; z-index: -1; pointer-events: none;
+    .hero-branding {
+      height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .massive-text {
+      font-size: clamp(3rem, 15vw, 12rem);
+      font-weight: 800; letter-spacing: -0.07em; line-height: 0.8;
+      color: var(--text); margin-bottom: 40px;
+    }
+    .massive-text span.dot { color: var(--accent); }
+    .massive-text span.net { font-weight: 300; color: #e5e5e7; }
+
+    .hero-tagline {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: var(--muted); font-weight: 400; letter-spacing: -0.02em;
     }
 
     /* ════════════════════════════════
-       CONTENT BLOCKS
+       CONTINUOUS FLOW CONTENT
     ════════════════════════════════ */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    .content-flow { max-width: 900px; margin: 0 auto; padding: 0 40px; }
 
-    section { padding: 15vh 0; display: flex; flex-direction: column; justify-content: center; }
-
-    .hero-text { text-align: center; }
-    .hero-text h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800; letter-spacing: -0.05em; line-height: 1.1;
-      margin-bottom: 30px;
+    .flow-section {
+      padding: 120px 0;
+      opacity: 0; transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
     }
-    .hero-text p {
-      font-size: clamp(1.1rem, 2vw, 1.6rem);
-      color: var(--muted); max-width: 750px; margin: 0 auto;
+    .flow-section.active { opacity: 1; transform: translateY(0); }
+
+    .flow-section h2 { font-size: 3rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 20px; }
+    .flow-section p { font-size: 1.3rem; color: var(--muted); line-height: 1.6; }
+
+    /* ════════════════════════════════
+       SUBTLE DEVICE BACKGROUND
+    ════════════════════════════════ */
+    .bg-device {
+      position: fixed; inset: 0; z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #f0f0f5 0%, #ffffff 70%);
+      display: flex; justify-content: center; align-items: center;
+    }
+    .bg-device img {
+      width: 80%; opacity: 0.03; filter: grayscale(1);
     }
 
-    .flow-item {
-      padding: 80px 0;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px;
+    /* ════════════════════════════════
+       CONTACT ANCHOR
+    ════════════════════════════════ */
+    .contact-footer {
+      padding: 150px 0 250px; text-align: center;
     }
-    .flow-item h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.04em; }
-    .flow-item p { font-size: 1.1rem; color: var(--muted); line-height: 1.8; }
-
-    .contact-cta { text-align: center; padding-bottom: 200px; }
-    .contact-cta a {
-      font-size: clamp(2rem, 5vw, 4rem);
+    .contact-footer a {
+      font-size: clamp(2rem, 10vw, 6rem);
       font-weight: 800; color: var(--text); text-decoration: none;
-      letter-spacing: -0.05em; transition: 0.3s;
+      letter-spacing: -0.06em; transition: color 0.3s;
     }
-    .contact-cta a:hover { color: var(--accent); }
-
-    /* UTILS */
-    .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    .contact-footer a:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
-      .flow-item { grid-template-columns: 1fr; gap: 20px; }
-      .container { padding: 0 24px; }
+      .content-flow { padding: 0 24px; }
+      nav { padding: 15px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="device-watermark" id="watermark"></div>
+  <nav id="stickyNav">
+    <a href="#" class="nav-logo">mymacguy<span>.net</span></a>
+    <a href="tel:3109801964" style="text-decoration: none; font-weight: 700; color: var(--accent); font-size: 0.9rem;">310.980.1964</a>
+  </nav>
 
-  <header id="mainHeader">
-    <div class="brand-wrap">
-      <a href="#" class="massive-logo">mymacguy<span class="dot">.</span><span class="ext">net</span></a>
+  <div class="bg-device">
+    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=2000" alt="Apple Device Backdrop">
+  </div>
+
+  <section class="hero-branding">
+    <div class="massive-text">
+      mymacguy<span class="dot">.</span><span class="net">net</span>
     </div>
-  </header>
+    <p class="hero-tagline">Apple Support. Sorted.</p>
+    <div style="margin-top: 40px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem;">
+      Scroll to begin
+    </div>
+  </section>
 
-  <div class="container">
+  <div class="content-flow">
     
-    <section class="hero-text">
-      <div class="reveal">
-        <h1>Your tech, sorted.</h1>
-        <p>Expert Apple support and network consulting for the Los Angeles creative community. Personal attention, zero frustration.</p>
-      </div>
-    </section>
+    <div class="flow-section reveal">
+      <h2>Expertise</h2>
+      <p>Independent Apple technology consulting for the Los Angeles creative community. We bridge the gap between complex systems and seamless workflows.</p>
+    </div>
 
-    <section id="flow">
-      <div class="flow-item reveal">
-        <h2>Systems</h2>
-        <p>Deep-level macOS and iOS troubleshooting. We fix the problems the Genius Bar can't, from database corruption to hardware integration.</p>
-      </div>
-      
-      <div class="flow-item reveal">
-        <h2>Networks</h2>
-        <p>Enterprise-grade Wi-Fi for residential spaces. Secure, high-speed architecture that covers every corner of your property.</p>
-      </div>
+    <div class="flow-section reveal">
+      <h2>Infrastructure</h2>
+      <p>Design and deployment of robust Mesh Wi-Fi and secure home networks. Eliminating dead zones and latency for a continuous digital experience.</p>
+    </div>
 
-      <div class="flow-item reveal">
-        <h2>Training</h2>
-        <p>Personalized sessions to master your workflow. No scripts, no judged questions—just practical knowledge tailored to you.</p>
-      </div>
-    </section>
+    <div class="flow-section reveal">
+      <h2>Security</h2>
+      <p>Comprehensive privacy audits, secure backup strategies, and specialized data recovery. Your information, protected and permanent.</p>
+    </div>
 
-    <section class="contact-cta">
-      <div class="reveal">
-        <p style="color: var(--muted); margin-bottom: 20px; font-weight: 600;">Immediate Support</p>
-        <a href="tel:3109801964">310.980.1964 →</a>
-        <div style="margin-top: 100px; font-size: 0.8rem; color: var(--muted);">
-          Wahed Abdul Khaliqi • Tech Consultant • Los Angeles, CA
-        </div>
-      </div>
+    <section class="contact-footer reveal">
+      <p style="color: var(--muted); margin-bottom: 20px; font-weight: 500;">Direct Support</p>
+      <a href="tel:3109801964">310.980.1964</a>
+      <p style="margin-top: 100px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em;">
+        WAHED ABDUL KHALIQI • LOS ANGELES, CA
+      </p>
     </section>
 
   </div>
@@ -175,21 +171,17 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Scroll Effects: Shrink Header and Move Watermark
+    // Sticky Nav Visibility & Scroll Effects
     window.addEventListener('scroll', () => {
       const scroll = window.pageYOffset;
-      const header = document.getElementById('mainHeader');
-      const watermark = document.getElementById('watermark');
-
-      // Shrink Header
-      if (scroll > 50) {
-        header.classList.add('is-scrolled');
+      const nav = document.getElementById('stickyNav');
+      
+      // Show nav only after scrolling past the massive hero
+      if (scroll > window.innerHeight * 0.4) {
+        nav.classList.add('visible');
       } else {
-        header.classList.remove('is-scrolled');
+        nav.classList.remove('visible');
       }
-
-      // Parallax Watermark
-      watermark.style.transform = `translate(-50%, calc(-50% + ${scroll * 0.05}px))`;
     });
   </script>
 
