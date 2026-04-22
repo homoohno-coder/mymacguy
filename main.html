@@ -1,189 +1,810 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>mymacguy.net</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wahed Tech Support | Your tech, sorted.</title>
+  <meta name="description" content="Reliable, on-demand tech support for Mac, iPhone, Wi-Fi, smart home, Microsoft 365, and home office systems in Los Angeles." />
+  <meta name="theme-color" content="#ffffff" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #ffffff;
-      --accent: #0071e3; 
-      --text: #1d1d1f;
-      --muted: #86868b;
+      --bg-soft: rgba(255,255,255,0.68);
+      --surface: rgba(255,255,255,0.76);
+      --surface-strong: rgba(255,255,255,0.92);
+      --text: #0f1720;
+      --muted: #5d6977;
+      --line: rgba(15, 23, 32, 0.08);
+      --line-strong: rgba(15, 23, 32, 0.14);
+      --accent: #111111;
+      --accent-soft: #f2f5f8;
+      --shadow: 0 20px 60px rgba(10, 20, 30, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --max: 1240px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      background-color: var(--bg);
+      font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.92), rgba(255,255,255,0.98)),
+        radial-gradient(circle at 15% 20%, rgba(127, 180, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 85% 15%, rgba(110, 230, 210, 0.07), transparent 22%),
+        radial-gradient(circle at 50% 80%, rgba(170, 170, 255, 0.05), transparent 24%),
+        url("data:image/svg+xml,%3Csvg width='1200' height='900' viewBox='0 0 1200 900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.23' stroke='%2390A4B8' stroke-width='1'%3E%3Cpath d='M100 170H370L440 240H760L830 170H1100'/%3E%3Cpath d='M120 400H300L350 450H620L710 360H1080'/%3E%3Cpath d='M80 650H280L340 590H700L780 670H1110'/%3E%3Cpath d='M220 90V290'/%3E%3Cpath d='M540 240V480'/%3E%3Cpath d='M840 140V360'/%3E%3Cpath d='M920 550V760'/%3E%3Cpath d='M430 550V760'/%3E%3Ccircle cx='220' cy='90' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='220' cy='290' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='540' cy='240' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='540' cy='480' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='840' cy='140' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='840' cy='360' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='920' cy='550' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='920' cy='760' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='430' cy='550' r='8' fill='%23DCE7F0'/%3E%3Ccircle cx='430' cy='760' r='8' fill='%23DCE7F0'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover, cover, cover, cover, cover;
       color: var(--text);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* ════════════════════════════════
-       FIXED MINI NAV (Hidden initially)
-    ════════════════════════════════ */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(15,23,32,0.06);
+    }
+
+    .topbar-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #111111, #404854);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 12px 28px rgba(17,17,17,0.18);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-text span:first-child {
+      font-size: 1rem;
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
     nav {
-      position: fixed; top: 0; width: 100%; z-index: 2000;
-      padding: 20px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      opacity: 0; visibility: hidden;
-      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
-    nav.visible { opacity: 1; visibility: visible; }
-    .nav-logo { font-weight: 800; text-decoration: none; color: var(--text); font-size: 1.1rem; }
-    .nav-logo span { color: var(--accent); }
 
-    /* ════════════════════════════════
-       MASSIVE BRANDING HERO
-    ════════════════════════════════ */
-    .hero-branding {
-      height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      text-align: center;
-      padding: 0 20px;
+    nav a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(17,17,17,0.18);
+    }
+
+    .hero {
+      padding: 56px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .hero-side,
+    .section-card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      border-radius: var(--radius-xl);
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: -20% auto auto 48%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(160,190,255,0.12), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      color: #334155;
+      font-size: 0.9rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .eyebrow-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34,197,94,0.13);
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.6rem, 5vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      max-width: 11ch;
+      color: #101214;
+    }
+
+    .hero-copy {
+      margin-top: 22px;
+      max-width: 56ch;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: #425063;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: #111;
+      color: #fff;
+      box-shadow: 0 18px 34px rgba(17,17,17,0.16);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+    }
+
+    .hero-contact {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
+      gap: 14px;
+      max-width: 620px;
+    }
+
+    .contact-card {
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+    }
+
+    .contact-label {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+      word-break: break-word;
+    }
+
+    .hero-bottom {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(15,23,32,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: #506072;
+      font-size: 0.96rem;
+    }
+
+    .hero-bottom span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid var(--line);
+    }
+
+    .hero-side {
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 22px;
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      padding: 22px;
+    }
+
+    .card-kicker {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .headline-card h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .headline-meta {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .headline-link {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .trust-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(15,23,32,0.06);
+    }
+
+    .trust-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .trust-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .trust-item p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .services {
+      padding: 18px 0 22px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .section-card {
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .service-title {
+      font-weight: 700;
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .service-text {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .about {
+      padding: 20px 0 70px;
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+    }
+
+    .about-left,
+    .about-right {
+      border-radius: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .section-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .about-left h3,
+    .about-right h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.8rem, 2.4vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .about-left p,
+    .about-right p,
+    .about-right li {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1rem;
+    }
+
+    .about-right ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .about-right li {
+      padding-left: 18px;
       position: relative;
     }
 
-    .massive-text {
-      font-size: clamp(3rem, 15vw, 12rem);
-      font-weight: 800; letter-spacing: -0.07em; line-height: 0.8;
-      color: var(--text); margin-bottom: 40px;
-    }
-    .massive-text span.dot { color: var(--accent); }
-    .massive-text span.net { font-weight: 300; color: #e5e5e7; }
-
-    .hero-tagline {
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      color: var(--muted); font-weight: 400; letter-spacing: -0.02em;
+    .about-right li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #111;
+      position: absolute;
+      left: 0;
+      top: 10px;
     }
 
-    /* ════════════════════════════════
-       CONTINUOUS FLOW CONTENT
-    ════════════════════════════════ */
-    .content-flow { max-width: 900px; margin: 0 auto; padding: 0 40px; }
-
-    .flow-section {
-      padding: 120px 0;
-      opacity: 0; transform: translateY(40px);
-      transition: all 1s cubic-bezier(0.2, 1, 0.2, 1);
-    }
-    .flow-section.active { opacity: 1; transform: translateY(0); }
-
-    .flow-section h2 { font-size: 3rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 20px; }
-    .flow-section p { font-size: 1.3rem; color: var(--muted); line-height: 1.6; }
-
-    /* ════════════════════════════════
-       SUBTLE DEVICE BACKGROUND
-    ════════════════════════════════ */
-    .bg-device {
-      position: fixed; inset: 0; z-index: -1;
-      background: radial-gradient(circle at 50% 50%, #f0f0f5 0%, #ffffff 70%);
-      display: flex; justify-content: center; align-items: center;
-    }
-    .bg-device img {
-      width: 80%; opacity: 0.03; filter: grayscale(1);
+    footer {
+      padding: 20px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    /* ════════════════════════════════
-       CONTACT ANCHOR
-    ════════════════════════════════ */
-    .contact-footer {
-      padding: 150px 0 250px; text-align: center;
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      border-top: 1px solid rgba(15,23,32,0.08);
+      padding-top: 20px;
     }
-    .contact-footer a {
-      font-size: clamp(2rem, 10vw, 6rem);
-      font-weight: 800; color: var(--text); text-decoration: none;
-      letter-spacing: -0.06em; transition: color 0.3s;
-    }
-    .contact-footer a:hover { color: var(--accent); }
 
-    @media (max-width: 768px) {
-      .content-flow { padding: 0 24px; }
-      nav { padding: 15px 20px; }
+    .muted-link:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .about-wrap,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      nav a:not(.nav-cta) {
+        display: none;
+      }
+
+      .hero-main {
+        padding: 28px;
+        min-height: auto;
+      }
+
+      .hero-side,
+      .about-left,
+      .about-right,
+      .section-card {
+        padding: 22px;
+      }
+
+      .hero-contact {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 12ch;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      * {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#">
+        <div class="brand-mark">W</div>
+        <div class="brand-text">
+          <span>Wahed Tech Support</span>
+          <span>Reliable. On-Demand. Human.</span>
+        </div>
+      </a>
 
-  <nav id="stickyNav">
-    <a href="#" class="nav-logo">mymacguy<span>.net</span></a>
-    <a href="tel:3109801964" style="text-decoration: none; font-weight: 700; color: var(--accent); font-size: 0.9rem;">310.980.1964</a>
-  </nav>
-
-  <div class="bg-device">
-    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=2000" alt="Apple Device Backdrop">
-  </div>
-
-  <section class="hero-branding">
-    <div class="massive-text">
-      mymacguy<span class="dot">.</span><span class="net">net</span>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="mailto:wahed@mymacguy.net" class="nav-cta">Email Wahed</a>
+      </nav>
     </div>
-    <p class="hero-tagline">Apple Support. Sorted.</p>
-    <div style="margin-top: 40px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.7rem;">
-      Scroll to begin
-    </div>
-  </section>
+  </header>
 
-  <div class="content-flow">
-    
-    <div class="flow-section reveal">
-      <h2>Expertise</h2>
-      <p>Independent Apple technology consulting for the Los Angeles creative community. We bridge the gap between complex systems and seamless workflows.</p>
-    </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-main">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              Los Angeles tech support for real-world systems
+            </div>
 
-    <div class="flow-section reveal">
-      <h2>Infrastructure</h2>
-      <p>Design and deployment of robust Mesh Wi-Fi and secure home networks. Eliminating dead zones and latency for a continuous digital experience.</p>
-    </div>
+            <h1>Your tech, sorted.</h1>
 
-    <div class="flow-section reveal">
-      <h2>Security</h2>
-      <p>Comprehensive privacy audits, secure backup strategies, and specialized data recovery. Your information, protected and permanent.</p>
-    </div>
+            <p class="hero-copy">
+              Calm, senior-level support for Macs, iPhones, Wi-Fi, Microsoft 365, smart homes, printers, cameras, backups, and the maddening little failures that waste your day.
+            </p>
 
-    <section class="contact-footer reveal">
-      <p style="color: var(--muted); margin-bottom: 20px; font-weight: 500;">Direct Support</p>
-      <a href="tel:3109801964">310.980.1964</a>
-      <p style="margin-top: 100px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em;">
-        WAHED ABDUL KHALIQI • LOS ANGELES, CA
-      </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="tel:3109801964">Call (310) 980-1964</a>
+              <a class="btn btn-secondary" href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+            </div>
+
+            <div class="hero-contact">
+              <a class="contact-card" href="tel:3109801964">
+                <div class="contact-label">Call or text</div>
+                <div class="contact-value">(310) 980-1964</div>
+              </a>
+              <a class="contact-card" href="mailto:wahed@mymacguy.net">
+                <div class="contact-label">Email</div>
+                <div class="contact-value">wahed@mymacguy.net</div>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-bottom">
+            <span>Mac & iPhone</span>
+            <span>Networking & Wi-Fi</span>
+            <span>Microsoft 365</span>
+            <span>Smart Home</span>
+            <span>Home Office</span>
+            <span>Remote or On-Site</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="card headline-card">
+            <div class="card-kicker">Tech headline now</div>
+            <h2 id="headline-title">Loading today’s headline...</h2>
+            <p class="headline-meta" id="headline-meta">
+              Pulling one current tech story for the homepage. Because static sites pretending to be dynamic is one of the internet’s oldest hobbies.
+            </p>
+            <a id="headline-link" class="headline-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+              Read the story
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="card">
+            <div class="card-kicker">Why clients stay</div>
+            <div class="trust-list">
+              <div class="trust-item">
+                <div class="trust-icon">◦</div>
+                <div>
+                  <strong>Fast diagnosis</strong>
+                  <p>No endless script-reading. Real troubleshooting, quickly.</p>
+                </div>
+              </div>
+
+              <div class="trust-item">
+                <div class="trust-icon">◦</div>
+                <div>
+                  <strong>Human support</strong>
+                  <p>Reachable by phone, text, or email without being buried in a ticket maze.</p>
+                </div>
+              </div>
+
+              <div class="trust-item">
+                <div class="trust-icon">◦</div>
+                <div>
+                  <strong>Best solution first</strong>
+                  <p>If the smartest fix is outside my service, I’ll tell you that instead of inventing billable theater.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-  </div>
+    <section class="services" id="services">
+      <div class="container services-grid">
+        <div class="section-card">
+          <div class="service-title">Apple Support</div>
+          <div class="service-text">Mac, iPhone, iPad, iCloud, migrations, backups, syncing problems, and weird device behavior that should not exist but does anyway.</div>
+        </div>
+
+        <div class="section-card">
+          <div class="service-title">Wi-Fi & Networking</div>
+          <div class="service-text">Router setup, coverage issues, slow internet, VLAN-aware prosumer gear, office stability, and smart-home connectivity.</div>
+        </div>
+
+        <div class="section-card">
+          <div class="service-title">Business Systems</div>
+          <div class="service-text">Microsoft 365, email delivery issues, user setup, security hardening, printers, scanners, and small-office infrastructure.</div>
+        </div>
+
+        <div class="section-card">
+          <div class="service-title">Home Tech</div>
+          <div class="service-text">Smart TVs, cameras, lighting, audio, home office gear, and the stack of devices everyone expects to “just work.”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-wrap">
+        <div class="about-left">
+          <div class="section-label">About</div>
+          <h3>Senior-level support without the drama.</h3>
+          <p>
+            Wahed Tech Support helps people and small businesses get control of their systems again. The work is practical, direct, and built around reliability, not upselling. If something can be fixed simply, that’s the route. If it needs a deeper rebuild, that gets handled properly too.
+          </p>
+        </div>
+
+        <div class="about-right">
+          <div class="section-label">What you can expect</div>
+          <h3>Clear answers. Smart fixes. Less wasted time.</h3>
+          <ul>
+            <li>Remote and on-site support in Los Angeles</li>
+            <li>Phone, email, and text-friendly communication</li>
+            <li>Business and residential clients welcome</li>
+            <li>Advice that prioritizes the right fix, not the longest invoice</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>© <span id="year"></span> Wahed Tech Support</div>
+      <div>
+        <a class="muted-link" href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+        &nbsp;|&nbsp;
+        <a class="muted-link" href="tel:3109801964">(310) 980-1964</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Reveal Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
-      });
-    }, { threshold: 0.1 });
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    async function loadTechHeadline() {
+      const titleEl = document.getElementById("headline-title");
+      const metaEl = document.getElementById("headline-meta");
+      const linkEl = document.getElementById("headline-link");
 
-    // Sticky Nav Visibility & Scroll Effects
-    window.addEventListener('scroll', () => {
-      const scroll = window.pageYOffset;
-      const nav = document.getElementById('stickyNav');
-      
-      // Show nav only after scrolling past the massive hero
-      if (scroll > window.innerHeight * 0.4) {
-        nav.classList.add('visible');
-      } else {
-        nav.classList.remove('visible');
+      try {
+        const topIdsResponse = await fetch("https://hacker-news.firebaseio.com/v0/topstories.json");
+        if (!topIdsResponse.ok) throw new Error("Could not load top stories");
+
+        const ids = await topIdsResponse.json();
+        if (!Array.isArray(ids) || !ids.length) throw new Error("No stories returned");
+
+        let chosen = null;
+
+        for (const id of ids.slice(0, 15)) {
+          const itemResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+          if (!itemResponse.ok) continue;
+
+          const item = await itemResponse.json();
+          const title = (item && item.title ? item.title : "").toLowerCase();
+
+          const techSignals = [
+            "ai", "openai", "apple", "google", "microsoft", "meta", "tesla",
+            "nvidia", "amazon", "startup", "software", "hardware", "chip",
+            "robot", "coding", "programming", "tech", "security", "internet",
+            "cloud", "iphone", "mac", "linux", "windows", "browser"
+          ];
+
+          const looksTech =
+            item &&
+            item.type === "story" &&
+            item.title &&
+            item.url &&
+            techSignals.some(signal => title.includes(signal));
+
+          if (looksTech) {
+            chosen = item;
+            break;
+          }
+
+          if (!chosen && item && item.type === "story" && item.title && item.url) {
+            chosen = item;
+          }
+        }
+
+        if (!chosen) throw new Error("No suitable story found");
+
+        const score = typeof chosen.score === "number" ? `${chosen.score} points` : "Top story";
+        const author = chosen.by ? ` by ${chosen.by}` : "";
+        const timeText = chosen.time
+          ? new Date(chosen.time * 1000).toLocaleString([], {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "2-digit"
+            })
+          : "recently";
+
+        titleEl.textContent = chosen.title;
+        metaEl.textContent = `${score}${author} • posted ${timeText}`;
+        linkEl.href = chosen.url;
+        linkEl.style.display = "inline-flex";
+      } catch (error) {
+        titleEl.textContent = "Reliable tech support for Mac, Wi-Fi, and home office systems.";
+        metaEl.textContent = "If the live headline source fails, the page falls back cleanly instead of embarrassing you in public.";
+        linkEl.style.display = "none";
       }
-    });
-  </script>
+    }
 
+    loadTechHeadline();
+    setInterval(loadTechHeadline, 15 * 60 * 1000);
+  </script>
 </body>
 </html>
