@@ -5,943 +5,236 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mymacguy.net | Your tech, sorted.</title>
   <meta name="description" content="Reliable, on-demand tech support for Mac, iPhone, Wi-Fi, Microsoft 365, smart home, and home office systems in Los Angeles." />
-  <meta name="theme-color" content="#ffffff" />
-
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #ffffff;
-      --surface: rgba(255,255,255,0.88);
-      --surface-strong: rgba(255,255,255,0.96);
-      --text: #101820;
-      --muted: #5e6b78;
-      --line: rgba(16,24,32,0.08);
-      --line-strong: rgba(16,24,32,0.14);
-      --accent: #2f6bff;
-      --accent-strong: #174edb;
-      --accent-soft: #eaf1ff;
-      --shadow: 0 18px 48px rgba(10,20,30,0.08);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --max: 1220px;
+      --text: #0a0c10;
+      --muted: #64748b;
+      --accent: #0071e3; /* Apple Blue */
+      --accent-glow: rgba(0, 113, 227, 0.15);
+      --glass: rgba(255, 255, 255, 0.75);
+      --border: rgba(0, 0, 0, 0.06);
+      --shadow: 0 20px 40px rgba(0,0,0,0.04);
+      --radius: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Plus Jakarta Sans", sans-serif;
       color: var(--text);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.94), rgba(255,255,255,0.98)),
-        radial-gradient(circle at 15% 12%, rgba(47,107,255,0.07), transparent 22%),
-        radial-gradient(circle at 82% 16%, rgba(90,170,255,0.06), transparent 20%),
-        url("images/hero-tech-overlay.png");
-      background-size: cover, cover, cover, cover;
-      background-position: center;
-      min-height: 100vh;
+      background-color: var(--bg);
+      /* Mesh Gradient for "Airy" feel */
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(215,100%,95%,1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(230,100%,95%,1) 0, transparent 50%);
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    .container { width: min(1200px, 92%); margin: 0 auto; }
 
-    img {
-      display: block;
-      max-width: 100%;
+    /* ════════════════════════════════
+       LIVE NEWS TICKER (Sleeker)
+    ════════════════════════════════ */
+    .news-strip {
+      background: #000; color: #fff;
+      padding: 10px 0; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      position: relative; z-index: 1001;
     }
+    .news-inner { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .live-dot { height: 6px; width: 6px; background: #ff3b30; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
+    /* ════════════════════════════════
+       NAV (Glassmorphism)
+    ════════════════════════════════ */
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--glass);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
     }
-
-    .newsbar {
-      border-bottom: 1px solid rgba(16,24,32,0.06);
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(16px);
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { 
+        font-weight: 800; font-size: 1.4rem; letter-spacing: -0.04em; 
+        text-decoration: none; color: var(--text); 
     }
+    .logo span { color: var(--accent); }
 
-    .newsbar-inner {
-      min-height: 42px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.92rem;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
+    .contact-btns { display: flex; gap: 12px; }
+    .btn-pill {
+      padding: 10px 20px; border-radius: 100px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .btn-blue { background: var(--accent); color: #fff; box-shadow: 0 8px 20px var(--accent-glow); }
+    .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 12px 24px var(--accent-glow); }
 
-    .news-label {
-      color: var(--accent-strong);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      flex: 0 0 auto;
-      font-size: 0.75rem;
-    }
-
-    .news-text {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .news-link {
-      color: var(--accent-strong);
-      font-weight: 700;
-      flex: 0 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.86);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(16,24,32,0.06);
-    }
-
-    .topbar-inner {
-      min-height: 78px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      color: #111;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 700;
-      box-shadow: 0 12px 28px rgba(47,107,255,0.22);
-      flex: 0 0 auto;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.04;
-    }
-
-    .brand-text span:first-child {
-      font-size: 1rem;
-    }
-
-    .brand-text span:last-child {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    nav a {
-      font-size: 0.96rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color 0.18s ease;
-    }
-
-    nav a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      min-height: 44px;
-      padding: 0 18px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      box-shadow: 0 14px 30px rgba(47,107,255,0.20);
-      transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      background: var(--accent-strong);
-      box-shadow: 0 16px 34px rgba(47,107,255,0.24);
-    }
-
+    /* ════════════════════════════════
+       HERO (The "Continuous" Design)
+    ════════════════════════════════ */
     .hero {
-      padding: 42px 0 28px;
-    }
-
-    .hero-card {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
+      padding: 120px 0 80px;
+      text-align: center;
       position: relative;
-      isolation: isolate;
+    }
+    
+    /* Transparent Tech Background Image */
+    .hero::after {
+        content: ""; position: absolute; top: 10%; left: 50%; 
+        transform: translateX(-50%); width: 80%; height: 80%;
+        background: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2000&auto=format&fit=crop') no-repeat center;
+        background-size: contain; opacity: 0.03; z-index: -1;
     }
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom right, rgba(255,255,255,0.86), rgba(255,255,255,0.94)),
-        url("images/hero-workspace.jpg");
-      background-size: cover;
-      background-position: center;
-      opacity: 0.18;
-      z-index: -2;
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
+      font-weight: 900; line-height: 0.9;
+      letter-spacing: -0.05em; margin-bottom: 30px;
+    }
+    .hero p {
+      font-size: 1.4rem; color: var(--muted);
+      max-width: 700px; margin: 0 auto 40px;
+      font-weight: 400;
     }
 
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      right: -120px;
-      top: -120px;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(47,107,255,0.15), transparent 65%);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      padding: 46px 42px 40px;
+    /* ════════════════════════════════
+       SERVICE GRID (Elevated Cards)
+    ════════════════════════════════ */
+    .services { padding: 100px 0; }
+    .grid {
       display: grid;
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
     }
-
-    .hero-site {
-      font-size: 0.95rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .hero-title {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(2.8rem, 5vw, 5.7rem);
-      line-height: 0.94;
-      letter-spacing: -0.05em;
-      color: #0f1419;
-      max-width: 10ch;
-    }
-
-    .hero-copy {
-      max-width: 58ch;
-      font-size: 1.08rem;
-      line-height: 1.72;
-      color: #425063;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      min-height: 54px;
-      padding: 0 22px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.98rem;
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 16px 34px rgba(47,107,255,0.22);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-strong);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.90);
-      border: 1px solid var(--line-strong);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(47,107,255,0.28);
-      background: #fff;
-    }
-
-    .hero-tagline {
-      padding-top: 18px;
-      border-top: 1px solid rgba(16,24,32,0.08);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .hero-tagline span {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.80);
-      border: 1px solid var(--line);
-      font-size: 0.94rem;
-      color: #506072;
-    }
-
-    .divider-section {
-      padding: 12px 0 6px;
-    }
-
-    .divider-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(16,24,32,0.10), transparent);
-    }
-
-    .section {
-      padding: 26px 0;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section-kicker {
-      color: var(--accent-strong);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.8rem, 2.8vw, 3rem);
-      line-height: 1.06;
-      letter-spacing: -0.03em;
-    }
-
-    .section-copy {
-      color: var(--muted);
-      max-width: 56ch;
-      line-height: 1.7;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
     .card {
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      background: #fff;
+      padding: 40px; border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
     }
-
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 44px rgba(10,20,30,0.07);
-      border-color: rgba(47,107,255,0.16);
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.05);
     }
-
-    .service-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: var(--accent-soft);
-      color: var(--accent-strong);
-      margin-bottom: 16px;
+    .card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; }
+    .card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    
+    .card::before {
+        content: "→"; position: absolute; bottom: 20px; right: 20px;
+        font-size: 1.5rem; color: var(--accent); opacity: 0; transform: translateX(-10px);
+        transition: all 0.3s;
     }
+    .card:hover::before { opacity: 1; transform: translateX(0); }
 
-    .service-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: currentColor;
-      stroke-width: 1.9;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    /* ════════════════════════════════
+       CONTACT FOOTER (Large & Direct)
+    ════════════════════════════════ */
+    .contact-footer {
+      padding: 140px 0; background: var(--text); color: #fff;
+      text-align: center; border-radius: 60px 60px 0 0;
     }
-
-    .card h3 {
-      font-size: 1.06rem;
-      margin-bottom: 10px;
+    .contact-footer h2 { font-family: "Playfair Display", serif; font-size: 4rem; margin-bottom: 40px; }
+    .contact-link {
+        font-size: 2.5rem; font-weight: 700; color: #fff; text-decoration: none;
+        display: block; margin: 10px 0; transition: color 0.3s;
     }
+    .contact-link:hover { color: var(--accent); }
 
-    .card p {
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 0.95rem;
-    }
+    .footer-sub { margin-top: 60px; font-size: 0.8rem; color: #4b5563; text-transform: uppercase; letter-spacing: 0.2em; }
 
-    .trust-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-    }
-
-    .trust-image {
-      min-height: 360px;
-      border-radius: 28px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0.18)),
-        url("images/wahed-portrait.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .trust-image::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 45%;
-      background: linear-gradient(to top, rgba(8,14,22,0.42), transparent);
-    }
-
-    .trust-caption {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      color: #fff;
-      z-index: 2;
-    }
-
-    .trust-caption small {
-      display: block;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.76rem;
-      font-weight: 700;
-      opacity: 0.94;
-    }
-
-    .trust-caption h3 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.8rem, 2.6vw, 2.9rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .trust-list-card {
-      background: linear-gradient(180deg, rgba(234,241,255,0.72), rgba(255,255,255,0.94));
-    }
-
-    .trust-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .trust-item {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 12px;
-      align-items: start;
-      padding: 14px 0;
-      border-top: 1px solid rgba(16,24,32,0.06);
-    }
-
-    .trust-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .trust-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: var(--accent-soft);
-      color: var(--accent-strong);
-      font-size: 0.86rem;
-      font-weight: 700;
-    }
-
-    .trust-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 22px;
-    }
-
-    .about-card,
-    .contact-card {
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      background: var(--surface-strong);
-      box-shadow: var(--shadow);
-      padding: 30px;
-    }
-
-    .about-card p,
-    .contact-card p,
-    .contact-list li {
-      color: var(--muted);
-      line-height: 1.72;
-      font-size: 1rem;
-    }
-
-    .contact-list {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .contact-list li {
-      padding-left: 18px;
-      position: relative;
-    }
-
-    .contact-list li::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      position: absolute;
-      left: 0;
-      top: 11px;
-    }
-
-    footer {
-      padding: 18px 0 50px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .footer-wrap {
-      border-top: 1px solid rgba(16,24,32,0.08);
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .footer-wrap a:hover {
-      color: var(--accent-strong);
-    }
-
-    @media (max-width: 1080px) {
-      .services-grid,
-      .trust-grid,
-      .about-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 820px) {
-      nav a:not(.nav-cta) {
-        display: none;
-      }
-
-      .hero-inner,
-      .card,
-      .about-card,
-      .contact-card {
-        padding: 24px;
-      }
-
-      .services-grid,
-      .trust-grid,
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .trust-image {
-        min-height: 300px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      * {
-        transition: none !important;
-      }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 4rem; }
+      .contact-footer h2 { font-size: 2.5rem; }
+      .contact-link { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <div class="newsbar">
-    <div class="container newsbar-inner">
-      <span class="news-label">Live Tech</span>
-      <span class="news-text" id="news-text">Loading current tech headline...</span>
-      <a class="news-link" id="news-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Read</a>
+
+  <div class="news-strip">
+    <div class="container news-inner">
+      <div class="live-dot"></div>
+      <span id="headline">PULLING LIVE TECH INTELLIGENCE...</span>
     </div>
   </div>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#home">
-        <div class="brand-mark">W</div>
-        <div class="brand-text">
-          <span>mymacguy.net</span>
-          <span>Reliable. On-Demand. Human.</span>
-        </div>
-      </a>
-
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="tel:3109801964" class="nav-cta">Call</a>
-      </nav>
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">mymacguy<span>.net</span></a>
+      <div class="contact-btns">
+        <a href="tel:3109801964" class="btn-pill btn-blue">Immediate Support</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-inner">
-            <div class="hero-site">mymacguy.net</div>
+  <section class="hero">
+    <div class="container">
+      <h1>sorted<span>.</span></h1>
+      <p>Senior-level Apple support, network architecture, and home-office reliability. For the professionals who can’t afford downtime.</p>
+      <div style="display:flex; gap:20px; justify-content:center;">
+        <a href="tel:3109801964" style="color:var(--text); font-weight:700; text-decoration:none; border-bottom:2px solid var(--accent);">310.980.1964</a>
+        <a href="mailto:wahed@mymacguy.net" style="color:var(--text); font-weight:700; text-decoration:none; border-bottom:2px solid var(--accent);">Email Wahed</a>
+      </div>
+    </div>
+  </section>
 
-            <h1 class="hero-title">Your tech, sorted.</h1>
-
-            <p class="hero-copy">
-              Calm, senior-level support for Mac, Wi-Fi, Microsoft 365, smart home, and business systems in Los Angeles.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="tel:3109801964">Call (310) 980-1964</a>
-              <a class="btn btn-secondary" href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
-            </div>
-
-            <div class="hero-tagline">
-              <span>Mac</span>
-              <span>Wi-Fi</span>
-              <span>Microsoft 365</span>
-              <span>Smart Home</span>
-              <span>Home Office</span>
-            </div>
-          </div>
+  <section class="services">
+    <div class="container">
+      <div class="grid">
+        <div class="card">
+          <h3>Apple Ecosystem</h3>
+          <p>macOS, iOS, iCloud, and the complex synchronization issues Apple doesn't want to admit exist.</p>
+        </div>
+        <div class="card">
+          <h3>Infrastructure</h3>
+          <p>Enterprise-grade Wi-Fi and secure network gateways for high-performance residential properties.</p>
+        </div>
+        <div class="card">
+          <h3>Security</h3>
+          <p>Privacy hardening, password management audits, and bulletproof local/cloud backup strategies.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="divider-section">
-      <div class="container">
-        <div class="divider-line"></div>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Services</div>
-            <h2 class="section-title">What I handle</h2>
-          </div>
-          <p class="section-copy">
-            Clear categories. Real work. No mystery pile of buzzwords pretending to be expertise.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <div class="card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="4" y="5" width="16" height="10" rx="2"></rect>
-                <path d="M10 19h4"></path>
-                <path d="M12 15v4"></path>
-              </svg>
-            </div>
-            <h3>Apple Support</h3>
-            <p>Mac, iPhone, iPad, iCloud, backups, migrations, syncing problems, and the small disasters Apple never warns people about.</p>
-          </div>
-
-          <div class="card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4.5 9a12 12 0 0 1 15 0"></path>
-                <path d="M7.5 12a8 8 0 0 1 9 0"></path>
-                <path d="M10.5 15a4 4 0 0 1 3 0"></path>
-                <circle cx="12" cy="18" r="1"></circle>
-              </svg>
-            </div>
-            <h3>Wi-Fi & Networking</h3>
-            <p>Router setup, coverage issues, office stability, smart-home connectivity, and network troubleshooting without the ritual sacrifice to consumer-grade hardware.</p>
-          </div>
-
-          <div class="card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="4" y="4" width="7" height="7" rx="1.5"></rect>
-                <rect x="13" y="4" width="7" height="7" rx="1.5"></rect>
-                <rect x="4" y="13" width="7" height="7" rx="1.5"></rect>
-                <path d="M16.5 13v7"></path>
-                <path d="M13 16.5h7"></path>
-              </svg>
-            </div>
-            <h3>Business Systems</h3>
-            <p>Microsoft 365, email issues, user setup, printer and scanner problems, access issues, and small-office systems that should have been simple but aren’t.</p>
-          </div>
-
-          <div class="card">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5 11.5 12 6l7 5.5"></path>
-                <path d="M7 10.5V19h10v-8.5"></path>
-                <path d="M10 19v-4h4v4"></path>
-              </svg>
-            </div>
-            <h3>Home Tech</h3>
-            <p>Smart TVs, cameras, lighting, audio, home office setups, and the stack of devices everyone expects to “just work.”</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="divider-section">
-      <div class="container">
-        <div class="divider-line"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Why clients call me</div>
-            <h2 class="section-title">Support with less wasted time</h2>
-          </div>
-          <p class="section-copy">
-            The point is not to sound impressive. The point is to solve the problem correctly, quickly, and without making your day worse.
-          </p>
-        </div>
-
-        <div class="trust-grid">
-          <div class="trust-image">
-            <div class="trust-caption">
-              <small>Trusted support</small>
-              <h3>Real help for real systems.</h3>
-            </div>
-          </div>
-
-          <div class="card trust-list-card">
-            <div class="trust-list">
-              <div class="trust-item">
-                <div class="trust-badge">01</div>
-                <div>
-                  <strong>Fast diagnosis</strong>
-                  <p>No endless script-reading. Real troubleshooting, quickly.</p>
-                </div>
-              </div>
-
-              <div class="trust-item">
-                <div class="trust-badge">02</div>
-                <div>
-                  <strong>Human support</strong>
-                  <p>Reachable by phone, text, or email without being buried in a ticket maze.</p>
-                </div>
-              </div>
-
-              <div class="trust-item">
-                <div class="trust-badge">03</div>
-                <div>
-                  <strong>Best solution first</strong>
-                  <p>If the smartest fix is outside my service, I’ll tell you that instead of inventing billable theater.</p>
-                </div>
-              </div>
-
-              <div class="trust-item">
-                <div class="trust-badge">04</div>
-                <div>
-                  <strong>Remote or on-site</strong>
-                  <p>Support that fits the job instead of forcing every problem into the same box.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="divider-section">
-      <div class="container">
-        <div class="divider-line"></div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">About</div>
-            <h2 class="section-title">Senior-level support without the drama</h2>
-          </div>
-          <p class="section-copy">
-            Practical troubleshooting. Clear communication. The right fix first. Astonishingly rare qualities online, apparently.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-card">
-            <p>
-              Wahed Tech Support helps people and small businesses get control of their systems again. The work is direct, practical, and built around reliability, not upselling. If something can be fixed simply, that’s the route. If it needs a deeper rebuild, that gets handled properly too.
-            </p>
-          </div>
-
-          <div class="contact-card" id="contact">
-            <div class="section-kicker">Contact</div>
-            <h2 class="section-title">Call, email, or text</h2>
-            <ul class="contact-list">
-              <li><a href="tel:3109801964">(310) 980-1964</a></li>
-              <li><a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a></li>
-              <li>Los Angeles | Hollywood | Santa Monica</li>
-              <li>Business and residential clients welcome</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-wrap">
-      <div>© <span id="year"></span> mymacguy.net</div>
-      <div>
-        <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
-        &nbsp;|&nbsp;
-        <a href="tel:3109801964">(310) 980-1964</a>
-      </div>
+  <footer class="contact-footer">
+    <div class="container">
+      <h2>Ready when you are.</h2>
+      <a href="tel:3109801964" class="contact-link">310.980.1964</a>
+      <a href="mailto:wahed@mymacguy.net" class="contact-link">wahed@mymacguy.net</a>
+      <p class="footer-sub">Wahed Abdul Khaliqi • Los Angeles • Hollywood • Santa Monica</p>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    async function loadTechHeadline() {
-      const newsText = document.getElementById("news-text");
-      const newsLink = document.getElementById("news-link");
-
-      try {
-        const topIdsResponse = await fetch("https://hacker-news.firebaseio.com/v0/topstories.json");
-        if (!topIdsResponse.ok) throw new Error("Could not load top stories");
-
-        const ids = await topIdsResponse.json();
-        if (!Array.isArray(ids) || !ids.length) throw new Error("No stories returned");
-
-        let chosen = null;
-
-        for (const id of ids.slice(0, 20)) {
-          const itemResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-          if (!itemResponse.ok) continue;
-
-          const item = await itemResponse.json();
-          const title = (item && item.title ? item.title : "").toLowerCase();
-
-          const techSignals = [
-            "ai", "openai", "apple", "google", "microsoft", "meta", "nvidia",
-            "amazon", "software", "hardware", "chip", "security", "internet",
-            "cloud", "iphone", "mac", "linux", "windows", "browser", "startup"
-          ];
-
-          const looksTech =
-            item &&
-            item.type === "story" &&
-            item.title &&
-            item.url &&
-            techSignals.some(signal => title.includes(signal));
-
-          if (looksTech) {
-            chosen = item;
-            break;
-          }
-
-          if (!chosen && item && item.type === "story" && item.title && item.url) {
-            chosen = item;
-          }
+    // Live HackerNews Ticker
+    async function getNews() {
+        try {
+            const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+            const ids = await res.json();
+            const itemRes = await fetch(`https://hacker-news.firebaseio.com/v0/item/${ids[0]}.json`);
+            const item = await itemRes.json();
+            document.getElementById('headline').innerText = "LIVE: " + item.title.toUpperCase();
+        } catch (e) {
+            document.getElementById('headline').innerText = "APPLE SYSTEMS STATUS: ONLINE";
         }
-
-        if (!chosen) throw new Error("No suitable story found");
-
-        newsText.textContent = chosen.title;
-        newsLink.href = chosen.url;
-        newsLink.style.display = "inline-flex";
-      } catch (error) {
-        newsText.textContent = "Reliable tech support for Mac, Wi-Fi, Microsoft 365, and home office systems.";
-        newsLink.style.display = "none";
-      }
     }
-
-    loadTechHeadline();
-    setInterval(loadTechHeadline, 15 * 60 * 1000);
+    getNews();
+    setInterval(getNews, 60000);
   </script>
+
 </body>
 </html>
