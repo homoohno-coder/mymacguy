@@ -5,236 +5,290 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mymacguy.net | Your tech, sorted.</title>
   <meta name="description" content="Reliable, on-demand tech support for Mac, iPhone, Wi-Fi, Microsoft 365, smart home, and home office systems in Los Angeles." />
-  
+  <meta name="theme-color" content="#ffffff" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #ffffff;
-      --text: #0a0c10;
-      --muted: #64748b;
-      --accent: #0071e3; /* Apple Blue */
-      --accent-glow: rgba(0, 113, 227, 0.15);
-      --glass: rgba(255, 255, 255, 0.75);
-      --border: rgba(0, 0, 0, 0.06);
-      --shadow: 0 20px 40px rgba(0,0,0,0.04);
-      --radius: 24px;
+      --surface: rgba(255,255,255,0.75); /* Made more transparent for glass effect */
+      --surface-strong: rgba(255,255,255,0.92);
+      --text: #101820;
+      --muted: #5e6b78;
+      --line: rgba(16,24,32,0.06);
+      --line-strong: rgba(16,24,32,0.12);
+      --accent: #0066ff; /* More vibrant Apple blue */
+      --accent-strong: #0047ff;
+      --accent-soft: #f0f5ff;
+      --shadow: 0 20px 50px rgba(10,20,30,0.05);
+      --radius-xl: 32px;
+      --radius-lg: 20px;
+      --max: 1220px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: "Plus Jakarta Sans", sans-serif;
+      font-family: "Outfit", sans-serif;
       color: var(--text);
-      background-color: var(--bg);
-      /* Mesh Gradient for "Airy" feel */
-      background-image: 
-        radial-gradient(at 0% 0%, hsla(215,100%,95%,1) 0, transparent 50%), 
-        radial-gradient(at 100% 0%, hsla(230,100%,95%,1) 0, transparent 50%);
-      line-height: 1.6;
+      /* JAZZED: Multilayered airy background */
+      background:
+        radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.03), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(0, 102, 255, 0.03), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f9fbff 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
       overflow-x: hidden;
     }
 
-    .container { width: min(1200px, 92%); margin: 0 auto; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
 
     /* ════════════════════════════════
-       LIVE NEWS TICKER (Sleeker)
+       NEWSBAR (Pops with contrast)
     ════════════════════════════════ */
-    .news-strip {
-      background: #000; color: #fff;
-      padding: 10px 0; font-size: 0.75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      position: relative; z-index: 1001;
+    .newsbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      position: relative; z-index: 101;
     }
-    .news-inner { display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .live-dot { height: 6px; width: 6px; background: #ff3b30; border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    .newsbar-inner { min-height: 48px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
+    .news-label {
+      background: var(--accent);
+      color: #fff; padding: 3px 10px; border-radius: 6px;
+      font-weight: 700; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.1em;
+    }
 
     /* ════════════════════════════════
-       NAV (Glassmorphism)
+       TOPBAR (Glass Effect)
     ════════════════════════════════ */
-    header {
-      position: sticky; top: 0; z-index: 1000;
-      background: var(--glass);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(25px) saturate(160%);
+      border-bottom: 1px solid var(--line);
     }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo { 
-        font-weight: 800; font-size: 1.4rem; letter-spacing: -0.04em; 
-        text-decoration: none; color: var(--text); 
+    .topbar-inner { min-height: 80px; display: flex; align-items: center; justify-content: space-between; }
+    
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      display: grid; place-items: center; color: #fff; font-weight: 800;
+      box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
     }
-    .logo span { color: var(--accent); }
+    .brand-text span:first-child { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.03em; }
+    .brand-text span:last-child { font-size: 0.8rem; color: var(--muted); }
 
-    .contact-btns { display: flex; gap: 12px; }
-    .btn-pill {
-      padding: 10px 20px; border-radius: 100px;
-      font-weight: 700; font-size: 0.85rem; text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { font-size: 0.95rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    nav a:hover { color: var(--accent); }
+
+    .nav-cta {
+      padding: 10px 22px; border-radius: 100px;
+      background: var(--text); color: #fff; font-weight: 600;
+      transition: all 0.3s;
     }
-    .btn-blue { background: var(--accent); color: #fff; box-shadow: 0 8px 20px var(--accent-glow); }
-    .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 12px 24px var(--accent-glow); }
+    .nav-cta:hover { background: var(--accent); transform: scale(1.05); }
 
     /* ════════════════════════════════
-       HERO (The "Continuous" Design)
+       HERO (Transparent Tech Card)
     ════════════════════════════════ */
-    .hero {
-      padding: 120px 0 80px;
-      text-align: center;
+    .hero { padding: 60px 0; }
+    .hero-card {
+      border: 1px solid rgba(255,255,255,0.6);
+      background: var(--surface);
+      backdrop-filter: blur(30px) saturate(120%);
+      box-shadow: 0 40px 100px -20px rgba(0,0,0,0.08);
+      border-radius: var(--radius-xl);
+      padding: 60px;
       position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease;
     }
-    
-    /* Transparent Tech Background Image */
-    .hero::after {
-        content: ""; position: absolute; top: 10%; left: 50%; 
-        transform: translateX(-50%); width: 80%; height: 80%;
-        background: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2000&auto=format&fit=crop') no-repeat center;
-        background-size: contain; opacity: 0.03; z-index: -1;
+    .hero-card:hover { transform: translateY(-5px); }
+
+    /* Transparent Tech Overlay Hint */
+    .hero-card::after {
+      content: ""; position: absolute; top: -10%; right: -10%; width: 50%; height: 60%;
+      background: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1000&auto=format&fit=crop');
+      background-size: contain; background-repeat: no-repeat; opacity: 0.04; z-index: -1;
     }
 
-    .hero h1 {
+    .hero-site { font-size: 0.8rem; letter-spacing: 0.2em; font-weight: 800; color: var(--accent); margin-bottom: 20px; }
+    .hero-title {
       font-family: "Playfair Display", serif;
-      font-size: clamp(3.5rem, 10vw, 7.5rem);
-      font-weight: 900; line-height: 0.9;
-      letter-spacing: -0.05em; margin-bottom: 30px;
+      font-size: clamp(3rem, 7vw, 6rem); line-height: 0.9; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #101820 30%, var(--accent) 150%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
     }
-    .hero p {
-      font-size: 1.4rem; color: var(--muted);
-      max-width: 700px; margin: 0 auto 40px;
-      font-weight: 400;
-    }
+    .hero-copy { font-size: 1.2rem; color: var(--muted); max-width: 500px; margin-bottom: 40px; }
+
+    .btn { padding: 16px 32px; border-radius: 100px; font-weight: 700; transition: 0.3s; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 15px 30px rgba(0, 102, 255, 0.2); margin-right: 15px; }
+    .btn-primary:hover { background: var(--accent-strong); transform: translateY(-3px); }
+    .btn-secondary { background: #fff; border: 1px solid var(--line-strong); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+    .hero-tagline { margin-top: 50px; display: flex; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 30px; }
+    .hero-tagline span { padding: 8px 18px; border-radius: 100px; background: #fff; border: 1px solid var(--line); font-size: 0.85rem; font-weight: 600; transition: 0.3s; cursor: default; }
+    .hero-tagline span:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
 
     /* ════════════════════════════════
-       SERVICE GRID (Elevated Cards)
+       SERVICES (Animated Hover)
     ════════════════════════════════ */
-    .services { padding: 100px 0; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    .card {
-      background: #fff;
-      padding: 40px; border-radius: var(--radius);
-      border: 1px solid var(--border);
-      transition: all 0.4s ease;
-      position: relative; overflow: hidden;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-    }
-    .card h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; }
-    .card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+    .section { padding: 80px 0; }
+    .section-head h2 { font-family: "Playfair Display", serif; font-size: 3rem; letter-spacing: -0.03em; margin-bottom: 40px; }
     
-    .card::before {
-        content: "→"; position: absolute; bottom: 20px; right: 20px;
-        font-size: 1.5rem; color: var(--accent); opacity: 0; transform: translateX(-10px);
-        transition: all 0.3s;
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .card {
+      background: rgba(255,255,255,0.6); padding: 40px; border-radius: var(--radius-lg);
+      border: 1px solid var(--line); transition: all 0.4s ease;
     }
-    .card:hover::before { opacity: 1; transform: translateX(0); }
+    .card:hover { background: #fff; border-color: var(--accent); transform: translateY(-8px); box-shadow: var(--shadow); }
+    
+    .service-icon {
+      width: 50px; height: 50px; background: var(--accent-soft); color: var(--accent);
+      border-radius: 12px; display: grid; place-items: center; margin-bottom: 24px; transition: 0.3s;
+    }
+    .card:hover .service-icon { background: var(--accent); color: #fff; transform: rotate(5deg) scale(1.1); }
+    .card h3 { margin-bottom: 12px; font-weight: 700; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
 
     /* ════════════════════════════════
-       CONTACT FOOTER (Large & Direct)
+       FOOTER
     ════════════════════════════════ */
-    .contact-footer {
-      padding: 140px 0; background: var(--text); color: #fff;
-      text-align: center; border-radius: 60px 60px 0 0;
-    }
-    .contact-footer h2 { font-family: "Playfair Display", serif; font-size: 4rem; margin-bottom: 40px; }
-    .contact-link {
-        font-size: 2.5rem; font-weight: 700; color: #fff; text-decoration: none;
-        display: block; margin: 10px 0; transition: color 0.3s;
-    }
-    .contact-link:hover { color: var(--accent); }
+    footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+    .footer-wrap { display: flex; justify-content: space-between; align-items: center; }
 
-    .footer-sub { margin-top: 60px; font-size: 0.8rem; color: #4b5563; text-transform: uppercase; letter-spacing: 0.2em; }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 4rem; }
-      .contact-footer h2 { font-size: 2.5rem; }
-      .contact-link { font-size: 1.5rem; }
+      .hero-card { padding: 30px; }
+      nav a:not(.nav-cta) { display: none; }
+      .footer-wrap { flex-direction: column; gap: 20px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <div class="news-strip">
-    <div class="container news-inner">
-      <div class="live-dot"></div>
-      <span id="headline">PULLING LIVE TECH INTELLIGENCE...</span>
+  <div class="newsbar">
+    <div class="container newsbar-inner">
+      <span class="news-label">Live Tech</span>
+      <span class="news-text" id="news-text">Loading intelligence...</span>
+      <a class="news-link" id="news-link" href="#" target="_blank" style="display:none; color: var(--accent); font-weight: 700;">Read →</a>
     </div>
   </div>
 
-  <header>
-    <div class="container header-inner">
-      <a href="#" class="logo">mymacguy<span>.net</span></a>
-      <div class="contact-btns">
-        <a href="tel:3109801964" class="btn-pill btn-blue">Immediate Support</a>
-      </div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#home">
+        <div class="brand-mark">W</div>
+        <div class="brand-text">
+          <span>mymacguy.net</span>
+          <span>Personal Tech Admin</span>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="tel:3109801964" class="nav-cta">Call Now</a>
+      </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <h1>sorted<span>.</span></h1>
-      <p>Senior-level Apple support, network architecture, and home-office reliability. For the professionals who can’t afford downtime.</p>
-      <div style="display:flex; gap:20px; justify-content:center;">
-        <a href="tel:3109801964" style="color:var(--text); font-weight:700; text-decoration:none; border-bottom:2px solid var(--accent);">310.980.1964</a>
-        <a href="mailto:wahed@mymacguy.net" style="color:var(--text); font-weight:700; text-decoration:none; border-bottom:2px solid var(--accent);">Email Wahed</a>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-site">LOS ANGELES, CA</div>
+          <h1 class="hero-title">Your tech, sorted.</h1>
+          <p class="hero-copy">
+            Senior-level support for Mac, Wi-Fi architecture, and home business systems. Clear solutions, zero jargon.
+          </p>
 
-  <section class="services">
-    <div class="container">
-      <div class="grid">
-        <div class="card">
-          <h3>Apple Ecosystem</h3>
-          <p>macOS, iOS, iCloud, and the complex synchronization issues Apple doesn't want to admit exist.</p>
-        </div>
-        <div class="card">
-          <h3>Infrastructure</h3>
-          <p>Enterprise-grade Wi-Fi and secure network gateways for high-performance residential properties.</p>
-        </div>
-        <div class="card">
-          <h3>Security</h3>
-          <p>Privacy hardening, password management audits, and bulletproof local/cloud backup strategies.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:3109801964">Call (310) 980-1964</a>
+            <a class="btn btn-secondary" href="mailto:wahed@mymacguy.net">Email Wahed</a>
+          </div>
+
+          <div class="hero-tagline">
+            <span>macOS Support</span>
+            <span>Mesh Wi-Fi</span>
+            <span>Microsoft 365</span>
+            <span>Home Office</span>
+            <span>Security Audits</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="contact-footer">
-    <div class="container">
-      <h2>Ready when you are.</h2>
-      <a href="tel:3109801964" class="contact-link">310.980.1964</a>
-      <a href="mailto:wahed@mymacguy.net" class="contact-link">wahed@mymacguy.net</a>
-      <p class="footer-sub">Wahed Abdul Khaliqi • Los Angeles • Hollywood • Santa Monica</p>
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Support Expertise</h2>
+        </div>
+
+        <div class="services-grid">
+          <div class="card">
+            <div class="service-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Apple Support</h3>
+            <p>Advanced Mac troubleshooting, iCloud synchronization, and seamless device migrations.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            </div>
+            <h3>Wi-Fi & Networks</h3>
+            <p>Enterprise-grade residential networks. Eliminating dead zones and latency for good.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Privacy & Security</h3>
+            <p>Encryption, password management audits, and bulletproof backup strategies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>© <span id="year"></span> mymacguy.net | Wahed Abdul Khaliqi</div>
+      <div>310.980.1964 | Los Angeles, CA</div>
     </div>
   </footer>
 
   <script>
-    // Live HackerNews Ticker
-    async function getNews() {
-        try {
-            const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
-            const ids = await res.json();
-            const itemRes = await fetch(`https://hacker-news.firebaseio.com/v0/item/${ids[0]}.json`);
-            const item = await itemRes.json();
-            document.getElementById('headline').innerText = "LIVE: " + item.title.toUpperCase();
-        } catch (e) {
-            document.getElementById('headline').innerText = "APPLE SYSTEMS STATUS: ONLINE";
-        }
-    }
-    getNews();
-    setInterval(getNews, 60000);
-  </script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Dynamically pull tech news to HackerNews
+    async function loadNews() {
+      try {
+        const res = await fetch("https://hacker-news.firebaseio.com/v0/topstories.json");
+        const ids = await res.json();
+        const itemRes = await fetch(`https://hacker-news.firebaseio.com/v0/item/${ids[0]}.json`);
+        const item = await itemRes.json();
+        document.getElementById("news-text").textContent = "LATEST: " + item.title;
+        const link = document.getElementById("news-link");
+        link.href = item.url;
+        link.style.display = "inline";
+      } catch (e) {
+        document.getElementById("news-text").textContent = "Apple Support Status: Operational in Los Angeles.";
+      }
+    }
+    loadNews();
+  </script>
 </body>
 </html>
