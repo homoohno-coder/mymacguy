@@ -290,3 +290,90 @@ loadMedium()
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMacGuy | Technical Architecture & Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #e5e5e5; }
+        .bento-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; transition: all 0.3s ease; }
+        .bento-card:hover { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); }
+        .glass-nav { backdrop-filter: blur(12px); background: rgba(5, 5, 5, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tighter uppercase text-white">MyMacGuy<span class="text-blue-500">.</span></span>
+            <div class="space-x-8 text-sm font-medium text-gray-400">
+                <a href="#architecture" class="hover:text-white transition">Architecture</a>
+                <a href="#audit" class="hover:text-white transition">Audit</a>
+                <a href="https://github.com/yourusername" class="hover:text-white transition underline decoration-blue-500 underline-offset-4">Repo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+        <header class="mb-16">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6">
+                Eliminating tech friction for <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 font-extrabold">high-stakes professionals.</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl leading-relaxed">
+                Strategic tech administration, network resilience, and Apple-ecosystem optimization for investors, landlords, and consultants who value time over tutorials.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bento-card md:col-span-2 p-8 flex flex-col justify-between">
+                <div>
+                    <span class="text-blue-500 text-xs font-bold uppercase tracking-widest">Philosophy</span>
+                    <h2 class="text-3xl font-semibold text-white mt-4 mb-4">Leverage Over Labor.</h2>
+                    <p class="text-gray-400 leading-relaxed">
+                        I don't just "fix computers." I architect resilient environments. Whether it's a multi-unit rental network or an investor's private stack, I build for zero-downtime and maximum efficiency.
+                    </p>
+                </div>
+                <div class="mt-8 flex gap-4">
+                    <span class="bg-white/5 px-3 py-1 rounded-full text-xs border border-white/10">Ubiquiti</span>
+                    <span class="bg-white/5 px-3 py-1 rounded-full text-xs border border-white/10">macOS Admin</span>
+                    <span class="bg-white/5 px-3 py-1 rounded-full text-xs border border-white/10">Smart Home Automation</span>
+                </div>
+            </div>
+
+            <div class="bento-card p-8 bg-gradient-to-br from-blue-600/10 to-transparent">
+                <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Action</span>
+                <h2 class="text-2xl font-semibold text-white mt-4 mb-2">Systems Audit</h2>
+                <p class="text-sm text-gray-400 mb-6">A 15-minute diagnostic to identify security gaps and efficiency leaks in your current stack.</p>
+                <a href="mailto:admin@mymacguy.net" class="inline-block w-full text-center bg-white text-black py-3 rounded-xl font-bold hover:bg-gray-200 transition">Book Audit</a>
+            </div>
+
+            <div class="bento-card p-8">
+                <h3 class="text-xl font-bold text-white mb-2">Infrastructure</h3>
+                <p class="text-sm text-gray-400">Deploying enterprise-grade networking (Unifi/Edge) for residential and commercial properties.</p>
+            </div>
+
+            <div class="bento-card p-8">
+                <h3 class="text-xl font-bold text-white mb-2">Security</h3>
+                <p class="text-sm text-gray-400">Hardening the Apple ecosystem for high-net-worth privacy and data integrity.</p>
+            </div>
+
+            <div class="bento-card p-8">
+                <h3 class="text-xl font-bold text-white mb-2">Consulting</h3>
+                <p class="text-sm text-gray-400">Tech-strategy for landlords: Automated tenant systems and smart-property management.</p>
+            </div>
+
+        </div>
+
+        <footer class="mt-20 pt-8 border-t border-white/5 text-gray-500 text-sm flex justify-between items-center">
+            <p>&copy; 2026 MyMacGuy. Managed Deployment.</p>
+            <p class="font-mono text-xs opacity-50">Deployed via GitHub Actions v3.4.1</p>
+        </footer>
+    </main>
+</body>
+</html>
