@@ -1,4 +1,112 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYMACGUY.NET | YOU'RE IT SORTED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&display=swap">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; }
+        .hero-text { font-size: clamp(3.5rem, 12vw, 9rem); line-height: 0.85; letter-spacing: -0.06em; }
+        .btn-cta { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); border: 4px solid #fff; }
+        .btn-cta:hover { background-color: #fff; color: #000; transform: scale(1.02); }
+        .map-container iframe { filter: grayscale(1) invert(0.92) contrast(1.1); border: 1px solid #222; }
+        .review-card { background: #0a0a0a; border: 1px solid #1a1a1a; }
+        .text-outline { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
+    </style>
+</head>
+<body class="antialiased border-t-[16px] border-white">
+
+    <header class="max-w-7xl mx-auto px-6 pt-24 pb-16">
+        <h1 class="hero-text font-black uppercase mb-6">
+            MYMACGUY<span class="text-white/20">.NET</span>
+        </h1>
+        <div class="max-w-4xl">
+            <p class="text-3xl md:text-6xl font-black tracking-tighter text-white mb-12 uppercase italic leading-none">
+                YOU'RE IT SORTED.
+            </p>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-6">
+            <a href="mailto:wahed@mymacguy.net" class="btn-cta px-10 py-6 text-2xl md:text-3xl font-black uppercase tracking-tighter text-center">
+                EMAIL WAHED
+            </a>
+            <a href="tel:3109801964" class="btn-cta px-10 py-6 text-2xl md:text-3xl font-black uppercase tracking-tighter text-center opacity-70 hover:opacity-100">
+                310.980.1964
+            </a>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 py-16 border-t border-white/10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <div class="space-y-8">
+                <div class="flex items-center gap-4">
+                    <div class="h-1 w-12 bg-white"></div>
+                    <h2 class="text-xl font-black uppercase tracking-[0.2em] text-white/40">Los Angeles HQ</h2>
+                </div>
+                <div class="map-container aspect-video w-full overflow-hidden bg-zinc-900 shadow-2xl">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105759.73356073427!2d-118.49755146685827!3d34.02035650369795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75dd41d044f%3A0xf204537330fdc19d!2sLos%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+                <div class="flex justify-between text-[10px] font-mono text-white/30 uppercase tracking-widest">
+                    <span>On-Site Support</span>
+                    <span>Remote Architecture</span>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="flex items-center gap-4">
+                    <div class="h-1 w-12 bg-white"></div>
+                    <h2 class="text-xl font-black uppercase tracking-[0.2em] text-white/40">Verified Proof</h2>
+                </div>
+                
+                <div class="grid gap-6">
+                    <div class="review-card p-8 border-l-4 border-l-white">
+                        <div class="flex gap-1 text-white mb-4">★★★★★</div>
+                        <p class="text-xl font-bold italic leading-tight mb-6 text-white/90">"Wahed sorted our entire rental tech stack. No downtime, no excuses. Best in LA."</p>
+                        <div class="flex justify-between items-center border-t border-white/5 pt-4">
+                            <span class="text-xs font-black uppercase tracking-widest text-white/40 underline decoration-white/20">Landlord Portfolio Mgr</span>
+                        </div>
+                    </div>
+
+                    <div class="review-card p-8">
+                        <div class="flex gap-1 text-white mb-4">★★★★★</div>
+                        <p class="text-xl font-bold italic leading-tight mb-6">"Technical mastery for Mac users. He doesn't just fix problems; he architects solutions."</p>
+                        <div class="flex justify-between items-center border-t border-white/5 pt-4">
+                            <span class="text-xs font-black uppercase tracking-widest text-white/40 underline decoration-white/20">Tech Investor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="max-w-7xl mx-auto px-6 py-24 mt-12 border-t border-white/5">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+            <div>
+                <p class="text-5xl font-black tracking-tighter mb-6">MMG<span class="text-white/10">.</span></p>
+                <div class="space-y-2">
+                    <p class="text-xs font-black uppercase tracking-[0.3em] text-white/40">Advanced Apple Administration</p>
+                    <p class="text-xs font-black uppercase tracking-[0.3em] text-white/40">Network Resilience for Investors</p>
+                    <p class="text-xs font-black uppercase tracking-[0.3em] text-white/40">Crisis Management & Consulting</p>
+                </div>
+            </div>
+            
+            <div class="text-left md:text-right">
+                <p class="text-sm font-bold text-white mb-2 underline underline-offset-8 decoration-white/20">wahed@mymacguy.net</p>
+                <p class="text-sm font-bold text-white mb-8 italic">310.980.1964</p>
+                <p class="text-[10px] font-mono text-white/20 tracking-tighter uppercase">© 2026 MYMACGUY.NET // LOS ANGELES, CA</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
