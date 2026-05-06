@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wi-Fi, Internet &amp; Network Help — mymacguy.net</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #09090a; --bg2: #0f0f10; --surface: #161618; --border: rgba(255,255,255,0.07); --accent: #c8f060; --text: #d8d6ce; --muted: rgba(216,214,206,0.42); --heading: #f2f1ec; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 9000; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.028; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: rgba(9,9,10,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--heading); text-decoration: none; }
+    .nav-logo .dot { color: var(--accent); }
+    .nav-logo em { font-style: italic; font-weight: 400; opacity: 0.55; }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #09090a; padding: 9px 22px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(200,240,96,0.3); }
+    .page-hero { padding: 140px 80px 72px; background: var(--bg2); border-bottom: 1px solid var(--border); }
+    .page-hero-inner { max-width: 760px; }
+    .hero-label { display: inline-flex; align-items: center; gap: 10px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    .hero-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; color: var(--heading); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 20px; }
+    .page-hero p { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 560px; }
+    .content-section { padding: 80px 80px; }
+    .content-section.alt { background: var(--bg2); }
+    .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--heading); letter-spacing: -0.03em; margin-bottom: 48px; }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--muted); }
+    .steps-list { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+    .step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(200,240,96,0.08); border: 1px solid rgba(200,240,96,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
+    .step-content h3 { font-size: 1rem; font-weight: 600; color: var(--heading); margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+    .step-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,240,96,0.3); transition: border-color 0.2s; }
+    .step-content a:hover { border-color: var(--accent); }
+    .step-content code { background: var(--surface); padding: 2px 7px; border-radius: 4px; font-size: 0.82rem; color: var(--accent); font-family: monospace; }
+    .isp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+    .isp-card { padding: 22px 24px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+    .isp-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .isp-ico { font-size: 1.3rem; }
+    .isp-name { font-size: 0.95rem; font-weight: 700; color: var(--heading); }
+    .isp-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-bottom: 8px; }
+    .isp-card p:last-child { margin-bottom: 0; }
+    .isp-card a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,240,96,0.3); font-size: 0.8rem; }
+    .isp-card a:hover { border-color: var(--accent); }
+    .isp-card .isp-phone { font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .rcard { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; background: var(--surface); transition: border-color 0.22s, transform 0.22s; }
+    .rcard:hover { border-color: rgba(200,240,96,0.3); background: rgba(200,240,96,0.025); transform: translateY(-2px); }
+    .rcard-ico { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .rcard-body h4 { font-size: 0.9rem; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+    .rcard-body p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .rcard-arr { margin-left: auto; color: var(--muted); font-size: 0.85rem; flex-shrink: 0; align-self: center; padding-left: 8px; transition: color 0.2s, transform 0.2s; }
+    .rcard:hover .rcard-arr { color: var(--accent); transform: translateX(3px); }
+    .tip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+    .tip-card { padding: 22px 24px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+    .tip-card .tip-icon { font-size: 1.3rem; margin-bottom: 10px; }
+    .tip-card h4 { font-size: 0.92rem; font-weight: 600; color: var(--heading); margin-bottom: 8px; }
+    .tip-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .tip-card a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,240,96,0.3); }
+    .tip-card a:hover { border-color: var(--accent); }
+    .money-banner { background: rgba(200,240,96,0.07); border: 1px solid rgba(200,240,96,0.22); border-radius: 10px; padding: 28px 32px; margin-bottom: 44px; }
+    .money-banner h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; letter-spacing: -0.02em; }
+    .money-banner p { font-size: 0.88rem; color: rgba(216,214,206,0.75); line-height: 1.75; margin-bottom: 10px; }
+    .money-banner p:last-child { margin-bottom: 0; }
+    .money-banner a { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(200,240,96,0.4); }
+    .money-banner strong { color: var(--heading); }
+    .script-box { background: var(--bg); border: 1px solid rgba(200,240,96,0.15); border-radius: 8px; padding: 20px 22px; margin-top: 16px; font-size: 0.83rem; color: rgba(216,214,206,0.7); line-height: 1.8; font-style: italic; }
+    .script-box::before { content: '"'; font-size: 2rem; color: var(--accent); opacity: 0.4; line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+    .cta-section { padding: 80px 80px; background: var(--surface); border-top: 1px solid var(--border); }
+    .cta-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--heading); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 16px; }
+    .cta-inner h2 em { font-style: italic; font-weight: 400; }
+    .cta-inner p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #09090a; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(200,240,96,0.28); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; color: var(--heading); padding: 16px 30px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.18); font-weight: 500; font-size: 0.95rem; text-decoration: none; background: rgba(255,255,255,0.04); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); }
+    footer { padding: 36px 80px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .foot-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--heading); text-decoration: none; }
+    .foot-logo .dot { color: var(--accent); }
+    .foot-logo em { font-style: italic; font-weight: 400; opacity: 0.5; }
+    .foot-links { display: flex; gap: 24px; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.75rem; }
+    @media (max-width: 900px) { nav { padding: 0 28px; } .page-hero { padding: 120px 36px 56px; } .content-section { padding: 60px 36px; } .cta-section { padding: 60px 36px; } footer { padding: 28px 36px; } }
+    @media (max-width: 600px) { nav { padding: 0 20px; } .nav-back span { display: none; } .page-hero { padding: 100px 20px 48px; } .content-section { padding: 48px 20px; } .cta-section { padding: 48px 20px; } footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; } .foot-links { flex-direction: column; gap: 10px; } .resources-grid, .tip-grid, .isp-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">mymacguy<span class="dot">.</span><em>net</em></a>
+    <a href="index.html" class="nav-back">← <span>Back to Home</span></a>
+    <a href="tel:3109801964" class="nav-cta">📞 Call Now</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="hero-label">Self-Help Guide</p>
+      <h1>Wi-Fi, Internet &amp;<br>Network Help</h1>
+      <p>Slow internet, dead zones, Wi-Fi dropping? Plus: how to actually lower your monthly internet bill — most people overpay by $30–$50/month.</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <p class="section-label">Fix it yourself</p>
+    <h2 class="section-title">Wi-Fi &amp; Network <em>Troubleshooting</em></h2>
+
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Restart your modem and router (the right way)</h3>
+          <p>Unplug your modem and router from power. Wait a full 60 seconds — not 10, not 30. Plug the modem in first, wait 30 seconds until the lights stabilize, then plug in the router. This alone fixes the majority of home internet issues.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Check if it's your ISP — not your equipment</h3>
+          <p>Visit <a href="https://downdetector.com" target="_blank" rel="noopener">downdetector.com</a> or your ISP's outage map. If there's a known outage in your area, no amount of router rebooting will fix it — you just have to wait. Also test: plug directly into your modem with an Ethernet cable. If that works fine, the problem is your router or Wi-Fi, not your internet service.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Test your actual internet speed</h3>
+          <p>Go to <a href="https://fast.com" target="_blank" rel="noopener">fast.com</a> (by Netflix) or <a href="https://speedtest.net" target="_blank" rel="noopener">speedtest.net</a> on a device connected to Wi-Fi, then again plugged into Ethernet. If wired is fast but Wi-Fi is slow, your router or its placement is the issue. If both are slow, call your ISP.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Forget and rejoin your Wi-Fi network on Mac</h3>
+          <p>Hold <code>Option</code> and click the Wi-Fi icon → Open Wi-Fi Settings → click the (i) next to your network → Forget This Network. Then reconnect fresh. On iPhone: <strong>Settings → Wi-Fi → tap (i) next to network → Forget This Network</strong>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Switch to a faster DNS server</h3>
+          <p>Your ISP's default DNS servers are often slow. Switch to Cloudflare (<code>1.1.1.1</code>) or Google (<code>8.8.8.8</code>). On Mac: <strong>System Settings → Wi-Fi → Details → DNS → click + → add 1.1.1.1</strong>. This often speeds up browsing noticeably.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Run Wireless Diagnostics on your Mac</h3>
+          <p>Hold <code>Option</code> and click the Wi-Fi icon in the menu bar → Open Wireless Diagnostics. Follow the prompts — it scans your environment for channel conflicts, interference, and signal issues. It can also capture a packet log for deeper diagnosis.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h3>Router placement matters more than you think</h3>
+          <p>Put your router in a central, elevated location — not stuffed in a cabinet or corner. Keep it away from microwaves, cordless phones, and baby monitors (they all interfere with 2.4 GHz Wi-Fi). For large homes, consider a mesh system like <a href="https://www.amazon.com/s?k=eero+mesh+wifi" target="_blank" rel="noopener">eero</a> or <a href="https://www.amazon.com/s?k=google+nest+wifi" target="_blank" rel="noopener">Google Nest Wifi</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ISP MONEY SAVING SECTION -->
+  <section class="content-section alt">
+    <p class="section-label">Save money</p>
+    <h2 class="section-title">Lower Your Internet Bill <em>Starting Today</em></h2>
+
+    <div class="money-banner">
+      <h3>💰 The Retention Department Trick — Works Almost Every Time</h3>
+      <p>Internet companies give their <strong>customer retention department</strong> authority to offer discounts, promotions, and loyalty credits that regular customer service reps cannot. Most people never know this department exists.</p>
+      <p><strong>How it works:</strong> Call your ISP's main number. When asked what you're calling about, say <em>"I'm thinking about canceling my service."</em> You'll be transferred to retention. Be polite but firm — you want a lower rate. They almost always have a deal they can offer.</p>
+      <div class="script-box">
+        Hi, I've been a customer for [X] years but I've been looking at [competitor] and they're offering [price]. I love the service but I really need to bring my bill down. Is there anything you can do to help me stay?
+      </div>
+      <p style="margin-top:14px;">This works because losing you costs them $300–$500 to replace. A $20/month discount is nothing to them. Call every 12 months when your promo rate expires — they'll almost always renew it.</p>
+    </div>
+
+    <div class="isp-grid">
+      <div class="isp-card">
+        <div class="isp-card-head"><span class="isp-ico">📡</span><span class="isp-name">Spectrum / Charter</span></div>
+        <p class="isp-phone">Retention: 1-833-694-9259</p>
+        <p>Ask for "loyalty promotions." Spectrum regularly offers $20–$40/month discounts to customers who call in. Also check <a href="https://www.spectrum.com/internet" target="_blank" rel="noopener">spectrum.com/internet</a> for current promos — sometimes the new customer rate is on their site and you can ask to match it.</p>
+        <p><a href="https://downdetector.com/status/spectrum/" target="_blank" rel="noopener">Check Spectrum outages →</a></p>
+      </div>
+      <div class="isp-card">
+        <div class="isp-card-head"><span class="isp-ico">📡</span><span class="isp-name">Xfinity / Comcast</span></div>
+        <p class="isp-phone">Retention: 1-800-934-6489</p>
+        <p>Say you want to cancel. Xfinity retention can apply loyalty credits, waive equipment fees, and offer lower promotional rates. Also check the <a href="https://www.xfinity.com/buy/plan/internetoptions" target="_blank" rel="noopener">Xfinity website</a> for current pricing and mention it.</p>
+        <p><a href="https://downdetector.com/status/comcast-xfinity/" target="_blank" rel="noopener">Check Xfinity outages →</a></p>
+      </div>
+      <div class="isp-card">
+        <div class="isp-card-head"><span class="isp-ico">📡</span><span class="isp-name">AT&amp;T Internet / Fiber</span></div>
+        <p class="isp-phone">Retention: 1-800-288-2020</p>
+        <p>Ask to speak with the "loyalty team." AT&amp;T Fiber customers especially have leverage — the company wants to keep fiber customers. Check <a href="https://www.att.com/internet/" target="_blank" rel="noopener">att.com/internet</a> for current pricing before you call.</p>
+        <p><a href="https://downdetector.com/status/att/" target="_blank" rel="noopener">Check AT&amp;T outages →</a></p>
+      </div>
+      <div class="isp-card">
+        <div class="isp-card-head"><span class="isp-ico">📡</span><span class="isp-name">Verizon Fios</span></div>
+        <p class="isp-phone">Retention: 1-844-837-2262</p>
+        <p>Verizon Fios customers can negotiate well. Ask about "Fios loyalty discounts" and mention competitor pricing (Google Fiber, Xfinity). Check <a href="https://www.verizon.com/home/internet/" target="_blank" rel="noopener">verizon.com</a> for current deals first.</p>
+        <p><a href="https://downdetector.com/status/verizon-fios/" target="_blank" rel="noopener">Check Verizon Fios outages →</a></p>
+      </div>
+      <div class="isp-card">
+        <div class="isp-card-head"><span class="isp-ico">📡</span><span class="isp-name">T-Mobile Home Internet</span></div>
+        <p class="isp-phone">Support: 1-877-778-2106</p>
+        <p>T-Mobile Home Internet is already one of the cheapest options (~$50/month flat, no contracts, no data caps). If you haven't looked at this as an alternative to cable internet, it's worth trying — especially in LA. <a href="https://home.t-mobile.com" target="_blank" rel="noopener">home.t-mobile.com</a></p>
+        <p><a href="https://downdetector.com/status/t-mobile/" target="_blank" rel="noopener">Check T-Mobile outages →</a></p>
+      </div>
+      <div class="isp-card">
+        <div class="isp-card-head"><span class="isp-ico">📡</span><span class="isp-name">Cox Communications</span></div>
+        <p class="isp-phone">Retention: 1-855-334-6154</p>
+        <p>Cox is common in parts of LA. Call retention and ask about "loyalty pricing." Cox tends to respond well to mentioning you're comparing with T-Mobile Home Internet or Spectrum. Check <a href="https://www.cox.com/residential/internet.html" target="_blank" rel="noopener">cox.com</a> for current promos.</p>
+        <p><a href="https://downdetector.com/status/cox-communications/" target="_blank" rel="noopener">Check Cox outages →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <p class="section-label">Tips &amp; Hacks</p>
+    <h2 class="section-title">Get Better Internet <em>for Less</em></h2>
+    <div class="tip-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🔌</div>
+        <h4>Own your modem — stop renting</h4>
+        <p>Most ISPs charge $10–$15/month to rent a modem/router. Buy a compatible one on <a href="https://www.amazon.com/s?k=cable+modem+approved+comcast+spectrum" target="_blank" rel="noopener">Amazon for $60–$100</a> and it pays for itself in 6 months. Check your ISP's approved modem list before buying.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📶</div>
+        <h4>2.4 GHz vs 5 GHz — know the difference</h4>
+        <p>5 GHz Wi-Fi is faster but shorter range. 2.4 GHz is slower but penetrates walls better. On your Mac/iPhone, try connecting to your router's 5 GHz network (usually labeled with "5G" or "_5") when you're close to the router.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🧪</div>
+        <h4>Test speed at different times of day</h4>
+        <p>ISPs get congested in the evenings (7–10pm). If your internet is always slow at night, that's a network capacity issue in your area — call and report it. Many ISPs will credit your bill if you document the problem.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🖥️</div>
+        <h4>Remote Help from Wahed</h4>
+        <p>For router setup, network configuration, or smart home devices, Wahed can help remotely or in person. Use <a href="https://assist.zoho.com/customer" target="_blank" rel="noopener">Zoho Assist</a> to share your screen for remote help.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🆓</div>
+        <h4>ACP Program — Free or Discounted Internet</h4>
+        <p>The <a href="https://www.fcc.gov/acp" target="_blank" rel="noopener">Affordable Connectivity Program</a> provides up to $30/month discount on internet for qualifying households (based on income or participation in government programs). Many don't know they qualify.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📍</div>
+        <h4>Check What's Available in Your Area</h4>
+        <p>Use <a href="https://www.allconnect.com" target="_blank" rel="noopener">allconnect.com</a> or <a href="https://www.broadbandnow.com" target="_blank" rel="noopener">broadbandnow.com</a> to see all ISPs available at your address and compare prices. Having a competing offer in hand is the best leverage when calling retention.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt">
+    <p class="section-label">Helpful links</p>
+    <h2 class="section-title">Network <em>Resources</em></h2>
+    <div class="resources-grid">
+      <a href="https://fast.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">⚡</span>
+        <div class="rcard-body"><h4>Fast.com Speed Test (Netflix)</h4><p>Simple, honest internet speed test from Netflix.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://speedtest.net" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">📊</span>
+        <div class="rcard-body"><h4>Speedtest by Ookla</h4><p>Detailed speed test with ping, download, and upload.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://downdetector.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🔍</span>
+        <div class="rcard-body"><h4>Downdetector</h4><p>Real-time outage reports for every major ISP and service.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://1.1.1.1" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🌐</span>
+        <div class="rcard-body"><h4>Cloudflare DNS (1.1.1.1)</h4><p>Fastest public DNS. Free setup guide for Mac and iPhone.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://support.apple.com/en-us/HT202222" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🍎</span>
+        <div class="rcard-body"><h4>Apple Wi-Fi Troubleshooting Guide</h4><p>Official Apple guide for Mac and iPhone Wi-Fi issues.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://www.broadbandnow.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🗺️</span>
+        <div class="rcard-body"><h4>BroadbandNow — Compare ISPs</h4><p>See every internet provider available at your address.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://assist.zoho.com/customer" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🖥️</span>
+        <div class="rcard-body"><h4>Zoho Assist (Remote Help)</h4><p>Click here if Wahed needs to connect remotely to help you.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://www.fcc.gov/acp" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🆓</span>
+        <div class="rcard-body"><h4>Affordable Connectivity Program</h4><p>Up to $30/month off your internet bill if you qualify.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2>Still having issues? <em>Let's fix it.</em></h2>
+      <p>Router setup, mesh systems, smart home devices, or just a network that won't behave — I can come to you or help remotely in Los Angeles.</p>
+      <div class="cta-buttons">
+        <a href="tel:3109801964" class="btn-primary">📞 Call (310) 980-1964</a>
+        <a href="mailto:wahed@mymacguy.net" class="btn-outline">✉️ Email Wahed</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="foot-logo">mymacguy<span class="dot">.</span><em>net</em></a>
+    <div class="foot-links">
+      <a href="tel:3109801964">(310) 980-1964</a>
+      <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+      <a href="index.html">← Back to Home</a>
+    </div>
+    <p>© 2026 Wahed Tech Support · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
