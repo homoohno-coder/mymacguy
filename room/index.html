@@ -73,6 +73,16 @@
       padding: 0 32px;
     }
 
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
     .badge {
       display: inline-block;
       background: var(--terracotta);
@@ -401,6 +411,55 @@
 
     .lightbox-close:hover { opacity: 1; }
 
+    /* ── AMENITIES TILES ── */
+    .amenities-section {
+      padding: 56px 0;
+      background: var(--charcoal);
+      border-top: 1px solid var(--border);
+    }
+
+    .amenities-section .section-label { color: var(--terracotta-light); }
+    .amenities-section h2 { color: #fff !important; }
+
+    .amenities-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .amenity-tile {
+      background: rgba(255,255,255,0.03);
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .amenity-tile:hover { background: rgba(255,255,255,0.07); }
+
+    .amenity-tile span:first-child { font-size: 1.6rem; }
+
+    .amenity-tile strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .amenity-tile span:last-child {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.4;
+    }
+
     /* ── CTA ── */
     .cta-section {
       background: var(--charcoal);
@@ -536,7 +595,7 @@
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="badge">Available June 15</span>
+    <p class="hero-eyebrow">Private Room for Rent · Available June 15th</p>
     <h1>Your Own <em>Private</em> Retreat<br>in the Heart of LA</h1>
     <p class="hero-sub">Furnished master bedroom · Private bath · Enclosed yard · Quiet professional household</p>
     <div class="price-pill">
@@ -598,93 +657,6 @@
     <p>This is the master bedroom in a beautifully maintained lower duplex that lives and feels like a standalone house — not a cramped apartment situation. The space is quiet, well-kept, and set up for someone who values their own space while still having the ease of a shared home.</p>
     <p>The room comes fully furnished with a queen size sleigh bed, quality mattress, dresser, nightstand, and accent chair. Large closet with plenty of storage. Gorgeous hardwood floors throughout. Crown molding. The kind of details that remind you this isn't just a rental.</p>
     <p>The unit is 2 bedrooms with 1.5 baths — two separate sink areas, a tiled bathtub/shower, and a private bathroom that is effectively yours. Washer and dryer in-unit. Fully equipped kitchen with stainless appliances, gas range, dishwasher, and granite countertops. TV and high-speed internet included. Gas, water, and electricity are already running — you just split costs with one person.</p>
-
-    <div class="features-grid">
-      <div class="feature">
-        <span class="feature-icon">🛏️</span>
-        <div class="feature-text">
-          <strong>Queen Sleigh Bed</strong>
-          <span>Fully furnished, quality mattress included</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🚿</span>
-        <div class="feature-text">
-          <strong>Private Bath Access</strong>
-          <span>1.5 bath, 2 sinks, tiled tub/shower</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🪵</span>
-        <div class="feature-text">
-          <strong>Hardwood Floors</strong>
-          <span>Throughout the unit, warm &amp; clean</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">👚</span>
-        <div class="feature-text">
-          <strong>In-Unit Laundry</strong>
-          <span>Washer &amp; dryer, no laundromat runs</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">📡</span>
-        <div class="feature-text">
-          <strong>TV + Internet</strong>
-          <span>High-speed Wi-Fi, streaming ready</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🔥</span>
-        <div class="feature-text">
-          <strong>Gas Range &amp; Dishwasher</strong>
-          <span>Full kitchen, stainless appliances</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🌿</span>
-        <div class="feature-text">
-          <strong>Enclosed Private Yard</strong>
-          <span>Gated, green lawn, fruit trees, roses</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🔐</span>
-        <div class="feature-text">
-          <strong>Gated Entry</strong>
-          <span>Tall privacy hedge, secure and serene</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🚗</span>
-        <div class="feature-text">
-          <strong>Street Parking</strong>
-          <span>Readily available on the street</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">⚡</span>
-        <div class="feature-text">
-          <strong>Utilities Ready</strong>
-          <span>Gas, electric &amp; water all set up</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🌱</span>
-        <div class="feature-text">
-          <strong>Eco-Conscious Home</strong>
-          <span>Mindful household preferred</span>
-        </div>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🗓️</span>
-        <div class="feature-text">
-          <strong>Available June 15</strong>
-          <span>Possibly sooner — reach out</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -763,6 +735,28 @@
       <tr><td>Application Fee</td><td>None</td></tr>
       <tr><td>Household Vibe</td><td>Eco-conscious, quiet, respectful</td></tr>
     </table>
+  </div>
+</section>
+
+<!-- ── AMENITIES ── -->
+<section class="amenities-section">
+  <div class="container">
+    <div class="section-label" style="margin-bottom:8px;">What's Included</div>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; margin-bottom:28px; color:var(--charcoal);">Everything you need.</h2>
+    <div class="amenities-tiles">
+      <div class="amenity-tile"><span>🛏️</span><strong>Queen Sleigh Bed</strong><span>Furnished + mattress</span></div>
+      <div class="amenity-tile"><span>🚿</span><strong>Private Bath</strong><span>1.5 bath · 2 sinks · tub</span></div>
+      <div class="amenity-tile"><span>🪵</span><strong>Hardwood Floors</strong><span>Throughout</span></div>
+      <div class="amenity-tile"><span>👚</span><strong>In-Unit Laundry</strong><span>Washer &amp; dryer</span></div>
+      <div class="amenity-tile"><span>📡</span><strong>TV + Internet</strong><span>High-speed Wi-Fi</span></div>
+      <div class="amenity-tile"><span>🔥</span><strong>Gas Kitchen</strong><span>Stainless appliances</span></div>
+      <div class="amenity-tile"><span>🌿</span><strong>Private Yard</strong><span>Gated · lawn · garden</span></div>
+      <div class="amenity-tile"><span>🔐</span><strong>Gated Entry</strong><span>Tall privacy hedge</span></div>
+      <div class="amenity-tile"><span>🚗</span><strong>Street Parking</strong><span>Always available</span></div>
+      <div class="amenity-tile"><span>⚡</span><strong>Utilities Ready</strong><span>Gas · electric · water</span></div>
+      <div class="amenity-tile"><span>🌱</span><strong>Eco Household</strong><span>Mindful living</span></div>
+      <div class="amenity-tile"><span>📋</span><strong>Independent Lease</strong><span>Your own agreement</span></div>
+    </div>
   </div>
 </section>
 
