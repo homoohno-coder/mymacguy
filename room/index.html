@@ -48,23 +48,10 @@
     .hero-gallery {
       position: absolute;
       inset: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 3px;
+      background: url('IMG_2834.jpeg') center/cover no-repeat;
     }
 
-    .hero-gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-gallery .hero-main {
-      grid-row: 1 / 3;
-      grid-column: 1;
-    }
+    .hero-gallery img { display: none; }
 
     .hero-overlay {
       position: absolute;
@@ -281,27 +268,40 @@
       font-weight: 300;
     }
 
-    /* ── PHOTO GALLERY ── */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 280px 220px;
-      gap: 4px;
+    /* ── FIXED WALLPAPER ── */
+    .page-wallpaper {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: url('IMG_2834.jpeg') center/cover no-repeat;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    body > *:not(.page-wallpaper) { position: relative; z-index: 1; }
+
+    /* ── PHOTO GALLERY — vertical scroll ── */
+    .gallery-scroll {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 28px;
     }
 
-    .gallery-grid img {
+    .gallery-scroll img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-      transition: opacity 0.3s;
+      border-radius: 3px;
       cursor: zoom-in;
+      transition: opacity 0.25s, transform 0.25s;
+      box-shadow: 0 4px 24px rgba(44,44,42,0.1);
     }
 
-    .gallery-grid img:hover { opacity: 0.88; }
-
-    .gallery-grid .span2 { grid-column: span 2; }
+    .gallery-scroll img:hover {
+      opacity: 0.92;
+      transform: scale(1.005);
+    }
 
     /* ── HOUSEMATE CARD ── */
     .housemate-card {
@@ -525,6 +525,8 @@
 </head>
 <body>
 
+<div class="page-wallpaper"></div>
+
 <!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-gallery">
@@ -691,15 +693,19 @@
   <div class="container">
     <div class="section-label">Photos</div>
     <h2>See every corner.</h2>
-    <div class="gallery-grid">
-      <img class="span2" src="IMG_2834.jpeg" alt="Private enclosed yard — evening" onclick="openLightbox(this.src)" />
-      <img src="IMG_7274.jpeg" alt="Street view — privacy hedge" onclick="openLightbox(this.src)" />
-      <img src="IMG_1432.jpeg" alt="Master bedroom" onclick="openLightbox(this.src)" />
-      <img src="IMG_1436.jpeg" alt="Bedroom alternate angle" onclick="openLightbox(this.src)" />
-      <img src="IMG_1401.jpeg" alt="Full kitchen" onclick="openLightbox(this.src)" />
-      <img src="IMG_1397.jpeg" alt="Living and dining" onclick="openLightbox(this.src)" />
-      <img src="IMG_1418.jpeg" alt="Bathroom with tub" onclick="openLightbox(this.src)" />
+    <div class="gallery-scroll">
+      <img src="IMG_1432.jpeg" alt="Interior" onclick="openLightbox(this.src)" />
+      <img src="IMG_1436.jpeg" alt="Interior" onclick="openLightbox(this.src)" />
+      <img src="IMG_1397.jpeg" alt="Living area" onclick="openLightbox(this.src)" />
+      <img src="IMG_1401.jpeg" alt="Kitchen" onclick="openLightbox(this.src)" />
+      <img src="IMG_1405.jpeg" alt="Kitchen detail" onclick="openLightbox(this.src)" />
+      <img src="IMG_1418.jpeg" alt="Bathroom" onclick="openLightbox(this.src)" />
       <img src="img_bath2.jpeg" alt="Second bathroom" onclick="openLightbox(this.src)" />
+      <img src="IMG_7274.jpeg" alt="Exterior" onclick="openLightbox(this.src)" />
+      <img src="IMG_2537.jpeg" alt="Space detail" onclick="openLightbox(this.src)" />
+      <img src="IMG_2743.jpeg" alt="Room detail" onclick="openLightbox(this.src)" />
+      <img src="IMG_2849.jpeg" alt="Room" onclick="openLightbox(this.src)" />
+      <img src="IMG_3071.jpeg" alt="Outdoor space" onclick="openLightbox(this.src)" />
     </div>
   </div>
 </section>
