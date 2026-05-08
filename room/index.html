@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Master Bedroom · West Adams / Mid-City LA · $1,350/mo</title>
+  <meta name="description" content="Fully furnished master bedroom in a beautiful lower duplex. Private bath, hardwood floors, enclosed yard, quiet professional housemate. Available June 15." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --terracotta: #c4622d;
+      --terracotta-light: #e8845a;
+      --sage: #7a8c6e;
+      --sage-dark: #4e5f43;
+      --charcoal: #2c2c2a;
+      --mid: #5a5750;
+      --gold: #b8975a;
+      --border: rgba(44,44,42,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 60px;
+    }
+
+    .hero-gallery {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 3px;
+    }
+
+    .hero-gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-gallery .hero-main {
+      grid-row: 1 / 3;
+      grid-column: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(20,18,14,0.82) 0%,
+        rgba(20,18,14,0.3) 50%,
+        rgba(20,18,14,0.1) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--terracotta-light);
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+      padding: 12px 22px;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .price-pill .amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .price-pill .unit {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .price-pill .util {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-left: 4px;
+    }
+
+    /* ── AVAILABILITY BANNER ── */
+    .avail-bar {
+      background: var(--sage-dark);
+      color: #fff;
+      text-align: center;
+      padding: 14px 24px;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+    }
+
+    .avail-bar strong { color: #c8dbb8; }
+
+    /* ── MAIN LAYOUT ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── QUICK STATS ── */
+    .stats-strip {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+    }
+
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 130px;
+      padding: 12px 20px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-icon {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      display: block;
+    }
+
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--charcoal);
+    }
+
+    .section p {
+      color: var(--mid);
+      font-size: 0.97rem;
+      max-width: 640px;
+      margin-bottom: 12px;
+      font-weight: 300;
+    }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .feature {
+      background: var(--warm-white);
+      padding: 20px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 2px;
+    }
+
+    .feature-text span {
+      font-size: 0.78rem;
+      color: var(--mid);
+      font-weight: 300;
+    }
+
+    /* ── PHOTO GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 280px 220px;
+      gap: 4px;
+      margin-top: 28px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.3s;
+      cursor: zoom-in;
+    }
+
+    .gallery-grid img:hover { opacity: 0.88; }
+
+    .gallery-grid .span2 { grid-column: span 2; }
+
+    /* ── HOUSEMATE CARD ── */
+    .housemate-card {
+      background: var(--cream);
+      border-left: 3px solid var(--sage);
+      padding: 28px 28px 28px 24px;
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .hm-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .housemate-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .housemate-card p {
+      font-size: 0.88rem;
+      max-width: 100%;
+    }
+
+    /* ── TERMS TABLE ── */
+    .terms-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+
+    .terms-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terms-table td {
+      padding: 14px 8px;
+      font-size: 0.92rem;
+    }
+
+    .terms-table td:first-child {
+      color: var(--mid);
+      font-weight: 300;
+      width: 40%;
+    }
+
+    .terms-table td:last-child {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--charcoal);
+      color: #fff;
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+
+    .cta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: #fff;
+      border: 2px solid var(--terracotta);
+    }
+
+    .btn-primary:hover { background: var(--terracotta-light); border-color: var(--terracotta-light); }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover { border-color: #fff; }
+
+    /* ── NO-FEE RIBBON ── */
+    .no-fee {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(122,140,110,0.15);
+      border: 1px solid var(--sage);
+      color: var(--sage-dark);
+      padding: 8px 16px;
+      border-radius: 2px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--mid);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .hero-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+      .hero-gallery .hero-main { grid-row: 1; grid-column: 1; }
+      .hero-gallery img:not(.hero-main) { display: none; }
+
+      .stats-grid { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-grid .span2 { grid-column: span 2; }
+
+      .housemate-card { grid-template-columns: 1fr; }
+    }
+
+    /* ── ENTRANCE ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-gallery">
+    <img class="hero-main" src="img_yard_night.jpeg" alt="Private enclosed yard at night" />
+    <img src="img_bedroom_master.jpeg" alt="Master bedroom" />
+    <img src="img_kitchen.jpeg" alt="Fully equipped kitchen" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="badge">Available June 15</span>
+    <h1>Your Own <em>Private</em> Retreat<br>in the Heart of LA</h1>
+    <p class="hero-sub">Furnished master bedroom · Private bath · Enclosed yard · Quiet professional household</p>
+    <div class="price-pill">
+      <span class="amount">$1,350</span>
+      <span class="unit">/month</span>
+      <span class="util">+ ½ utilities</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── AVAILABILITY BAR ── -->
+<div class="avail-bar">
+  🟢 <strong>Available June 15th — possibly sooner.</strong>&nbsp; No application fee. No hassle. Just good living.
+</div>
+
+<!-- ── QUICK STATS ── -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-icon">🛏</span>
+        <span class="stat-label">Bedroom</span>
+        <span class="stat-value">Queen Furnished</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🚿</span>
+        <span class="stat-label">Bathrooms</span>
+        <span class="stat-value">1.5 · Private</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🪵</span>
+        <span class="stat-label">Floors</span>
+        <span class="stat-value">Hardwood</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">👤</span>
+        <span class="stat-label">Housemates</span>
+        <span class="stat-value">1 (Rarely Home)</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🌿</span>
+        <span class="stat-label">Yard</span>
+        <span class="stat-value">Private &amp; Gated</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">📋</span>
+        <span class="stat-label">Lease</span>
+        <span class="stat-value">Independent</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The Space</div>
+    <h2>A house, not just a room.</h2>
+    <p>This is the master bedroom in a beautifully maintained lower duplex that lives and feels like a standalone house — not a cramped apartment situation. The space is quiet, well-kept, and set up for someone who values their own space while still having the ease of a shared home.</p>
+    <p>The room comes fully furnished with a queen size sleigh bed, quality mattress, dresser, nightstand, and accent chair. Large closet with plenty of storage. Gorgeous hardwood floors throughout. Crown molding. The kind of details that remind you this isn't just a rental.</p>
+    <p>The unit is 2 bedrooms with 1.5 baths — two separate sink areas, a tiled bathtub/shower, and a private bathroom that is effectively yours. Washer and dryer in-unit. Fully equipped kitchen with stainless appliances, gas range, dishwasher, and granite countertops. TV and high-speed internet included. Gas, water, and electricity are already running — you just split costs with one person.</p>
+
+    <div class="features-grid">
+      <div class="feature">
+        <span class="feature-icon">🛏️</span>
+        <div class="feature-text">
+          <strong>Queen Sleigh Bed</strong>
+          <span>Fully furnished, quality mattress included</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🚿</span>
+        <div class="feature-text">
+          <strong>Private Bath Access</strong>
+          <span>1.5 bath, 2 sinks, tiled tub/shower</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🪵</span>
+        <div class="feature-text">
+          <strong>Hardwood Floors</strong>
+          <span>Throughout the unit, warm &amp; clean</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">👚</span>
+        <div class="feature-text">
+          <strong>In-Unit Laundry</strong>
+          <span>Washer &amp; dryer, no laundromat runs</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📡</span>
+        <div class="feature-text">
+          <strong>TV + Internet</strong>
+          <span>High-speed Wi-Fi, streaming ready</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔥</span>
+        <div class="feature-text">
+          <strong>Gas Range &amp; Dishwasher</strong>
+          <span>Full kitchen, stainless appliances</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🌿</span>
+        <div class="feature-text">
+          <strong>Enclosed Private Yard</strong>
+          <span>Gated, green lawn, fruit trees, roses</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔐</span>
+        <div class="feature-text">
+          <strong>Gated Entry</strong>
+          <span>Tall privacy hedge, secure and serene</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🚗</span>
+        <div class="feature-text">
+          <strong>Street Parking</strong>
+          <span>Readily available on the street</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-text">
+          <strong>Utilities Ready</strong>
+          <span>Gas, electric &amp; water all set up</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🌱</span>
+        <div class="feature-text">
+          <strong>Eco-Conscious Home</strong>
+          <span>Mindful household preferred</span>
+        </div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🗓️</span>
+        <div class="feature-text">
+          <strong>Available June 15</strong>
+          <span>Possibly sooner — reach out</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Photos</div>
+    <h2>See every corner.</h2>
+    <div class="gallery-grid">
+      <img class="span2" src="img_yard_night.jpeg" alt="Private enclosed yard — evening" onclick="openLightbox(this.src)" />
+      <img src="img_exterior.jpeg" alt="Street view — privacy hedge" onclick="openLightbox(this.src)" />
+      <img src="img_bedroom_master.jpeg" alt="Master bedroom" onclick="openLightbox(this.src)" />
+      <img src="img_bedroom2.jpeg" alt="Bedroom alternate angle" onclick="openLightbox(this.src)" />
+      <img src="img_kitchen.jpeg" alt="Full kitchen" onclick="openLightbox(this.src)" />
+      <img src="img_living.jpeg" alt="Living and dining" onclick="openLightbox(this.src)" />
+      <img src="img_bath_tub.jpeg" alt="Bathroom with tub" onclick="openLightbox(this.src)" />
+      <img src="img_bath2.jpeg" alt="Second bathroom" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+</section>
+
+<!-- ── HOUSEMATE ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Your Housemate</div>
+    <h2>The house practically feels like yours.</h2>
+    <p>Your housemate is a recent college graduate working in finance. Weekdays he's at work. Most weekends, he's traveling. You won't be tripping over each other.</p>
+    <p>He's clean, respectful, and easy to coexist with. But more importantly — the leases are <strong>completely separate</strong>. If he moves out, it has zero impact on you: your lease, your utilities, your situation. No scramble to find a replacement. No shared risk. Just two adults living independently under the same roof.</p>
+
+    <div class="housemate-card">
+      <div class="hm-icon">👔</div>
+      <div>
+        <h3>Independent Leases · Zero Entanglement</h3>
+        <p>Each tenant signs their own separate lease. If your housemate moves, your lease is unaffected. Utilities are already established in each person's name. This is the rare shared living situation where you have the privacy of a house without the risk of a roommate arrangement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── YARD ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The Outdoor Space</div>
+    <h2>A private garden in the city.</h2>
+    <p>The enclosed yard is gated and lush — green lawn, fruit trees, rose bushes, string lights, and a patio seating area. The tall privacy hedge along the street means you get real separation from the sidewalk. It feels like a retreat.</p>
+    <p>This is the kind of outdoor space that makes you forget you're in LA — until you look up and see it's 75 degrees in January.</p>
+  </div>
+</section>
+
+<!-- ── TERMS ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The Details</div>
+    <h2>Simple, fair, transparent.</h2>
+
+    <div class="no-fee">✅ No application fee — ever</div>
+
+    <table class="terms-table">
+      <tr><td>Monthly Rent</td><td>$1,350 + 50% of shared utilities</td></tr>
+      <tr><td>Deposit</td><td>One month ($1,350) — fully refundable</td></tr>
+      <tr><td>Available</td><td>June 15, 2025 (possibly sooner)</td></tr>
+      <tr><td>Lease Type</td><td>Independent — not tied to other tenant</td></tr>
+      <tr><td>Furnished</td><td>Yes — queen sleigh bed, mattress, dresser, nightstand, chair</td></tr>
+      <tr><td>Utilities Included</td><td>Gas, water, electric all set up — split 50/50</td></tr>
+      <tr><td>Internet + TV</td><td>Included / in place</td></tr>
+      <tr><td>Laundry</td><td>In-unit washer &amp; dryer</td></tr>
+      <tr><td>Parking</td><td>Street parking (readily available)</td></tr>
+      <tr><td>Pets</td><td>No pets preferred — one well-behaved cat considered if all else qualifies</td></tr>
+      <tr><td>Background Check</td><td>Yes — standard</td></tr>
+      <tr><td>Application Fee</td><td>None</td></tr>
+      <tr><td>Household Vibe</td><td>Eco-conscious, quiet, respectful</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to see it in person?</h2>
+    <p>Reach out directly — no forms, no fees, no middleman. Just a quick message and we'll schedule a time.</p>
+    <div class="cta-grid">
+      <a class="btn btn-primary" href="mailto:room@mymacguy.net?subject=Room%20Inquiry%20–%20Master%20Bedroom">
+        ✉️ Send an Email
+      </a>
+      <a class="btn btn-outline" href="sms:+1XXXXXXXXXX">
+        💬 Text Us
+      </a>
+    </div>
+    <p style="margin-top:24px; font-size:0.8rem; color:rgba(255,255,255,0.35);">No application fee. Background check required. One month deposit, fully refundable.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Listed exclusively at <strong>mymacguy.net/room</strong> · Los Angeles, CA · ©2025</p>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Full size photo" />
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
