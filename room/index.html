@@ -643,6 +643,47 @@
       .photo-caption { padding: 10px 20px; }
     }
 
+    /* ── STICKY CTA BAR ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      gap: 0;
+      box-shadow: 0 -4px 24px rgba(44,44,42,0.18);
+    }
+
+    .sticky-cta a {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .sticky-cta a:hover { opacity: 0.88; }
+
+    .sticky-cta .cta-call {
+      background: var(--terracotta);
+      color: #fff;
+    }
+
+    .sticky-cta .cta-text {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    /* Push footer above sticky bar */
+    footer { margin-bottom: 56px; }
+
   </style>
 </head>
 <body>
@@ -788,6 +829,12 @@
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
+
+<!-- ── STICKY CTA ── -->
+<div class="sticky-cta">
+  <a class="cta-call" href="tel:+13232139697">📞 Call (323) 213-9697</a>
+  <a class="cta-text" href="sms:+13232139697">💬 Text Us</a>
+</div>
 
 </body>
 </html>
