@@ -580,24 +580,74 @@
     .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
     .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
     .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+    /* ── ROOM FEATURES LIST ── */
+    .room-features {
+      list-style: none;
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .room-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 14px 16px;
+      font-weight: 400;
+    }
+
+    .room-features li span { font-size: 1.2rem; flex-shrink: 0; }
+
+    /* ── SINGLE PHOTO BLOCK ── */
+    .photo-block {
+      padding: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .photo-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.25s;
+    }
+
+    .photo-block img:hover { opacity: 0.94; }
+
+    .photo-caption {
+      padding: 12px 32px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      background: var(--cream);
+    }
+
+    @media (max-width: 600px) {
+      .room-features { grid-template-columns: 1fr; }
+      .photo-caption { padding: 10px 20px; }
+    }
+
   </style>
 </head>
 <body>
 
 <div class="page-wallpaper"></div>
 
-<!-- ── HERO ── -->
+<!-- ── HERO: night outdoor photo ── -->
 <section class="hero">
-  <div class="hero-gallery">
-    <img class="hero-main" src="IMG_2834.jpeg" alt="Private enclosed yard at night" />
-    <img src="IMG_1432.jpeg" alt="Master bedroom" />
-    <img src="IMG_1401.jpeg" alt="Fully equipped kitchen" />
-  </div>
+  <div class="hero-gallery"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Private Room for Rent · Available June 15th</p>
-    <h1>Your Own <em>Private</em> Retreat<br>in the Heart of LA</h1>
-    <p class="hero-sub">Furnished master bedroom · Private bath · Enclosed yard · Quiet professional household</p>
+    <h1>Mid-City <em>Los Angeles</em></h1>
+    <p class="hero-sub">Share a beautiful home with one quiet roommate</p>
     <div class="price-pill">
       <span class="amount">$1,350</span>
       <span class="unit">/month</span>
@@ -608,7 +658,7 @@
 
 <!-- ── AVAILABILITY BAR ── -->
 <div class="avail-bar">
-  🟢 <strong>Available June 15th — possibly sooner.</strong>&nbsp; No application fee. No hassle. Just good living.
+  🟢 <strong>Available June 15th — possibly sooner.</strong>&nbsp; No application fee. No hassle.
 </div>
 
 <!-- ── QUICK STATS ── -->
@@ -616,29 +666,29 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat">
-        <span class="stat-icon">🛏</span>
-        <span class="stat-label">Bedroom</span>
-        <span class="stat-value">Queen Furnished</span>
+        <span class="stat-icon">💵</span>
+        <span class="stat-label">Rent</span>
+        <span class="stat-value">$1,350/mo</span>
       </div>
       <div class="stat">
-        <span class="stat-icon">🚿</span>
-        <span class="stat-label">Bathrooms</span>
-        <span class="stat-value">1.5 · Private</span>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">🪵</span>
-        <span class="stat-label">Floors</span>
-        <span class="stat-value">Hardwood</span>
+        <span class="stat-icon">📍</span>
+        <span class="stat-label">Location</span>
+        <span class="stat-value">Mid-City LA</span>
       </div>
       <div class="stat">
         <span class="stat-icon">👤</span>
-        <span class="stat-label">Housemates</span>
+        <span class="stat-label">Roommates</span>
         <span class="stat-value">1 (Rarely Home)</span>
       </div>
       <div class="stat">
-        <span class="stat-icon">🌿</span>
-        <span class="stat-label">Yard</span>
-        <span class="stat-value">Private &amp; Gated</span>
+        <span class="stat-icon">🛏</span>
+        <span class="stat-label">Room</span>
+        <span class="stat-value">Master · Furnished</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🚿</span>
+        <span class="stat-label">Bath</span>
+        <span class="stat-value">1.5 · Private Access</span>
       </div>
       <div class="stat">
         <span class="stat-icon">📋</span>
@@ -649,92 +699,113 @@
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ── ROOM FEATURES ── -->
 <section class="section">
   <div class="container">
-    <div class="section-label">The Space</div>
+    <div class="section-label">The Room</div>
+    <h2>What's in your space.</h2>
+    <ul class="room-features">
+      <li><span>🛏️</span> Queen sleigh bed + quality mattress</li>
+      <li><span>🚪</span> Large closet with full storage</li>
+      <li><span>🪵</span> Hardwood floors throughout</li>
+      <li><span>🚿</span> Private access to full bathroom</li>
+      <li><span>🛁</span> 2 baths in unit — 1 effectively yours</li>
+      <li><span>🪑</span> Dresser, nightstand &amp; accent chair</li>
+      <li><span>👑</span> Crown molding &amp; recessed lighting</li>
+      <li><span>🌅</span> Multiple windows, natural light</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── ROOM PHOTOS ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The Room</div>
+    <h2>Your bedroom.</h2>
+  </div>
+  <div class="gallery-scroll" style="margin-top:24px; padding: 0 32px; max-width:960px; margin-left:auto; margin-right:auto;">
+    <img src="IMG_2849.jpeg" alt="Master bedroom — evening" onclick="openLightbox(this.src)" />
+    <img src="IMG_2846.jpeg" alt="Master bedroom — daylight" onclick="openLightbox(this.src)" />
+    <img src="IMG_2834.jpeg" alt="Bedroom — closet view" onclick="openLightbox(this.src)" />
+  </div>
+</section>
+
+<!-- ── ABOUT / HOUSEMATE / TERMS ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The Home</div>
     <h2>A house, not just a room.</h2>
-    <p>This is the master bedroom in a beautifully maintained lower duplex that lives and feels like a standalone house — not a cramped apartment situation. The space is quiet, well-kept, and set up for someone who values their own space while still having the ease of a shared home.</p>
-    <p>The room comes fully furnished with a queen size sleigh bed, quality mattress, dresser, nightstand, and accent chair. Large closet with plenty of storage. Gorgeous hardwood floors throughout. Crown molding. The kind of details that remind you this isn't just a rental.</p>
-    <p>The unit is 2 bedrooms with 1.5 baths — two separate sink areas, a tiled bathtub/shower, and a private bathroom that is effectively yours. Washer and dryer in-unit. Fully equipped kitchen with stainless appliances, gas range, dishwasher, and granite countertops. TV and high-speed internet included. Gas, water, and electricity are already running — you just split costs with one person.</p>
+    <p>This is the master bedroom in a beautifully maintained lower duplex that lives and feels like a standalone house. Quiet, well-kept, and set up for someone who values their space while still having the ease of a shared home.</p>
+    <p>The unit is 2 bedrooms with 1.5 baths. Washer and dryer in-unit. Fully equipped kitchen with stainless appliances, gas range, dishwasher, and granite countertops. TV and high-speed internet included. Gas, water, and electricity are already running — you just split costs with one person.</p>
   </div>
 </section>
 
-<!-- ── GALLERY ── -->
-<section class="section">
-  <div class="container">
-    <div class="section-label">Photos</div>
-    <h2>See every corner.</h2>
-    <div class="gallery-scroll">
-      <img src="IMG_2849.jpeg" alt="Master bedroom — evening" onclick="openLightbox(this.src)" />
-      <img src="IMG_2846.jpeg" alt="Bedroom — daylight" onclick="openLightbox(this.src)" />
-      <img src="IMG_2834.jpeg" alt="Bedroom detail" onclick="openLightbox(this.src)" />
-      <img src="IMG_1436.jpeg" alt="Interior" onclick="openLightbox(this.src)" />
-      <img src="IMG_1432.jpeg" alt="Interior" onclick="openLightbox(this.src)" />
-      <img src="IMG_2743.jpeg" alt="Living area" onclick="openLightbox(this.src)" />
-      <img src="IMG_1397.jpeg" alt="Living and dining" onclick="openLightbox(this.src)" />
-      <img src="IMG_1401.jpeg" alt="Kitchen" onclick="openLightbox(this.src)" />
-      <img src="IMG_1405.jpeg" alt="Kitchen detail" onclick="openLightbox(this.src)" />
-      <img src="IMG_1418.jpeg" alt="Bathroom" onclick="openLightbox(this.src)" />
-      <img src="img_bath2.jpeg" alt="Second bathroom" onclick="openLightbox(this.src)" />
-      <img src="IMG_3071.jpeg" alt="Exterior — evening" onclick="openLightbox(this.src)" />
-      <img src="IMG_7274.jpeg" alt="Privacy hedge" onclick="openLightbox(this.src)" />
-      <img src="IMG_2537.jpeg" alt="Detail" onclick="openLightbox(this.src)" />
-    </div>
-  </div>
-</section>
-
-<!-- ── HOUSEMATE ── -->
 <section class="section">
   <div class="container">
     <div class="section-label">Your Housemate</div>
     <h2>The house practically feels like yours.</h2>
-    <p>Your housemate is a recent college graduate working in finance. Weekdays he's at work. Most weekends, he's traveling. You won't be tripping over each other.</p>
-    <p>He's clean, respectful, and easy to coexist with. But more importantly — the leases are <strong>completely separate</strong>. If he moves out, it has zero impact on you: your lease, your utilities, your situation. No scramble to find a replacement. No shared risk. Just two adults living independently under the same roof.</p>
-
+    <p>A recent college graduate working in finance — weekdays at work, most weekends traveling. You won't be tripping over each other.</p>
     <div class="housemate-card">
       <div class="hm-icon">👔</div>
       <div>
         <h3>Independent Leases · Zero Entanglement</h3>
-        <p>Each tenant signs their own separate lease. If your housemate moves, your lease is unaffected. Utilities are already established in each person's name. This is the rare shared living situation where you have the privacy of a house without the risk of a roommate arrangement.</p>
+        <p>Each tenant has their own separate lease. If your housemate moves, your lease is unaffected. This is the rare shared living situation with the privacy of a house and none of the roommate risk.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── YARD ── -->
-<section class="section">
-  <div class="container">
-    <div class="section-label">The Outdoor Space</div>
-    <h2>A private garden in the city.</h2>
-    <p>The enclosed yard is gated and lush — green lawn, fruit trees, rose bushes, string lights, and a patio seating area. The tall privacy hedge along the street means you get real separation from the sidewalk. It feels like a retreat.</p>
-    <p>This is the kind of outdoor space that makes you forget you're in LA — until you look up and see it's 75 degrees in January.</p>
-  </div>
-</section>
-
-<!-- ── TERMS ── -->
 <section class="section">
   <div class="container">
     <div class="section-label">The Details</div>
     <h2>Simple, fair, transparent.</h2>
-
     <div class="no-fee">✅ No application fee — ever</div>
-
     <table class="terms-table">
       <tr><td>Monthly Rent</td><td>$1,350 + 50% of shared utilities</td></tr>
       <tr><td>Deposit</td><td>One month ($1,350) — fully refundable</td></tr>
       <tr><td>Available</td><td>June 15, 2026 (possibly sooner)</td></tr>
       <tr><td>Lease Type</td><td>Independent — not tied to other tenant</td></tr>
       <tr><td>Furnished</td><td>Yes — queen sleigh bed, mattress, dresser, nightstand, chair</td></tr>
-      <tr><td>Utilities Included</td><td>Gas, water, electric all set up — split 50/50</td></tr>
+      <tr><td>Utilities</td><td>Gas, water, electric all set up — split 50/50</td></tr>
       <tr><td>Internet + TV</td><td>Included / in place</td></tr>
       <tr><td>Laundry</td><td>In-unit washer &amp; dryer</td></tr>
       <tr><td>Parking</td><td>Street parking (readily available)</td></tr>
-      <tr><td>Pets</td><td>No pets preferred — one well-behaved cat considered if all else qualifies</td></tr>
+      <tr><td>Pets</td><td>No pets — one well-behaved cat considered</td></tr>
       <tr><td>Background Check</td><td>Yes — standard</td></tr>
       <tr><td>Application Fee</td><td>None</td></tr>
-      <tr><td>Household Vibe</td><td>Eco-conscious, quiet, respectful</td></tr>
     </table>
+  </div>
+</section>
+
+<!-- ── LIVING AREA PHOTO ── -->
+<div class="photo-block">
+  <img src="IMG_2743.jpeg" alt="Living and dining area" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Living &amp; Dining Area</div>
+</div>
+
+<!-- ── KITCHEN PHOTO ── -->
+<div class="photo-block">
+  <img src="IMG_1401.jpeg" alt="Kitchen" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Kitchen — Stainless Appliances · Gas Range · Granite</div>
+</div>
+
+<!-- ── BATHROOM PHOTO ── -->
+<div class="photo-block">
+  <img src="IMG_1418.jpeg" alt="Bathroom" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Bathroom — Tiled Tub/Shower · 2 Sinks</div>
+</div>
+
+<!-- ── OUTDOOR PHOTOS ── -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The Outdoor Space</div>
+    <h2>A private garden in the city.</h2>
+    <p>Gated and enclosed — green lawn, fruit trees, rose bushes, string lights, patio seating. The tall privacy hedge along the street gives you real separation from the sidewalk.</p>
+  </div>
+  <div class="gallery-scroll" style="margin-top:24px; padding: 0 32px; max-width:960px; margin-left:auto; margin-right:auto;">
+    <img src="IMG_3071.jpeg" alt="Exterior — evening" onclick="openLightbox(this.src)" />
+    <img src="IMG_7274.jpeg" alt="Privacy hedge" onclick="openLightbox(this.src)" />
+    <img src="IMG_2537.jpeg" alt="Yard detail" onclick="openLightbox(this.src)" />
   </div>
 </section>
 
@@ -742,7 +813,7 @@
 <section class="amenities-section">
   <div class="container">
     <div class="section-label" style="margin-bottom:8px;">What's Included</div>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; margin-bottom:28px; color:var(--charcoal);">Everything you need.</h2>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; margin-bottom:28px; color:#fff;">Everything you need.</h2>
     <div class="amenities-tiles">
       <div class="amenity-tile"><span>🛏️</span><strong>Queen Sleigh Bed</strong><span>Furnished + mattress</span></div>
       <div class="amenity-tile"><span>🚿</span><strong>Private Bath</strong><span>1.5 bath · 2 sinks · tub</span></div>
@@ -764,21 +835,17 @@
 <section class="cta-section">
   <div class="container">
     <h2>Ready to see it in person?</h2>
-    <p>Reach out directly — no forms, no fees, no middleman. Just a quick message and we'll schedule a time.</p>
+    <p>No forms, no fees, no middleman. Call or text to schedule a showing.</p>
     <div class="cta-grid">
-      <a class="btn btn-primary" href="tel:+13232139697">
-        📞 Call (323) 213-9697
-      </a>
-      <a class="btn btn-outline" href="sms:+13232139697">
-        💬 Text (323) 213-9697
-      </a>
+      <a class="btn btn-primary" href="tel:+13232139697">📞 Call (323) 213-9697</a>
+      <a class="btn btn-outline" href="sms:+13232139697">💬 Text (323) 213-9697</a>
     </div>
     <p style="margin-top:24px; font-size:0.8rem; color:rgba(255,255,255,0.35);">No application fee. Background check required. One month deposit, fully refundable.</p>
   </div>
 </section>
 
 <footer>
-  <p>Listed exclusively at <strong>mymacguy.net/room</strong> · Los Angeles, CA · ©2026</p>
+  <p>Listed exclusively at <strong>mymacguy.net/room</strong> · Mid-City Los Angeles, CA · ©2026</p>
 </footer>
 
 <!-- ── LIGHTBOX ── -->
@@ -793,15 +860,11 @@
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
   }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>
