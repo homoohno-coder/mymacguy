@@ -166,38 +166,42 @@
       padding: 0 32px;
     }
 
-    /* ── QUICK STATS ── */
-    .stats-strip {
+    /* ── ICON TILES ── */
+    .icon-tiles {
       background: var(--cream);
       border-bottom: 1px solid var(--border);
-      padding: 32px 0;
+      padding: 20px 32px;
     }
 
-    .stats-grid {
+    .icon-tiles-row {
       display: flex;
       flex-wrap: wrap;
+      gap: 8px;
       justify-content: center;
-      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
     }
 
-    .stat {
-      flex: 0 0 auto;
-      min-width: 140px;
-      padding: 20px 24px;
-      border-right: 1px solid var(--border);
+    .icon-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      width: 72px;
+      height: 72px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       text-align: center;
     }
 
-    .stat:last-child { border-right: none; }
-
-    @media (max-width: 700px) {
-      .stat {
-        flex: 0 0 33.33%;
-        border-right: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-      }
-      .stat:nth-child(3n) { border-right: none; }
-    }
+    .icon-tile .ti { font-size: 1.4rem; }
 
     .stat-icon {
       font-size: 1.4rem;
@@ -671,43 +675,23 @@
   🟢 <strong>Available June 15th — possibly sooner.</strong>&nbsp; No application fee. No hassle.
 </div>
 
-<!-- ── QUICK STATS ── -->
-<section class="stats-strip">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat">
-        <span class="stat-icon">💵</span>
-        <span class="stat-label">Rent</span>
-        <span class="stat-value">$1,350/mo</span>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">📍</span>
-        <span class="stat-label">Location</span>
-        <span class="stat-value">Mid-City LA</span>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">👤</span>
-        <span class="stat-label">Roommates</span>
-        <span class="stat-value">1 (Rarely Home)</span>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">🛏</span>
-        <span class="stat-label">Room</span>
-        <span class="stat-value">Master · Furnished</span>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">🚿</span>
-        <span class="stat-label">Bath</span>
-        <span class="stat-value">1.5 · Private Access</span>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">📋</span>
-        <span class="stat-label">Lease</span>
-        <span class="stat-value">Independent</span>
-      </div>
-    </div>
+<!-- ── ICON TILES ── -->
+<div class="icon-tiles">
+  <div class="icon-tiles-row">
+    <div class="icon-tile"><span class="ti">💵</span>$1,350/mo</div>
+    <div class="icon-tile"><span class="ti">📍</span>Mid-City</div>
+    <div class="icon-tile"><span class="ti">👤</span>1 Roommate</div>
+    <div class="icon-tile"><span class="ti">🛏</span>Queen Bed</div>
+    <div class="icon-tile"><span class="ti">🚿</span>Shower</div>
+    <div class="icon-tile"><span class="ti">🪵</span>Hardwood</div>
+    <div class="icon-tile"><span class="ti">👚</span>Laundry</div>
+    <div class="icon-tile"><span class="ti">🌿</span>Yard</div>
+    <div class="icon-tile"><span class="ti">📡</span>Wi-Fi</div>
+    <div class="icon-tile"><span class="ti">🔥</span>Gas Stove</div>
+    <div class="icon-tile"><span class="ti">🚗</span>Parking</div>
+    <div class="icon-tile"><span class="ti">🔐</span>Gated</div>
   </div>
-</section>
+</div>
 
 <!-- ── ROOM FEATURES ── -->
 <section class="section">
