@@ -571,20 +571,59 @@
       .housemate-card { grid-template-columns: 1fr; }
     }
 
-    /* ── ENTRANCE ANIMATION ── */
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-content > * {
-      animation: fadeUp 0.8s ease both;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
-    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
-    .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+    .hero-content .hero-eyebrow:first-child {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+    }
+
+    .hero-content .hero-eyebrow:nth-child(2) {
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    }
+
+    .hero h1 {
+      animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+    }
+
+    .hero-sub {
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both;
+    }
+
+    .price-pill {
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.95s both;
+    }
+
+    /* Subtle fade-in for photos as they scroll into view */
+    .photo-block img {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .photo-block img.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-content .hero-eyebrow,
+      .hero h1, .hero-sub, .price-pill,
+      .photo-block img {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
     /* ── ROOM FEATURES LIST ── */
     .room-features {
       list-style: none;
@@ -815,6 +854,18 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Scroll-triggered photo reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.photo-block img').forEach(img => observer.observe(img));
 </script>
 
 <!-- ── STICKY CTA ── -->
