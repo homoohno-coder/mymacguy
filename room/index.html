@@ -176,18 +176,28 @@
     .stats-grid {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 0;
     }
 
     .stat {
-      flex: 1;
-      min-width: 130px;
-      padding: 12px 20px;
+      flex: 0 0 auto;
+      min-width: 140px;
+      padding: 20px 24px;
       border-right: 1px solid var(--border);
       text-align: center;
     }
 
     .stat:last-child { border-right: none; }
+
+    @media (max-width: 700px) {
+      .stat {
+        flex: 0 0 33.33%;
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .stat:nth-child(3n) { border-right: none; }
+    }
 
     .stat-icon {
       font-size: 1.4rem;
