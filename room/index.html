@@ -90,7 +90,7 @@
     .hero-gallery {
       position: absolute;
       inset: 0;
-      background: url('IMG_3071.jpeg') center/cover no-repeat;
+      background: url('IMG_3071.webp') center/cover no-repeat;
     }
 
     .hero-gallery img { display: none; }
@@ -334,7 +334,7 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background: url('IMG_3071.jpeg') center/cover no-repeat;
+      background: url('IMG_3071.webp') center/cover no-repeat;
       opacity: 0.12;
       pointer-events: none;
     }
@@ -595,8 +595,107 @@
       color: var(--mid);
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 700px) {
+    /* ── FLOATING BADGE ── */
+    .floating-badge {
+      position: fixed;
+      bottom: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.9);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      white-space: nowrap;
+      pointer-events: none;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { opacity: 0.85; }
+      50% { opacity: 1; }
+    }
+
+    /* ── NEIGHBORHOOD STRIP ── */
+    .neighborhood-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .neighborhood-map {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .neighborhood-map iframe {
+      width: 100%; height: 100%;
+      display: block;
+      border: none;
+      filter: saturate(0.7) contrast(1.05);
+    }
+
+    .neighborhood-info {
+      background: var(--cream);
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .neighborhood-info .n-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .neighborhood-info .n-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--charcoal);
+      line-height: 1.2;
+    }
+
+    .neighborhood-info .n-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .n-tag {
+      font-size: 0.68rem;
+      color: var(--mid);
+      background: rgba(44,44,42,0.06);
+      border-radius: 2px;
+      padding: 3px 8px;
+    }
+
+    @media (max-width: 600px) {
+      .neighborhood-strip { grid-template-columns: 1fr; }
+      .neighborhood-map { height: 180px; }
+      .hero { min-height: 85vh; }
+      .hero-content { padding-bottom: 20px; }
+      .floating-badge { font-size: 0.66rem; padding: 7px 14px; }
+    }
+
+    /* ── MOBILE HERO CROP FIX ── */
+    @media (max-width: 500px) {
+      .hero-gallery {
+        background-position: 30% center;
+      }
+    }
       .hero-gallery {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
@@ -777,10 +876,10 @@
   <div class="hero-gallery"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Furnished Housing  </span>
+    <span class="hero-eyebrow">Private Room for Rent</span>
     <span class="hero-eyebrow" style="color:rgba(255,255,255,0.5); font-style:italic;">Available June 15th</span>
-    <h1>Mid-City . West Adams area <em>Los Angeles</em></h1>
-    <p class="hero-sub">Gigabit Wi-Fi · 1 1/2 baths · Gated yard · One quiet housemate</p>
+    <h1>Mid-City <em>Los Angeles</em></h1>
+    <p class="hero-sub">Quiet professional household · One roommate · Your lease</p>
     <div class="price-pill">
       <span class="amount">$1,350</span>
       <span class="unit">/mo</span>
@@ -788,6 +887,9 @@
     </div>
   </div>
 </section>
+
+<!-- ── FLOATING BADGE ── -->
+<div class="floating-badge">📅 Available June 15 · 💬 Text Preferred</div>
 
 <!-- ── AVAILABILITY BAR ── -->
 <div class="avail-bar">
@@ -821,13 +923,13 @@
 
 <!-- ── BEDROOM PHOTOS ── -->
 <div class="photo-block">
-  <img src="IMG_2849.jpeg" alt="Master bedroom — evening" onclick="openLightbox(this.src)" />
+  <img src="IMG_2849.webp" alt="Master bedroom — evening" onclick="openLightbox(this.src)" />
 </div>
 <div class="photo-block">
-  <img src="IMG_2846.jpeg" alt="Master bedroom — panoramic" onclick="openLightbox(this.src)" />
+  <img src="IMG_2846.webp" alt="Master bedroom — panoramic" onclick="openLightbox(this.src)" />
 </div>
 <div class="photo-block">
-  <img src="IMG_2834.jpeg" alt="Bedroom — closet view" onclick="openLightbox(this.src)" />
+  <img src="IMG_2834.webp" alt="Bedroom — closet view" onclick="openLightbox(this.src)" />
 </div>
 
 <!-- ── HOME DESCRIPTION ── -->
@@ -860,38 +962,63 @@
 
 <!-- ── LIVING AREA PHOTO ── -->
 <div class="photo-block">
-  <img src="IMG_2743.jpeg" alt="Living and dining area" onclick="openLightbox(this.src)" />
+  <img src="IMG_2743.webp" alt="Living and dining area" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Living &amp; Dining Area</div>
 </div>
 
 <!-- ── KITCHEN PHOTO ── -->
 <div class="photo-block">
-  <img src="IMG_1401.jpeg" alt="Kitchen" onclick="openLightbox(this.src)" />
+  <img src="IMG_1401.webp" alt="Kitchen" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Kitchen — Gas Range · Stainless · Granite</div>
 </div>
 
 <!-- ── BATHROOM PHOTO ── -->
 <div class="photo-block">
-  <img src="IMG_1418.jpeg" alt="Bathroom" onclick="openLightbox(this.src)" />
+  <img src="IMG_1418.webp" alt="Bathroom" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Bathroom — Tiled Tub/Shower · 2 Sinks</div>
 </div>
 
 <!-- ── OUTDOOR PHOTOS ── -->
 <div class="photo-block">
-  <img src="IMG_3071.jpeg" alt="Exterior — evening" onclick="openLightbox(this.src)" />
+  <img src="IMG_3071.webp" alt="Exterior — evening" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Private Gated Yard · String Lights · Lawn</div>
 </div>
 <div class="photo-block">
-  <img src="IMG_1432.jpeg" alt="Yard — gate and garden" onclick="openLightbox(this.src)" />
+  <img src="IMG_1432.webp" alt="Yard — gate and garden" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Gated Entry · Garden · Red Flowers · Palm</div>
 </div>
 <div class="photo-block">
-  <img src="IMG_1436.jpeg" alt="Street — privacy hedge" onclick="openLightbox(this.src)" />
+  <img src="IMG_1436.webp" alt="Street — privacy hedge" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Street View — Full Privacy Hedge</div>
 </div>
 <div class="photo-block">
-  <img src="IMG_7274.jpeg" alt="Privacy hedge" onclick="openLightbox(this.src)" />
+  <img src="IMG_7274.webp" alt="Privacy hedge" onclick="openLightbox(this.src)" />
   <div class="photo-caption">Privacy Hedge — Street Level</div>
+</div>
+
+<!-- ── NEIGHBORHOOD STRIP ── -->
+<div class="neighborhood-strip">
+  <div class="neighborhood-map">
+    <iframe
+      title="Mid-City Los Angeles"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.0!2d-118.3392!3d34.0349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2b8e2f5c8cda7%3A0x1!2sMid-City%2C+Los+Angeles%2C+CA+90019!5e0!3m2!1sen!2sus!4v1"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="neighborhood-info">
+    <div class="n-label">Mid-City · 90019</div>
+    <div class="n-value">Minutes from everywhere</div>
+    <div class="n-tags">
+      <span class="n-tag">Culver City 8 min</span>
+      <span class="n-tag">DTLA 12 min</span>
+      <span class="n-tag">Hollywood 15 min</span>
+      <span class="n-tag">10 &amp; 110 Fwy</span>
+      <span class="n-tag">Expo/Crenshaw Metro</span>
+      <span class="n-tag">Pico Blvd dining</span>
+    </div>
+  </div>
 </div>
 
 <!-- ── CTA ── -->
