@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshops · Imaginarium Theatre Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Figtree:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:    #050507;
+      --deep:    #0c0c10;
+      --surface: #131318;
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.12);
+      --text:    #c8c4bc;
+      --muted:   rgba(200,196,188,0.4);
+      --heading: #f0ece4;
+      --gold:    #c8a96e;
+      --gold2:   #e8c98e;
+      --red:     #8b2020;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--void); color: var(--text); font-family: 'Figtree', sans-serif; overflow-x: hidden; cursor: none; }
+
+    .cursor { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(200,169,110,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.12s ease; }
+
+    body::before { content: ''; position: fixed; inset: 0; z-index: 9000; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.038; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; height: 72px; background: rgba(5,5,7,0.94); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); }
+    .nav-logo { font-family: 'Cormorant', serif; font-size: 0.95rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--heading); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    @media (max-width: 700px) { nav { padding: 0 24px; } .nav-links { display: none; } }
+
+    /* PAGE HEADER */
+    .page-header { padding: 160px 60px 80px; border-bottom: 1px solid var(--border); background: var(--deep); position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 100% at 80% 50%, rgba(139,32,32,0.12) 0%, transparent 60%); }
+
+    .page-kicker { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; position: relative; }
+    .page-kicker::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+
+    .page-title { font-family: 'Cormorant', serif; font-size: clamp(4rem, 10vw, 9rem); font-weight: 300; color: var(--heading); letter-spacing: -0.04em; line-height: 0.9; position: relative; }
+    .page-title em { font-style: italic; color: rgba(240,236,228,0.25); }
+
+    .page-desc { font-size: 1rem; color: var(--muted); max-width: 520px; line-height: 1.75; font-weight: 300; margin-top: 28px; position: relative; }
+
+    /* SCHEDULE SECTION */
+    .schedule-section { padding: 80px 60px; }
+
+    .schedule-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 32px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-title { font-family: 'Cormorant', serif; font-size: 2rem; font-weight: 300; color: var(--heading); letter-spacing: -0.02em; }
+    .schedule-meta { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+
+    /* WORKSHOP CARD */
+    .workshop-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .workshop-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      gap: 0;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .workshop-card:hover { border-color: var(--border2); }
+
+    .workshop-card.featured {
+      border-color: rgba(200,169,110,0.25);
+      background: linear-gradient(135deg, rgba(200,169,110,0.04) 0%, var(--surface) 60%);
+    }
+
+    .workshop-date {
+      padding: 32px 24px;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      background: var(--deep);
+    }
+
+    .workshop-date-day { font-family: 'Cormorant', serif; font-size: 3rem; font-weight: 300; color: var(--heading); line-height: 1; }
+    .workshop-date-month { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+    .workshop-date-year { font-family: 'DM Mono', monospace; font-size: 0.52rem; color: var(--muted); margin-top: 2px; }
+
+    .workshop-body { padding: 28px 32px; }
+
+    .workshop-tags { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .workshop-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.55rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 3px 10px; border: 1px solid var(--border2);
+      color: var(--muted);
+    }
+    .workshop-tag.gold { border-color: rgba(200,169,110,0.4); color: var(--gold); }
+    .workshop-tag.red { border-color: rgba(139,32,32,0.5); color: #c04040; }
+
+    .workshop-name { font-family: 'Cormorant', serif; font-size: 1.6rem; font-weight: 400; color: var(--heading); letter-spacing: -0.02em; margin-bottom: 6px; }
+    .workshop-instructor { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; }
+    .workshop-desc { font-size: 0.85rem; color: var(--text); line-height: 1.75; font-weight: 300; max-width: 540px; }
+
+    .workshop-logistics {
+      padding: 28px 28px;
+      border-left: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 12px;
+      min-width: 180px;
+    }
+
+    .logistic { display: flex; flex-direction: column; gap: 2px; }
+    .logistic-label { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .logistic-value { font-size: 0.85rem; color: var(--heading); font-weight: 400; }
+
+    .btn-register {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--gold);
+      color: var(--gold); padding: 10px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+      text-decoration: none; background: none;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer; margin-top: 8px;
+    }
+    .btn-register:hover { background: var(--gold); color: var(--void); }
+
+    .workshop-card.past { opacity: 0.45; }
+    .workshop-card.past:hover { opacity: 0.7; }
+
+    /* PHILOSOPHY STRIP */
+    .philosophy {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .philosophy-item {
+      padding: 36px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .philosophy-num { font-family: 'Cormorant', serif; font-size: 3rem; font-weight: 300; color: rgba(200,169,110,0.1); line-height: 1; margin-bottom: 12px; }
+    .philosophy-title { font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 400; color: var(--heading); margin-bottom: 10px; }
+    .philosophy-text { font-size: 0.82rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+    /* PRIVATE INQUIRY */
+    .private-section { padding: 80px 60px; }
+
+    .private-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .private-left { padding: 56px 48px; }
+    .private-left h2 { font-family: 'Cormorant', serif; font-size: 3rem; font-weight: 300; color: var(--heading); letter-spacing: -0.03em; line-height: 1; margin-bottom: 20px; }
+    .private-left h2 em { font-style: italic; color: var(--gold); }
+    .private-left p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 28px; }
+
+    .private-right {
+      background: var(--deep);
+      border-left: 1px solid var(--border);
+      padding: 56px 48px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+
+    .inquiry-field {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+
+    .inquiry-field label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+    .inquiry-field input,
+    .inquiry-field select,
+    .inquiry-field textarea {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: var(--heading);
+      padding: 12px 14px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .inquiry-field input:focus,
+    .inquiry-field select:focus,
+    .inquiry-field textarea:focus { border-color: var(--gold); }
+    .inquiry-field select option { background: var(--deep); }
+
+    .btn-submit {
+      background: var(--gold); color: var(--void);
+      border: none; padding: 14px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .btn-submit:hover { background: var(--gold2); }
+
+    footer { padding: 32px 60px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Cormorant', serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.7rem; color: rgba(200,196,188,0.2); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s, transform 0.8s; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .page-header { animation: fadeIn 0.8s ease both; }
+
+    @media (max-width: 900px) {
+      .page-header, .schedule-section, .philosophy, .private-section { padding: 120px 28px 60px; }
+      .schedule-section, .philosophy, .private-section { padding: 60px 28px; }
+      .workshop-card { grid-template-columns: 1fr; }
+      .workshop-date { flex-direction: row; gap: 16px; border-right: none; border-bottom: 1px solid var(--border); padding: 20px 24px; }
+      .workshop-logistics { border-left: none; border-top: 1px solid var(--border); flex-direction: row; flex-wrap: wrap; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .private-card { grid-template-columns: 1fr; }
+      .private-right { border-left: none; border-top: 1px solid var(--border); }
+      footer { flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="../" class="nav-logo">IMAGINARIUM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="../#about">About</a></li>
+    <li><a href="../#productions">Productions</a></li>
+    <li><a href="../#ensemble">Ensemble</a></li>
+    <li><a href="../gallery/">Gallery</a></li>
+    <li><a href="." class="active">Workshops</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-kicker">Imaginarium Theatre Works · Training & Practice</div>
+  <h1 class="page-title">Work<br><em>shops</em></h1>
+  <p class="page-desc">Open sessions, intensives, and ensemble labs. We train in devised performance, The Viewpoints, Suzuki Method, and Clown — in Los Angeles and beyond.</p>
+</div>
+
+<!-- UPCOMING -->
+<div class="schedule-section">
+  <div class="schedule-header reveal">
+    <div class="schedule-title">Upcoming Sessions</div>
+    <div class="schedule-meta">Los Angeles · 2026</div>
+  </div>
+
+  <div class="workshop-list">
+
+    <div class="workshop-card featured reveal">
+      <div class="workshop-date">
+        <div class="workshop-date-day">14</div>
+        <div class="workshop-date-month">Jun</div>
+        <div class="workshop-date-year">2026</div>
+      </div>
+      <div class="workshop-body">
+        <div class="workshop-tags">
+          <span class="workshop-tag gold">Open Enrollment</span>
+          <span class="workshop-tag">Viewpoints</span>
+          <span class="workshop-tag">All Levels</span>
+        </div>
+        <div class="workshop-name">Introduction to The Viewpoints</div>
+        <div class="workshop-instructor">Led by Robert Augustine & Amelia Whitney</div>
+        <p class="workshop-desc">A three-hour introduction to the SITI Company's compositional framework for ensemble work. We explore the nine Viewpoints — Tempo, Duration, Kinesthetic Response, Repetition, Shape, Gesture, Architecture, Spatial Relationship, and Topography — through structured exercises and open improvisation.</p>
+      </div>
+      <div class="workshop-logistics">
+        <div class="logistic"><div class="logistic-label">Time</div><div class="logistic-value">2:00 – 5:00 PM</div></div>
+        <div class="logistic"><div class="logistic-label">Location</div><div class="logistic-value">TBD · Los Angeles</div></div>
+        <div class="logistic"><div class="logistic-label">Cost</div><div class="logistic-value">$25 / sliding scale</div></div>
+        <div class="logistic"><div class="logistic-label">Capacity</div><div class="logistic-value">12 participants</div></div>
+        <a href="mailto:Imaginariumtw@protonmail.com?subject=Viewpoints Workshop - June 14" class="btn-register">Register →</a>
+      </div>
+    </div>
+
+    <div class="workshop-card reveal">
+      <div class="workshop-date">
+        <div class="workshop-date-day">28</div>
+        <div class="workshop-date-month">Jun</div>
+        <div class="workshop-date-year">2026</div>
+      </div>
+      <div class="workshop-body">
+        <div class="workshop-tags">
+          <span class="workshop-tag gold">Open Enrollment</span>
+          <span class="workshop-tag">Clown</span>
+          <span class="workshop-tag">Physical Comedy</span>
+        </div>
+        <div class="workshop-name">Clown Lab: Failure as Form</div>
+        <div class="workshop-instructor">Led by Robert Augustine</div>
+        <p class="workshop-desc">An afternoon of clown practice built around the performer's relationship to failure, surprise, and the audience. Influenced by Del'Arte International and The Red Bastard, this lab creates a space to take risks in front of witnesses and discover what happens when things don't go as planned.</p>
+      </div>
+      <div class="workshop-logistics">
+        <div class="logistic"><div class="logistic-label">Time</div><div class="logistic-value">1:00 – 4:00 PM</div></div>
+        <div class="logistic"><div class="logistic-label">Location</div><div class="logistic-value">TBD · Los Angeles</div></div>
+        <div class="logistic"><div class="logistic-label">Cost</div><div class="logistic-value">$20 / sliding scale</div></div>
+        <div class="logistic"><div class="logistic-label">Capacity</div><div class="logistic-value">10 participants</div></div>
+        <a href="mailto:Imaginariumtw@protonmail.com?subject=Clown Lab - June 28" class="btn-register">Register →</a>
+      </div>
+    </div>
+
+    <div class="workshop-card reveal">
+      <div class="workshop-date">
+        <div class="workshop-date-day">12</div>
+        <div class="workshop-date-month">Jul</div>
+        <div class="workshop-date-year">2026</div>
+      </div>
+      <div class="workshop-body">
+        <div class="workshop-tags">
+          <span class="workshop-tag red">Intensive · 2 Days</span>
+          <span class="workshop-tag">Devised Theatre</span>
+          <span class="workshop-tag">Ensemble</span>
+        </div>
+        <div class="workshop-name">Devising Weekend Intensive</div>
+        <div class="workshop-instructor">Led by Robert Augustine & Amelia Whitney</div>
+        <p class="workshop-desc">A two-day intensive in ensemble-based devising practices. Participants will work together to create a short performance piece from scratch using source material provided on day one. No previous experience in devising required — only a willingness to collaborate, fail, and try again.</p>
+      </div>
+      <div class="workshop-logistics">
+        <div class="logistic"><div class="logistic-label">Dates</div><div class="logistic-value">Jul 12–13, 2026</div></div>
+        <div class="logistic"><div class="logistic-label">Location</div><div class="logistic-value">TBD · Los Angeles</div></div>
+        <div class="logistic"><div class="logistic-label">Cost</div><div class="logistic-value">$80 / sliding scale</div></div>
+        <div class="logistic"><div class="logistic-label">Capacity</div><div class="logistic-value">8 participants</div></div>
+        <a href="mailto:Imaginariumtw@protonmail.com?subject=Devising Intensive - July" class="btn-register">Register →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy">
+  <div class="philosophy-grid">
+    <div class="philosophy-item reveal">
+      <div class="philosophy-num">I</div>
+      <div class="philosophy-title">Open to All Bodies</div>
+      <p class="philosophy-text">No prior training required. We work with performers, non-performers, dancers, musicians, writers — anyone who wants to investigate presence and play.</p>
+    </div>
+    <div class="philosophy-item reveal">
+      <div class="philosophy-num">II</div>
+      <div class="philosophy-title">Sliding Scale Always</div>
+      <p class="philosophy-text">Money should not be a barrier to practice. All workshops offer sliding scale pricing. If you can't afford even the minimum, reach out — we'll figure it out.</p>
+    </div>
+    <div class="philosophy-item reveal">
+      <div class="philosophy-num">III</div>
+      <div class="philosophy-title">Process Over Product</div>
+      <p class="philosophy-text">These sessions are laboratories, not showcases. What matters is the investigation. Nothing we do here needs to be "good" — it needs to be honest.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAST -->
+<div class="schedule-section">
+  <div class="schedule-header reveal">
+    <div class="schedule-title">Past Sessions</div>
+    <div class="schedule-meta">Archive</div>
+  </div>
+
+  <div class="workshop-list">
+    <div class="workshop-card past reveal">
+      <div class="workshop-date">
+        <div class="workshop-date-day">—</div>
+        <div class="workshop-date-month">2019</div>
+        <div class="workshop-date-year">Portland</div>
+      </div>
+      <div class="workshop-body">
+        <div class="workshop-tags"><span class="workshop-tag">Viewpoints</span><span class="workshop-tag">Suzuki</span></div>
+        <div class="workshop-name">PETE Institute Training</div>
+        <div class="workshop-instructor">Portland Experimental Theatre Ensemble</div>
+        <p class="workshop-desc">Year-long training program. Devised two full-length productions. Intensive work in Viewpoints, Suzuki Method, and Clown.</p>
+      </div>
+      <div class="workshop-logistics">
+        <div class="logistic"><div class="logistic-label">Status</div><div class="logistic-value">Completed</div></div>
+        <div class="logistic"><div class="logistic-label">Location</div><div class="logistic-value">Portland, OR</div></div>
+      </div>
+    </div>
+
+    <div class="workshop-card past reveal">
+      <div class="workshop-date">
+        <div class="workshop-date-day">—</div>
+        <div class="workshop-date-month">2020</div>
+        <div class="workshop-date-year">Cambodia</div>
+      </div>
+      <div class="workshop-body">
+        <div class="workshop-tags"><span class="workshop-tag">Viewpoints</span><span class="workshop-tag">Devised Theatre</span></div>
+        <div class="workshop-name">Viewpoints in Khmer</div>
+        <div class="workshop-instructor">Phare Ponleu Selpak — Battambang, Cambodia</div>
+        <p class="workshop-desc">Translated The Viewpoints into Khmer and worked with ten theatre students in ensemble-based practices and devised theatre at a circus school in Battambang Province.</p>
+      </div>
+      <div class="workshop-logistics">
+        <div class="logistic"><div class="logistic-label">Status</div><div class="logistic-value">Completed</div></div>
+        <div class="logistic"><div class="logistic-label">Location</div><div class="logistic-value">Battambang, KH</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVATE INQUIRY -->
+<div class="private-section">
+  <div class="private-card reveal">
+    <div class="private-left">
+      <h2>Book a<br><em>Private</em><br>Session</h2>
+      <p>We offer private workshops for companies, schools, and organizations. Customized to your group's needs — ensemble building, devising processes, physical training, or creative development.</p>
+      <p>We've worked in theatre schools, camps, and community spaces from Oregon to Cambodia. We'll work anywhere.</p>
+    </div>
+    <div class="private-right">
+      <div class="inquiry-field">
+        <label>Your Name</label>
+        <input type="text" placeholder="Full name" />
+      </div>
+      <div class="inquiry-field">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" />
+      </div>
+      <div class="inquiry-field">
+        <label>Workshop Type</label>
+        <select>
+          <option>Viewpoints Intro</option>
+          <option>Suzuki Method</option>
+          <option>Clown & Physical Comedy</option>
+          <option>Devising Intensive</option>
+          <option>Custom / Not Sure</option>
+        </select>
+      </div>
+      <div class="inquiry-field">
+        <label>Group Size & Notes</label>
+        <textarea rows="3" placeholder="Tell us about your group and what you're looking for..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="window.location='mailto:Imaginariumtw@protonmail.com?subject=Private Workshop Inquiry'">Send Inquiry →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="../" class="footer-logo">IMAGINARIUM<span>.</span></a>
+  <p>© 2026 Imaginarium Theatre Works · Los Angeles</p>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+    rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 80); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

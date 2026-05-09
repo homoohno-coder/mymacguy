@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery · Imaginarium Theatre Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Figtree:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:    #050507;
+      --deep:    #0c0c10;
+      --surface: #131318;
+      --border:  rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.12);
+      --text:    #c8c4bc;
+      --muted:   rgba(200,196,188,0.4);
+      --heading: #f0ece4;
+      --gold:    #c8a96e;
+      --gold2:   #e8c98e;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--void);
+      color: var(--text);
+      font-family: 'Figtree', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    .cursor { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid rgba(200,169,110,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: all 0.12s ease; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 9000; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.038;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 72px;
+      background: rgba(5,5,7,0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-logo { font-family: 'Cormorant', serif; font-size: 0.95rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--heading); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    @media (max-width: 700px) { nav { padding: 0 24px; } .nav-links { display: none; } }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 160px 60px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-kicker {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .page-kicker::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+
+    .page-title {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 300; color: var(--heading);
+      letter-spacing: -0.04em; line-height: 0.9;
+    }
+    .page-title em { font-style: italic; color: rgba(240,236,228,0.25); }
+
+    /* FILTER BAR */
+    .filter-bar {
+      display: flex; gap: 0;
+      padding: 0 60px;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .filter-btn {
+      padding: 20px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); background: none; border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer; white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .filter-btn:hover { color: var(--heading); }
+    .filter-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* MASONRY GALLERY */
+    .gallery-wrap {
+      padding: 60px;
+      columns: 3;
+      column-gap: 4px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 4px;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      cursor: zoom-in;
+    }
+
+    .gallery-item img {
+      width: 100%; display: block;
+      filter: grayscale(20%) contrast(1.05);
+      transition: transform 0.6s ease, filter 0.4s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%) contrast(1);
+    }
+
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,5,7,0.8) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 20px;
+    }
+
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    .gallery-item-caption {
+      font-family: 'Cormorant', serif;
+      font-size: 0.95rem; font-style: italic;
+      color: var(--heading); line-height: 1.3;
+    }
+
+    .gallery-item-caption span {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+      font-style: normal; margin-bottom: 4px;
+    }
+
+    /* Placeholder items with theatrical visuals */
+    .gallery-placeholder {
+      width: 100%; display: block;
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant', serif;
+      font-style: italic; color: rgba(200,169,110,0.15);
+      font-size: 1.2rem; letter-spacing: 0.1em;
+    }
+
+    .h-tall { height: 420px; }
+    .h-med  { height: 280px; }
+    .h-short{ height: 200px; }
+    .h-wide { height: 340px; }
+
+    /* gradient placeholder colors */
+    .p1 { background: linear-gradient(135deg, #0c0c10 0%, #1a0a0a 100%); }
+    .p2 { background: linear-gradient(135deg, #0a0a14 0%, #100c1a 100%); }
+    .p3 { background: linear-gradient(135deg, #0c100c 0%, #0a140a 100%); }
+    .p4 { background: linear-gradient(135deg, #140a0a 0%, #0c0c10 100%); }
+    .p5 { background: linear-gradient(135deg, #0e0e14 0%, #14100a 100%); }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(5,5,7,0.96);
+      z-index: 800; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; }
+    .lightbox-close {
+      position: absolute; top: 24px; right: 32px;
+      background: none; border: none; color: var(--muted);
+      font-size: 1.8rem; cursor: pointer;
+      font-family: 'Cormorant', serif;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: var(--gold); }
+    .lightbox-caption {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant', serif;
+      font-style: italic; color: var(--muted);
+      font-size: 1rem; letter-spacing: 0.04em;
+      text-align: center; white-space: nowrap;
+    }
+
+    /* UPLOAD CTA */
+    .upload-cta {
+      margin: 0 60px 60px;
+      border: 1px dashed var(--border2);
+      padding: 48px;
+      text-align: center;
+      background: var(--surface);
+    }
+
+    .upload-cta p {
+      font-family: 'Cormorant', serif;
+      font-size: 1.4rem; font-style: italic;
+      color: var(--muted); margin-bottom: 8px;
+    }
+
+    .upload-cta span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(200,169,110,0.4);
+    }
+
+    footer {
+      padding: 32px 60px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { font-family: 'Cormorant', serif; font-size: 0.85rem; font-weight: 300; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.7rem; color: rgba(200,196,188,0.2); }
+
+    @media (max-width: 900px) {
+      .page-header { padding: 130px 28px 60px; }
+      .filter-bar { padding: 0 28px; }
+      .gallery-wrap { columns: 2; padding: 28px; }
+      .upload-cta { margin: 0 28px 40px; }
+      footer { padding: 28px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+    @media (max-width: 560px) {
+      .gallery-wrap { columns: 1; }
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s; }
+    .reveal.on { opacity: 1; transform: none; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .page-header { animation: fadeIn 0.8s ease both; }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="../" class="nav-logo">IMAGINARIUM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="../#about">About</a></li>
+    <li><a href="../#productions">Productions</a></li>
+    <li><a href="../#ensemble">Ensemble</a></li>
+    <li><a href="." class="active">Gallery</a></li>
+    <li><a href="../workshops/">Workshops</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-kicker">Imaginarium Theatre Works · Archive</div>
+  <h1 class="page-title">Photo<br><em>Gallery</em></h1>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="production">Productions</button>
+  <button class="filter-btn" data-filter="rehearsal">Rehearsal</button>
+  <button class="filter-btn" data-filter="ensemble">Ensemble</button>
+  <button class="filter-btn" data-filter="training">Training</button>
+</div>
+
+<div class="gallery-wrap" id="gallery">
+
+  <!-- Misster Blue 2019 -->
+  <div class="gallery-item reveal" data-cat="production" onclick="openLightbox('', 'Misster Blue · 2019 · CoHo Theatre, Portland')">
+    <div class="gallery-placeholder h-tall p1">Misster Blue · 2019</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Production · 2019</span>Misster Blue — CoHo Theatre</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="rehearsal" onclick="openLightbox('', 'Rehearsal process · 2019')">
+    <div class="gallery-placeholder h-med p2">Rehearsal</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Rehearsal</span>Process documentation</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="ensemble" onclick="openLightbox('', 'Robert Augustine')">
+    <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDOQKgRQmNJJu2cxfITz7w0MXmf0mRCeZlp6pAwBzDrFIsX41GH4fiZm-c81zfzEp35aC3Q9fw-X2xyn50rhAX9lgc2jpoeHUXdqEeyn3yt6YOZ2yofCKFIPwWtQPI1asegr1pKptv8722qUo9emw0feih2DImnmAGvbWpNdjJSHP2Rg0oxSOpBgVo8t4eIudW7gVMYc7oLTOb51iuyKbq1yl_39mZ64YhY=w1280"
+      alt="Robert Augustine"
+      onerror="this.outerHTML='<div class=\'gallery-placeholder h-med p3\'>Robert Augustine</div>'" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Ensemble</span>Robert Augustine</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="production" onclick="openLightbox('', 'Misster Blue — Stage')">
+    <div class="gallery-placeholder h-short p4">Stage · Performance</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Production</span>Stage moment</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="ensemble" onclick="openLightbox('', 'Amelia Whitney')">
+    <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDix0lZxpKUFNyty_bAEmZ5k7-KmAiJbow2OPixJS5cCwH781qrxxdhx8dSkmLJ1dpLmB8sJjw6yfP8kJcoKqT10UFYXEYmFJTPGxVWbSEojUoaYf8GvsWeK7GmJO-7j1GiJl7F1t8Wo1hegRWDMW24oPiUS_roX608ZJdhtUnPMQ9q9CWEqIM8f8_LES7nFsDmBwdLYdvuX--X3KJpAPYzeUL0zom3mgLF=w1280"
+      alt="Amelia Whitney"
+      onerror="this.outerHTML='<div class=\'gallery-placeholder h-wide p5\'>Amelia Whitney</div>'" />
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Ensemble</span>Amelia Whitney</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="training" onclick="openLightbox('', 'Viewpoints training')">
+    <div class="gallery-placeholder h-med p1">Viewpoints Training</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Training</span>The Viewpoints</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="rehearsal">
+    <div class="gallery-placeholder h-tall p2">Bolero Structure</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Rehearsal · 2019</span>Structural devising process</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="training">
+    <div class="gallery-placeholder h-short p3">Suzuki Method</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Training</span>Suzuki physical practice</div>
+    </div>
+  </div>
+
+  <div class="gallery-item reveal" data-cat="production">
+    <div class="gallery-placeholder h-med p4">Sound Design</div>
+    <div class="gallery-item-overlay">
+      <div class="gallery-item-caption"><span>Production · 2019</span>Sound environment</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Upload CTA -->
+<div class="upload-cta">
+  <p>Add your production photos here.</p>
+  <span>Send high-res images to Imaginariumtw@protonmail.com · or upload directly to the gallery</span>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+  <div class="lightbox-caption" id="lightbox-cap"></div>
+</div>
+
+<footer>
+  <a href="../" class="footer-logo">IMAGINARIUM<span>.</span></a>
+  <p>© 2026 Imaginarium Theatre Works · Los Angeles</p>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animCursor() {
+    cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+    rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(animCursor);
+  }
+  animCursor();
+
+  // Lightbox
+  function openLightbox(src, cap) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    const capEl = document.getElementById('lightbox-cap');
+    if (src) { img.src = src; img.style.display = 'block'; }
+    else img.style.display = 'none';
+    capEl.textContent = cap || '';
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        const show = filter === 'all' || item.dataset.cat === filter;
+        item.style.display = show ? 'block' : 'none';
+      });
+    });
+  });
+
+  // Reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 80); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
