@@ -45,9 +45,11 @@
     .dc-item a:hover{color:var(--gold)}
 
     .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 72px;overflow:hidden}
-    .hero-lights{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 80% at 15% 10%,rgba(139,32,32,.2) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 80% 20%,rgba(200,169,110,.07) 0%,transparent 50%),radial-gradient(ellipse 80% 40% at 50% 100%,rgba(5,5,7,1) 0%,transparent 70%)}
-    .hero-lines{position:absolute;inset:0;z-index:0;background-image:repeating-linear-gradient(90deg,transparent,transparent calc(100%/6 - .5px),rgba(255,255,255,.022) calc(100%/6 - .5px),rgba(255,255,255,.022) calc(100%/6))}
-    .hero-content{position:relative;z-index:2;max-width:800px}
+    .hero-parallax{position:absolute;inset:-15%;z-index:0;background:url(images/hero-spotlight.webp) center/cover no-repeat;will-change:transform;transition:transform 0s linear;}
+    .hero-parallax::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,5,7,.72) 0%,rgba(5,5,7,.45) 50%,rgba(5,5,7,.88) 100%);}
+    .hero-lights{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 80% at 15% 10%,rgba(139,32,32,.2) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 80% 20%,rgba(200,169,110,.07) 0%,transparent 50%),radial-gradient(ellipse 80% 40% at 50% 100%,rgba(5,5,7,1) 0%,transparent 70%)}
+    .hero-lines{position:absolute;inset:0;z-index:1;background-image:repeating-linear-gradient(90deg,transparent,transparent calc(100%/6 - .5px),rgba(255,255,255,.022) calc(100%/6 - .5px),rgba(255,255,255,.022) calc(100%/6))}
+    .hero-content{position:relative;z-index:3;max-width:800px}
     .hero-kicker{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px}
     .hero-kicker::before{content:'';width:32px;height:1px;background:var(--gold)}
     .hero-title{font-family:'Cormorant',serif;font-size:clamp(4rem,11vw,10rem);font-weight:300;color:var(--heading);line-height:.9;letter-spacing:-.04em;margin-bottom:12px}
@@ -279,6 +281,7 @@
 </div>
 
 <section class="hero">
+  <div class="hero-parallax" id="heroBg"></div>
   <div class="hero-lights"></div>
   <div class="hero-lines"></div>
   <div class="hero-content">
@@ -294,7 +297,7 @@
   </div>
 </section>
 
-<div class="manifesto">
+<div class="manifesto" style="position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:url(images/red-curtains.webp) center/cover no-repeat;opacity:0.12;filter:saturate(0.6);"></div>
   <div class="manifesto-label">Our Premise</div>
   <p class="manifesto-text">"Dedicated to providing thought-provoking theatre that honors the truth — however difficult it may be to face."</p>
 </div>
@@ -314,9 +317,9 @@
   <div class="section-num">02 — In The Works</div>
   <h2 class="section-title reveal">What's <em>Coming.</em></h2>
   <div class="production">
-    <div class="prod-visual reveal" style="background:linear-gradient(135deg,#0d0d14 0%,#1a1208 100%);">
-      <div class="prod-placeholder">A Play<br>or<br>Something</div>
-      <div class="prod-tag gold">In Development</div>
+    <div class="prod-visual reveal" style="background:#060810;">
+      <img src="images/silhouette-branches.webp" alt="In development — A Play or Something" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:contrast(1.1) brightness(0.85);" />
+      <div class="prod-tag gold" style="z-index:3;">In Development</div>
     </div>
     <div class="reveal">
       <div class="prod-year">Current · Los Angeles</div>
@@ -336,9 +339,9 @@
   <div class="section-num">03 — Past Productions</div>
   <h2 class="section-title reveal">A <em>History.</em></h2>
   <div class="production">
-    <div class="prod-visual reveal">
-      <div class="prod-placeholder">Misster<br>Blue</div>
-      <div class="prod-tag">2019</div>
+    <div class="prod-visual reveal" style="background:#050507;">
+      <img src="images/shadow-theatre.webp" alt="Misster Blue — 2019 production" style="width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%) contrast(1.1) brightness(0.9);" />
+      <div class="prod-tag" style="z-index:3;">2019</div>
     </div>
     <div class="reveal">
       <div class="prod-year">2019 · Portland, Oregon</div>
@@ -382,7 +385,8 @@
   </div>
 </section>
 
-<section class="section" id="training">
+<section class="section" id="training" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:url(images/stage-orange.webp) center/cover no-repeat;opacity:0.07;filter:saturate(0.5);"></div>
   <div class="section-num">05 — Training Methods</div>
   <h2 class="section-title reveal">Methods &amp; <em>Practices.</em></h2>
   <div class="training-list">
@@ -520,6 +524,15 @@
 </div>
 
 <script>
+  // ── PARALLAX HERO ──
+  const heroBg = document.getElementById('heroBg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroBg.style.transform = `translateY(${y * 0.38}px)`;
+    }, { passive: true });
+  }
+
   // ── NAV SCROLL ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
