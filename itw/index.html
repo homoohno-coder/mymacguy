@@ -3,711 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imaginarium Theatre Works</title>
+  <title>Imaginarium Theatre Works · Los Angeles</title>
+  <meta name="description" content="Imaginarium Theatre Works — experimental devised theatre collective based in Los Angeles. Workshops, productions, ensemble training." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Figtree:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Figtree:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --void:    #050507;
-      --deep:    #0c0c10;
-      --surface: #131318;
-      --border:  rgba(255,255,255,0.07);
-      --border2: rgba(255,255,255,0.12);
-      --text:    #c8c4bc;
-      --muted:   rgba(200,196,188,0.4);
-      --heading: #f0ece4;
-      --gold:    #c8a96e;
-      --gold2:   #e8c98e;
-      --red:     #8b2020;
-      --red2:    #b03030;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--void);
-      color: var(--text);
-      font-family: 'Figtree', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
-    /* ── CUSTOM CURSOR ── */
-    .cursor {
-      position: fixed;
-      width: 8px; height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background 0.2s;
-      mix-blend-mode: difference;
-    }
-
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(200,169,110,0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: all 0.12s ease;
-    }
-
-    body:hover .cursor { opacity: 1; }
-
-    /* ── GRAIN OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 9000; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.038;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 60px; height: 72px;
-      transition: background 0.4s, border-color 0.4s;
-      border-bottom: 1px solid transparent;
-    }
-
-    nav.scrolled {
-      background: rgba(5,5,7,0.94);
-      border-color: var(--border);
-      backdrop-filter: blur(16px);
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant', serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--heading);
-      text-decoration: none;
-    }
-
-    .nav-logo span { color: var(--gold); }
-
-    .nav-links {
-      display: flex; gap: 36px; list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute; bottom: -4px; left: 0; right: 0;
-      height: 1px; background: var(--gold);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-
-    .nav-links a:hover { color: var(--heading); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 60px 80px;
-      overflow: hidden;
-    }
-
-    /* Abstract stage light effect */
-    .hero-lights {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 20% 10%, rgba(139,32,32,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 80% 20%, rgba(200,169,110,0.08) 0%, transparent 50%),
-        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(5,5,7,1) 0%, transparent 70%);
-    }
-
-    /* Vertical rule lines — stage aesthetic */
-    .hero-lines {
-      position: absolute; inset: 0; z-index: 0;
-      background-image:
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent calc(100% / 6 - 0.5px),
-          rgba(255,255,255,0.025) calc(100% / 6 - 0.5px),
-          rgba(255,255,255,0.025) calc(100% / 6)
-        );
-    }
-
-    .hero-content { position: relative; z-index: 2; }
-
-    .hero-kicker {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
-      display: flex; align-items: center; gap: 16px;
-    }
-
-    .hero-kicker::before {
-      content: '';
-      width: 40px; height: 1px;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .hero-title {
-      font-family: 'Cormorant', serif;
-      font-size: clamp(5rem, 14vw, 13rem);
-      font-weight: 300;
-      color: var(--heading);
-      line-height: 0.88;
-      letter-spacing: -0.04em;
-      margin-bottom: 8px;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(240,236,228,0.28);
-    }
-
-    .hero-sub {
-      font-family: 'Cormorant', serif;
-      font-size: clamp(1.2rem, 3vw, 2.4rem);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-      margin-bottom: 48px;
-    }
-
-    .hero-actions {
-      display: flex; gap: 0; align-items: center;
-    }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 12px;
-      border: 1px solid var(--border2);
-      color: var(--heading);
-      padding: 14px 28px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s, border-color 0.25s;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(200,169,110,0.08);
-      border-color: var(--gold);
-    }
-
-    .btn-solid {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--gold);
-      color: var(--void);
-      padding: 14px 28px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s;
-    }
-
-    .btn-solid:hover { background: var(--gold2); }
-
-    /* ── MANIFESTO STRIP ── */
-    .manifesto {
-      background: var(--deep);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 48px 60px;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .manifesto-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .manifesto-text {
-      font-family: 'Cormorant', serif;
-      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-      font-style: italic;
-      font-weight: 300;
-      color: var(--heading);
-      line-height: 1.4;
-    }
-
-    /* ── SECTIONS ── */
-    .section { padding: 120px 60px; }
-    .section-alt { background: var(--deep); }
-
-    .section-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 56px;
-    }
-
-    .section-num::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--border2);
-    }
-
-    .section-title {
-      font-family: 'Cormorant', serif;
-      font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 300;
-      color: var(--heading);
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 24px;
-    }
-
-    .section-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    /* ── ABOUT GRID ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-top: 64px;
-    }
-
-    .about-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 40px 36px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s;
-    }
-
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--red), var(--gold));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .about-card:hover { border-color: var(--border2); }
-    .about-card:hover::before { transform: scaleX(1); }
-
-    .about-card-num {
-      font-family: 'Cormorant', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      color: rgba(200,169,110,0.12);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .about-card-title {
-      font-family: 'Cormorant', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--heading);
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .about-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* ── PRODUCTION ── */
-    .production {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      margin-top: 64px;
-    }
-
-    .production-visual {
-      aspect-ratio: 3/4;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Theatrical spotlight effect */
-    .production-visual::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 70% at 50% 30%, rgba(200,169,110,0.15) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(139,32,32,0.1) 0%, transparent 60%);
-    }
-
-    .production-visual-text {
-      font-family: 'Cormorant', serif;
-      font-size: 5rem;
-      font-weight: 300;
-      color: rgba(240,236,228,0.06);
-      letter-spacing: -0.04em;
-      text-align: center;
-      line-height: 1;
-      position: relative;
-      z-index: 1;
-      padding: 40px;
-    }
-
-    .production-tag {
-      position: absolute;
-      bottom: 24px; left: 24px;
-      background: var(--red);
-      color: #fff;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 6px 12px;
-    }
-
-    .production-info {}
-
-    .production-year {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .production-title {
-      font-family: 'Cormorant', serif;
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      font-weight: 300;
-      color: var(--heading);
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 24px;
-    }
-
-    .production-venue {
-      font-size: 0.78rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      display: flex; align-items: center; gap: 10px;
-    }
-
-    .production-venue::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: var(--border2);
-    }
-
-    .production-desc {
-      font-size: 0.92rem;
-      color: var(--text);
-      line-height: 1.85;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    /* ── ENSEMBLE ── */
-    .ensemble-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      margin-top: 64px;
-    }
-
-    .member {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      overflow: hidden;
-      transition: border-color 0.3s;
-    }
-
-    .member:hover { border-color: var(--border2); }
-
-    .member-photo {
-      background: var(--deep);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .member-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(30%) contrast(1.1);
-      transition: filter 0.4s;
-    }
-
-    .member:hover .member-photo img { filter: grayscale(0%) contrast(1); }
-
-    .member-photo-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      color: rgba(200,169,110,0.15);
-      min-height: 280px;
-    }
-
-    .member-info {
-      padding: 32px 28px;
-    }
-
-    .member-name {
-      font-family: 'Cormorant', serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--heading);
-      letter-spacing: -0.02em;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .member-role {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
-    }
-
-    .member-bio {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* ── TRAINING ── */
-    .training-list {
-      margin-top: 64px;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .training-item {
-      border-bottom: 1px solid var(--border);
-      padding: 28px 0;
-      display: grid;
-      grid-template-columns: 40px 1fr auto;
-      gap: 24px;
-      align-items: start;
-      transition: padding-left 0.3s;
-    }
-
-    .training-item:hover { padding-left: 12px; }
-
-    .training-item:first-child { border-top: 1px solid var(--border); }
-
-    .training-n {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      padding-top: 4px;
-    }
-
-    .training-name {
-      font-family: 'Cormorant', serif;
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: var(--heading);
-      letter-spacing: -0.01em;
-    }
-
-    .training-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 4px;
-      font-weight: 300;
-    }
-
-    .training-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      padding: 4px 10px;
-      white-space: nowrap;
-      align-self: center;
-    }
-
-    /* ── CONTACT ── */
-    .contact-block {
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 48px 44px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      transition: border-color 0.25s, background 0.25s;
-    }
-
-    .contact-card:hover {
-      border-color: var(--gold);
-      background: rgba(200,169,110,0.04);
-    }
-
-    .contact-card-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .contact-card-value {
-      font-family: 'Cormorant', serif;
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: var(--heading);
-      letter-spacing: -0.02em;
-    }
-
-    .contact-card-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 300;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 40px 60px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant', serif;
-      font-size: 0.85rem;
-      font-weight: 300;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-    }
-
-    .footer-logo span { color: var(--gold); }
-
-    footer p {
-      font-size: 0.72rem;
-      color: rgba(200,196,188,0.25);
-      letter-spacing: 0.06em;
-    }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-    .reveal.on { opacity: 1; transform: none; }
-
-    /* ── HERO ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-kicker  { animation: fadeUp 0.8s 0.1s both; }
-    .hero-title   { animation: fadeUp 1s 0.25s both; }
-    .hero-sub     { animation: fadeUp 0.8s 0.5s both; }
-    .hero-actions { animation: fadeUp 0.8s 0.7s both; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 0 28px; }
-      .nav-links { display: none; }
-      .hero { padding: 0 28px 60px; }
-      .manifesto { grid-template-columns: 1fr; padding: 40px 28px; gap: 20px; }
-      .section { padding: 80px 28px; }
-      .about-grid, .ensemble-grid, .contact-block { grid-template-columns: 1fr; }
-      .production { grid-template-columns: 1fr; gap: 40px; }
-      .member { grid-template-columns: 1fr; }
-      .member-photo-placeholder { min-height: 200px; }
-      footer { flex-direction: column; align-items: flex-start; padding: 32px 28px; }
-    }
-
-    ::-webkit-scrollbar { width: 2px; }
-    ::-webkit-scrollbar-track { background: var(--void); }
-    ::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.3); }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--void:#050507;--deep:#0c0c10;--surface:#131318;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.14);--text:#c8c4bc;--muted:rgba(200,196,188,0.45);--heading:#f0ece4;--gold:#c8a96e;--gold2:#e8c98e;--red:#8b2020}
+    html{scroll-behavior:smooth}
+    body{background:var(--void);color:var(--text);font-family:'Figtree',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");opacity:0.034}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+    nav.scrolled{background:rgba(5,5,7,0.96);border-color:var(--border);backdrop-filter:blur(16px)}
+    .nav-logo{font-family:'Cormorant',serif;font-size:.9rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--heading);text-decoration:none;flex-shrink:0}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+    .nav-links a{font-size:.62rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;white-space:nowrap}
+    .nav-links a:hover{color:var(--gold)}
+
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;z-index:700;flex-shrink:0}
+    .hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s,background .2s}
+    .hamburger:hover span{background:var(--gold)}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+
+    .drawer-overlay{position:fixed;inset:0;z-index:640;background:rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:opacity .35s}
+    .drawer-overlay.open{opacity:1;pointer-events:all}
+    .drawer{position:fixed;top:0;right:0;bottom:0;width:320px;background:rgba(5,5,7,0.98);backdrop-filter:blur(24px);z-index:650;border-left:1px solid var(--border);transform:translateX(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);overflow-y:auto;padding:84px 0 40px;display:flex;flex-direction:column}
+    .drawer.open{transform:translateX(0)}
+    .drawer-section-label{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:18px 36px 6px}
+    .drawer-link{display:flex;align-items:center;gap:14px;padding:12px 36px;color:var(--text);text-decoration:none;font-size:.88rem;font-weight:300;transition:background .15s,color .15s;border-left:2px solid transparent}
+    .drawer-link:hover{background:rgba(200,169,110,0.06);color:var(--heading);border-left-color:var(--gold)}
+    .dl-icon{font-size:.9rem;flex-shrink:0;width:18px;text-align:center;opacity:.6}
+    .drawer-divider{height:1px;background:var(--border);margin:10px 36px}
+    .drawer-contact{padding:16px 36px}
+    .dc-label{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;margin-top:14px}
+    .dc-item{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:4px}
+    .dc-item a{color:var(--text);text-decoration:none}
+    .dc-item a:hover{color:var(--gold)}
+
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 72px;overflow:hidden}
+    .hero-lights{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 60% 80% at 15% 10%,rgba(139,32,32,.2) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 80% 20%,rgba(200,169,110,.07) 0%,transparent 50%),radial-gradient(ellipse 80% 40% at 50% 100%,rgba(5,5,7,1) 0%,transparent 70%)}
+    .hero-lines{position:absolute;inset:0;z-index:0;background-image:repeating-linear-gradient(90deg,transparent,transparent calc(100%/6 - .5px),rgba(255,255,255,.022) calc(100%/6 - .5px),rgba(255,255,255,.022) calc(100%/6))}
+    .hero-content{position:relative;z-index:2;max-width:800px}
+    .hero-kicker{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+    .hero-kicker::before{content:'';width:32px;height:1px;background:var(--gold)}
+    .hero-title{font-family:'Cormorant',serif;font-size:clamp(4rem,11vw,10rem);font-weight:300;color:var(--heading);line-height:.9;letter-spacing:-.04em;margin-bottom:12px}
+    .hero-title em{font-style:italic;color:rgba(240,236,228,.28)}
+    .hero-sub{font-family:'Cormorant',serif;font-size:clamp(1rem,2.5vw,2rem);font-style:italic;font-weight:300;color:var(--gold);letter-spacing:.04em;margin-bottom:40px}
+    .hero-actions{display:flex;gap:2px;flex-wrap:wrap}
+    .btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--border2);color:var(--heading);padding:12px 24px;font-size:.68rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;transition:background .22s,border-color .22s}
+    .btn-ghost:hover{background:rgba(200,169,110,.08);border-color:var(--gold)}
+    .btn-solid{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--void);padding:12px 24px;font-size:.68rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;transition:background .22s}
+    .btn-solid:hover{background:var(--gold2)}
+
+    .manifesto{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:44px 48px;display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:center}
+    .manifesto-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+    .manifesto-text{font-family:'Cormorant',serif;font-size:clamp(1.1rem,2.2vw,1.9rem);font-style:italic;font-weight:300;color:var(--heading);line-height:1.45}
+
+    .section{padding:96px 48px}
+    .section-alt{background:var(--deep)}
+    .section-num{font-family:'DM Mono',monospace;font-size:.59rem;letter-spacing:.2em;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:44px}
+    .section-num::after{content:'';flex:1;max-width:56px;height:1px;background:var(--border2)}
+    .section-title{font-family:'Cormorant',serif;font-size:clamp(2.4rem,4.5vw,4.8rem);font-weight:300;color:var(--heading);letter-spacing:-.03em;line-height:1;margin-bottom:16px}
+    .section-title em{font-style:italic;color:var(--gold)}
+
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px}
+    .about-card{background:var(--surface);border:1px solid var(--border);padding:34px 30px;position:relative;overflow:hidden;transition:border-color .3s}
+    .about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+    .about-card:hover{border-color:var(--border2)}
+    .about-card:hover::before{transform:scaleX(1)}
+    .ac-num{font-family:'Cormorant',serif;font-size:3.2rem;font-weight:300;color:rgba(200,169,110,.1);line-height:1;margin-bottom:10px}
+    .ac-title{font-family:'Cormorant',serif;font-size:1.35rem;font-weight:400;color:var(--heading);margin-bottom:8px}
+    .about-card p{font-size:.84rem;color:var(--muted);line-height:1.8;font-weight:300}
+
+    .production{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:52px}
+    .prod-visual{aspect-ratio:3/4;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .prod-visual img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(15%) contrast(1.05)}
+    .prod-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 30%,rgba(200,169,110,.1) 0%,transparent 70%);pointer-events:none}
+    .prod-placeholder{font-family:'Cormorant',serif;font-size:4rem;font-weight:300;color:rgba(240,236,228,.05);letter-spacing:-.04em;text-align:center;line-height:1;padding:40px}
+    .prod-tag{position:absolute;bottom:18px;left:18px;background:var(--red);color:#fff;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;padding:5px 11px;z-index:2}
+    .prod-tag.gold{background:var(--gold);color:var(--void)}
+    .prod-year{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--gold);margin-bottom:12px}
+    .prod-title{font-family:'Cormorant',serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:300;color:var(--heading);letter-spacing:-.03em;line-height:1;margin-bottom:18px}
+    .prod-venue{font-size:.74rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+    .prod-venue::before{content:'';width:18px;height:1px;background:var(--border2)}
+    .prod-desc{font-size:.88rem;color:var(--text);line-height:1.85;font-weight:300;font-style:italic;margin-bottom:10px}
+
+    .ensemble-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:52px}
+    .member{background:var(--surface);border:1px solid var(--border);overflow:hidden;transition:border-color .3s}
+    .member:hover{border-color:var(--border2)}
+    .member-photo{aspect-ratio:3/4;overflow:hidden;background:var(--deep)}
+    .member-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:grayscale(25%) contrast(1.05);transition:filter .4s,transform .5s}
+    .member:hover .member-photo img{filter:grayscale(0%) contrast(1);transform:scale(1.04)}
+    .member-ph{width:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant',serif;font-size:5rem;font-weight:300;color:rgba(200,169,110,.1);min-height:300px}
+    .member-info{padding:22px 20px}
+    .member-name{font-family:'Cormorant',serif;font-size:1.55rem;font-weight:400;color:var(--heading);letter-spacing:-.02em;line-height:1;margin-bottom:3px}
+    .member-role{font-family:'DM Mono',monospace;font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .member-bio{font-size:.78rem;color:var(--muted);line-height:1.8;font-weight:300}
+
+    .training-list{display:flex;flex-direction:column;margin-top:52px}
+    .t-item{border-bottom:1px solid var(--border);padding:22px 0;display:grid;grid-template-columns:34px 1fr auto;gap:18px;align-items:start;transition:padding-left .25s}
+    .t-item:first-child{border-top:1px solid var(--border)}
+    .t-item:hover{padding-left:10px}
+    .t-n{font-family:'DM Mono',monospace;font-size:.56rem;color:var(--gold);padding-top:3px}
+    .t-name{font-family:'Cormorant',serif;font-size:1.3rem;font-weight:400;color:var(--heading);letter-spacing:-.01em}
+    .t-desc{font-size:.78rem;color:var(--muted);margin-top:3px;font-weight:300}
+    .t-tag{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:3px 9px;white-space:nowrap;align-self:center}
+
+    .cal-grid{display:flex;flex-direction:column;gap:2px;margin-top:52px}
+    .cal-event{background:var(--surface);border:1px solid var(--border);display:grid;grid-template-columns:90px 1fr auto;overflow:hidden;transition:border-color .25s}
+    .cal-event:hover{border-color:var(--border2)}
+    .cal-event.featured{border-color:rgba(200,169,110,.22)}
+    .cal-event.past{opacity:.38}
+    .cal-date{background:var(--deep);padding:18px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-right:1px solid var(--border)}
+    .cal-day{font-family:'Cormorant',serif;font-size:2.2rem;font-weight:300;color:var(--heading);line-height:1}
+    .cal-month{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-top:2px}
+    .cal-body{padding:18px 22px}
+    .cal-tag{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+    .cal-name{font-family:'Cormorant',serif;font-size:1.25rem;font-weight:400;color:var(--heading);letter-spacing:-.01em;margin-bottom:4px}
+    .cal-meta{font-size:.76rem;color:var(--muted);font-weight:300}
+    .cal-cta{padding:18px 20px;display:flex;align-items:center;border-left:1px solid var(--border)}
+    .cal-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border2);color:var(--gold);padding:7px 14px;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s;white-space:nowrap}
+    .cal-btn:hover{background:rgba(200,169,110,.08)}
+
+    .map-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px}
+    .map-embed{overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+    .map-embed iframe{width:100%;min-height:420px;height:100%;display:block;filter:grayscale(55%) invert(90%) contrast(82%);transition:filter .35s}
+    .map-embed:hover iframe{filter:grayscale(15%) invert(0%) contrast(100%)}
+    .directions-card{background:var(--surface);border:1px solid var(--border);padding:36px 32px;display:flex;flex-direction:column;gap:20px}
+    .dir-label{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+    .dir-value{font-family:'Cormorant',serif;font-size:1.25rem;font-weight:300;color:var(--heading);line-height:1.3}
+    .dir-note{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.7;margin-top:3px}
+    .dir-link{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;margin-top:8px;transition:gap .2s}
+    .dir-link:hover{gap:14px}
+    .hr{height:1px;background:var(--border)}
+
+    .contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:52px}
+    .ccard{background:var(--surface);border:1px solid var(--border);padding:36px 32px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .25s,background .25s}
+    .ccard:hover{border-color:var(--gold);background:rgba(200,169,110,.04)}
+    .ccard-label{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+    .ccard-value{font-family:'Cormorant',serif;font-size:1.5rem;font-weight:300;color:var(--heading);letter-spacing:-.02em;line-height:1.2}
+    .ccard-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.75}
+
+    footer{padding:28px 48px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+    .foot-logo{font-family:'Cormorant',serif;font-size:.82rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+    .foot-logo span{color:var(--gold)}
+    footer p{font-size:.66rem;color:rgba(200,196,188,.2)}
+
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s ease,transform .85s ease}
+    .reveal.on{opacity:1;transform:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    .hero-kicker{animation:fadeUp .7s .1s both}
+    .hero-title{animation:fadeUp .9s .25s both}
+    .hero-sub{animation:fadeUp .7s .48s both}
+    .hero-actions{animation:fadeUp .7s .65s both}
+
+    @media(max-width:1050px){.ensemble-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:900px){
+      nav{padding:0 24px}
+      .nav-links{display:none}
+      .hero{padding:0 24px 60px}
+      .manifesto{grid-template-columns:1fr;padding:34px 24px;gap:14px}
+      .section{padding:68px 24px}
+      .about-grid,.map-grid,.contact-cards{grid-template-columns:1fr}
+      .production{grid-template-columns:1fr;gap:32px}
+      .ensemble-grid{grid-template-columns:1fr}
+      .cal-event{grid-template-columns:80px 1fr}
+      .cal-cta{display:none}
+      footer{flex-direction:column;align-items:flex-start;padding:24px}
+    }
+    ::-webkit-scrollbar{width:2px}
+    ::-webkit-scrollbar-track{background:var(--void)}
+    ::-webkit-scrollbar-thumb{background:rgba(200,169,110,.28)}
   </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- ── NAV ── -->
 <nav id="nav">
   <a href="#" class="nav-logo">IMAGINARIUM<span>.</span></a>
   <ul class="nav-links">
@@ -716,273 +190,268 @@
     <li><a href="#productions">Productions</a></li>
     <li><a href="#ensemble">Ensemble</a></li>
     <li><a href="#training">Training</a></li>
+    <li><a href="#calendar">Calendar</a></li>
     <li><a href="gallery/">Gallery</a></li>
     <li><a href="workshops/">Workshops</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- ── HERO ── -->
+<div class="drawer-overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-section-label">Navigate</div>
+  <a href="#about" class="drawer-link" data-close><span class="dl-icon">◈</span>About</a>
+  <a href="#in-the-works" class="drawer-link" data-close><span class="dl-icon">◉</span>In The Works</a>
+  <a href="#productions" class="drawer-link" data-close><span class="dl-icon">◈</span>Past Productions</a>
+  <a href="#ensemble" class="drawer-link" data-close><span class="dl-icon">◈</span>Ensemble</a>
+  <a href="#training" class="drawer-link" data-close><span class="dl-icon">◈</span>Training Methods</a>
+  <a href="#calendar" class="drawer-link" data-close><span class="dl-icon">◉</span>Calendar of Events</a>
+  <a href="gallery/" class="drawer-link"><span class="dl-icon">◈</span>Gallery</a>
+  <a href="workshops/" class="drawer-link"><span class="dl-icon">◈</span>Workshops</a>
+  <div class="drawer-divider"></div>
+  <div class="drawer-section-label">Contact & Location</div>
+  <a href="mailto:Imaginariumtw@protonmail.com" class="drawer-link"><span class="dl-icon">✉</span>Imaginariumtw@protonmail.com</a>
+  <a href="#map" class="drawer-link" data-close><span class="dl-icon">⊕</span>Map & Directions</a>
+  <div class="drawer-divider"></div>
+  <div class="drawer-contact">
+    <div class="dc-label">Workshop Venue</div>
+    <div class="dc-item">Stomping Ground LA<br>5453 Alhambra Ave<br>Los Angeles, CA 90032<br>El Sereno, East LA</div>
+    <div class="dc-label">Phone</div>
+    <div class="dc-item"><a href="tel:+19092939057">(909) 293-9057</a></div>
+    <div class="dc-label">Venue Hours</div>
+    <div class="dc-item">Mon–Sun: 8:00 AM – 10:00 PM</div>
+    <div class="dc-label">Workshop Hours</div>
+    <div class="dc-item">1:00 PM – 4:00 PM<br>See calendar for dates</div>
+    <div class="dc-label">ITW Email</div>
+    <div class="dc-item"><a href="mailto:Imaginariumtw@protonmail.com">Imaginariumtw@protonmail.com</a></div>
+  </div>
+</div>
+
 <section class="hero">
   <div class="hero-lights"></div>
   <div class="hero-lines"></div>
   <div class="hero-content">
     <div class="hero-kicker">Los Angeles · Experimental Theatre · Est. 2019</div>
-    <h1 class="hero-title">
-      Imaginarium<br><em>Theatre Works</em>
-    </h1>
+    <h1 class="hero-title">Imaginarium<br><em>Theatre Works</em></h1>
     <p class="hero-sub">Collective Conscience</p>
     <div class="hero-actions">
-      <a href="#productions" class="btn-ghost">View Productions</a>
-      <a href="#contact" class="btn-solid">Work With Us</a>
+      <a href="#in-the-works" class="btn-ghost">Current Work</a>
+      <a href="#calendar" class="btn-ghost">Events</a>
+      <a href="#map" class="btn-ghost">Directions</a>
+      <a href="mailto:Imaginariumtw@protonmail.com" class="btn-solid">Contact</a>
     </div>
   </div>
 </section>
 
-<!-- ── MANIFESTO ── -->
 <div class="manifesto">
   <div class="manifesto-label">Our Premise</div>
   <p class="manifesto-text">"Dedicated to providing thought-provoking theatre that honors the truth — however difficult it may be to face."</p>
 </div>
 
-<!-- ── ABOUT ── -->
 <section class="section" id="about">
   <div class="section-num">01 — About</div>
-  <h2 class="section-title reveal">We blur the lines<br>between <em>performance</em><br>and reality.</h2>
-
+  <h2 class="section-title reveal">We blur the lines between<br><em>performance</em> and reality.</h2>
   <div class="about-grid">
-    <div class="about-card reveal">
-      <div class="about-card-num">I</div>
-      <div class="about-card-title">Truth in Performance</div>
-      <p>We honor the truth, however difficult it may be to face. Our work does not offer easy answers — it offers honest questions.</p>
-    </div>
-    <div class="about-card reveal">
-      <div class="about-card-num">II</div>
-      <div class="about-card-title">New Modalities</div>
-      <p>We investigate the process of performance creation and aim to develop new modalities to achieve it — pushing beyond conventional theatrical forms.</p>
-    </div>
-    <div class="about-card reveal">
-      <div class="about-card-num">III</div>
-      <div class="about-card-title">Risk as Language</div>
-      <p>We value risk-taking to challenge audiences' perception of performance. The uncomfortable moment is where the real work begins.</p>
-    </div>
-    <div class="about-card reveal">
-      <div class="about-card-num">IV</div>
-      <div class="about-card-title">Total Theatre</div>
-      <p>We utilize all elements of theatrical storytelling in a dynamic way — sound, body, space, light, and silence are equally weighted instruments.</p>
-    </div>
+    <div class="about-card reveal"><div class="ac-num">I</div><div class="ac-title">Truth in Performance</div><p>We honor the truth, however difficult it may be to face. Our work does not offer easy answers — it offers honest questions posed to an audience willing to sit with discomfort.</p></div>
+    <div class="about-card reveal"><div class="ac-num">II</div><div class="ac-title">New Modalities</div><p>We investigate the process of performance creation and aim to develop new modalities to achieve it — pushing beyond conventional theatrical forms into territory that hasn't been mapped yet.</p></div>
+    <div class="about-card reveal"><div class="ac-num">III</div><div class="ac-title">Risk as Language</div><p>We value risk-taking to challenge audiences' perception of performance. The uncomfortable moment is where the real work begins. Safety is for warehouses, not stages.</p></div>
+    <div class="about-card reveal"><div class="ac-num">IV</div><div class="ac-title">Total Theatre</div><p>We utilize all elements of theatrical storytelling dynamically — sound, body, space, light, and silence are equally weighted instruments. No hierarchy of form.</p></div>
   </div>
 </section>
 
-<!-- ── PRODUCTIONS ── -->
-<section class="section section-alt" id="productions">
-  <div class="section-num">02 — Past Productions</div>
-  <h2 class="section-title reveal">A <em>History</em></h2>
-
-  <div class="production">
-    <div class="production-visual reveal">
-      <div class="production-visual-text">Misster<br>Blue</div>
-      <div class="production-tag">2019</div>
-    </div>
-    <div class="production-info reveal">
-      <div class="production-year">2019 · Portland, Oregon</div>
-      <h3 class="production-title">Misster Blue</h3>
-      <div class="production-venue">CoHo Theatre</div>
-      <p class="production-desc">
-        Utilizing the structure of Maurice Ravel's Bolero, the forms of Anne Adam's painting "Unraveling Bolero," and the aesthetics of Bowerbird mating rituals — Misster Blue was conceived as a journey of self-realization. Accompanied by sound created then distorted from an audio recording of a poem, the audience is invited to take a dharmic journey of repeated loop structures that eventually give way to discover a beauty in the repetition as each moment passes.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ── IN THE WORKS ── -->
 <section class="section section-alt" id="in-the-works">
-  <div class="section-num">03 — In The Works</div>
-  <h2 class="section-title reveal">What's<br><em>Coming.</em></h2>
-
+  <div class="section-num">02 — In The Works</div>
+  <h2 class="section-title reveal">What's <em>Coming.</em></h2>
   <div class="production">
-    <div class="production-visual reveal" style="background:linear-gradient(135deg,#0c0c10 0%,#1a1a0a 100%);">
-      <div class="production-visual-text">A Play<br>or<br>Something</div>
-      <div class="production-tag" style="background:var(--gold);color:var(--void);">In Development</div>
+    <div class="prod-visual reveal" style="background:linear-gradient(135deg,#0d0d14 0%,#1a1208 100%);">
+      <div class="prod-placeholder">A Play<br>or<br>Something</div>
+      <div class="prod-tag gold">In Development</div>
     </div>
-    <div class="production-info reveal">
-      <div class="production-year">Current · Los Angeles</div>
-      <h3 class="production-title">A Play or Something….<br><span style="font-size:0.55em;color:var(--muted);">By Who Cares</span></h3>
-      <div class="production-venue" style="color:var(--gold);">Working Title</div>
-      <p class="production-desc">A script written for the devised process. A group committed to the making. Our first showing went up at Non-Plus Ultra, and the audience is asking for the whole thing.</p>
-      <p class="production-desc" style="margin-top:16px; font-style:normal; color:var(--muted); font-size:0.82rem;">Come back here for updates.</p>
-      <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
-        <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Ensemble</div>
-        <div style="font-family:'Cormorant',serif;font-size:1.2rem;color:var(--heading);font-weight:300;">Amelia Whitney · Robert Augustine · Hilary Graves</div>
+    <div class="reveal">
+      <div class="prod-year">Current · Los Angeles</div>
+      <h3 class="prod-title">A Play or Something….<br><span style="font-size:.5em;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:.1em;font-style:normal;font-weight:400;">Working Title — By Who Cares</span></h3>
+      <div class="prod-venue" style="color:var(--gold);">Non-Plus Ultra, Los Angeles</div>
+      <p class="prod-desc">A script written for the devised process. A group committed to the making. Our first showing went up at Non-Plus Ultra, and the audience is asking for the whole thing.</p>
+      <p class="prod-desc" style="font-style:normal;color:var(--muted);font-size:.82rem;">Come back here for updates as the work develops.</p>
+      <div style="margin-top:22px;padding-top:18px;border-top:1px solid var(--border);">
+        <div style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Ensemble</div>
+        <div style="font-family:'Cormorant',serif;font-size:1.1rem;color:var(--heading);font-weight:300;line-height:1.6;">Amelia Whitney · Robert Augustine · Hilary Graves</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── ENSEMBLE ── -->
-<section class="section" id="ensemble">
-  <div class="section-num">04 — The Ensemble</div>
-  <h2 class="section-title reveal">The <em>People</em></h2>
+<section class="section" id="productions">
+  <div class="section-num">03 — Past Productions</div>
+  <h2 class="section-title reveal">A <em>History.</em></h2>
+  <div class="production">
+    <div class="prod-visual reveal">
+      <div class="prod-placeholder">Misster<br>Blue</div>
+      <div class="prod-tag">2019</div>
+    </div>
+    <div class="reveal">
+      <div class="prod-year">2019 · Portland, Oregon</div>
+      <h3 class="prod-title">Misster Blue</h3>
+      <div class="prod-venue">CoHo Theatre, Portland</div>
+      <p class="prod-desc">Utilizing the structure of Maurice Ravel's Bolero, the forms of Anne Adam's painting "Unraveling Bolero," and the aesthetics of Bowerbird mating rituals — Misster Blue was conceived as a journey of self-realization.</p>
+      <p class="prod-desc">Accompanied by sound created then distorted from an audio recording of a poem, the audience is invited to take a dharmic journey of repeated loop structures that eventually give way to discover a beauty in the repetition as each moment passes.</p>
+    </div>
+  </div>
+</section>
 
+<section class="section section-alt" id="ensemble">
+  <div class="section-num">04 — The Ensemble</div>
+  <h2 class="section-title reveal">The <em>People.</em></h2>
   <div class="ensemble-grid">
     <div class="member reveal">
-      <div class="member-photo">
-        <img src="images/robert.jpg"
-          alt="Robert Augustine"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>R</div>'"
-        />
-      </div>
+      <div class="member-photo"><img src="images/robert.jpg" alt="Robert Augustine" onerror="this.outerHTML='<div class=\'member-ph\'>R</div>'" /></div>
       <div class="member-info">
         <div class="member-name">Robert Augustine</div>
         <div class="member-role">Founder · Director · Deviser</div>
-        <p class="member-bio">Trained at Portland State University and PETE's Institute of Contemporary Performance. Expert in The Viewpoints, Suzuki Method, and Clown. His work explores removing the boundary between performance and reality — from Cambodian circus schools to Nevada City storytelling camps.</p>
+        <p class="member-bio">Robert "Bobcat" Augustine is a devised theatre maker. After graduating from Portland State University and training at PETE's Institute of Contemporary Performance, he devised two full-length productions in The Viewpoints, Suzuki Method, and Clown. He went on to live in a camper and travel the US sharing clown and theatre in untraditional spaces — from Nevada City camps to a circus school in Battambang, Cambodia, where he translated The Viewpoints into Khmer. Also trained with South Coast Repertory, Del'Arte International, The Red Bastard, and The Actor's Gang.</p>
       </div>
     </div>
-
     <div class="member reveal">
-      <div class="member-photo">
-        <img src="images/amelia.jpg"
-          alt="Amelia Whitney"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'member-photo-placeholder\'>A</div>'"
-        />
-      </div>
+      <div class="member-photo"><img src="images/amelia.jpg" alt="Amelia Whitney" onerror="this.outerHTML='<div class=\'member-ph\'>A</div>'" /></div>
       <div class="member-info">
         <div class="member-name">Amelia Whitney</div>
         <div class="member-role">Co-Founder · Performer · Creator</div>
-        <p class="member-bio">CalArts MFA. Performed at REDCAT, Elysian Theater, Will Geer's Theatricum Botanicum, Highways Performance Space. Trained in Grotowski, Viewpoints, Butoh, Clown, and Deep Listening. Writes, directs, and moves in strange ways.</p>
+        <p class="member-bio">CalArts MFA (2018–2023). Performed at REDCAT, Elysian Theater, Will Geer's Theatricum Botanicum, Highways Performance Space, The Bardo, The Illusion Magic Lounge, and PDA Space. Wrote and directed her solo piece <em>Dance, Monkey, Dance</em>. Trained in Grotowski with Experience Cult Research Group and at the official assembly in NYC. Ongoing study in Viewpoints, Butoh, Clown, and Deep Listening through Pauline Oliveros' Institute. Also sings in a band called Super Hit.</p>
       </div>
     </div>
     <div class="member reveal">
-      <div class="member-photo">
-        <div class="member-photo-placeholder">H</div>
-      </div>
+      <div class="member-photo"><img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&q=80&auto=format&fit=crop" alt="Hilary Graves — placeholder" onerror="this.outerHTML='<div class=\'member-ph\'>H</div>'" /></div>
       <div class="member-info">
         <div class="member-name">Hilary Graves</div>
         <div class="member-role">Ensemble Member · Performer</div>
-        <p class="member-bio">Ensemble member of Imaginarium Theatre Works. Part of the devising team behind the company's current work-in-progress, <em>A Play or Something….</em>, which had its first showing at Non-Plus Ultra in Los Angeles.</p>
+        <p class="member-bio">Ensemble member of Imaginarium Theatre Works and part of the devising team behind the company's current work-in-progress. Performed in the first showing of <em>A Play or Something….</em> at Non-Plus Ultra, Los Angeles.</p>
+        <p class="member-bio" style="margin-top:8px;font-size:.7rem;color:rgba(200,196,188,.3);font-style:italic;">Placeholder photo — real image coming soon</p>
       </div>
     </div>
-
   </div>
 </section>
-<section class="section section-alt" id="training">
-  <div class="section-num">05 — Training</div>
-  <h2 class="section-title reveal">Methods &amp; <em>Practices</em></h2>
 
+<section class="section" id="training">
+  <div class="section-num">05 — Training Methods</div>
+  <h2 class="section-title reveal">Methods &amp; <em>Practices.</em></h2>
   <div class="training-list">
-    <div class="training-item reveal">
-      <div class="training-n">01</div>
-      <div>
-        <div class="training-name">The Viewpoints</div>
-        <div class="training-desc">SITI Company's compositional technique for ensemble work and spatial awareness</div>
-      </div>
-      <div class="training-tag">Movement</div>
+    <div class="t-item reveal"><div class="t-n">01</div><div><div class="t-name">The Viewpoints</div><div class="t-desc">SITI Company's compositional framework — Tempo, Duration, Kinesthetic Response, Repetition, Shape, Gesture, Architecture, Spatial Relationship, Topography</div></div><div class="t-tag">Movement</div></div>
+    <div class="t-item reveal"><div class="t-n">02</div><div><div class="t-name">Suzuki Method</div><div class="t-desc">Rigorous physical training system developed by Tadashi Suzuki — rooting the body for presence and power on stage</div></div><div class="t-tag">Body</div></div>
+    <div class="t-item reveal"><div class="t-n">03</div><div><div class="t-name">Grotowski Practices</div><div class="t-desc">Poor Theatre methodology — the holy actor, via negativa, stripping performance to its essential elements</div></div><div class="t-tag">Methodology</div></div>
+    <div class="t-item reveal"><div class="t-n">04</div><div><div class="t-name">Devised Theatre</div><div class="t-desc">Ensemble-based creation — no fixed text, collaborative authorship, the group as playwright, process as the work</div></div><div class="t-tag">Creation</div></div>
+    <div class="t-item reveal"><div class="t-n">05</div><div><div class="t-name">Clown &amp; Physical Comedy</div><div class="t-desc">Trained with Del'Arte International and The Red Bastard — failure as form, the audience as partner, play as method</div></div><div class="t-tag">Performance</div></div>
+    <div class="t-item reveal"><div class="t-n">06</div><div><div class="t-name">Deep Listening</div><div class="t-desc">Pauline Oliveros' practice — expanded awareness through sound, silence, and the full field of attention</div></div><div class="t-tag">Sonic</div></div>
+    <div class="t-item reveal"><div class="t-n">07</div><div><div class="t-name">Butoh</div><div class="t-desc">Japanese contemporary form — slow transformation, inner image, the body as landscape and living archive</div></div><div class="t-tag">Dance</div></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="calendar">
+  <div class="section-num">06 — Calendar of Events</div>
+  <h2 class="section-title reveal">What's <em>Happening.</em></h2>
+  <div class="cal-grid">
+    <div class="cal-event featured reveal">
+      <div class="cal-date"><div class="cal-day">14</div><div class="cal-month">Jun 2026</div></div>
+      <div class="cal-body"><div class="cal-tag">Open Workshop · All Levels</div><div class="cal-name">Introduction to The Viewpoints</div><div class="cal-meta">1:00–4:00 PM · Stomping Ground LA · $25 sliding scale · 12 spots</div></div>
+      <div class="cal-cta"><a href="mailto:Imaginariumtw@protonmail.com?subject=Viewpoints Workshop June 14" class="cal-btn">Register →</a></div>
     </div>
-    <div class="training-item reveal">
-      <div class="training-n">02</div>
-      <div>
-        <div class="training-name">Suzuki Method</div>
-        <div class="training-desc">Rigorous physical training system developed by Tadashi Suzuki</div>
-      </div>
-      <div class="training-tag">Body</div>
+    <div class="cal-event reveal">
+      <div class="cal-date"><div class="cal-day">28</div><div class="cal-month">Jun 2026</div></div>
+      <div class="cal-body"><div class="cal-tag">Open Workshop · Physical Comedy</div><div class="cal-name">Clown Lab: Failure as Form</div><div class="cal-meta">1:00–4:00 PM · Stomping Ground LA · $20 sliding scale · 10 spots</div></div>
+      <div class="cal-cta"><a href="mailto:Imaginariumtw@protonmail.com?subject=Clown Lab June 28" class="cal-btn">Register →</a></div>
     </div>
-    <div class="training-item reveal">
-      <div class="training-n">03</div>
-      <div>
-        <div class="training-name">Grotowski Practices</div>
-        <div class="training-desc">Poor Theatre methodology — stripping performance to its essential elements</div>
-      </div>
-      <div class="training-tag">Methodology</div>
+    <div class="cal-event reveal">
+      <div class="cal-date"><div class="cal-day">12</div><div class="cal-month">Jul 2026</div></div>
+      <div class="cal-body"><div class="cal-tag">Intensive · 2 Days · Devised Theatre</div><div class="cal-name">Devising Weekend Intensive</div><div class="cal-meta">Jul 12–13 · Stomping Ground LA · $80 sliding scale · 8 spots</div></div>
+      <div class="cal-cta"><a href="mailto:Imaginariumtw@protonmail.com?subject=Devising Intensive July" class="cal-btn">Register →</a></div>
     </div>
-    <div class="training-item reveal">
-      <div class="training-n">04</div>
-      <div>
-        <div class="training-name">Devised Theatre</div>
-        <div class="training-desc">Ensemble-based creation processes — no fixed text, collaborative authorship</div>
-      </div>
-      <div class="training-tag">Creation</div>
-    </div>
-    <div class="training-item reveal">
-      <div class="training-n">05</div>
-      <div>
-        <div class="training-name">Clown &amp; Physical Comedy</div>
-        <div class="training-desc">Trained with Del'Arte International and The Red Bastard</div>
-      </div>
-      <div class="training-tag">Performance</div>
-    </div>
-    <div class="training-item reveal">
-      <div class="training-n">06</div>
-      <div>
-        <div class="training-name">Deep Listening</div>
-        <div class="training-desc">Pauline Oliveros' practice — expanded awareness through sound and silence</div>
-      </div>
-      <div class="training-tag">Sonic</div>
+    <div class="cal-event past reveal">
+      <div class="cal-date"><div class="cal-day">26</div><div class="cal-month">Jan 2026</div></div>
+      <div class="cal-body"><div class="cal-tag">Past · Completed · 5-Day Intensive</div><div class="cal-name">The Power of Play</div><div class="cal-meta">Jan 26–30 · 1:00–4:00 PM · Stomping Ground LA · Devised Theatre &amp; Ensemble Practices</div></div>
+      <div class="cal-cta"><span style="font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:7px 14px;border:1px solid var(--border);">Completed</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
-<section class="section" id="contact">
-  <div class="section-num">06 — Contact</div>
+<section class="section" id="map">
+  <div class="section-num">07 — Location &amp; Directions</div>
+  <h2 class="section-title reveal">Find <em>Us.</em></h2>
+  <div class="map-grid">
+    <div class="map-embed reveal">
+      <iframe title="Stomping Ground LA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.8!2d-118.1667!3d34.0789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c1c18332b8b7%3A0x1!2s5453+Alhambra+Ave%2C+Los+Angeles%2C+CA+90032!5e0!3m2!1sen!2sus!4v1" allowfullscreen></iframe>
+    </div>
+    <div class="directions-card reveal">
+      <div><div class="dir-label">Workshop Venue</div><div class="dir-value">Stomping Ground LA</div><div class="dir-note">5453 Alhambra Ave<br>Los Angeles, CA 90032<br>El Sereno, East Los Angeles</div><a href="https://www.google.com/maps/dir/?api=1&destination=5453+Alhambra+Ave,+Los+Angeles,+CA+90032" target="_blank" rel="noopener" class="dir-link">Get directions in Google Maps →</a></div>
+      <div class="hr"></div>
+      <div><div class="dir-label">Workshop Hours</div><div class="dir-value">1:00 PM – 4:00 PM</div><div class="dir-note">Check calendar above for specific dates. Venue is open Mon–Sun, 8 AM – 10 PM.</div></div>
+      <div class="hr"></div>
+      <div><div class="dir-label">Parking</div><div class="dir-note">SGLA lot via alley off Bullard Ave. Street parking available. Arrive 15 min early.</div></div>
+      <div class="hr"></div>
+      <div><div class="dir-label">Transit</div><div class="dir-note">Metro Gold Line → Lincoln/Cypress. Bus lines 68, 265, 686 serve Alhambra Ave.</div></div>
+      <div class="hr"></div>
+      <div><div class="dir-label">Phone</div><div class="dir-value" style="font-size:1.1rem;"><a href="tel:+19092939057" style="color:var(--heading);text-decoration:none;">(909) 293-9057</a></div><div class="dir-note">Stomping Ground LA venue line</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="contact">
+  <div class="section-num">08 — Contact</div>
   <h2 class="section-title reveal">Let's make<br><em>something.</em></h2>
-
-  <div class="contact-block">
-    <a href="mailto:Imaginariumtw@protonmail.com" class="contact-card reveal">
-      <div class="contact-card-label">Email</div>
-      <div class="contact-card-value">Imaginariumtw<br>@protonmail.com</div>
-      <div class="contact-card-desc">For production inquiries, collaboration, training, and ensemble membership.</div>
+  <div class="contact-cards">
+    <a href="mailto:Imaginariumtw@protonmail.com" class="ccard reveal">
+      <div class="ccard-label">Email</div>
+      <div class="ccard-value">Imaginariumtw<br>@protonmail.com</div>
+      <div class="ccard-desc">Production inquiries, workshop registration, collaboration proposals, ensemble membership. We read everything.</div>
     </a>
-    <div class="contact-card reveal" style="cursor:default;">
-      <div class="contact-card-label">Currently</div>
-      <div class="contact-card-value" style="font-size:1.4rem; color:var(--gold);">Building an ensemble in Los Angeles</div>
-      <div class="contact-card-desc">We're actively seeking collaborators — performers, designers, and fellow devisers. If the work resonates, reach out.</div>
+    <div class="ccard reveal" style="cursor:default;">
+      <div class="ccard-label">Currently</div>
+      <div class="ccard-value" style="font-size:1.1rem;color:var(--gold);">Building an ensemble in Los Angeles</div>
+      <div class="ccard-desc">Actively seeking collaborators — performers, designers, devisers. If the work resonates, reach out. No audition required, just a willingness to make something honest.</div>
     </div>
+    <a href="workshops/" class="ccard reveal">
+      <div class="ccard-label">Workshops</div>
+      <div class="ccard-value">Open to All</div>
+      <div class="ccard-desc">No prior training required. Sliding scale pricing always. Stomping Ground LA, El Sereno. See workshop page for full schedule.</div>
+    </a>
+    <a href="gallery/" class="ccard reveal">
+      <div class="ccard-label">Gallery</div>
+      <div class="ccard-value">Photo Archive</div>
+      <div class="ccard-desc">Production and rehearsal documentation. Ensemble photos. More images being added as the company grows.</div>
+    </a>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
-  <a href="#" class="footer-logo">IMAGINARIUM<span>.</span></a>
-  <div style="display:flex; align-items:center; gap:16px;">
+  <a href="#" class="foot-logo">IMAGINARIUM<span>.</span></a>
+  <div style="display:flex;align-items:center;gap:16px;">
     <div style="text-align:right;">
-      <div style="font-family:'DM Mono',monospace; font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">Scan to visit</div>
-      <img src="images/qrcode.png" alt="QR code — imaginariumtw.org" style="width:56px; height:56px; opacity:0.6; filter:invert(1);" />
+      <div style="font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;">Scan to visit</div>
+      <img src="images/qrcode.png" alt="QR" style="width:50px;height:50px;opacity:.45;filter:invert(1);" />
     </div>
   </div>
-  <p>© 2026 Imaginarium Theatre Works · Los Angeles</p>
+  <p>© 2026 Imaginarium Theatre Works · Los Angeles · Imaginariumtw@protonmail.com</p>
 </footer>
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() {
-    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-    requestAnimationFrame(animCursor);
-  }
-  animCursor();
-
-  // Nav scroll
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-  // Scroll reveal
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('overlay');
+
+  function openD() { hamburger.classList.add('open'); drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeD() { hamburger.classList.remove('open'); drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+  hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeD() : openD());
+  overlay.addEventListener('click', closeD);
+  drawer.querySelectorAll('[data-close]').forEach(l => l.addEventListener('click', closeD));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeD(); });
+
   const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('on'), i * 100);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 85); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
-
 </body>
 </html>
