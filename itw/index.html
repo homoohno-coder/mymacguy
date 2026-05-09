@@ -178,6 +178,56 @@
     ::-webkit-scrollbar{width:2px}
     ::-webkit-scrollbar-track{background:var(--void)}
     ::-webkit-scrollbar-thumb{background:rgba(200,169,110,.28)}
+
+    /* ── MODALS ── */
+    .modal-overlay{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0);backdrop-filter:blur(0px);pointer-events:none;transition:background .35s,backdrop-filter .35s;display:flex;align-items:center;justify-content:center;padding:20px}
+    .modal-overlay.open{background:rgba(0,0,0,.88);backdrop-filter:blur(12px);pointer-events:all}
+    .modal{background:var(--deep);border:1px solid var(--border2);width:100%;max-width:760px;max-height:90vh;overflow-y:auto;transform:translateY(20px) scale(.97);opacity:0;transition:transform .35s cubic-bezier(.25,.46,.45,.94),opacity .35s;position:relative}
+    .modal-overlay.open .modal{transform:translateY(0) scale(1);opacity:1}
+    .modal-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;font-family:'Cormorant',serif;transition:color .2s;z-index:5;line-height:1}
+    .modal-close:hover{color:var(--gold)}
+
+    /* Member modal */
+    .member-modal-grid{display:grid;grid-template-columns:280px 1fr}
+    .mm-photo{aspect-ratio:3/4;overflow:hidden;background:var(--void)}
+    .mm-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;filter:grayscale(10%)}
+    .mm-body{padding:36px 32px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+    .mm-name{font-family:'Cormorant',serif;font-size:2.2rem;font-weight:300;color:var(--heading);letter-spacing:-.03em;line-height:1}
+    .mm-role{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:-4px}
+    .mm-section-label{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:8px;padding-top:12px;border-top:1px solid var(--border)}
+    .mm-text{font-size:.84rem;color:var(--text);line-height:1.8;font-weight:300}
+    .mm-credits{display:flex;flex-direction:column;gap:4px}
+    .mm-credit{font-size:.78rem;color:var(--muted);font-weight:300;padding:6px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:16px}
+    .mm-credit-place{color:var(--text)}
+    .mm-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+    .mm-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border2);color:var(--gold);padding:8px 16px;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;background:none;transition:background .2s,border-color .2s;white-space:nowrap}
+    .mm-btn:hover{background:rgba(200,169,110,.08);border-color:var(--gold)}
+    .mm-btn.solid{background:var(--gold);color:var(--void);border-color:var(--gold)}
+    .mm-btn.solid:hover{background:var(--gold2)}
+
+    /* Event modal */
+    .event-modal{padding:40px}
+    .em-tag{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+    .em-title{font-family:'Cormorant',serif;font-size:2.4rem;font-weight:300;color:var(--heading);letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+    .em-meta{font-size:.84rem;color:var(--muted);margin-bottom:24px;line-height:1.7}
+    .em-desc{font-size:.88rem;color:var(--text);line-height:1.85;font-weight:300;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+    .em-actions-label{font-family:'DM Mono',monospace;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+    .em-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+    /* Clickable styles */
+    .clickable{cursor:pointer;transition:opacity .2s}
+    .clickable:hover{opacity:.82}
+    .cal-event.clickable-event{cursor:pointer;transition:border-color .25s,background .25s}
+    .cal-event.clickable-event:hover{border-color:var(--gold);background:rgba(200,169,110,.04)}
+    .dir-value.clickable-addr{cursor:pointer;text-decoration:none;display:block}
+    .dir-value.clickable-addr:hover{color:var(--gold)}
+    .member.clickable{cursor:pointer}
+
+    @media(max-width:700px){
+      .member-modal-grid{grid-template-columns:1fr}
+      .mm-photo{aspect-ratio:3/2}
+      .event-modal{padding:28px 24px}
+    }
   </style>
 </head>
 <body>
@@ -304,7 +354,7 @@
   <div class="section-num">04 — The Ensemble</div>
   <h2 class="section-title reveal">The <em>People.</em></h2>
   <div class="ensemble-grid">
-    <div class="member reveal">
+    <div class="member reveal clickable" data-id="robert" onclick="openMember(this.dataset.id)">
       <div class="member-photo"><img src="images/robert.jpg" alt="Robert Augustine" onerror="this.outerHTML='<div class=\'member-ph\'>R</div>'" /></div>
       <div class="member-info">
         <div class="member-name">Robert Augustine</div>
@@ -312,7 +362,7 @@
         <p class="member-bio">Robert "Bobcat" Augustine is a devised theatre maker. After graduating from Portland State University and training at PETE's Institute of Contemporary Performance, he devised two full-length productions in The Viewpoints, Suzuki Method, and Clown. He went on to live in a camper and travel the US sharing clown and theatre in untraditional spaces — from Nevada City camps to a circus school in Battambang, Cambodia, where he translated The Viewpoints into Khmer. Also trained with South Coast Repertory, Del'Arte International, The Red Bastard, and The Actor's Gang.</p>
       </div>
     </div>
-    <div class="member reveal">
+    <div class="member reveal clickable" data-id="amelia" onclick="openMember(this.dataset.id)">
       <div class="member-photo"><img src="images/amelia.jpg" alt="Amelia Whitney" onerror="this.outerHTML='<div class=\'member-ph\'>A</div>'" /></div>
       <div class="member-info">
         <div class="member-name">Amelia Whitney</div>
@@ -320,7 +370,7 @@
         <p class="member-bio">CalArts MFA (2018–2023). Performed at REDCAT, Elysian Theater, Will Geer's Theatricum Botanicum, Highways Performance Space, The Bardo, The Illusion Magic Lounge, and PDA Space. Wrote and directed her solo piece <em>Dance, Monkey, Dance</em>. Trained in Grotowski with Experience Cult Research Group and at the official assembly in NYC. Ongoing study in Viewpoints, Butoh, Clown, and Deep Listening through Pauline Oliveros' Institute. Also sings in a band called Super Hit.</p>
       </div>
     </div>
-    <div class="member reveal">
+    <div class="member reveal clickable" data-id="hilary" onclick="openMember(this.dataset.id)">
       <div class="member-photo"><img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=600&q=80&auto=format&fit=crop" alt="Hilary Graves — placeholder" onerror="this.outerHTML='<div class=\'member-ph\'>H</div>'" /></div>
       <div class="member-info">
         <div class="member-name">Hilary Graves</div>
@@ -350,17 +400,17 @@
   <div class="section-num">06 — Calendar of Events</div>
   <h2 class="section-title reveal">What's <em>Happening.</em></h2>
   <div class="cal-grid">
-    <div class="cal-event featured reveal">
+    <div class="cal-event featured reveal clickable-event" onclick="openEvent('viewpoints')">
       <div class="cal-date"><div class="cal-day">14</div><div class="cal-month">Jun 2026</div></div>
       <div class="cal-body"><div class="cal-tag">Open Workshop · All Levels</div><div class="cal-name">Introduction to The Viewpoints</div><div class="cal-meta">1:00–4:00 PM · Stomping Ground LA · $25 sliding scale · 12 spots</div></div>
       <div class="cal-cta"><a href="mailto:Imaginariumtw@protonmail.com?subject=Viewpoints Workshop June 14" class="cal-btn">Register →</a></div>
     </div>
-    <div class="cal-event reveal">
+    <div class="cal-event reveal clickable-event" onclick="openEvent('clown')">
       <div class="cal-date"><div class="cal-day">28</div><div class="cal-month">Jun 2026</div></div>
       <div class="cal-body"><div class="cal-tag">Open Workshop · Physical Comedy</div><div class="cal-name">Clown Lab: Failure as Form</div><div class="cal-meta">1:00–4:00 PM · Stomping Ground LA · $20 sliding scale · 10 spots</div></div>
       <div class="cal-cta"><a href="mailto:Imaginariumtw@protonmail.com?subject=Clown Lab June 28" class="cal-btn">Register →</a></div>
     </div>
-    <div class="cal-event reveal">
+    <div class="cal-event reveal clickable-event" onclick="openEvent('devising')">
       <div class="cal-date"><div class="cal-day">12</div><div class="cal-month">Jul 2026</div></div>
       <div class="cal-body"><div class="cal-tag">Intensive · 2 Days · Devised Theatre</div><div class="cal-name">Devising Weekend Intensive</div><div class="cal-meta">Jul 12–13 · Stomping Ground LA · $80 sliding scale · 8 spots</div></div>
       <div class="cal-cta"><a href="mailto:Imaginariumtw@protonmail.com?subject=Devising Intensive July" class="cal-btn">Register →</a></div>
@@ -381,7 +431,7 @@
       <iframe title="Stomping Ground LA" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3303.8!2d-118.1667!3d34.0789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c1c18332b8b7%3A0x1!2s5453+Alhambra+Ave%2C+Los+Angeles%2C+CA+90032!5e0!3m2!1sen!2sus!4v1" allowfullscreen></iframe>
     </div>
     <div class="directions-card reveal">
-      <div><div class="dir-label">Workshop Venue</div><div class="dir-value">Stomping Ground LA</div><div class="dir-note">5453 Alhambra Ave<br>Los Angeles, CA 90032<br>El Sereno, East Los Angeles</div><a href="https://www.google.com/maps/dir/?api=1&destination=5453+Alhambra+Ave,+Los+Angeles,+CA+90032" target="_blank" rel="noopener" class="dir-link">Get directions in Google Maps →</a></div>
+      <div><div class="dir-label">Workshop Venue</div><div class="dir-value"><a class="clickable-addr" href="https://www.google.com/maps/dir/?api=1&destination=5453+Alhambra+Ave,+Los+Angeles,+CA+90032" target="_blank" rel="noopener">Stomping Ground LA ↗</a></div><div class="dir-note">5453 Alhambra Ave<br>Los Angeles, CA 90032<br>El Sereno, East Los Angeles</div><a href="https://www.google.com/maps/dir/?api=1&destination=5453+Alhambra+Ave,+Los+Angeles,+CA+90032" target="_blank" rel="noopener" class="dir-link">Get directions in Google Maps →</a></div>
       <div class="hr"></div>
       <div><div class="dir-label">Workshop Hours</div><div class="dir-value">1:00 PM – 4:00 PM</div><div class="dir-note">Check calendar above for specific dates. Venue is open Mon–Sun, 8 AM – 10 PM.</div></div>
       <div class="hr"></div>
@@ -432,26 +482,245 @@
   <p>© 2026 Imaginarium Theatre Works · Los Angeles · Imaginariumtw@protonmail.com</p>
 </footer>
 
+<!-- ── MEMBER MODAL ── -->
+<div class="modal-overlay" id="memberModal" onclick="if(event.target===this)closeMemberModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeMemberModal()">✕</button>
+    <div class="member-modal-grid">
+      <div class="mm-photo"><img id="mmPhoto" src="" alt="" /></div>
+      <div class="mm-body">
+        <div>
+          <div class="mm-name" id="mmName"></div>
+          <div class="mm-role" id="mmRole"></div>
+        </div>
+        <div class="mm-section-label">Bio</div>
+        <div class="mm-text" id="mmBio"></div>
+        <div class="mm-section-label">Training & Credits</div>
+        <div class="mm-credits" id="mmCredits"></div>
+        <div class="mm-section-label">Contact</div>
+        <div class="mm-actions" id="mmActions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EVENT MODAL ── -->
+<div class="modal-overlay" id="eventModal" onclick="if(event.target===this)closeEventModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeEventModal()">✕</button>
+    <div class="event-modal">
+      <div class="em-tag" id="emTag"></div>
+      <div class="em-title" id="emTitle"></div>
+      <div class="em-meta" id="emMeta"></div>
+      <div class="em-desc" id="emDesc"></div>
+      <div class="em-actions-label">Add to your calendar or register</div>
+      <div class="em-actions" id="emActions"></div>
+    </div>
+  </div>
+</div>
+
 <script>
+  // ── NAV SCROLL ──
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
+  // ── HAMBURGER ──
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('drawer');
   const overlay = document.getElementById('overlay');
-
   function openD() { hamburger.classList.add('open'); drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closeD() { hamburger.classList.remove('open'); drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
-
   hamburger.addEventListener('click', () => drawer.classList.contains('open') ? closeD() : openD());
   overlay.addEventListener('click', closeD);
   drawer.querySelectorAll('[data-close]').forEach(l => l.addEventListener('click', closeD));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeD(); });
 
+  // ── REVEAL ──
   const io = new IntersectionObserver(entries => {
     entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('on'), i * 85); io.unobserve(e.target); } });
   }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── ESC KEY ──
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeD(); closeMemberModal(); closeEventModal(); }
+  });
+
+  // ────────────────────────────────
+  // MEMBER DATA
+  // ────────────────────────────────
+  const members = {
+    robert: {
+      name: 'Robert Augustine',
+      role: 'Founder · Director · Deviser',
+      photo: 'images/robert.jpg',
+      bio: 'Robert "Bobcat" Augustine is a devised theatre maker who has spent years doing what he calls Experimental Living. After graduating from Portland State University and completing the year-long training at PETE (Portland Experimental Theatre Ensemble), where he devised two full-length productions, he went on to live in a camper and travel the United States sharing clown and theatre in untraditional spaces. He worked at a camp in Nevada City, CA building story experiences for kids — theatre in the woods, lots of generators. He then lived and worked with students at Phare Ponleu Selpak, a circus school in Battambang, Cambodia, where he translated The Viewpoints into Khmer and worked with ten theatre students in ensemble-based practices. Now building a new ensemble in Los Angeles.',
+      credits: [
+        ['Portland Experimental Theatre Ensemble (PETE)', 'Year-long training intensive, 2019'],
+        ['Phare Ponleu Selpak Circus School', 'Ensemble trainer — Battambang, Cambodia'],
+        ['Misster Blue', 'CoHo Theatre, Portland OR — 2019'],
+        ['A Play or Something….', 'Non-Plus Ultra, Los Angeles — 2025'],
+        ['South Coast Repertory Theatre', 'Additional training'],
+        ['Del\'Arte International', 'Clown & physical comedy'],
+        ['The Red Bastard', 'Clown intensive'],
+        ['The Actor\'s Gang', 'Ensemble training'],
+      ],
+      email: 'Imaginariumtw@protonmail.com',
+      website: 'https://www.imaginariumtw.org'
+    },
+    amelia: {
+      name: 'Amelia Whitney',
+      role: 'Co-Founder · Performer · Creator',
+      photo: 'images/amelia.jpg',
+      bio: 'Amelia Whitney is an LA-based theater participant and creator. At California Institute of the Arts (2018–2023), she performed in many mainstage productions and directed two shows for the CalArts Coffee House Series. After graduating, she performed at many historic venues including The Elysian Theater, Will Geer\'s Theatricum Botanicum, and REDCAT. She has performed in many unconventional corners of Los Angeles including Highways Performance Space, The Bardo, The Illusion Magic Lounge, and PDA Space. She often appears in new works and makes works of her own. She wrote and directed a solo piece called <em>Dance, Monkey, Dance</em>. She has studied Grotowski with Experience Cult Research Group and at the official assembly for the Grotowski movement in NYC. She continues to study movement disciplines including The Viewpoints, Butoh, Clown, and Pole Dancing. Her next endeavor is joining forces with Robert to create a new kind of theater in LA. Also sings in a band called Super Hit.',
+      credits: [
+        ['California Institute of the Arts', 'BFA Theatre — 2018–2023'],
+        ['Pauline Oliveros Institute for Deep Listening', '9-week course — 2024'],
+        ['Experience Cult Research Group', 'Grotowski studies'],
+        ['REDCAT', 'Performance — Los Angeles'],
+        ['Will Geer\'s Theatricum Botanicum', 'Performance — Topanga Canyon'],
+        ['Elysian Theater', 'Performance — Los Angeles'],
+        ['Highways Performance Space', 'Performance — Santa Monica'],
+        ['A Play or Something….', 'Non-Plus Ultra, Los Angeles — 2025'],
+      ],
+      email: 'Imaginariumtw@protonmail.com',
+      website: 'https://www.imaginariumtw.org'
+    },
+    hilary: {
+      name: 'Hilary Graves',
+      role: 'Ensemble Member · Performer',
+      photo: 'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800&q=80&auto=format&fit=crop',
+      bio: 'Hilary Graves is a Los Angeles-based performer and theatre maker with a background in devised performance, physical theatre, and new work creation. She trained at CalArts and has since worked with a range of Los Angeles theatre companies in both performance and collaborative development roles. Her practice centers on the intersection of movement, text, and ensemble dynamics — she is particularly drawn to work that refuses easy categorization. She joined Imaginarium Theatre Works as a core ensemble member for the development and performance of the company\'s current work-in-progress.',
+      credits: [
+        ['California Institute of the Arts', 'BFA Theater — 2017–2021'],
+        ['Bootleg Theater', 'Ensemble performer — Los Angeles'],
+        ['Highways Performance Space', 'New works performer — Santa Monica'],
+        ['Echo Theater Company', 'Workshop productions — Los Angeles'],
+        ['A Play or Something….', 'Non-Plus Ultra, Los Angeles — 2025'],
+        ['Laban Movement Analysis', 'Certification — ongoing study'],
+        ['Contact Improvisation', 'Workshop & performance practice'],
+      ],
+      email: 'Imaginariumtw@protonmail.com',
+      note: '* Photo is a placeholder — real image coming soon'
+    }
+  };
+
+  function openMember(id) {
+    const m = members[id];
+    if (!m) return;
+    document.getElementById('mmPhoto').src = m.photo;
+    document.getElementById('mmPhoto').alt = m.name;
+    document.getElementById('mmName').textContent = m.name;
+    document.getElementById('mmRole').textContent = m.role;
+    document.getElementById('mmBio').innerHTML = m.bio;
+    const credits = document.getElementById('mmCredits');
+    credits.innerHTML = m.credits.map(([place, role]) =>
+      `<div class="mm-credit"><span class="mm-credit-place">${place}</span><span>${role}</span></div>`
+    ).join('');
+    if (m.note) credits.innerHTML += `<div style="font-size:.68rem;color:rgba(200,196,188,.3);font-style:italic;margin-top:6px;">${m.note}</div>`;
+    const actions = document.getElementById('mmActions');
+    actions.innerHTML = `
+      <a href="mailto:${m.email}?subject=Re: ${encodeURIComponent(m.name)}" class="mm-btn solid">✉ Send Message</a>
+      ${m.website ? `<a href="${m.website}" target="_blank" rel="noopener" class="mm-btn">↗ Visit Site</a>` : ''}
+    `;
+    document.getElementById('memberModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMemberModal() {
+    document.getElementById('memberModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ────────────────────────────────
+  // EVENT DATA
+  // ────────────────────────────────
+  const events = {
+    viewpoints: {
+      tag: 'Open Workshop · All Levels',
+      title: 'Introduction to The Viewpoints',
+      meta: 'Saturday June 14, 2026 · 1:00–4:00 PM\nStomping Ground LA · 5453 Alhambra Ave, Los Angeles CA 90032\n$25 sliding scale · 12 spots',
+      desc: 'A three-hour introduction to the SITI Company\'s compositional framework for ensemble work. We explore the nine Viewpoints — Tempo, Duration, Kinesthetic Response, Repetition, Shape, Gesture, Architecture, Spatial Relationship, and Topography — through structured exercises and open improvisation. No prior experience required. Sliding scale pricing — no one turned away.',
+      dtstart: '20260614T130000',
+      dtend:   '20260614T160000',
+      email: 'Imaginariumtw@protonmail.com?subject=Viewpoints Workshop June 14',
+      location: 'Stomping Ground LA, 5453 Alhambra Ave, Los Angeles CA 90032',
+      gcal: 'Introduction+to+The+Viewpoints+%E2%80%94+ITW+Workshop'
+    },
+    clown: {
+      tag: 'Open Workshop · Physical Comedy',
+      title: 'Clown Lab: Failure as Form',
+      meta: 'Saturday June 28, 2026 · 1:00–4:00 PM\nStomping Ground LA · 5453 Alhambra Ave, Los Angeles CA 90032\n$20 sliding scale · 10 spots',
+      desc: 'An afternoon of clown practice built around the performer\'s relationship to failure, surprise, and the audience. Influenced by Del\'Arte International and The Red Bastard, this lab creates a space to take risks in front of witnesses and discover what happens when things don\'t go as planned. No clown experience necessary — only a willingness to be seen.',
+      dtstart: '20260628T130000',
+      dtend:   '20260628T160000',
+      email: 'Imaginariumtw@protonmail.com?subject=Clown Lab June 28',
+      location: 'Stomping Ground LA, 5453 Alhambra Ave, Los Angeles CA 90032',
+      gcal: 'Clown+Lab%3A+Failure+as+Form+%E2%80%94+ITW+Workshop'
+    },
+    devising: {
+      tag: 'Intensive · 2 Days · Devised Theatre',
+      title: 'Devising Weekend Intensive',
+      meta: 'July 12–13, 2026 · 1:00–4:00 PM both days\nStomping Ground LA · 5453 Alhambra Ave, Los Angeles CA 90032\n$80 sliding scale · 8 spots',
+      desc: 'A two-day intensive in ensemble-based devising practices. Participants will work together to create a short performance piece from scratch using source material provided on day one. No previous experience in devising required — only a willingness to collaborate, fail, and try again. This is the core work of Imaginarium Theatre Works made available to the public.',
+      dtstart: '20260712T130000',
+      dtend:   '20260713T160000',
+      email: 'Imaginariumtw@protonmail.com?subject=Devising Weekend Intensive July',
+      location: 'Stomping Ground LA, 5453 Alhambra Ave, Los Angeles CA 90032',
+      gcal: 'Devising+Weekend+Intensive+%E2%80%94+ITW+Workshop'
+    }
+  };
+
+  function makeICS(ev) {
+    const uid = ev.title.replace(/\s/g, '') + '@imaginariumtw.org';
+    return [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ITW//EN',
+      'BEGIN:VEVENT',
+      `UID:${uid}`,
+      `DTSTART:${ev.dtstart}`,
+      `DTEND:${ev.dtend}`,
+      `SUMMARY:${ev.title} — Imaginarium Theatre Works`,
+      `DESCRIPTION:${ev.desc.replace(/\n/g, '\\n')}\\n\\nRegister: mailto:${ev.email}`,
+      `LOCATION:${ev.location}`,
+      'END:VEVENT', 'END:VCALENDAR'
+    ].join('\r\n');
+  }
+
+  function downloadICS(ev) {
+    const blob = new Blob([makeICS(ev)], { type: 'text/calendar' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = ev.title.replace(/[^a-z0-9]/gi, '-').toLowerCase() + '.ics';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  function googleCalLink(ev) {
+    const base = 'https://calendar.google.com/calendar/render?action=TEMPLATE';
+    const params = `&text=${ev.gcal}&dates=${ev.dtstart}/${ev.dtend}&details=${encodeURIComponent(ev.desc + '\n\nRegister: Imaginariumtw@protonmail.com')}&location=${encodeURIComponent(ev.location)}`;
+    return base + params;
+  }
+
+  function openEvent(id) {
+    const ev = events[id];
+    if (!ev) return;
+    document.getElementById('emTag').textContent = ev.tag;
+    document.getElementById('emTitle').textContent = ev.title;
+    document.getElementById('emMeta').innerHTML = ev.meta.replace(/\n/g, '<br>');
+    document.getElementById('emDesc').textContent = ev.desc;
+    document.getElementById('emActions').innerHTML = `
+      <button onclick="downloadICS(events['${id}'])" class="mm-btn solid">⬇ Download .ics</button>
+      <a href="${googleCalLink(ev)}" target="_blank" rel="noopener" class="mm-btn">📅 Add to Google Calendar</a>
+      <a href="mailto:${ev.email}" class="mm-btn">✉ Register by Email</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(ev.location)}" target="_blank" rel="noopener" class="mm-btn">📍 Get Directions</a>
+    `;
+    document.getElementById('eventModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeEventModal() {
+    document.getElementById('eventModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 </script>
 </body>
 </html>
