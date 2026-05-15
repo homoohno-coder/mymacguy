@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Microsoft 365 Help — mymacguy.net</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #09090a; --bg2: #0f0f10; --surface: #161618;
+      --border: rgba(255,255,255,0.07); --accent: #c8f060; --accent2: #a8d840;
+      --text: #d8d6ce; --muted: rgba(216,214,206,0.42); --heading: #f2f1ec;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 9000; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.028; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: rgba(9,9,10,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--heading); text-decoration: none; }
+    .nav-logo .dot { color: var(--accent); }
+    .nav-logo em { font-style: italic; font-weight: 400; opacity: 0.55; }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #09090a; padding: 9px 22px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(200,240,96,0.3); }
+
+    .page-hero { padding: 140px 80px 72px; background: var(--bg2); border-bottom: 1px solid var(--border); }
+    .page-hero-inner { max-width: 760px; }
+    .hero-label { display: inline-flex; align-items: center; gap: 10px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    .hero-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; color: var(--heading); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 20px; }
+    .page-hero p { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 560px; }
+
+    .content-section { padding: 80px 80px; }
+    .content-section.alt { background: var(--bg2); }
+
+    .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--heading); letter-spacing: -0.03em; margin-bottom: 48px; }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--muted); }
+
+    /* Steps */
+    .steps-list { display: flex; flex-direction: column; gap: 0; counter-reset: steps; }
+    .step { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); counter-increment: steps; }
+    .step:last-child { border-bottom: none; }
+    .step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(200,240,96,0.08); border: 1px solid rgba(200,240,96,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
+    .step-content h3 { font-size: 1rem; font-weight: 600; color: var(--heading); margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+    .step-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,240,96,0.3); transition: border-color 0.2s; }
+    .step-content a:hover { border-color: var(--accent); }
+    .step-content code { background: var(--surface); padding: 2px 7px; border-radius: 4px; font-size: 0.82rem; color: var(--accent); font-family: monospace; }
+
+    /* Resource cards */
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .rcard { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; background: var(--surface); transition: border-color 0.22s, transform 0.22s, background 0.22s; }
+    .rcard:hover { border-color: rgba(200,240,96,0.3); background: rgba(200,240,96,0.025); transform: translateY(-2px); }
+    .rcard-ico { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .rcard-body h4 { font-size: 0.9rem; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+    .rcard-body p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .rcard-arr { margin-left: auto; color: var(--muted); font-size: 0.85rem; flex-shrink: 0; align-self: center; padding-left: 8px; transition: color 0.2s, transform 0.2s; }
+    .rcard:hover .rcard-arr { color: var(--accent); transform: translateX(3px); }
+
+    /* Contact CTA */
+    .cta-section { padding: 80px 80px; background: var(--surface); border-top: 1px solid var(--border); }
+    .cta-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--heading); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 16px; }
+    .cta-inner h2 em { font-style: italic; font-weight: 400; }
+    .cta-inner p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #09090a; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(200,240,96,0.28); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; color: var(--heading); padding: 16px 30px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.18); font-weight: 500; font-size: 0.95rem; text-decoration: none; backdrop-filter: blur(4px); background: rgba(255,255,255,0.04); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); }
+
+    footer { padding: 36px 80px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .foot-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--heading); text-decoration: none; }
+    .foot-logo .dot { color: var(--accent); }
+    .foot-logo em { font-style: italic; font-weight: 400; opacity: 0.5; }
+    .foot-links { display: flex; gap: 24px; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.75rem; }
+
+    .note-box { background: rgba(200,240,96,0.06); border: 1px solid rgba(200,240,96,0.18); border-radius: 8px; padding: 18px 22px; margin-bottom: 40px; font-size: 0.85rem; color: rgba(216,214,206,0.7); line-height: 1.7; }
+    .note-box strong { color: var(--accent); }
+
+    @media (max-width: 900px) { nav { padding: 0 28px; } .page-hero { padding: 120px 36px 56px; } .content-section { padding: 60px 36px; } .cta-section { padding: 60px 36px; } footer { padding: 28px 36px; } }
+    @media (max-width: 600px) { nav { padding: 0 20px; } .nav-back span { display: none; } .page-hero { padding: 100px 20px 48px; } .content-section { padding: 48px 20px; } .cta-section { padding: 48px 20px; } footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; } .foot-links { flex-direction: column; gap: 10px; } .resources-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">mymacguy<span class="dot">.</span><em>net</em></a>
+    <a href="index.html" class="nav-back">← <span>Back to Home</span></a>
+    <a href="tel:3109801964" class="nav-cta">📞 Call Now</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="hero-label">Self-Help Guide</p>
+      <h1>Microsoft 365 &amp;<br>Outlook Help</h1>
+      <p>Can't sign in? Email not loading? Work through these steps yourself — most issues are fixable in minutes without calling anyone.</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <p class="section-label">Start here</p>
+    <h2 class="section-title">Can't Sign In? <em>Try This First.</em></h2>
+
+    <div class="note-box">
+      <strong>Before anything else:</strong> Check if Microsoft is having an outage — it happens more than you'd think. Visit <a href="https://status.office365.com" target="_blank" rel="noopener" style="color:var(--accent)">status.office365.com</a> or <a href="https://downdetector.com/status/office-365/" target="_blank" rel="noopener" style="color:var(--accent)">Downdetector</a>. If there's a known issue, all you can do is wait.
+    </div>
+
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Try signing in directly at Outlook.com or Office.com</h3>
+          <p>Sometimes the desktop app has issues but the web version works fine. Go to <a href="https://outlook.com" target="_blank" rel="noopener">outlook.com</a> or <a href="https://www.office.com" target="_blank" rel="noopener">office.com</a> and try signing in there. If web works, your desktop app just needs to be reset.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Reset your Microsoft account password</h3>
+          <p>Even if you think you know your password, a reset often fixes mysterious login failures. Go to the <a href="https://account.live.com/password/reset" target="_blank" rel="noopener">Microsoft Password Reset page</a>, enter your email, and follow the steps to set a new password.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Try a different browser or use Incognito/Private mode</h3>
+          <p>Extensions and cached data can block logins. Press <code>Cmd + Shift + N</code> (Mac) or <code>Ctrl + Shift + N</code> (Windows) to open an Incognito window, then try signing in again.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Clear your browser cache and cookies</h3>
+          <p>In Chrome or Edge, press <code>Ctrl + Shift + Delete</code> (Windows) or <code>Cmd + Shift + Delete</code> (Mac). Select "All time" as the range, check Cookies and Cached images, then clear. Restart the browser and try again.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Check if your Microsoft 365 subscription is active</h3>
+          <p>Sign in to <a href="https://account.microsoft.com/services" target="_blank" rel="noopener">account.microsoft.com/services</a> to see your subscriptions. If it shows expired or payment failed, update your billing info. A lapsed subscription will lock you out of apps and email.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Remove and re-add your account in the Outlook app</h3>
+          <p>On Mac: open Outlook → top menu → <strong>Tools → Accounts</strong> → click your account → remove it, then add it back fresh. On Windows: open Outlook → <strong>File → Account Settings</strong> → select account → Remove, then add again.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h3>Check with your IT admin or account owner</h3>
+          <p>If your Microsoft 365 account was set up by an employer, school, or IT department, your account may have been disabled, the license removed, or a password policy may be blocking you. Contact whoever manages your organization's Microsoft 365 account.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt">
+    <p class="section-label">Helpful links</p>
+    <h2 class="section-title">Official Microsoft <em>Resources</em></h2>
+    <div class="resources-grid">
+      <a href="https://outlook.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">📧</span>
+        <div class="rcard-body">
+          <h4>Outlook Web (OWA)</h4>
+          <p>Access your email directly in the browser — no app required.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://www.office.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">💼</span>
+        <div class="rcard-body">
+          <h4>Office Online (Free Web Apps)</h4>
+          <p>Use Word, Excel, PowerPoint for free in your browser.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://account.live.com/password/reset" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🔑</span>
+        <div class="rcard-body">
+          <h4>Microsoft Password Reset</h4>
+          <p>Recover access to your Microsoft / Outlook account.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://account.microsoft.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">👤</span>
+        <div class="rcard-body">
+          <h4>Microsoft Account Dashboard</h4>
+          <p>Manage your profile, subscriptions, devices, and security.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://status.office365.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🟢</span>
+        <div class="rcard-body">
+          <h4>Microsoft 365 Service Status</h4>
+          <p>Check if Outlook, Teams, or SharePoint is having an outage.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://support.microsoft.com/en-us/office" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🛟</span>
+        <div class="rcard-body">
+          <h4>Microsoft Office Support</h4>
+          <p>Official help articles and troubleshooting from Microsoft.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://answers.microsoft.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">💬</span>
+        <div class="rcard-body">
+          <h4>Microsoft Community Forums</h4>
+          <p>Search thousands of solved issues from other Microsoft users.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://admin.microsoft.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🏢</span>
+        <div class="rcard-body">
+          <h4>Microsoft 365 Admin Center</h4>
+          <p>For IT admins and business owners managing user accounts and licenses.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://admin.exchange.microsoft.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">📬</span>
+        <div class="rcard-body">
+          <h4>Exchange Admin Center</h4>
+          <p>Manage mailboxes, mail flow rules, and email settings for your org.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://teams.microsoft.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🤝</span>
+        <div class="rcard-body">
+          <h4>Microsoft Teams Web</h4>
+          <p>Access Teams directly in your browser if the desktop app isn't working.</p>
+        </div>
+        <span class="rcard-arr">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <p class="section-label">Tips &amp; Hacks</p>
+    <h2 class="section-title">Save Money &amp; Work <em>Smarter</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;">
+      <div style="padding:22px 24px;border:1px solid var(--border);border-radius:8px;background:var(--surface);">
+        <div style="font-size:1.3rem;margin-bottom:10px;">💰</div>
+        <h4 style="font-size:.92rem;font-weight:600;color:var(--heading);margin-bottom:8px;">Apple Education Store — No Proof Required</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">Apple's <a href="https://www.apple.com/us-hed/shop" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Education Store</a> gives real discounts on Macs and iPads to anyone — they do not verify enrollment. No student ID needed. Also check the <a href="https://www.apple.com/shop/refurbished/mac" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Apple Certified Refurbished Store</a> for $100–$200 off with full warranty.</p>
+      </div>
+      <div style="padding:22px 24px;border:1px solid var(--border);border-radius:8px;background:var(--surface);">
+        <div style="font-size:1.3rem;margin-bottom:10px;">🌐</div>
+        <h4 style="font-size:.92rem;font-weight:600;color:var(--heading);margin-bottom:8px;">Use Office Online for Free</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">You don't need a paid Microsoft 365 subscription to use Word, Excel, and PowerPoint. <a href="https://www.office.com" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Office.com</a> gives you the web versions free with a free Microsoft account. Great for light use.</p>
+      </div>
+      <div style="padding:22px 24px;border:1px solid var(--border);border-radius:8px;background:var(--surface);">
+        <div style="font-size:1.3rem;margin-bottom:10px;">🖥️</div>
+        <h4 style="font-size:.92rem;font-weight:600;color:var(--heading);margin-bottom:8px;">Remote Help from Wahed</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">For Microsoft 365 setup, email migration, or account issues, Wahed can connect remotely to walk you through it. Click <a href="https://assist.zoho.com/customer" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Zoho Assist</a> to start a remote session.</p>
+      </div>
+      <div style="padding:22px 24px;border:1px solid var(--border);border-radius:8px;background:var(--surface);">
+        <div style="font-size:1.3rem;margin-bottom:10px;">🔒</div>
+        <h4 style="font-size:.92rem;font-weight:600;color:var(--heading);margin-bottom:8px;">Enable Microsoft Authenticator App</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">Download the free <a href="https://www.microsoft.com/en-us/security/mobile-authenticator-app" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Microsoft Authenticator</a> app on your iPhone. It makes logging into Microsoft 365 much more secure and you can approve sign-ins with one tap instead of entering a code.</p>
+      </div>
+      <div style="padding:22px 24px;border:1px solid var(--border);border-radius:8px;background:var(--surface);">
+        <div style="font-size:1.3rem;margin-bottom:10px;">📧</div>
+        <h4 style="font-size:.92rem;font-weight:600;color:var(--heading);margin-bottom:8px;">Outlook on Mac — Use the Web Version</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">The Outlook desktop app on Mac can be buggy. If it's crashing or not loading, <a href="https://outlook.com" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Outlook Web (OWA)</a> at outlook.com is just as full-featured and works in Safari. Many people prefer it.</p>
+      </div>
+      <div style="padding:22px 24px;border:1px solid var(--border);border-radius:8px;background:var(--surface);">
+        <div style="font-size:1.3rem;margin-bottom:10px;">📞</div>
+        <h4 style="font-size:.92rem;font-weight:600;color:var(--heading);margin-bottom:8px;">Microsoft Support — Direct Line</h4>
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.65;">Microsoft's paid support line: <strong style="color:var(--accent);">1-800-642-7676</strong>. For free community support: <a href="https://answers.microsoft.com" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">answers.microsoft.com</a>. For business/admin issues, contact Microsoft directly through the <a href="https://admin.microsoft.com" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(200,240,96,.3);">Admin Center</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2>Still stuck? <em>I've got you.</em></h2>
+      <p>If none of these steps solved your problem, it might need a closer look. I'm happy to help — usually same day, and I'll explain exactly what happened.</p>
+      <div class="cta-buttons">
+        <a href="tel:3109801964" class="btn-primary">📞 Call (310) 980-1964</a>
+        <a href="mailto:wahed@mymacguy.net" class="btn-outline">✉️ Email Wahed</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="foot-logo">mymacguy<span class="dot">.</span><em>net</em></a>
+    <div class="foot-links">
+      <a href="tel:3109801964">(310) 980-1964</a>
+      <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+      <a href="index.html">← Back to Home</a>
+    </div>
+    <p>© 2026 Wahed Tech Support · All rights reserved</p>
+  </footer>
+
+</body>
+</html>

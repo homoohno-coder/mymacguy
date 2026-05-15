@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security &amp; Privacy Help — mymacguy.net</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #09090a; --bg2: #0f0f10; --surface: #161618; --border: rgba(255,255,255,0.07); --accent: #c8f060; --text: #d8d6ce; --muted: rgba(216,214,206,0.42); --heading: #f2f1ec; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 9000; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.028; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: rgba(9,9,10,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--heading); text-decoration: none; }
+    .nav-logo .dot { color: var(--accent); }
+    .nav-logo em { font-style: italic; font-weight: 400; opacity: 0.55; }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #09090a; padding: 9px 22px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(200,240,96,0.3); }
+    .page-hero { padding: 140px 80px 72px; background: var(--bg2); border-bottom: 1px solid var(--border); }
+    .page-hero-inner { max-width: 760px; }
+    .hero-label { display: inline-flex; align-items: center; gap: 10px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+    .hero-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; color: var(--heading); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 20px; }
+    .page-hero p { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 560px; }
+    .content-section { padding: 80px 80px; }
+    .content-section.alt { background: var(--bg2); }
+    .section-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; width: 16px; height: 1px; background: var(--accent); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--heading); letter-spacing: -0.03em; margin-bottom: 48px; }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--muted); }
+    .steps-list { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+    .step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: rgba(200,240,96,0.08); border: 1px solid rgba(200,240,96,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
+    .step-content h3 { font-size: 1rem; font-weight: 600; color: var(--heading); margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+    .step-content a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,240,96,0.3); transition: border-color 0.2s; }
+    .step-content a:hover { border-color: var(--accent); }
+    .step-content code { background: var(--surface); padding: 2px 7px; border-radius: 4px; font-size: 0.82rem; color: var(--accent); font-family: monospace; }
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .rcard { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; background: var(--surface); transition: border-color 0.22s, transform 0.22s; }
+    .rcard:hover { border-color: rgba(200,240,96,0.3); background: rgba(200,240,96,0.025); transform: translateY(-2px); }
+    .rcard-ico { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .rcard-body h4 { font-size: 0.9rem; font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+    .rcard-body p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .rcard-arr { margin-left: auto; color: var(--muted); font-size: 0.85rem; flex-shrink: 0; align-self: center; padding-left: 8px; transition: color 0.2s, transform 0.2s; }
+    .rcard:hover .rcard-arr { color: var(--accent); transform: translateX(3px); }
+    .tip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+    .tip-card { padding: 22px 24px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+    .tip-card .tip-icon { font-size: 1.3rem; margin-bottom: 10px; }
+    .tip-card h4 { font-size: 0.92rem; font-weight: 600; color: var(--heading); margin-bottom: 8px; }
+    .tip-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .tip-card a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(200,240,96,0.3); }
+    .tip-card a:hover { border-color: var(--accent); }
+    .cta-section { padding: 80px 80px; background: var(--surface); border-top: 1px solid var(--border); }
+    .cta-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+    .cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--heading); letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 16px; }
+    .cta-inner h2 em { font-style: italic; font-weight: 400; }
+    .cta-inner p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #09090a; padding: 16px 36px; border-radius: 100px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 44px rgba(200,240,96,0.28); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; color: var(--heading); padding: 16px 30px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.18); font-weight: 500; font-size: 0.95rem; text-decoration: none; background: rgba(255,255,255,0.04); transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.07); }
+    footer { padding: 36px 80px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .foot-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.95rem; color: var(--heading); text-decoration: none; }
+    .foot-logo .dot { color: var(--accent); }
+    .foot-logo em { font-style: italic; font-weight: 400; opacity: 0.5; }
+    .foot-links { display: flex; gap: 24px; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.75rem; }
+    @media (max-width: 900px) { nav { padding: 0 28px; } .page-hero { padding: 120px 36px 56px; } .content-section { padding: 60px 36px; } .cta-section { padding: 60px 36px; } footer { padding: 28px 36px; } }
+    @media (max-width: 600px) { nav { padding: 0 20px; } .nav-back span { display: none; } .page-hero { padding: 100px 20px 48px; } .content-section { padding: 48px 20px; } .cta-section { padding: 48px 20px; } footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; } .foot-links { flex-direction: column; gap: 10px; } .resources-grid, .tip-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">mymacguy<span class="dot">.</span><em>net</em></a>
+    <a href="index.html" class="nav-back">← <span>Back to Home</span></a>
+    <a href="tel:3109801964" class="nav-cta">📞 Call Now</a>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="hero-label">Self-Help Guide</p>
+      <h1>Security &amp;<br>Privacy Help</h1>
+      <p>Hacked account, suspicious activity, or just want to lock things down? Here's how to protect yourself — step by step, for free.</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <p class="section-label">Fix it yourself</p>
+    <h2 class="section-title">Account Recovery &amp; <em>Security Fixes</em></h2>
+
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Check if your email or password was exposed in a breach</h3>
+          <p>Go to <a href="https://haveibeenpwned.com" target="_blank" rel="noopener">haveibeenpwned.com</a> and enter your email address. It's completely free and shows every data breach your email appeared in. If you show up, change that password everywhere you used it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Recover a locked or hacked Apple ID</h3>
+          <p>Go to <a href="https://iforgot.apple.com" target="_blank" rel="noopener">iforgot.apple.com</a> to reset your Apple ID password. If you've been locked out, follow the account recovery process — Apple will verify your identity and send a reset link to a trusted device or phone number.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Enable Two-Factor Authentication on your Apple ID</h3>
+          <p>On your iPhone: <strong>Settings → [Your Name] → Sign-In &amp; Security → Two-Factor Authentication</strong>. This means even if someone knows your password, they can't get in without a code sent to your phone. Do this today.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Scan for malware with Malwarebytes (free)</h3>
+          <p>Download <a href="https://www.malwarebytes.com/mac-antivirus" target="_blank" rel="noopener">Malwarebytes for Mac</a> — it's free to scan and remove adware, browser hijackers, and malware. Run a scan if your browser has new toolbars, you're seeing popup ads, or your Mac is acting weird.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Use iCloud Keychain to manage passwords (it's built in &amp; free)</h3>
+          <p>On Mac: <strong>System Settings → Passwords</strong>. On iPhone: <strong>Settings → Passwords</strong>. iCloud Keychain saves, fills, and generates strong passwords automatically. It also flags reused and compromised passwords. No need to pay for a third-party password manager.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Enable FileVault to encrypt your Mac's hard drive</h3>
+          <p>Go to <strong>System Settings → Privacy &amp; Security → FileVault → Turn On</strong>. This encrypts your entire disk so if your Mac is stolen, no one can access your files without your password. Takes a few hours to encrypt but runs in the background.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-content">
+          <h3>Remove suspicious login items and extensions</h3>
+          <p>On Mac: <strong>System Settings → General → Login Items &amp; Extensions</strong> — remove anything you don't recognize. In Safari/Chrome: check Extensions settings and remove unfamiliar ones. Malware often hides here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section alt">
+    <p class="section-label">Free Tools &amp; Tips</p>
+    <h2 class="section-title">Protect Yourself <em>for Free</em></h2>
+    <div class="tip-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🦠</div>
+        <h4>Malwarebytes — Best Free Mac Malware Scanner</h4>
+        <p><a href="https://www.malwarebytes.com/mac-antivirus" target="_blank" rel="noopener">Malwarebytes for Mac</a> is the gold standard for removing adware and malware. The free version scans and removes threats. You don't need the paid subscription for basic protection.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔍</div>
+        <h4>KnockKnock — See What's Running on Your Mac</h4>
+        <p><a href="https://objective-see.org/products/knockknock.html" target="_blank" rel="noopener">KnockKnock</a> (free) from Objective-See shows everything that's set to run persistently on your Mac. Great for spotting hidden malware. Also check out their other free tools like <a href="https://objective-see.org/products/lulu.html" target="_blank" rel="noopener">LuLu</a> (free firewall).</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🌐</div>
+        <h4>Use a VPN on Public Wi-Fi</h4>
+        <p>Never do banking or enter passwords on coffee shop or airport Wi-Fi without a VPN. <a href="https://protonvpn.com" target="_blank" rel="noopener">ProtonVPN</a> has a solid free tier. Or use your iPhone as a personal hotspot instead — far more secure.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔑</div>
+        <h4>Bitwarden — Free Password Manager</h4>
+        <p>If you want more than iCloud Keychain, <a href="https://bitwarden.com" target="_blank" rel="noopener">Bitwarden</a> is a free, open-source password manager that works on everything. Far better than reusing the same password.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🖥️</div>
+        <h4>Remote Security Help from Wahed</h4>
+        <p>If you think you've been hacked and need help securing your accounts, Wahed can walk you through it remotely via <a href="https://assist.zoho.com/customer" target="_blank" rel="noopener">Zoho Assist</a> — click the link and share your screen.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📵</div>
+        <h4>Got a "Your Mac is infected" popup?</h4>
+        <p>These are 100% scams. Do NOT call the number. Do NOT click anything. Press <code>Cmd + Q</code> to quit your browser. If it won't close, hold the power button to force a shutdown. Then run a Malwarebytes scan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <p class="section-label">Helpful links</p>
+    <h2 class="section-title">Security <em>Resources</em></h2>
+    <div class="resources-grid">
+      <a href="https://haveibeenpwned.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🔓</span>
+        <div class="rcard-body"><h4>Have I Been Pwned?</h4><p>Check if your email or passwords appeared in a data breach.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://appleid.apple.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🍎</span>
+        <div class="rcard-body"><h4>Apple ID Account</h4><p>Manage your Apple ID, reset password, check active devices.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://iforgot.apple.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🔑</span>
+        <div class="rcard-body"><h4>Apple Account Recovery</h4><p>Recover access to a locked or compromised Apple ID.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://www.malwarebytes.com/mac-antivirus" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🛡️</span>
+        <div class="rcard-body"><h4>Malwarebytes for Mac (Free)</h4><p>Scan and remove adware, malware, and browser hijackers.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://objective-see.org/products.html" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🔬</span>
+        <div class="rcard-body"><h4>Objective-See Free Mac Security Tools</h4><p>KnockKnock, LuLu, BlockBlock — all free Mac security tools.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://bitwarden.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🗝️</span>
+        <div class="rcard-body"><h4>Bitwarden Password Manager (Free)</h4><p>Open-source, free password manager that works everywhere.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://protonvpn.com" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🌐</span>
+        <div class="rcard-body"><h4>ProtonVPN (Free Tier Available)</h4><p>Protect your connection on public Wi-Fi. Free plan available.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+      <a href="https://assist.zoho.com/customer" target="_blank" rel="noopener" class="rcard">
+        <span class="rcard-ico">🖥️</span>
+        <div class="rcard-body"><h4>Zoho Assist (Remote Help)</h4><p>Click here if Wahed needs to connect remotely to help you.</p></div>
+        <span class="rcard-arr">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2>Think you've been hacked? <em>Call me now.</em></h2>
+      <p>Security issues can escalate fast. If you're concerned your accounts or devices have been compromised, reach out — I'll help you lock things down quickly.</p>
+      <div class="cta-buttons">
+        <a href="tel:3109801964" class="btn-primary">📞 Call (310) 980-1964</a>
+        <a href="mailto:wahed@mymacguy.net" class="btn-outline">✉️ Email Wahed</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="index.html" class="foot-logo">mymacguy<span class="dot">.</span><em>net</em></a>
+    <div class="foot-links">
+      <a href="tel:3109801964">(310) 980-1964</a>
+      <a href="mailto:wahed@mymacguy.net">wahed@mymacguy.net</a>
+      <a href="index.html">← Back to Home</a>
+    </div>
+    <p>© 2026 Wahed Tech Support · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
