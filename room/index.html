@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Furnished Room for Rent . Mid-City . West Adams Area Los Angeles · $1,350/mo</title>
-  <meta name="description" content="Quiet furnished master bedroom in Mid-City Los Angeles. Gigabit Wi-Fi, 1 1/2  bath, in-unit laundry, gated yard. One quiet housemate. Available June 15. No app fee." />
+  <title>Two Rooms for Rent · Mid-City Los Angeles · $1,200–$1,350/mo</title>
+  <meta name="description" content="Two furnished rooms available in a quiet Mid-City Los Angeles home. Master $1,350/mo available June 15 · Junior $1,200/mo available June 17. Gigabit Wi-Fi, in-unit laundry, gated yard. No app fee." />
   <meta name="robots" content="index, follow" />
 
   <!-- OpenGraph -->
@@ -875,48 +875,110 @@
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Private Room for Rent</span>
-    <span class="hero-eyebrow" style="color:rgba(255,255,255,0.5); font-style:italic;">Available June 15th</span>
+    <span class="hero-eyebrow">Two Rooms Available Now</span>
+    <span class="hero-eyebrow" style="color:rgba(255,255,255,0.5); font-style:italic;">June 15 &amp; June 17</span>
     <h1>Mid-City <em>Los Angeles</em></h1>
-    <p class="hero-sub">Quiet professional household · One roommate · Your lease</p>
-    <div class="price-pill">
-      <span class="amount">$1,350</span>
-      <span class="unit">/mo</span>
-      <span class="util">+ ½ utilities</span>
+    <p class="hero-sub">Quiet professional household · Independent leases · No app fee</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <div class="price-pill">
+        <span class="amount">$1,350</span>
+        <span class="unit">/mo</span>
+        <span class="util">Master · Avail June 15</span>
+      </div>
+      <div class="price-pill">
+        <span class="amount">$1,200</span>
+        <span class="unit">/mo</span>
+        <span class="util">Junior · Avail June 17</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── FLOATING BADGE ── -->
-<div class="floating-badge">📅 Available June 15 · 💬 Text Preferred</div>
+<div class="floating-badge">🏠 2 Rooms Available · June 15 &amp; June 17 · 💬 Text Preferred</div>
 
 <!-- ── AVAILABILITY BAR ── -->
 <div class="avail-bar">
-  🟢 <strong>Available June 15th — possibly sooner.</strong>&nbsp; No application fee. No hassle.
+  🟢 <strong>Two rooms available — June 15 &amp; June 17.</strong>&nbsp; Current tenant approves new roommate. No application fee.
 </div>
 
 <!-- ── CLEAN INFO TABLE — top of page ── -->
 <section class="section">
   <div class="container">
-    <div class="section-label">Private Room · Mid-City Los Angeles</div>
-    <h2>Everything you need to know.</h2>
-    <div class="no-fee">✅ No application fee — ever</div>
-    <table class="terms-table">
-      <tr><td>Monthly Rent</td><td>$1,350 + 50% of shared utilities</td></tr>
-      <tr><td>Deposit</td><td>$1,350 — fully refundable</td></tr>
-      <tr><td>Available</td><td>June 15, 2026 — possibly sooner</td></tr>
-      <tr><td>Location</td><td>Mid-City, Los Angeles 90016</td></tr>
-      <tr><td>Roommate</td><td>Arya — junior finance professional, rarely home weekends</td></tr>
-      <tr><td>Bedroom</td><td>Furnished queen sleigh bed, large closet, hardwood floors</td></tr>
-      <tr><td>Bathroom</td><td>Private access · 1.5 bath total · tiled tub/shower · 2 sinks</td></tr>
-      <tr><td>Kitchen</td><td>Full access · gas range · stainless appliances · granite</td></tr>
-      <tr><td>Internet</td><td>Gigabit fiber · Wi-Fi 6 · optimized for Zoom, remote work &amp; streaming</td></tr>
-      <tr><td>Laundry</td><td>In-unit washer &amp; dryer</td></tr>
-      <tr><td>Lease</td><td>Independent — not tied to other tenant</td></tr>
-      <tr><td>Parking</td><td>Street parking, readily available</td></tr>
-      <tr><td>Pets</td><td>No pets — one well-behaved cat considered</td></tr>
-      <tr><td>Application Fee</td><td>None</td></tr>
-    </table>
+    <div class="section-label">Two Rooms · Same Address · Mid-City Los Angeles 90016</div>
+    <h2>Both rooms. Same household. Your choice.</h2>
+    <div class="no-fee">✅ No application fee · Current tenant approves new roommate</div>
+
+    <!-- ROOM SELECTOR TABS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0 0;">
+
+      <!-- ROOM 1: MASTER -->
+      <div style="background:var(--cream);border:2px solid var(--terracotta);border-radius:4px;padding:20px 20px 16px;cursor:pointer;" onclick="showRoom(1)" id="tab1">
+        <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--terracotta);font-weight:600;margin-bottom:4px;">Room 1 — Master</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--charcoal);line-height:1;">$1,350<span style="font-size:0.9rem;font-weight:400;color:var(--mid);">/mo</span></div>
+        <div style="font-size:0.78rem;color:var(--mid);margin-top:4px;">Available June 15 · Queen bed · Mirror closet</div>
+      </div>
+
+      <!-- ROOM 2: JUNIOR -->
+      <div style="background:var(--warm-white);border:2px solid var(--border);border-radius:4px;padding:20px 20px 16px;cursor:pointer;" onclick="showRoom(2)" id="tab2">
+        <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--sage-dark);font-weight:600;margin-bottom:4px;">Room 2 — Junior</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--charcoal);line-height:1;">$1,200<span style="font-size:0.9rem;font-weight:400;color:var(--mid);">/mo</span></div>
+        <div style="font-size:0.78rem;color:var(--mid);margin-top:4px;">Available June 17 · Full bed · Private exterior access</div>
+      </div>
+    </div>
+
+    <!-- ROOM 1 DETAILS -->
+    <div id="room1-details">
+      <table class="terms-table" style="margin-top:20px;">
+        <tr><td>Monthly Rent</td><td>$1,350 + 50% of shared utilities</td></tr>
+        <tr><td>Deposit</td><td>$1,350 — fully refundable</td></tr>
+        <tr><td>Available</td><td>June 15, 2026 — possibly sooner</td></tr>
+        <tr><td>Bedroom</td><td>Furnished queen sleigh bed, large mirrored closet, hardwood floors</td></tr>
+        <tr><td>Bathroom</td><td>Private access · 1.5 bath total · tiled tub/shower · 2 sinks</td></tr>
+        <tr><td>Kitchen</td><td>Full access · gas range · stainless appliances · granite</td></tr>
+        <tr><td>Internet</td><td>Gigabit fiber · Wi-Fi 6 · optimized for Zoom &amp; streaming</td></tr>
+        <tr><td>Laundry</td><td>In-unit washer &amp; dryer</td></tr>
+        <tr><td>Lease</td><td>Independent — not tied to other tenant</td></tr>
+        <tr><td>Parking</td><td>Street parking, readily available</td></tr>
+        <tr><td>Pets</td><td>No pets — one well-behaved cat considered</td></tr>
+        <tr><td>Roommate Approval</td><td>Current tenant participates in selecting new housemate</td></tr>
+      </table>
+    </div>
+
+    <!-- ROOM 2 DETAILS -->
+    <div id="room2-details" style="display:none;">
+      <table class="terms-table" style="margin-top:20px;">
+        <tr><td>Monthly Rent</td><td>$1,200 + 50% of shared utilities</td></tr>
+        <tr><td>Deposit</td><td>$1,200 — fully refundable</td></tr>
+        <tr><td>Available</td><td>June 17, 2026</td></tr>
+        <tr><td>Bedroom</td><td>Furnished full-size bed, full mirrored closet, hardwood floors</td></tr>
+        <tr><td>Entry</td><td>Private exterior door direct to bedroom + interior house access</td></tr>
+        <tr><td>Bathroom</td><td>Shared · 1.5 bath total · tiled tub/shower · 2 sinks</td></tr>
+        <tr><td>Kitchen</td><td>Full access · gas range · stainless appliances · granite</td></tr>
+        <tr><td>Internet</td><td>Gigabit fiber · Wi-Fi 6 · optimized for Zoom &amp; streaming</td></tr>
+        <tr><td>Laundry</td><td>In-unit washer &amp; dryer</td></tr>
+        <tr><td>Lease</td><td>Independent — not tied to other tenant</td></tr>
+        <tr><td>Parking</td><td>Street parking, readily available</td></tr>
+        <tr><td>Pets</td><td>No pets — one well-behaved cat considered</td></tr>
+        <tr><td>Roommate Approval</td><td>Current tenant participates in selecting new housemate</td></tr>
+      </table>
+    </div>
+
+    <script>
+    function showRoom(n) {
+      document.getElementById('room1-details').style.display = n===1?'block':'none';
+      document.getElementById('room2-details').style.display = n===2?'block':'none';
+      var t1 = document.getElementById('tab1');
+      var t2 = document.getElementById('tab2');
+      if(n===1){
+        t1.style.border='2px solid var(--terracotta)'; t1.style.background='var(--cream)';
+        t2.style.border='2px solid var(--border)'; t2.style.background='var(--warm-white)';
+      } else {
+        t2.style.border='2px solid var(--sage)'; t2.style.background='var(--cream)';
+        t1.style.border='2px solid var(--border)'; t1.style.background='var(--warm-white)';
+      }
+    }
+    </script>
   </div>
 </section>
 
@@ -931,12 +993,30 @@
   <img src="IMG_2834.webp" alt="Bedroom — closet view" onclick="openLightbox(this.src)" />
 </div>
 
+<!-- ── ROOM 2 PHOTOS ── -->
+<div class="photo-block">
+  <img src="room2-1.jpg" alt="Junior bedroom — queen bed, hardwood floors, exterior access" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Junior Bedroom — Full Bed · Hardwood Floors · Private Exterior Access</div>
+</div>
+<div class="photo-block">
+  <img src="room2-2.jpg" alt="Junior bedroom — mirrored closet" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Full Mirrored Closet · Direct Yard Access Door</div>
+</div>
+<div class="photo-block">
+  <img src="room2-3.jpg" alt="Junior bedroom — daytime" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Natural Light · Hardwood Floors · Well Appointed</div>
+</div>
+<div class="photo-block">
+  <img src="room2-4.jpg" alt="Junior bedroom — alternate angle" onclick="openLightbox(this.src)" />
+  <div class="photo-caption">Kilim Rug · Private Exterior Entry · Interior House Access</div>
+</div>
+
 <!-- ── HOME DESCRIPTION ── -->
 <section class="section">
   <div class="container">
     <div class="section-label">The Home · The Neighborhood</div>
     <h2>Managed like a professional asset.</h2>
-    <p>Fully furnished master bedroom in a spacious, well-maintained 2-bedroom home in Mid-City Los Angeles — 90019. You get full access to the entire home: kitchen, living room, private gated yard, and in-unit laundry, shared with just one other person who is rarely around.</p>
+    <p>Two furnished bedrooms now available in a spacious, well-maintained home in Mid-City Los Angeles — 90016. Both rooms share full access to the entire home: kitchen, living room, private gated yard, and in-unit laundry. Whoever rents first gets to meet and approve the second tenant — this is a real household, not a boarding house.</p>
     <p>The home is managed by an independent IT consultant and residential property investor with 15+ years of enterprise infrastructure experience. What that means for you: the internet never goes down, maintenance gets handled fast, and your landlord is a rational adult who respects your space and your lease.</p>
     <!-- HOUSEMATE CARD -->
     <div style="margin-top:32px; margin-bottom:8px; display:grid; grid-template-columns:140px 1fr; gap:28px; align-items:start; background:var(--cream); border:1px solid var(--border); border-left:3px solid var(--sage); border-radius:4px; padding:28px 28px 28px 24px;">
