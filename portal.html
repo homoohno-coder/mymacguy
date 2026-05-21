@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Client Portal — Remote Session, Booking, Payment · mymacguy.net</title>
+  <meta name="description" content="Join a Zoho Assist remote session, book an appointment, pay an invoice, or browse quick-fix knowledge base. Clients of mymacguy.net." />
+  <link rel="canonical" href="https://mymacguy.net/portal.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/">mymacguy<em>.net</em></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <a href="/services.html" data-href="/services">Services</a>
+        <ul class="dropdown">
+          <li><a href="/services.html#mac"><strong>Mac Repair & Tune-Up</strong><span>Performance, crashes, migrations</span></a></li>
+          <li><a href="/services.html#iphone"><strong>iPhone & iPad</strong><span>Setup, sync, recovery, transfers</span></a></li>
+          <li><a href="/services.html#network"><strong>Wi-Fi & Networking</strong><span>Mesh, dead zones, secure setup</span></a></li>
+          <li><a href="/services.html#cloud"><strong>iCloud & Backup</strong><span>Storage strategy, recovery</span></a></li>
+          <li><a href="/services.html#security"><strong>Security & Privacy</strong><span>Accounts, passwords, hardening</span></a></li>
+          <li><a href="/services.html#business"><strong>Small Business / M365</strong><span>Mixed Mac + Windows, email, print</span></a></li>
+          <li><a href="/services.html#training"><strong>1:1 Training</strong><span>Patient, calm, no jargon</span></a></li>
+          <li><a href="/services.html#smarthome"><strong>Smart Home</strong><span>HomeKit, cameras, automation</span></a></li>
+        </ul>
+      </li>
+      <li><a href="/about.html" data-href="/about">About</a></li>
+      <li class="has-dropdown">
+        <a href="/portal.html" data-href="/portal">Client Portal</a>
+        <ul class="dropdown">
+          <li><a href="#remote"><strong>Start Remote Session</strong><span>Join with Zoho Assist code</span></a></li>
+          <li><a href="#book"><strong>Book an Appointment</strong><span>On-site or remote</span></a></li>
+          <li><a href="#pay"><strong>Pay an Invoice</strong><span>Card, Zelle, or check</span></a></li>
+          <li><a href="#kb"><strong>Quick Fixes</strong><span>Knowledge base</span></a></li>
+        </ul>
+      </li>
+      <li><a class="nav-cta" href="tel:3109801964">Call (310) 980-1964</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Client portal</span>
+    <h1 style="margin-top:24px">Everything you need <em>in one place.</em></h1>
+    <p class="lead">Join a remote session, book a visit, settle an invoice, or look up a fix. If something here isn't working, just call: (310) 980-1964.</p>
+  </div>
+</section>
+
+<!-- REMOTE SESSION -->
+<section class="section" id="remote">
+  <div class="container">
+    <span class="eyebrow reveal">Remote support</span>
+    <h2 class="reveal" style="margin-top:24px;max-width:18ch">Start a <em>Zoho Assist</em> session.</h2>
+    <p class="lead reveal">When we're on the phone and I send you a 6-character code, type it below to launch the session. End-to-end encrypted. You watch every action. One click to disconnect.</p>
+
+    <div class="portal-grid">
+      <div class="panel reveal">
+        <h3>Join a session</h3>
+        <p class="hint">Enter the session code I gave you over the phone.</p>
+        <form id="zoho-form" autocomplete="off">
+          <div class="field-row">
+            <input
+              id="zoho-key"
+              class="field"
+              type="text"
+              placeholder="Session code · e.g. 482915"
+              spellcheck="false"
+              autocapitalize="characters"
+              inputmode="latin"
+              maxlength="10"
+              required />
+          </div>
+          <div class="portal-actions">
+            <button type="submit" class="btn btn-primary">Launch session →</button>
+            <button type="button" id="request-session" class="btn">Don't have a code? Text me</button>
+          </div>
+          <div id="zoho-status" class="portal-status" role="status" aria-live="polite"></div>
+        </form>
+
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--line-strong)">
+          <h4 style="font-family:var(--body);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-mute);margin:0 0 12px;font-weight:500">How it works</h4>
+          <ol style="margin:0;padding-left:18px;font-size:14px;color:var(--bone-dim);line-height:1.7">
+            <li>Call or text me first: <a class="lime" href="tel:3109801964">(310) 980-1964</a></li>
+            <li>I send you a 6-character code</li>
+            <li>You enter it above, click Launch</li>
+            <li>Zoho Assist opens — approve the prompt</li>
+            <li>I see your screen. You watch every move I make.</li>
+            <li>One click on your end ends the session.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="panel reveal" style="background:var(--bg)">
+        <h3>About remote support</h3>
+        <p>Zoho Assist is the same platform used by professional IT shops worldwide. Sessions are encrypted end-to-end. I cannot connect without an active code and your explicit on-screen approval.</p>
+        <p>Best for: software issues, settings questions, walk-throughs, account problems, email setup. Not suitable for: hardware repairs, dead machines, network problems that take your internet down.</p>
+        <p class="mute" style="font-size:13px">Compatible with macOS, iPadOS, iOS, Windows, and Linux.</p>
+
+        <a class="btn" href="https://www.zoho.com/assist/" target="_blank" rel="noopener" style="margin-top:8px">Learn about Zoho Assist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="section" id="book">
+  <div class="container">
+    <span class="eyebrow reveal">Book</span>
+    <h2 class="reveal" style="margin-top:24px;max-width:18ch">Book an <em>appointment.</em></h2>
+    <p class="lead reveal">Three ways to schedule. Text is fastest.</p>
+
+    <div class="portal-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <a class="panel reveal" href="sms:+13109801964?body=Hi%20Wahed%20—%20I%27d%20like%20to%20book%20an%20appointment.%20Topic%3A%20" style="display:block">
+        <h3>📱 Text</h3>
+        <p class="mute" style="font-size:13px">Fastest. Tap to open Messages with a pre-filled note.</p>
+        <span class="lime" style="font-size:14px">(310) 980-1964 →</span>
+      </a>
+      <a class="panel reveal" href="tel:3109801964" style="display:block">
+        <h3>📞 Call</h3>
+        <p class="mute" style="font-size:13px">Talk it through. Voicemail is read same-day.</p>
+        <span class="lime" style="font-size:14px">(310) 980-1964 →</span>
+      </a>
+      <a class="panel reveal" href="mailto:[email protected]?subject=Appointment%20request" style="display:block">
+        <h3>✉️ Email</h3>
+        <p class="mute" style="font-size:13px">Best for long-form context, screenshots, or business inquiries.</p>
+        <span class="lime" style="font-size:14px">[email protected] →</span>
+      </a>
+    </div>
+
+    <p class="reveal mute" style="margin-top:32px;font-size:13px;max-width:60ch">
+      For booking, include: <strong style="color:var(--bone-dim)">topic</strong> (Mac problem, Wi-Fi, training, etc.), <strong style="color:var(--bone-dim)">on-site or remote</strong>, your <strong style="color:var(--bone-dim)">general neighborhood</strong>, and two or three time windows that work. I'll confirm within the day.
+    </p>
+  </div>
+</section>
+
+<!-- PAY -->
+<section class="section" id="pay">
+  <div class="container">
+    <span class="eyebrow reveal">Pay</span>
+    <h2 class="reveal" style="margin-top:24px;max-width:18ch">Settle an <em>invoice.</em></h2>
+    <p class="lead reveal">Three options. No fees on any of them.</p>
+
+    <div class="portal-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="panel reveal">
+        <h3>💳 Card</h3>
+        <p class="mute" style="font-size:13px">Pay directly from the invoice link I sent. Stripe-powered. Receipt instant.</p>
+        <p class="mute" style="font-size:13px">Lost the link? Email me and I'll resend.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>⚡ Zelle</h3>
+        <p class="mute" style="font-size:13px">Fastest. No fees on either side.</p>
+        <p style="font-size:13px;color:var(--bone-dim)">Send to: <strong class="lime">(310) 980-1964</strong></p>
+        <p class="mute" style="font-size:12px">Confirm name reads "Wahed" before sending.</p>
+      </div>
+      <div class="panel reveal">
+        <h3>✉️ Check</h3>
+        <p class="mute" style="font-size:13px">Old-school is fine. Made out to <strong style="color:var(--bone-dim)">Wahed Tech Support</strong>. Mailing address on your invoice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KNOWLEDGE BASE -->
+<section class="section" id="kb">
+  <div class="container">
+    <span class="eyebrow reveal">Quick fixes</span>
+    <h2 class="reveal" style="margin-top:24px;max-width:18ch">Try these <em>before</em> calling.</h2>
+    <p class="lead reveal">The five things I'd walk you through first anyway. If the answer's not here, call me.</p>
+
+    <div class="faq reveal" style="margin-top:48px">
+      <details>
+        <summary>My Mac is slow or unresponsive — what should I try first?</summary>
+        <p><strong>Restart properly</strong> (Apple menu → Restart, not just close the lid). Then check available storage: <strong>Apple menu → About This Mac → Storage</strong>. If you're below 15% free, that alone explains most slowness. If a restart helped briefly but it came back, time to call.</p>
+      </details>
+      <details>
+        <summary>Wi-Fi is dropping or slow on one device.</summary>
+        <p><strong>Forget and rejoin the network</strong>: System Settings → Wi-Fi → click the network → Forget This Network → reconnect with the password. Then power-cycle your modem and router (unplug both, wait 60 seconds, modem first, then router). If only one device misbehaves while others are fine, that device's Wi-Fi settings or driver are likely the issue.</p>
+      </details>
+      <details>
+        <summary>I'm locked out of my Apple ID.</summary>
+        <p>Go to <strong>iforgot.apple.com</strong> on any device. Apple will walk you through identity verification using one of your trusted devices. If you've lost access to all trusted devices, the recovery process takes several days — call me before starting that, there's often a faster path.</p>
+      </details>
+      <details>
+        <summary>Email stopped working on iPhone or Mac.</summary>
+        <p>Most common cause: a password change that didn't propagate. Open <strong>Settings → Mail → Accounts</strong> (iOS) or <strong>System Settings → Internet Accounts</strong> (Mac), tap the account, and re-enter the password. If you use Gmail, Yahoo, or Outlook with two-factor authentication, you need an <em>app-specific password</em> — call me if that's the case.</p>
+      </details>
+      <details>
+        <summary>How do I make sure my data is backed up?</summary>
+        <p>Two things, today: (1) plug in a USB-C external drive at least 2× the size of your Mac's drive and turn on <strong>Time Machine</strong> (System Settings → General → Time Machine); (2) verify <strong>iCloud Drive</strong> sync is on for Desktop and Documents (System Settings → Apple ID → iCloud). That's the minimum. The real strategy adds an off-site cloud backup — that's a 60-minute conversation worth having.</p>
+      </details>
+      <details>
+        <summary>Should I update macOS / iOS right away?</summary>
+        <p>Short answer: <strong>not on day one</strong>. Wait 1–2 weeks for the inevitable .1 release that fixes the things Apple missed. Always back up first (see above). For business use, wait longer — at least one full minor version. If you depend on specific apps, check their compatibility before updating.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="foot-tag">Support <em>when you need IT.</em></p>
+        <p class="mute" style="font-size:13px;max-width:36ch">One senior Apple technician for the people, families, and small businesses of Los Angeles.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="/services.html#mac">Mac Repair</a>
+        <a href="/services.html#iphone">iPhone & iPad</a>
+        <a href="/services.html#network">Wi-Fi & Network</a>
+        <a href="/services.html#cloud">iCloud & Backup</a>
+        <a href="/services.html#business">Business · M365</a>
+      </div>
+      <div>
+        <h4>Client</h4>
+        <a href="#remote">Remote Session</a>
+        <a href="#book">Book Appointment</a>
+        <a href="#pay">Pay Invoice</a>
+        <a href="#kb">Quick Fixes</a>
+      </div>
+      <div>
+        <h4>Direct</h4>
+        <a href="tel:3109801964">(310) 980-1964</a>
+        <a href="mailto:[email protected]">[email protected]</a>
+        <a href="/about.html">About Wahed</a>
+        <a href="https://www.google.com/search?q=Wahed+Tech+Support+Los+Angeles+reviews" target="_blank" rel="noopener">Google Reviews</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year></span> Wahed Tech Support · mymacguy.net · Los Angeles, CA</span>
+      <span class="mute">Independent · No affiliation with Apple Inc.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
