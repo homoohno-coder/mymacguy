@@ -394,9 +394,82 @@
       .tools-section, .cat-bar { padding-left: 20px; padding-right: 20px; }
       .divider { margin: 0 20px; }
     }
+  
+    /* ── VIDEO SPLASH INTRO ── */
+    #splash {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #0d0d0c;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      transition: opacity .9s ease, visibility .9s ease;
+    }
+    #splash.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    #splash video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; opacity: .9;
+    }
+
+    .splash-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      animation: splashIn 1.2s cubic-bezier(0.22,1,0.36,1) .4s both;
+    }
+    @keyframes splashIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .splash-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      font-weight: 800; color: #fff;
+      letter-spacing: -.04em; line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .splash-tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: .75rem; color: rgba(255,255,255,.4);
+      letter-spacing: .14em; text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .splash-skip {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem; color: rgba(255,255,255,.35);
+      letter-spacing: .08em; cursor: pointer;
+      background: none; border: 1px solid rgba(255,255,255,.15);
+      padding: .5rem 1.2rem; border-radius: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .splash-skip:hover { color: rgba(255,255,255,.7); border-color: rgba(255,255,255,.35); }
+
+    .splash-bar {
+      position: absolute; bottom: 0; left: 0;
+      height: 2px; background: rgba(255,255,255,.5);
+      width: 0%;
+      transition: width linear;
+    }
+    body.splash-active { overflow: hidden; }
+
   </style>
 </head>
-<body>
+<body class="splash-active">
+
+<!-- ── SPLASH INTRO ── -->
+<div id="splash">
+  <video autoplay muted playsinline preload="auto" id="splash-video">
+    <source src="intro-video-b.mp4" type="video/mp4"/>
+    <source src="intro-video.mp4" type="video/mp4"/>
+  </video>
+  <div class="splash-content">
+    <div class="splash-brand">Practical AI Systems</div>
+    <div class="splash-tagline">Free AI workflow tools for real-world tasks</div>
+    <button class="splash-skip" onclick="dismissSplash()">Enter site →</button>
+  </div>
+  <div class="splash-bar" id="splash-bar"></div>
+</div>
+
 
 <!-- NAV -->
 <nav>
@@ -559,6 +632,33 @@
     });
   }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+
+<script>
+  // Splash intro
+  const SPLASH_DURATION = 5500; // ms before auto-dismiss
+  const splashEl = document.getElementById('splash');
+  const splashBar = document.getElementById('splash-bar');
+  const splashVideo = document.getElementById('splash-video');
+
+  // Animate progress bar
+  splashBar.style.transition = `width ${SPLASH_DURATION}ms linear`;
+  requestAnimationFrame(() => { splashBar.style.width = '100%'; });
+
+  function dismissSplash() {
+    splashEl.classList.add('fade-out');
+    document.body.classList.remove('splash-active');
+    setTimeout(() => { splashEl.style.display = 'none'; }, 950);
+  }
+
+  // Auto dismiss after duration
+  setTimeout(dismissSplash, SPLASH_DURATION);
+
+  // Also dismiss when video ends (whichever comes first)
+  if (splashVideo) {
+    splashVideo.addEventListener('ended', dismissSplash);
+  }
 </script>
 
 </body>
