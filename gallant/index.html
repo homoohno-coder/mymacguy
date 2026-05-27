@@ -190,7 +190,7 @@
     .mgc{aspect-ratio:1;overflow:hidden;background:var(--off);cursor:zoom-in;position:relative;}
     .mgc img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
     .mgc:hover img{transform:scale(1.08);}
-    .mgc::after{content:'🔍';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;background:rgba(62,15,32,0.55);opacity:0;transition:opacity 0.3s;pointer-events:none;}
+    .mgc::after{content:'\1F50D';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;background:rgba(62,15,32,0.55);opacity:0;transition:opacity 0.3s;pointer-events:none;}
     .mgc:hover::after{opacity:1;}
     .mgc-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--wine);opacity:0.18;}
 
@@ -210,7 +210,6 @@
     .lb-prev{left:20px;}
     .lb-next{right:20px;}
     .lb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;white-space:nowrap;}
-    .lb-caption{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(255,255,255,0.5);white-space:nowrap;}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1);}
@@ -402,29 +401,39 @@
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-// credits: add url:'' to link a title to IMDb, a streaming page, or any URL.
-// Leave url out (or set null) to show plain text.
+// All gallery images are placeholder stock photos.
+// Replace with real client photos when available.
+// Credit urls are blank until real links are provided.
 const R={
   actors:[
     {id:1,name:'Sophia Ardente',initials:'SA',cat:'Actor · Film & Television',
      photo:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Sophia brings a rare combination of technical precision and emotional truth to every role. Most recently seen in the critically acclaimed limited series The Residue, she has quickly established herself as one of the most sought-after actors of her generation.',
      credits:[
-       {t:'The Residue',r:'Elena Vasquez — Lead',y:'2025',url:'https://www.imdb.com/'},
+       {t:'The Residue',r:'Elena Vasquez — Lead',y:'2025',url:''},
        {t:'Midwinter',r:'Claire',y:'2024',url:''},
        {t:'One Small Thing',r:'Margaret',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1488716820095-cbe80883c496?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1489424731084-a5d8b2a2cf0e?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:2,name:'Marcus Hale',initials:'MH',cat:'Actor · Television & Streaming',
      photo:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Marcus Hale is a Los Angeles-based actor whose body of work spans prestige drama, independent features, and recurring television. His portrayal of Detective Lomas in Corridor earned him wide industry recognition.',
      credits:[
-       {t:'Corridor',r:'Detective Lomas — Recurring',y:'2025',url:'https://www.imdb.com/'},
+       {t:'Corridor',r:'Detective Lomas — Recurring',y:'2025',url:''},
        {t:'The Albatross',r:'Elliot',y:'2024',url:''},
        {t:'River House',r:'Tom',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1560298803-57f44e7b2020?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:3,name:'Claire Fontaine',initials:'CF',cat:'Actor · Film',
      photo:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Claire Fontaine began her career in independent film, building a reputation for performances of uncommon depth and restraint. A Tisch Drama graduate, she has worked with some of the most distinctive filmmakers working today.',
@@ -433,25 +442,40 @@ const R={
        {t:'Yellow House',r:'Isabelle',y:'2024',url:''},
        {t:'A Still Place',r:'Ruth',y:'2022',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1526510747491-58f928ec870f?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1546961342-ea5f63813d2c?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1546961342-ea5f63813d2c?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1488716820095-cbe80883c496?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:4,name:'Darius Cole',initials:'DC',cat:'Actor · Television',
      photo:'https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Darius Cole is a screen actor with natural authority and warmth. His recent booking as series regular on Covenant marks a major career milestone after years of strong supporting work.',
      credits:[
-       {t:'Covenant',r:'Captain Warren — Series Regular',y:'2025',url:'https://www.paramountplus.com/'},
+       {t:'Covenant',r:'Captain Warren — Series Regular',y:'2025',url:''},
        {t:'Eastbound',r:'Jerome',y:'2024',url:''},
        {t:'Parity',r:'Detective Nash',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1542190891-2093d38760f2?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1480429370139-e0132c086e2a?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:5,name:'Yuna Kim',initials:'YK',cat:'Actor · Film & Streaming',
      photo:'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Yuna Kim is a Korean-American actor whose breakout performance in Threadbare earned her a Spirit Award nomination. She combines precise physical storytelling with an interior emotional life that directors find exceptional.',
      credits:[
-       {t:'Threadbare',r:'Jisoo — Lead',y:'2024',url:'https://www.imdb.com/'},
+       {t:'Threadbare',r:'Jisoo — Lead',y:'2024',url:''},
        {t:'The Long Watch',r:'Dr. Ahn',y:'2025',url:''},
        {t:'Hinterland',r:'Min',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1614204424926-7bfa1b8aa1be?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:6,name:'Rafael Mora',initials:'RM',cat:'Actor · Film',
      photo:'https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Rafael Mora brings quiet intensity to roles across genre and drama. Born in Mexico City and trained at UNAM, he relocated to Los Angeles where he has built a body of work notable for its consistency and craft.',
@@ -460,54 +484,84 @@ const R={
        {t:'Border Suite',r:'Felipe',y:'2024',url:''},
        {t:'The Cartographer',r:'Manuel',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1560298803-57f44e7b2020?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1567532900872-f4e906cbf06a?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:7,name:'Nadine Osei',initials:'NO',cat:'Actor · Television',
      photo:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Nadine Osei is a television actor of striking presence and intelligence. Her recurring role in the Emmy-winning drama Clearwater introduced her to a national audience. A Chicago native, she trained at Second City and Steppenwolf.',
      credits:[
-       {t:'Clearwater',r:'Priya Anand — Recurring',y:'2025',url:'https://www.imdb.com/'},
+       {t:'Clearwater',r:'Priya Anand — Recurring',y:'2025',url:''},
        {t:'Sunday Night',r:'Cora',y:'2024',url:''},
        {t:'The Narrow Room',r:'Amara',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1546961342-ea5f63813d2c?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1598550874175-4d0ef436c909?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1558898479-33c0057a5d12?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1604004555489-723a93d6ce74?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:8,name:'James Whitmore',initials:'JW',cat:'Actor · Film & Stage',
      photo:'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'James Whitmore is a veteran stage and screen actor with three decades of work across Broadway, film, and television. He recently transitioned to streaming with a prominent role in the acclaimed limited series The Director.',
      credits:[
-       {t:'The Director',r:'Senator Caldwell',y:'2025',url:'https://www.imdb.com/'},
+       {t:'The Director',r:'Senator Caldwell',y:'2025',url:''},
        {t:'Longform',r:'Arthur — Lead',y:'2024',url:''},
        {t:'Winter Count',r:'Judge Harris',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1542190891-2093d38760f2?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1542190891-2093d38760f2?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1449045556788-29f2596c2f81?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1503443207922-dff7d543fd0e?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
   ],
   writers:[
     {id:9,name:'Amara Obi',initials:'AO',cat:'Writer · Drama Series',
      photo:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Amara Obi is a writer-producer whose work centers on West African diaspora experience in contemporary America. Her pilot Seeds was selected for the Sundance Institute Feature Film Lab and is in development at Amazon.',
      credits:[
-       {t:'Seeds',r:'Creator / Writer',y:'2025',url:'https://www.sundance.org/'},
+       {t:'Seeds',r:'Creator / Writer',y:'2025',url:''},
        {t:'Homecoming S3',r:'Staff Writer',y:'2024',url:''},
        {t:'The Inland Sea',r:'Co-Writer',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1545912452-8aea7e25a3d3?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1574701148559-3743e73b1db0?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1550748023-64d02bff5ddd?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:10,name:'Patrick Senn',initials:'PS',cat:'Director · Independent Film',
      photo:'https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Patrick Senn is an independent film director whose debut feature Long Division screened at Berlin and was acquired by MUBI. He is developing his second feature through Gallant.',
      credits:[
-       {t:'Long Division',r:'Director / Writer',y:'2024',url:'https://mubi.com/'},
+       {t:'Long Division',r:'Director / Writer',y:'2024',url:''},
        {t:'Still Life',r:'Director',y:'2023',url:''},
        {t:'The Visit',r:'Director',y:'2022',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1560298803-57f44e7b2020?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1507081323647-4d250478b919?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1542190891-2093d38760f2?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1543132220-4bf3de6e10ae?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1560298803-57f44e7b2020?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
     {id:11,name:'Vera Lim',initials:'VL',cat:'Writer / Director',
      photo:'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&h=800&q=80',
      bio:'Vera Lim is a Singapore-born writer and director working across features and limited series. Her short The Shore won the Jury Prize at SXSW 2024. She is attached to direct a limited series adaptation for a major streaming platform.',
      credits:[
-       {t:'The Shore',r:'Writer / Director',y:'2024',url:'https://www.sxsw.com/'},
+       {t:'The Shore',r:'Writer / Director',y:'2024',url:''},
        {t:'Nightfall',r:'Director',y:'2025',url:''},
        {t:'Glass Hour',r:'Writer',y:'2023',url:''}
      ],
-     gallery:['https://images.unsplash.com/photo-1541823709867-1b206113eafd?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=300&h=300&q=70','https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=70']},
+     gallery:[
+       'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1530785602389-07594beb8b73?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1592621385612-4d7129426394?auto=format&fit=crop&w=300&h=300&q=70',
+       'https://images.unsplash.com/photo-1616091238212-b03f8c62e5a6?auto=format&fit=crop&w=300&h=300&q=70'
+     ]},
   ]
 };
 R.all=[...R.actors,...R.writers];
@@ -519,7 +573,6 @@ const PD=[
   {tag:'Client Booking',date:'March 2026',h:'Darius Cole joins Paramount+ drama Covenant as series regular.',s:'Production begins April 2026 in New York City.'},
 ];
 
-// ── ROSTER ────────────────────────────────────────────────────────────────────
 function renderRoster(cat){
   const g=document.getElementById('rgrid');
   const list=R[cat]||[];
@@ -540,12 +593,10 @@ document.querySelectorAll('.rtab').forEach(b=>{
   });
 });
 
-// ── PRESS ─────────────────────────────────────────────────────────────────────
 document.getElementById('pgrid').innerHTML=PD.map(p=>`
   <div class="pc"><div class="pc-row"><div class="pct">${p.tag}</div><div class="pcd">${p.date}</div></div><div class="pch">${p.h}</div><div class="pcs">${p.s}</div></div>
 `).join('');
 
-// ── TALENT MODAL ─────────────────────────────────────────────────────────────
 let currentGallery=[];
 function findT(id){return[...R.actors,...R.writers].find(t=>t.id===id);}
 function openM(id){
@@ -580,69 +631,38 @@ function closeM(){
 document.getElementById('mclose').addEventListener('click',closeM);
 document.getElementById('mwrap').addEventListener('click',e=>{if(e.target===e.currentTarget)closeM();});
 
-// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
 let lbIdx=0;
-
 function fullRes(url){
-  // Strip thumbnail size params and request full resolution
   return url
     .replace(/[?&]w=\d+/g,'')
     .replace(/[?&]h=\d+/g,'')
     .replace(/[?&]q=\d+/g,'')
     .replace(/[?&]fit=[^&]*/g,'')
     .replace(/^([^?]+)(.*)$/,(_,base,qs)=>qs?base+qs.replace(/^&/,'?'):base)
-    + (url.includes('?')?'&':'?') + 'auto=format&w=1600&q=95';
+    +(url.includes('?')?'&':'?')+'auto=format&w=1600&q=95';
 }
-
 function showLB(){
   const img=document.getElementById('lbimg');
   img.style.opacity='0';
   img.src=fullRes(currentGallery[lbIdx]);
   img.onload=()=>{img.style.transition='opacity 0.3s';img.style.opacity='1';};
-  document.getElementById('lbctr').textContent=`${lbIdx+1}  /  ${currentGallery.length}`;
+  document.getElementById('lbctr').textContent=`${lbIdx+1}  /  ${currentGallery.length}`;
   const multi=currentGallery.length>1;
   document.getElementById('lbprev').style.display=multi?'flex':'none';
   document.getElementById('lbnext').style.display=multi?'flex':'none';
 }
-
-function openLB(idx){
-  lbIdx=idx;
-  showLB();
-  document.getElementById('lb').classList.add('open');
-}
-
-function closeLB(){
-  document.getElementById('lb').classList.remove('open');
-}
-
+function openLB(idx){lbIdx=idx;showLB();document.getElementById('lb').classList.add('open');}
+function closeLB(){document.getElementById('lb').classList.remove('open');}
 document.getElementById('lbclose').addEventListener('click',closeLB);
-document.getElementById('lb').addEventListener('click',e=>{
-  if(e.target===e.currentTarget||e.target.id==='lbimg'&&e.target===e.currentTarget)return;
-  if(e.target===document.getElementById('lb'))closeLB();
-});
-document.getElementById('lbprev').addEventListener('click',e=>{
-  e.stopPropagation();
-  lbIdx=(lbIdx-1+currentGallery.length)%currentGallery.length;
-  showLB();
-});
-document.getElementById('lbnext').addEventListener('click',e=>{
-  e.stopPropagation();
-  lbIdx=(lbIdx+1)%currentGallery.length;
-  showLB();
-});
-
-// Touch swipe on lightbox
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLB();});
+document.getElementById('lbprev').addEventListener('click',e=>{e.stopPropagation();lbIdx=(lbIdx-1+currentGallery.length)%currentGallery.length;showLB();});
+document.getElementById('lbnext').addEventListener('click',e=>{e.stopPropagation();lbIdx=(lbIdx+1)%currentGallery.length;showLB();});
 let lbTouchX=0;
 document.getElementById('lb').addEventListener('touchstart',e=>{lbTouchX=e.touches[0].clientX;},{passive:true});
 document.getElementById('lb').addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-lbTouchX;
-  if(Math.abs(dx)>48){
-    lbIdx=dx<0?(lbIdx+1)%currentGallery.length:(lbIdx-1+currentGallery.length)%currentGallery.length;
-    showLB();
-  }
+  if(Math.abs(dx)>48){lbIdx=dx<0?(lbIdx+1)%currentGallery.length:(lbIdx-1+currentGallery.length)%currentGallery.length;showLB();}
 },{passive:true});
-
-// Keyboard
 document.addEventListener('keydown',e=>{
   const lbOpen=document.getElementById('lb').classList.contains('open');
   const mOpen=document.getElementById('mwrap').classList.contains('open');
@@ -653,14 +673,12 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-// ── FORM ──────────────────────────────────────────────────────────────────────
 function submitForm(e){
   e.preventDefault();
   document.getElementById('cform').style.display='none';
   document.getElementById('fsuccess').style.display='block';
 }
 
-// ── INTRO ─────────────────────────────────────────────────────────────────────
 function openSite(){
   const i=document.getElementById('intro');
   i.classList.add('exit');
@@ -673,7 +691,6 @@ setTimeout(openSite,5500);
 
 renderRoster('actors');
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────────────────────
 const ro=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
 },{threshold:0.08,rootMargin:'0px 0px -50px 0px'});
