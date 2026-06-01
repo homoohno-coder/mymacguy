@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Travel — Handmade Jewelry & Travel Pillows</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --warm-white: #fff9f0;
+    --terra: #c9714a;
+    --terra-light: #e8997a;
+    --deep: #1a1a18;
+    --mid: #4a4540;
+    --gold: #c9a84c;
+    --gold-light: #e8cf8a;
+    --soft-green: #7a9e7e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,113,74,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--terra);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  nav ul { list-style: none; display: flex; gap: 2.5rem; }
+  nav ul a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--terra); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem 4rem 5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--deep);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--terra); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--mid);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: var(--terra);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #b85e38; transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 1.5px solid var(--terra);
+    color: var(--terra);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--terra); color: white; }
+
+  .hero-image { position: relative; overflow: hidden; animation: fadeIn 1s ease 0.3s both; }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; cursor: zoom-in; }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 2rem; left: 2rem;
+    background: var(--gold);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  /* MARQUEE */
+  .marquee-bar {
+    background: var(--terra);
+    color: white;
+    padding: 0.8rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .marquee-track span { margin: 0 2rem; }
+  .marquee-track .dot { color: var(--gold-light); }
+
+  /* SECTIONS */
+  section { padding: 6rem 5rem; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.2;
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 3rem;
+  }
+
+  /* JEWELRY */
+  #jewelry { background: var(--cream); }
+
+  .jewelry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+  .product-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    background: #f0ece6;
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .product-img:hover { opacity: 0.88; }
+
+  .product-img-placeholder {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(135deg, #f0ece6, #e8e0d5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgba(201,113,74,0.3);
+  }
+
+  .product-info { padding: 1.2rem 1.4rem 1.6rem; }
+
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--deep);
+    margin-bottom: 0.3rem;
+  }
+
+  .product-desc {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .product-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+    font-size: 0.82rem;
+    color: var(--mid);
+  }
+  .product-pricing strong { color: var(--terra); font-weight: 500; }
+
+  .product-tag {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: var(--gold);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .btn-buy {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--deep);
+    color: white;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .btn-buy:hover { background: var(--terra); }
+
+  /* PILLOWS */
+  #pillows { background: var(--deep); color: white; }
+  #pillows .section-title { color: white; }
+  #pillows .section-label { color: var(--gold-light); }
+  #pillows .section-sub { color: rgba(255,255,255,0.6); }
+
+  .pillows-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  .pillow-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .pillow-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+  .pillow-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+  }
+  .pillow-img:hover { opacity: 0.85; }
+
+  .pillow-info { padding: 1.5rem; }
+
+  .pillow-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .pillow-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Color picker for pillows */
+  .color-pick-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.6rem;
+  }
+
+  .color-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .color-option {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.65);
+    user-select: none;
+  }
+  .color-option:hover { border-color: rgba(201,168,76,0.55); background: rgba(255,255,255,0.06); }
+  .color-option input[type="radio"] { display: none; }
+  .color-option:has(input[type="radio"]:checked) {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.15);
+    color: white;
+  }
+
+  .color-swatch {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  .pillow-price {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .pillow-price small {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    margin-left: 0.4rem;
+  }
+
+  .btn-buy-light {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--gold);
+    color: var(--deep);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .btn-buy-light:hover { background: var(--gold-light); }
+
+  /* ABOUT */
+  #about {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual { position: relative; }
+
+  .about-visual-box {
+    background: linear-gradient(135deg, var(--terra-light), var(--terra));
+    border-radius: 4px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-visual-box::after {
+    content: 'E';
+    position: absolute;
+    font-size: 12rem;
+    color: rgba(255,255,255,0.08);
+    bottom: -1rem; right: 1rem;
+  }
+
+  .about-accent {
+    position: absolute;
+    bottom: -1rem; right: -1rem;
+    width: 120px; height: 120px;
+    background: var(--gold);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    line-height: 1.4;
+  }
+
+  .about-text .section-sub { margin-bottom: 1.5rem; max-width: 100%; }
+
+  .about-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,113,74,0.2);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--terra);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* SHIPPING */
+  #shipping { background: #f0ece6; text-align: center; }
+  #shipping .section-title, #shipping .section-label { text-align: center; }
+  #shipping .section-sub { margin: 0 auto 3rem; text-align: center; }
+
+  .shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .shipping-card {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+    border-top: 3px solid var(--terra);
+  }
+  .shipping-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .shipping-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+  .shipping-detail { font-size: 0.82rem; font-weight: 300; color: var(--mid); line-height: 1.6; }
+  .shipping-price { font-size: 1.4rem; font-weight: 500; color: var(--terra); margin: 0.5rem 0; }
+
+  /* CONTACT */
+  #contact { background: var(--deep); color: white; text-align: center; }
+  #contact .section-title { color: white; }
+  #contact .section-label { color: var(--gold-light); }
+
+  .contact-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin: 1rem auto 3rem;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .contact-grid { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+  .contact-item a {
+    color: var(--gold-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-item a:hover { color: white; }
+
+  .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.3rem;
+  }
+
+  .paypal-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111110;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+  footer span { color: var(--terra); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0.8rem 1rem; }
+    nav ul { gap: 0.8rem; }
+    nav ul a { font-size: 0.72rem; letter-spacing: 0.06em; }
+    .nav-logo { font-size: 1.1rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { height: 50vw; }
+    .hero-text { padding: 3rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .pillows-grid { grid-template-columns: 1fr; }
+    #about { grid-template-columns: 1fr; gap: 2rem; }
+    .shipping-grid { grid-template-columns: 1fr; }
+    .contact-grid { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Fun <span>Travel</span></div>
+  <ul>
+    <li><a href="#bestsellers">Favorites</a></li>
+    <li><a href="#jewelry">Jewelry</a></li>
+    <li><a href="#pillows">Pillows</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#shipping">Shipping</a></li>
+    <li><a href="#policy">Policy</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Handmade in the USA · Ships Nationwide</p>
+    <h1 class="hero-title">Travel in <em>style,</em><br>wear with joy.</h1>
+    <p class="hero-sub">Handcrafted beaded jewelry and colorful travel pillows made with care. Affordable, unique, and built for the journey — not the price tag.</p>
+    <div class="hero-ctas">
+      <a href="#jewelry" class="btn-primary">Shop Jewelry</a>
+      <a href="#pillows" class="btn-outline">Shop Pillows</a>
+      <button onclick="openGallery()" class="btn-outline" style="border-color:var(--gold); color:var(--gold);" onmouseover="this.style.background='var(--gold)'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='var(--gold)'">✦ View Gallery</button>
+    </div>
+  </div>
+  <div class="hero-image" onclick="openLightbox('images/Resized_20260531_102550.jpeg','Multi-Color Choker Collection')">
+    <img src="images/Resized_20260531_102550.jpeg" alt="Fun Travel handmade jewelry" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="product-img-placeholder" style="height:100%; display:none;">✦</div>
+    <div class="hero-badge">New Collection 2026</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Handmade Jewelry</span><span class="dot">✦</span>
+    <span>Travel Pillows</span><span class="dot">✦</span>
+    <span>Ships USA Only</span><span class="dot">✦</span>
+    <span>PayPal Accepted</span><span class="dot">✦</span>
+    <span>Made with Love</span><span class="dot">✦</span>
+    <span>Unique Every Piece</span><span class="dot">✦</span>
+    <span>Handmade Jewelry</span><span class="dot">✦</span>
+    <span>Travel Pillows</span><span class="dot">✦</span>
+    <span>Ships USA Only</span><span class="dot">✦</span>
+    <span>PayPal Accepted</span><span class="dot">✦</span>
+    <span>Made with Love</span><span class="dot">✦</span>
+    <span>Unique Every Piece</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- BESTSELLERS -->
+<section id="bestsellers" style="background:#fff9f0; padding:5rem 5rem 3rem;">
+  <p class="section-label" style="text-align:center;">Customer Favorites</p>
+  <h2 class="section-title" style="text-align:center; margin-bottom:0.5rem;">Best Sellers</h2>
+  <p class="section-sub" style="text-align:center; margin:0 auto 3rem;">Our two most popular picks — proven crowd pleasers.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:860px; margin:0 auto;">
+
+    <!-- Best Seller 1 -->
+    <div style="background:white; border-radius:4px; overflow:hidden; border:2px solid #c9a84c; position:relative;">
+      <div style="position:absolute; top:1rem; left:1rem; z-index:2; background:#c9a84c; color:white; font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.8rem; border-radius:2px;">⭐ Best Seller</div>
+      <img src="images/Resized_20260528_081417.jpeg" alt="Earth and Fire Bead Set"
+           style="width:100%; height:220px; object-fit:cover; display:block; cursor:zoom-in; transition:opacity 0.2s;"
+           onclick="openLightbox('images/Resized_20260528_081417.jpeg','Earth &amp; Fire Bead Set')"
+           onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+      <div style="padding:1.2rem 1.4rem 1.6rem;">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#1a1a18; margin-bottom:0.4rem;">Earth &amp; Fire Bead Set</h3>
+        <p style="font-size:0.8rem; font-weight:300; color:#4a4540; line-height:1.5; margin-bottom:0.8rem;">Coral-orange and earthy wooden beads with a natural tribal warmth. Necklace, bracelet &amp; earrings.</p>
+        <div style="font-size:0.82rem; color:#4a4540; margin-bottom:1rem;">Full Set — <strong style="color:#c9714a;">$55</strong> &nbsp;|&nbsp; Necklace only — <strong style="color:#c9714a;">$29</strong></div>
+        <button class="btn-buy" onclick="openOrder('Wood &amp; Orange Synthetic Beads', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Best Seller 2 -->
+    <div style="background:white; border-radius:4px; overflow:hidden; border:2px solid #c9a84c; position:relative;">
+      <div style="position:absolute; top:1rem; left:1rem; z-index:2; background:#c9a84c; color:white; font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.8rem; border-radius:2px;">⭐ Best Seller</div>
+      <img src="images/Resized_20260301_063640_1_.jpeg" alt="Polka Dot Travel Pillow"
+           style="width:100%; height:220px; object-fit:cover; object-position:center; display:block; cursor:zoom-in; transition:opacity 0.2s;"
+           onclick="openLightbox('images/Resized_20260301_063640_1_.jpeg','Polka Dot Travel Pillow')"
+           onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+      <div style="padding:1.2rem 1.4rem 1.6rem;">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:#1a1a18; margin-bottom:0.4rem;">Polka Dot Travel Pillow</h3>
+        <p style="font-size:0.8rem; font-weight:300; color:#4a4540; line-height:1.5; margin-bottom:0.8rem;">12 x 16 inches. Cotton fabric, machine washable. Available in 5 colors.</p>
+        <div style="font-size:0.82rem; color:#4a4540; margin-bottom:1rem;">Per Pillow — <strong style="color:#c9714a;">$24</strong> &nbsp;|&nbsp; + $9.99 shipping</div>
+        <button class="btn-buy" onclick="openOrder('Polka Dot Travel Pillow', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JEWELRY -->
+<section id="jewelry">
+  <div class="jewelry-header">
+    <div>
+      <p class="section-label">Handcrafted Collection</p>
+      <h2 class="section-title">Beaded Jewelry Sets</h2>
+      <p class="section-sub">Each piece is one-of-a-kind. Sold individually or as complete sets — necklace, bracelet, and earrings.</p>
+    </div>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- Set 1 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="images/Resized_20260531_100438.jpeg" alt="Kelly Green & Black Set"
+           onclick="openLightbox('images/Resized_20260531_100438.jpeg','Kelly Green &amp; Black Set')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Kelly Green &amp; Black African Tube Set</h3>
+        <p class="product-desc">Kelly green &amp; black beads with African tube beads. Necklace 15.5 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Kelly Green Black Set', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Set 2 -->
+    <div class="product-card" style="border:2px solid #c9a84c;">
+      <div class="product-tag" style="background:#c9a84c;">⭐ Best Seller</div>
+      <img class="product-img" src="images/Resized_20260531_100359.jpeg" alt="Wood & Orange Set"
+           onclick="openLightbox('images/Resized_20260531_100359.jpeg','Wood &amp; Orange Set')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Earth &amp; Fire Bead Set</h3>
+        <p class="product-desc">Coral-orange beads paired with earthy patterned wooden beads — warmth and a natural feel. Necklace, bracelet, and earrings create a harmonious tribal aesthetic. 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Wood &amp; Orange Synthetic Beads', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Set 3 -->
+    <div class="product-card" style="border:2px solid #c9a84c;">
+      <div class="product-tag" style="background:#c9a84c;">⭐ Best Seller</div>
+      <img class="product-img" src="images/Resized_20260531_100501.jpeg" alt="Fuchsia & Black Set"
+           onclick="openLightbox('images/Resized_20260531_100501.jpeg','Fuchsia &amp; Black Set')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Fuchsia &amp; Black Beads with African Tube Beads</h3>
+        <p class="product-desc">Necklace 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Twilight Zebra Set', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Set 4 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="images/Resized_20260531_100506.jpeg" alt="Kelly Green & Orange Set"
+           onclick="openLightbox('images/Resized_20260531_100506.jpeg','Kelly Green &amp; Orange Set')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Kelly Green Glass &amp; Orange Synthetic Beads with African Tube Beads</h3>
+        <p class="product-desc">Necklace 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Tropical Bloom Set', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Set 5 -->
+    <div class="product-card">
+      <div class="product-tag">Set Available</div>
+      <img class="product-img" src="images/Resized_20260531_102515.jpeg" alt="Fun Bead Mix Set"
+           onclick="openLightbox('images/Resized_20260531_102515.jpeg','Fun Bead Mix Set')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Fun Bead Mix — Glass &amp; Synthetic</h3>
+        <p class="product-desc">Necklace 16 inches including clasp.</p>
+        <div class="product-pricing">
+          <div>Necklace — <strong>$29</strong></div>
+          <div>Bracelet (8 in.) — <strong>$16</strong></div>
+          <div>Earrings — <strong>$15</strong></div>
+          <div>Full Set — <strong>$55</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Carnival Fiesta Set', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Chokers 6 -->
+    <div class="product-card">
+      <img class="product-img" src="images/Resized_20260531_102540.jpeg" alt="Green Glass Bead Chokers"
+           onclick="openLightbox('images/Resized_20260531_102540.jpeg','Green Glass Bead Chokers')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Glass Bead Chokers — Green</h3>
+        <p class="product-desc">Sold as single necklace.</p>
+        <div class="product-pricing">
+          <div>15–16 inches — <strong>$16</strong></div>
+          <div>17–21 inches — <strong>$19</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Summer Orchard Necklace', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Chokers 7 -->
+    <div class="product-card">
+      <img class="product-img" src="images/Resized_20260531_102550.jpeg" alt="Multi-Color Seed Bead Chokers"
+           onclick="openLightbox('images/Resized_20260531_102550.jpeg','Multi-Color Glass Bead Chokers')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Multi-Color Glass Bead Chokers</h3>
+        <p class="product-desc">Sold as single necklace.</p>
+        <div class="product-pricing">
+          <div>15–16 inches — <strong>$32</strong></div>
+          <div>17–21 inches — <strong>$32</strong></div>
+          <div style="color:#c9714a; font-size:0.75rem;">🎃 $42 in Sept &amp; Oct</div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Midnight Carnival Beaded Necklace', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Seed Beads 8 -->
+    <div class="product-card">
+      <img class="product-img" src="images/Resized_20260531_102628.jpeg" alt="Glass Seed Bead Necklaces"
+           onclick="openLightbox('images/Resized_20260531_102628.jpeg','Glass Seed Bead Necklaces')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Glass Seed Beads — Any Color</h3>
+        <p class="product-desc">Sold as single item, any color.</p>
+        <div class="product-pricing">
+          <div>15–18 inches — <strong>$15</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Rainbow Cascade Strands', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Mixed Seed 9 -->
+    <div class="product-card">
+      <img class="product-img" src="images/Resized_20260529_091718.jpeg" alt="Mixed Seed Bead Necklaces"
+           onclick="openLightbox('images/Resized_20260529_091718.jpeg','Mixed Seed Bead Necklaces')"
+           onerror="this.style.display='none'">
+      <div class="product-info">
+        <h3 class="product-name">Glass Seed Bead Mix with 4mm Glass Beads</h3>
+        <p class="product-desc">Sold as single items, any color.</p>
+        <div class="product-pricing">
+          <div>15–17 inches — <strong>$17</strong></div>
+          <div>18–21 inches — <strong>$19.50</strong></div>
+        </div>
+        <button class="btn-buy" onclick="openOrder('Mixed Seed Bead Necklace', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PILLOWS -->
+<section id="pillows">
+  <p class="section-label">Travel Comfort</p>
+  <h2 class="section-title">Handmade Travel Pillows</h2>
+  <p class="section-sub">Cotton fabric, machine washable, synthetic fill. Built for the journey — light enough to pack, comfortable enough to love.</p>
+
+  <div class="pillows-grid">
+
+    <!-- Neck Pillow -->
+    <div class="pillow-card">
+      <img class="pillow-img" src="images/Resized_20260529_085416.jpeg" alt="Round Neck Travel Pillow"
+           onclick="openLightbox('images/Resized_20260529_085416.jpeg','Round Neck Travel Pillow')"
+           onerror="this.style.background='rgba(255,255,255,0.05)'">
+      <div class="pillow-info">
+        <h3 class="pillow-name">Round Neck Pillow</h3>
+        <p class="pillow-desc">12 × 12 inches approx. Cotton fabric, machine washable, low dryer temperature.</p>
+        <div class="color-pick-label">Select Color:</div>
+        <div class="color-options">
+          <label class="color-option">
+            <input type="radio" name="neck-pillow-color" value="Lime Green">
+            <span class="color-swatch" style="background:#8bc34a;"></span>
+            <span>Lime Green</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="neck-pillow-color" value="Orange">
+            <span class="color-swatch" style="background:#ff6b35;"></span>
+            <span>Orange</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="neck-pillow-color" value="Red">
+            <span class="color-swatch" style="background:#c62828;"></span>
+            <span>Red</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="neck-pillow-color" value="Yellow">
+            <span class="color-swatch" style="background:#fdd835;"></span>
+            <span>Yellow</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="neck-pillow-color" value="Navy">
+            <span class="color-swatch" style="background:#1565c0;"></span>
+            <span>Navy</span>
+          </label>
+        </div>
+        <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
+        <button class="btn-buy-light" onclick="buyWithColor('Color Splash Neck Pillow', 'neck-pillow-color', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+    <!-- Polka Dot Pillow -->
+    <div class="pillow-card">
+      <img class="pillow-img" src="images/Resized_20260301_063640_1_.jpeg" alt="Polka Dot Travel Pillow"
+           onclick="openLightbox('images/Resized_20260301_063640_1_.jpeg','Polka Dot Travel Pillow')"
+           onerror="this.style.background='rgba(255,255,255,0.05)'">
+      <div class="pillow-info">
+        <h3 class="pillow-name">Polka Dot Travel Pillow</h3>
+        <p class="pillow-desc">12 × 16 inches. Cotton fabric with synthetic fill. Machine washable, low dryer temperature.</p>
+        <div class="color-pick-label">Select Color:</div>
+        <div class="color-options">
+          <label class="color-option">
+            <input type="radio" name="polka-pillow-color" value="Fuchsia with black dots">
+            <span class="color-swatch" style="background:#e91e8c;"></span>
+            <span>Fuchsia</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="polka-pillow-color" value="Turquoise with black dots">
+            <span class="color-swatch" style="background:#00acc1;"></span>
+            <span>Turquoise</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="polka-pillow-color" value="White with black dots">
+            <span class="color-swatch" style="background:#f5f5f0; border-color:rgba(255,255,255,0.4);"></span>
+            <span>White</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="polka-pillow-color" value="Orange with black dots">
+            <span class="color-swatch" style="background:#f57c00;"></span>
+            <span>Orange</span>
+          </label>
+          <label class="color-option">
+            <input type="radio" name="polka-pillow-color" value="Navy with white dots">
+            <span class="color-swatch" style="background:#1a237e;"></span>
+            <span>Navy</span>
+          </label>
+        </div>
+        <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
+        <button class="btn-buy-light" onclick="buyWithColor('Polka Dot Travel Pillow', 'polka-pillow-color', this)">Buy Now → PayPal</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-visual-box">✦</div>
+    <div class="about-accent">44 years<br>in the USA</div>
+  </div>
+  <div class="about-text">
+    <p class="section-label">The Maker</p>
+    <h2 class="section-title">Swiss roots,<br>American heart.</h2>
+    <p class="section-sub">Born in Switzerland and proud of 44 years in the USA, Elena spent 24 years in real estate before following her true passion — travel and handcraft.</p>
+    <p class="section-sub">Fun Travel was born from a simple belief: your travel accessories should bring you joy, not anxiety. Every pillow and piece of jewelry is made to be affordable, beautiful, and light enough that losing a suitcase won't break your heart.</p>
+    <p class="section-sub" style="font-style:italic; color:var(--terra);">"I will produce reasonably priced travel items that you will not regret buying if a suitcase is lost, stolen or misplaced." — Elena</p>
+    <div class="about-stats">
+      <div><div class="stat-num">44</div><div class="stat-label">Years in the USA</div></div>
+      <div><div class="stat-num">24</div><div class="stat-label">Years in Real Estate</div></div>
+      <div><div class="stat-num">9+</div><div class="stat-label">Jewelry Styles</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHIPPING -->
+<section id="shipping">
+  <p class="section-label">Delivery Info</p>
+  <h2 class="section-title">Shipping &amp; Payment</h2>
+  <p class="section-sub">USA shipping only at this time. All orders shipped via USPS with tracking. Payment via PayPal — fast, safe, and protected.</p>
+
+  <div class="shipping-grid">
+    <div class="shipping-card">
+      <div class="shipping-icon">💍</div>
+      <div class="shipping-title">Single Jewelry Item</div>
+      <div class="shipping-price">$5.99</div>
+      <div class="shipping-detail">Earrings, bracelet, or single necklace. Shipped in padded mailer with tracking.</div>
+    </div>
+    <div class="shipping-card">
+      <div class="shipping-icon">✨</div>
+      <div class="shipping-title">Full Jewelry Set</div>
+      <div class="shipping-price">$7.99</div>
+      <div class="shipping-detail">Necklace + bracelet + earrings. Gift-packaged and shipped with care.</div>
+    </div>
+    <div class="shipping-card">
+      <div class="shipping-icon">🧳</div>
+      <div class="shipping-title">Travel Pillows</div>
+      <div class="shipping-price">$9.99 / $14.99</div>
+      <div class="shipping-detail">Single pillow $9.99. Two pillows $14.99. Shipped via USPS Flat Rate box.</div>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:2rem; font-size:0.82rem; color:var(--mid);">
+    Free shipping on jewelry orders over $50 ✦ Orders ship within 3–5 business days
+  </p>
+</section>
+
+<!-- STORE POLICY -->
+<section id="policy" style="background:#faf7f2; padding:6rem 5rem;">
+  <p class="section-label">Before You Buy</p>
+  <h2 class="section-title">Store Policy</h2>
+  <p class="section-sub">We stand behind every item we make. Please read our return policy before placing your order.</p>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; max-width:1000px;">
+
+    <div style="background:white; padding:2rem; border-radius:4px; border-top:3px solid #c9714a;">
+      <div style="font-size:1.8rem; margin-bottom:1rem;">📦</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1rem; color:#1a1a18; margin-bottom:0.5rem;">Return Window</h3>
+      <p style="font-size:0.82rem; font-weight:300; color:#4a4540; line-height:1.7;">Returns are accepted within <strong>15 days</strong> of the date you received your order. Items returned after 15 days will not be accepted.</p>
+    </div>
+
+    <div style="background:white; padding:2rem; border-radius:4px; border-top:3px solid #c9714a;">
+      <div style="font-size:1.8rem; margin-bottom:1rem;">🔖</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1rem; color:#1a1a18; margin-bottom:0.5rem;">Restocking Fee</h3>
+      <p style="font-size:0.82rem; font-weight:300; color:#4a4540; line-height:1.7;">All accepted returns are subject to a <strong>15% restocking fee</strong> deducted from your refund. This applies to all items unless the return is due to our error.</p>
+    </div>
+
+    <div style="background:white; padding:2rem; border-radius:4px; border-top:3px solid #c9714a;">
+      <div style="font-size:1.8rem; margin-bottom:1rem;">🚚</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1rem; color:#1a1a18; margin-bottom:0.5rem;">Return Shipping</h3>
+      <p style="font-size:0.82rem; font-weight:300; color:#4a4540; line-height:1.7;">The buyer is responsible for all return shipping costs. We recommend using a tracked shipping method. Fun Travel is not responsible for items lost in return transit.</p>
+    </div>
+
+    <div style="background:white; padding:2rem; border-radius:4px; border-top:3px solid #c9a84c;">
+      <div style="font-size:1.8rem; margin-bottom:1rem;">✉️</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1rem; color:#1a1a18; margin-bottom:0.5rem;">Get an RMA First</h3>
+      <p style="font-size:0.82rem; font-weight:300; color:#4a4540; line-height:1.7;">Do not ship anything back without contacting us first. Email <a href="mailto:picswelove2024@gmail.com" style="color:#c9714a;">picswelove2024@gmail.com</a> to receive a Return Merchandise Authorization (RMA) number before sending your return.</p>
+    </div>
+
+    <div style="background:white; padding:2rem; border-radius:4px; border-top:3px solid #c9a84c;">
+      <div style="font-size:1.8rem; margin-bottom:1rem;">⚠️</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1rem; color:#1a1a18; margin-bottom:0.5rem;">Our Error — Full Refund</h3>
+      <p style="font-size:0.82rem; font-weight:300; color:#4a4540; line-height:1.7;">If we sent the wrong item or your order arrived damaged due to our fault, contact us immediately. We will cover return shipping and issue a full refund or replacement — no restocking fee.</p>
+    </div>
+
+    <div style="background:white; padding:2rem; border-radius:4px; border-top:3px solid #c9a84c;">
+      <div style="font-size:1.8rem; margin-bottom:1rem;">✅</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1rem; color:#1a1a18; margin-bottom:0.5rem;">Condition of Returns</h3>
+      <p style="font-size:0.82rem; font-weight:300; color:#4a4540; line-height:1.7;">Items must be returned in original, unworn, and undamaged condition with all original packaging. Used or altered items will not be accepted for return.</p>
+    </div>
+
+  </div>
+
+  <p style="margin-top:2.5rem; font-size:0.8rem; color:#4a4540; max-width:700px;">
+    Questions? Email us at <a href="mailto:picswelove2024@gmail.com" style="color:#c9714a;">picswelove2024@gmail.com</a> or text <a href="tel:7604856421" style="color:#c9714a;">(760) 485-6421</a> before returning any item.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Ready to Order?</h2>
+  <p class="contact-sub">Select your item and color, then click Buy Now to pay securely with PayPal. Elena will receive your order details automatically.</p>
+
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-label">Email</div>
+      <a href="mailto:picswelove2024@gmail.com">picswelove2024@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Phone / Text</div>
+      <a href="tel:7604856421">(760) 485-6421</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Designer &amp; Producer</div>
+      <a href="#">Elena</a>
+    </div>
+  </div>
+
+  <div class="paypal-note">
+    🔒 &nbsp; Secure payment via PayPal — no account required to pay by card
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Fun Travel</span> by Elena · Handmade in the USA · All Rights Reserved</p>
+</footer>
+
+
+<!-- ───── LIGHTBOX ───── -->
+<div id="lightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; flex-direction:column;">
+  <canvas id="lb-canvas" style="position:absolute; inset:0; width:100%; height:100%; opacity:0.3;"></canvas>
+
+  <button onclick="closeLightbox()" style="position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.15); border:none; color:white; font-size:1.8rem; cursor:pointer; z-index:10; line-height:1; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">✕</button>
+
+  <button onclick="prevImage()" style="position:absolute; left:0.5rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); color:white; font-size:1.8rem; width:52px; height:52px; border-radius:50%; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">‹</button>
+  <button onclick="nextImage()" style="position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); color:white; font-size:1.8rem; width:52px; height:52px; border-radius:50%; cursor:pointer; z-index:10; display:flex; align-items:center; justify-content:center; -webkit-tap-highlight-color:transparent;">›</button>
+
+  <div style="position:relative; z-index:10; display:flex; flex-direction:column; align-items:center; max-width:90vw; max-height:85vh;">
+    <img id="lb-img" src="" alt="" style="max-width:100%; max-height:75vh; object-fit:contain; border-radius:4px; box-shadow:0 20px 80px rgba(0,0,0,0.8); transition:opacity 0.3s;">
+    <p id="lb-caption" style="color:rgba(255,255,255,0.7); margin-top:1.2rem; font-family:'Jost',sans-serif; font-size:0.85rem; letter-spacing:0.1em; text-align:center;"></p>
+    <p id="lb-counter" style="color:rgba(255,255,255,0.35); margin-top:0.3rem; font-size:0.75rem; letter-spacing:0.08em;"></p>
+  </div>
+
+  <div id="lb-thumbs" style="position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); display:flex; gap:0.5rem; z-index:10; max-width:90vw; overflow-x:auto; padding:0.5rem;"></div>
+</div>
+
+
+<!-- ───── GALLERY PAGE ───── -->
+<div id="gallery-page" style="display:none; position:fixed; inset:0; z-index:9998; overflow-y:auto; background:#0d0d0b;">
+  <canvas id="gallery-canvas" style="position:fixed; inset:0; width:100%; height:100%; opacity:0.25; pointer-events:none;"></canvas>
+
+  <div style="position:relative; z-index:10; padding:4rem 3rem;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3rem;">
+      <div style="font-family:'Playfair Display',serif; font-size:1.8rem; color:white;">Fun <span style="color:#c9a84c;">Travel</span> <span style="font-size:1rem; font-weight:300; color:rgba(255,255,255,0.4); font-family:'Jost',sans-serif;">Gallery</span></div>
+      <button onclick="closeGallery()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:0.5rem 1.2rem; border-radius:2px; cursor:pointer; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.1em;">← Back to Shop</button>
+    </div>
+    <div id="gallery-grid" style="columns:3; column-gap:1rem; gap:1rem;"></div>
+  </div>
+</div>
+
+
+<!-- ───── ORDER PANEL ───── -->
+<div id="order-panel" style="display:none; position:fixed; inset:0; z-index:9997; background:rgba(10,10,8,0.97); overflow-y:auto;">
+  <canvas id="order-canvas" style="position:fixed; inset:0; width:100%; height:100%; opacity:0.2; pointer-events:none;"></canvas>
+
+  <div style="position:relative; z-index:10; max-width:680px; margin:0 auto; padding:3rem 2rem 5rem;">
+
+    <!-- Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem;">
+      <div>
+        <p style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.3rem;">Fun Travel</p>
+        <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:white;">Your Order</h2>
+      </div>
+      <button onclick="closeOrder()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:white; padding:0.5rem 1.2rem; border-radius:2px; cursor:pointer; font-family:'Jost',sans-serif; font-size:0.8rem; letter-spacing:0.1em;">✕ Close</button>
+    </div>
+
+    <!-- Product image + name -->
+    <div id="order-product-header" style="display:flex; gap:1.2rem; align-items:center; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:1.2rem; margin-bottom:2rem;">
+      <img id="order-img" src="" alt="" style="width:90px; height:90px; object-fit:cover; border-radius:3px; flex-shrink:0; cursor:zoom-in;" onclick="openLightbox(this.src, '')">
+      <div>
+        <p style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.3rem;">Selected Item</p>
+        <h3 id="order-product-name" style="font-family:'Playfair Display',serif; color:white; font-size:1.1rem;"></h3>
+        <button onclick="openLightbox(document.getElementById('order-img').src, '')" style="background:none; border:none; color:#c9a84c; font-size:0.75rem; cursor:pointer; padding:0; margin-top:0.4rem; letter-spacing:0.05em;">🔍 View full image</button>
+      </div>
+    </div>
+
+    <!-- Item selection checkboxes -->
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem;">Select Items</p>
+      <div id="order-items" style="display:flex; flex-direction:column; gap:0.6rem;"></div>
+    </div>
+
+    <!-- Contact info -->
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:1rem;">Your Contact Info</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
+        <div>
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">First Name *</label>
+          <input id="cf-fname" type="text" placeholder="Jane" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div>
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Last Name *</label>
+          <input id="cf-lname" type="text" placeholder="Smith" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Email Address *</label>
+          <input id="cf-email" type="email" placeholder="jane@example.com" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Phone Number</label>
+          <input id="cf-phone" type="tel" placeholder="(555) 000-0000" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Shipping Address *</label>
+          <input id="cf-address" type="text" placeholder="123 Main St, City, State, ZIP" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="font-size:0.75rem; color:rgba(255,255,255,0.4); display:block; margin-bottom:0.3rem;">Notes / Additional Info</label>
+          <textarea id="cf-notes" placeholder="Any special requests, gift messages, etc." rows="3" style="width:100%; padding:0.7rem 0.9rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:white; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.85rem; resize:vertical;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order summary -->
+    <div id="order-summary-box" style="background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:4px; padding:1.2rem; margin-bottom:1.5rem; display:none;">
+      <p style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:#c9a84c; margin-bottom:0.8rem;">Order Summary</p>
+      <div id="order-summary-list" style="font-size:0.82rem; color:rgba(255,255,255,0.7); line-height:1.8;"></div>
+      <div style="border-top:1px solid rgba(201,168,76,0.2); margin-top:0.8rem; padding-top:0.8rem; display:flex; justify-content:space-between;">
+        <span style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Estimated Total</span>
+        <span id="order-total" style="color:#c9a84c; font-weight:500; font-size:1rem;"></span>
+      </div>
+    </div>
+
+    <!-- Pay button -->
+    <button onclick="sendOrder()" style="width:100%; padding:1rem; background:#c9714a; color:white; border:none; border-radius:2px; font-family:'Jost',sans-serif; font-size:0.9rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='#b85e38'" onmouseout="this.style.background='#c9714a'">
+      Pay with PayPal →
+    </button>
+    <p style="text-align:center; font-size:0.75rem; color:rgba(255,255,255,0.3); margin-top:0.8rem;">PayPal opens in a new tab. Your order details are also emailed to Elena so she can fulfill your order.</p>
+
+  </div>
+</div>
+
+
+<script>
+// ── ALL IMAGES ──
+const allImages = [
+  { src: 'images/Resized_20260531_100438.jpeg', caption: 'Kelly Green & Black African Tube Set' },
+  { src: 'images/Resized_20260531_100359.jpeg', caption: 'Wood & Orange Synthetic Beads' },
+  { src: 'images/Resized_20260531_100501.jpeg', caption: 'Twilight Zebra Set' },
+  { src: 'images/Resized_20260531_100506.jpeg', caption: 'Tropical Bloom Set' },
+  { src: 'images/Resized_20260531_102515.jpeg', caption: 'Carnival Fiesta Set' },
+  { src: 'images/Resized_20260531_102540.jpeg', caption: 'Summer Orchard Necklace' },
+  { src: 'images/Resized_20260531_102550.jpeg', caption: 'Midnight Carnival Beaded Necklace' },
+  { src: 'images/Resized_20260531_102628.jpeg', caption: 'Rainbow Cascade Strands' },
+  { src: 'images/Resized_20260529_091718.jpeg', caption: 'Mixed Seed Bead Necklaces' },
+  { src: 'images/Resized_20260529_085416.jpeg', caption: 'Color Splash Neck Pillow' },
+  { src: 'images/Resized_20260301_070435.jpeg', caption: 'Color Splash Neck Pillow — Full Range' },
+  { src: 'images/Resized_20260301_063640_1_.jpeg', caption: 'Polka Dot Travel Pillow' },
+  { src: 'images/Resized_20260528_081417.jpeg', caption: 'Handmade Bracelet Collection' },
+  { src: 'images/Resized_20260528_081218.jpeg', caption: 'Bracelet Variety Set' },
+  { src: 'images/IMG_3530.jpeg', caption: 'Green & Black Jewelry Set' },
+];
+
+let currentIdx = 0;
+
+// ── LIGHTBOX ──
+function openLightbox(src, caption) {
+  currentIdx = allImages.findIndex(i => i.src === src);
+  if (currentIdx < 0) {
+    allImages.push({ src, caption });
+    currentIdx = allImages.length - 1;
+  }
+  renderLightbox();
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  startCanvasAnimation('lb-canvas');
+  buildThumbs();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function renderLightbox() {
+  const img = document.getElementById('lb-img');
+  const cap = document.getElementById('lb-caption');
+  const ctr = document.getElementById('lb-counter');
+  img.style.opacity = 0;
+  setTimeout(() => {
+    img.src = allImages[currentIdx].src;
+    img.alt = allImages[currentIdx].caption;
+    img.onload = () => { img.style.opacity = 1; };
+    cap.textContent = allImages[currentIdx].caption;
+    ctr.textContent = (currentIdx + 1) + ' / ' + allImages.length;
+    highlightThumb();
+  }, 150);
+}
+
+function nextImage() { currentIdx = (currentIdx + 1) % allImages.length; renderLightbox(); }
+function prevImage() { currentIdx = (currentIdx - 1 + allImages.length) % allImages.length; renderLightbox(); }
+
+document.addEventListener('keydown', e => {
+  if (document.getElementById('lightbox').style.display !== 'none') {
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'Escape') closeLightbox();
+  }
+});
+
+function buildThumbs() {
+  const strip = document.getElementById('lb-thumbs');
+  strip.innerHTML = '';
+  allImages.forEach((img, i) => {
+    const t = document.createElement('img');
+    t.src = img.src;
+    t.style.cssText = 'width:52px; height:52px; object-fit:cover; border-radius:3px; cursor:pointer; border:2px solid transparent; transition:border-color 0.2s; flex-shrink:0;';
+    t.onclick = () => { currentIdx = i; renderLightbox(); };
+    t.id = 'thumb-' + i;
+    strip.appendChild(t);
+  });
+  highlightThumb();
+}
+
+function highlightThumb() {
+  allImages.forEach((_, i) => {
+    const t = document.getElementById('thumb-' + i);
+    if (t) t.style.borderColor = i === currentIdx ? '#c9a84c' : 'transparent';
+  });
+}
+
+// Touch/swipe for lightbox
+let touchStartX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+document.getElementById('lightbox').addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) > 50) { diff > 0 ? nextImage() : prevImage(); }
+}, { passive: true });
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+
+// ── GALLERY PAGE ──
+function openGallery() {
+  const grid = document.getElementById('gallery-grid');
+  grid.innerHTML = '';
+  allImages.forEach((img, i) => {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'break-inside:avoid; margin-bottom:1rem; cursor:zoom-in; position:relative; overflow:hidden; border-radius:4px;';
+    wrap.innerHTML = `
+      <img src="${img.src}" alt="${img.caption}" style="width:100%; display:block; border-radius:4px; transition:transform 0.4s, opacity 0.3s;"
+           onmouseover="this.style.transform='scale(1.03)'; this.style.opacity='0.85'"
+           onmouseout="this.style.transform='scale(1)'; this.style.opacity='1'">
+      <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(0,0,0,0.7)); padding:1rem 0.8rem 0.6rem; opacity:0; transition:opacity 0.3s;"
+           onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+        <p style="color:white; font-size:0.75rem; font-family:'Jost',sans-serif; margin:0;">${img.caption}</p>
+      </div>`;
+    wrap.onclick = () => { closeGallery(); openLightbox(img.src, img.caption); };
+    grid.appendChild(wrap);
+  });
+  document.getElementById('gallery-page').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  startCanvasAnimation('gallery-canvas');
+}
+
+function closeGallery() {
+  document.getElementById('gallery-page').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+
+// ── ANIMATED MESH CANVAS ──
+function startCanvasAnimation(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const colors = ['#c9714a','#c9a84c','#7a9e7e','#e8997a','#e8cf8a','#4a4540'];
+  const particles = Array.from({ length: 18 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: 80 + Math.random() * 160,
+    vx: (Math.random() - 0.5) * 0.6,
+    vy: (Math.random() - 0.5) * 0.6,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    alpha: 0.15 + Math.random() * 0.25
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -p.r) p.x = canvas.width + p.r;
+      if (p.x > canvas.width + p.r) p.x = -p.r;
+      if (p.y < -p.r) p.y = canvas.height + p.r;
+      if (p.y > canvas.height + p.r) p.y = -p.r;
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      g.addColorStop(0, p.color + Math.floor(p.alpha * 255).toString(16).padStart(2, '0'));
+      g.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+
+// ── PRODUCT CATALOG ──
+const catalog = {
+  'Kelly Green Black Set': {
+    img: 'images/Resized_20260531_100438.jpeg',
+    items: [
+      { label: 'Necklace (15.5 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Wood & Orange Synthetic Beads': {
+    img: 'images/Resized_20260528_081417.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Twilight Zebra Set': {
+    img: 'images/Resized_20260531_100501.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings — Magenta/Black', price: 15 },
+      { label: 'Earrings — Black/Zebra drop', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Tropical Bloom Set': {
+    img: 'images/Resized_20260531_100506.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Carnival Fiesta Set': {
+    img: 'images/Resized_20260531_102515.jpeg',
+    items: [
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings', price: 15 },
+    ],
+    setPrice: 55, setLabel: 'Full Set (Necklace + Bracelet + Earrings)'
+  },
+  'Summer Orchard Necklace': {
+    img: 'images/Resized_20260531_102540.jpeg',
+    items: [
+      { label: 'Choker 15 inches', price: 16 },
+      { label: 'Choker 16 inches', price: 16 },
+      { label: 'Choker 17 inches', price: 19 },
+      { label: 'Choker 18 inches', price: 19 },
+      { label: 'Choker 19 inches', price: 19 },
+      { label: 'Choker 20 inches', price: 19 },
+      { label: 'Choker 21 inches', price: 19 },
+    ]
+  },
+  'Midnight Carnival Beaded Necklace': {
+    img: 'images/Resized_20260531_102550.jpeg',
+    items: [
+      { label: 'Choker 15 inches', price: 32 },
+      { label: 'Choker 16 inches', price: 32 },
+      { label: 'Choker 17 inches', price: 32 },
+      { label: 'Choker 18 inches', price: 32 },
+      { label: 'Choker 19 inches', price: 32 },
+      { label: 'Choker 20 inches', price: 32 },
+      { label: 'Choker 21 inches', price: 32 },
+    ]
+  },
+  'Rainbow Cascade Strands': {
+    img: 'images/Resized_20260531_102628.jpeg',
+    items: [
+      { label: 'Single strand 15 in.', price: 15 },
+      { label: 'Single strand 16 in.', price: 15 },
+      { label: 'Single strand 17 in.', price: 15 },
+      { label: 'Single strand 18 in.', price: 15 },
+    ]
+  },
+  'Mixed Seed Bead Necklace': {
+    img: 'images/Resized_20260529_091718.jpeg',
+    items: [
+      { label: 'Necklace 15 in.', price: 17 },
+      { label: 'Necklace 16 in.', price: 17 },
+      { label: 'Necklace 17 in.', price: 17 },
+      { label: 'Necklace 18 in.', price: 19.50 },
+      { label: 'Necklace 19 in.', price: 19.50 },
+      { label: 'Necklace 20 in.', price: 19.50 },
+      { label: 'Necklace 21 in.', price: 19.50 },
+    ]
+  },
+  'Color Splash Neck Pillow': {
+    img: 'images/Resized_20260529_085416.jpeg',
+    items: [
+      { label: 'Lime Green', price: 24 },
+      { label: 'Orange', price: 24 },
+      { label: 'Red', price: 24 },
+      { label: 'Yellow', price: 24 },
+      { label: 'Navy', price: 24 },
+    ]
+  },
+  'Polka Dot Travel Pillow': {
+    img: 'images/Resized_20260301_063640_1_.jpeg',
+    items: [
+      { label: 'Fuchsia with black dots', price: 24 },
+      { label: 'Turquoise with black dots', price: 24 },
+      { label: 'White with black dots', price: 24 },
+      { label: 'Orange with black dots', price: 24 },
+      { label: 'Navy with white dots', price: 24 },
+    ]
+  },
+};
+
+let currentProduct = null;
+
+// ── COLOR PICKER → ORDER ──
+function buyWithColor(productKey, radioGroupName, btn) {
+  const selected = document.querySelector(`input[name="${radioGroupName}"]:checked`);
+  if (!selected) {
+    const opts = document.querySelectorAll(`input[name="${radioGroupName}"]`);
+    opts.forEach(o => {
+      const lbl = o.closest('.color-option');
+      lbl.style.animation = 'none';
+      lbl.style.borderColor = '#c9714a';
+      setTimeout(() => { lbl.style.borderColor = ''; }, 1200);
+    });
+    alert('Please select a color first.');
+    return;
+  }
+  openOrder(productKey, btn, selected.value);
+}
+
+// ── OPEN ORDER PANEL ──
+function openOrder(productKey, btn, preSelectedColor) {
+  // Decode HTML entities in the key (for & in keys)
+  const decodedKey = productKey.replace(/&amp;/g, '&');
+  const key = Object.keys(catalog).find(k => k === decodedKey) || Object.keys(catalog)[0];
+  currentProduct = key;
+  const product = catalog[key];
+
+  document.getElementById('order-img').src = product.img;
+  document.getElementById('order-product-name').textContent = key;
+
+  const itemsDiv = document.getElementById('order-items');
+  itemsDiv.innerHTML = '';
+
+  // Full set option if available
+  if (product.setPrice) {
+    const setRow = createCheckRow('full-set', product.setLabel, product.setPrice, true);
+    itemsDiv.appendChild(setRow);
+    const divider = document.createElement('p');
+    divider.style.cssText = 'font-size:0.72rem; color:rgba(255,255,255,0.3); letter-spacing:0.1em; text-transform:uppercase; margin:0.5rem 0;';
+    divider.textContent = '— or pick individually —';
+    itemsDiv.appendChild(divider);
+  }
+
+  product.items.forEach((item, i) => {
+    const preCheck = preSelectedColor
+      ? item.label.toLowerCase().includes(preSelectedColor.toLowerCase())
+      : false;
+    itemsDiv.appendChild(createCheckRow('item-' + i, item.label, item.price, preCheck));
+  });
+
+  updateSummary();
+  document.getElementById('order-panel').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  startCanvasAnimation('order-canvas');
+  window.scrollTo(0, 0);
+}
+
+function createCheckRow(id, label, price, checked) {
+  const row = document.createElement('label');
+  row.style.cssText = 'display:flex; align-items:center; gap:0.8rem; padding:0.7rem 1rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:3px; cursor:pointer; transition:background 0.2s;';
+  row.onmouseover = () => row.style.background = 'rgba(255,255,255,0.08)';
+  row.onmouseout  = () => row.style.background = 'rgba(255,255,255,0.04)';
+  row.innerHTML = `
+    <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} onchange="updateSummary()"
+      style="width:18px; height:18px; accent-color:#c9a84c; flex-shrink:0; cursor:pointer;">
+    <span style="flex:1; color:rgba(255,255,255,0.85); font-size:0.85rem;">${label}</span>
+    <span style="color:#c9a84c; font-weight:500; font-size:0.9rem;">$${price}</span>`;
+  return row;
+}
+
+function updateSummary() {
+  const checks = document.querySelectorAll('#order-items input[type=checkbox]:checked');
+  const summaryBox = document.getElementById('order-summary-box');
+  const summaryList = document.getElementById('order-summary-list');
+  const totalEl = document.getElementById('order-total');
+
+  if (checks.length === 0) { summaryBox.style.display = 'none'; return; }
+
+  summaryBox.style.display = 'block';
+  let total = 0;
+  const lines = [];
+
+  checks.forEach(cb => {
+    const label = cb.parentElement.querySelector('span:nth-child(2)').textContent;
+    const priceText = cb.parentElement.querySelector('span:nth-child(3)').textContent.replace('$', '');
+    const price = parseFloat(priceText);
+    total += price;
+    lines.push(`✦ ${label} — $${price.toFixed(2)}`);
+  });
+
+  const isPillow = currentProduct.toLowerCase().includes('pillow');
+  const shipping = isPillow ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  lines.push(`Shipping — $${shipping.toFixed(2)}`);
+  total += shipping;
+
+  summaryList.innerHTML = lines.join('<br>');
+  totalEl.textContent = '$' + total.toFixed(2);
+}
+
+// ── SEND ORDER → PAYPAL + EMAIL ──
+function sendOrder() {
+  const fname   = document.getElementById('cf-fname').value.trim();
+  const lname   = document.getElementById('cf-lname').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const phone   = document.getElementById('cf-phone').value.trim();
+  const address = document.getElementById('cf-address').value.trim();
+  const notes   = document.getElementById('cf-notes').value.trim();
+
+  if (!fname || !email || !address) {
+    alert('Please fill in your name, email, and shipping address before sending.');
+    return;
+  }
+
+  const checks = document.querySelectorAll('#order-items input[type=checkbox]:checked');
+  if (checks.length === 0) {
+    alert('Please select at least one item.');
+    return;
+  }
+
+  const selectedItems = [];
+  let subtotal = 0;
+  checks.forEach(cb => {
+    const label = cb.parentElement.querySelector('span:nth-child(2)').textContent;
+    const priceText = cb.parentElement.querySelector('span:nth-child(3)').textContent.replace('$', '');
+    const price = parseFloat(priceText);
+    subtotal += price;
+    selectedItems.push(`  • ${label} — $${price.toFixed(2)}`);
+  });
+
+  const isPillow = currentProduct.toLowerCase().includes('pillow');
+  const shipping = isPillow ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  const total = subtotal + shipping;
+
+  // 1. Open PayPal in new tab with pre-filled amount
+  const itemDesc = `${currentProduct} - Fun Travel by Elena`.substring(0, 127);
+  const paypalParams = new URLSearchParams({
+    cmd: '_xclick',
+    business: 'picswelove2024@gmail.com',
+    item_name: itemDesc,
+    amount: total.toFixed(2),
+    currency_code: 'USD',
+    no_note: '0',
+    lc: 'US',
+    bn: 'PP-BuyNowBF'
+  });
+  window.open('https://www.paypal.com/cgi-bin/webscr?' + paypalParams.toString(), '_blank');
+
+  // 2. Also email full order details to Elena
+  const subject = encodeURIComponent(`Order: ${currentProduct} — Fun Travel`);
+  const body = encodeURIComponent(
+`Hi Elena,
+
+I would like to place an order from Fun Travel. Here are my details:
+
+NAME: ${fname} ${lname}
+EMAIL: ${email}
+PHONE: ${phone || 'Not provided'}
+SHIPPING ADDRESS: ${address}
+
+PRODUCT: ${currentProduct}
+
+SELECTED ITEMS:
+${selectedItems.join('\n')}
+
+SUBTOTAL: $${subtotal.toFixed(2)}
+SHIPPING: $${shipping.toFixed(2)}
+TOTAL: $${total.toFixed(2)}
+
+NOTES:
+${notes || 'None'}
+
+I am paying via PayPal (payment just sent).
+
+Thank you,
+${fname} ${lname}`
+  );
+
+  setTimeout(() => {
+    window.location.href = `mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`;
+  }, 800);
+
+  closeOrder();
+}
+
+function closeOrder() {
+  document.getElementById('order-panel').style.display = 'none';
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
