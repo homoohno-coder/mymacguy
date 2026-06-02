@@ -425,16 +425,14 @@ section { padding: 5rem 5rem; }
   flex-direction: column;
 }
 .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-.product-card[data-category="pillow"] .product-img { object-position: center; }
-
 .product-img-wrap { position: relative; overflow: hidden; }
 .product-img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
-  object-position: top center;
+  height: 320px;
+  object-fit: contain;
+  object-position: center;
   display: block;
-  background: #f0ece6;
+  background: #f8f4ef;
   cursor: zoom-in;
   transition: opacity 0.25s, transform 0.4s;
 }
@@ -558,7 +556,7 @@ section { padding: 5rem 5rem; }
 
 .gallery-main {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 4px;
   background: #f0ece6;
@@ -568,8 +566,8 @@ section { padding: 5rem 5rem; }
 .gallery-main img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
   transition: opacity 0.2s;
 }
 
@@ -581,7 +579,8 @@ section { padding: 5rem 5rem; }
 .gallery-thumb {
   width: 68px;
   height: 68px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #f0ece6;
   border-radius: 3px;
   cursor: pointer;
   border: 2px solid transparent;
@@ -764,9 +763,9 @@ section { padding: 5rem 5rem; }
 .related-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.09); }
 .related-card img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  object-position: top center;
+  height: 220px;
+  object-fit: contain;
+  object-position: center;
   background: #f0ece6;
 }
 .related-card-info { padding: 0.9rem 1rem 1.1rem; }
@@ -807,9 +806,10 @@ section { padding: 5rem 5rem; }
 .pillow-img {
   width: 100%;
   height: 300px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
+  background: rgba(248,244,239,0.07);
   cursor: zoom-in;
   transition: opacity 0.2s;
 }
@@ -927,8 +927,9 @@ section { padding: 5rem 5rem; }
 }
 .bestseller-card img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 260px;
+  object-fit: contain;
+  background: #f8f4ef;
   cursor: zoom-in;
   transition: opacity 0.2s;
 }
@@ -1428,6 +1429,8 @@ footer .footer-copy { color: rgba(255,255,255,0.18); }
   .related-section { padding: 3rem 1.5rem; }
   footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   #gallery-grid { columns: 2; }
+  .product-img { height: 280px; }
+  .bestseller-card img { height: 240px; }
 }
 
 @media (max-width: 560px) {
@@ -1436,4 +1439,6 @@ footer .footer-copy { color: rgba(255,255,255,0.18); }
   .form-grid { grid-template-columns: 1fr; }
   .contact-methods { gap: 1.5rem; }
   #gallery-grid { columns: 1; }
+  .product-img { height: 260px; }
+  .related-card img { height: 200px; }
 }

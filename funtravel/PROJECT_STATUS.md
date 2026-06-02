@@ -46,6 +46,15 @@
 - [x] Set pricing removed from 5 individual necklace products
 - [x] Fuchsia & Black necklace corrected to single necklace at $15
 
+### Image Display
+- [x] All product images: `object-fit: contain` — full jewelry visible, no cropping
+- [x] Product card height: 320px desktop / 280px tablet / 260px mobile
+- [x] Product detail gallery: aspect-ratio 4/5, contain
+- [x] Gallery thumbnails: contain + background
+- [x] Related products: contain + 220px height
+- [x] Bestseller cards: contain + 260px height
+- [x] Pillow cards: contain
+
 ### Shipping (fixed per PDF price list)
 - [x] `app.js` shipping: now flat $3.50 for all orders (was $5.99/$7.99/$9.99)
 - [x] `products.js` pillow `shipping` field: $9.99 → $3.50

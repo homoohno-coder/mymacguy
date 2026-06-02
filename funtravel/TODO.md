@@ -6,6 +6,7 @@
 - [ ] **Product images in mymacguy repo** — copy images from `homoohno-coder/funtravel/images/` into `funtravel/images/` so deploy preview works
 - [x] **Pillow color picker on product.html** — radio button color pickers added; Buy Now wired to `openOrderWithColor()`
 - [x] **Shipping cost** — fixed to $3.50 flat for all orders (per PDF price list); updated in `app.js` and `contact.html`
+- [x] **Image cropping** — all product images now use `object-fit: contain`; jewelry/necklaces fully visible on all pages
 
 ## Medium Priority
 
