@@ -10,7 +10,7 @@
 ### Commits
 | Hash | Message |
 |---|---|
-| TBD | feat(funtravel): product detail modal — full ecommerce experience on image click |
+| `5231d6f` | feat(funtravel): product detail modal — full ecommerce experience on image click |
 
 ### Files Changed
 - `funtravel/shop.html`

@@ -164,4 +164,4 @@ Second priority: Add a favicon (`funtravel/favicon.ico`).
 
 **Date:** 2026-06-02
 **By:** Claude (claude-sonnet-4-6)
-**Commit:** TBD (pending push)
+**Commit:** `5231d6f`
