@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Your Order — Fun Travel</title>
+<meta name="description" content="Track your Fun Travel order status by entering your email and order number.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fun <span>Travel</span></a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <p class="page-header-label">Order Status</p>
+  <h1 class="page-header-title">Track Your Order</h1>
+  <p class="page-header-sub">Enter the email and order number from your confirmation.</p>
+</div>
+
+<section class="lookup-section">
+
+  <!-- Lookup form -->
+  <div id="lookup-form-wrap" class="lookup-form-wrap">
+    <form id="lookup-form" class="lookup-form" onsubmit="lookupOrder(event)">
+      <div class="lookup-field">
+        <label for="lk-email">Email Address</label>
+        <input id="lk-email" type="email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <div class="lookup-field">
+        <label for="lk-order">Order Number</label>
+        <input id="lk-order" type="text" placeholder="FT-XXXXXX-XXXX" required autocomplete="off" style="text-transform:uppercase">
+      </div>
+      <div id="lookup-err" class="lookup-error" style="display:none"></div>
+      <button type="submit" class="btn-primary lookup-submit" id="lookup-btn">Look Up Order →</button>
+    </form>
+  </div>
+
+  <!-- Results -->
+  <div id="lookup-result" class="lookup-result" style="display:none">
+
+    <div class="order-result-header">
+      <div>
+        <p class="order-result-label">Order</p>
+        <h2 id="res-order-num" class="order-result-num"></h2>
+      </div>
+      <div class="order-result-status-badge" id="res-status-badge"></div>
+    </div>
+
+    <!-- Progress tracker -->
+    <div class="order-tracker">
+      <div class="tracker-steps" id="tracker-steps"></div>
+    </div>
+
+    <!-- Tracking number -->
+    <div id="res-tracking-wrap" class="order-tracking-row" style="display:none">
+      <span class="order-tracking-label">Tracking Number</span>
+      <strong id="res-tracking"></strong>
+    </div>
+
+    <!-- Items -->
+    <div class="order-items-section">
+      <h3 class="order-section-heading">Items Ordered</h3>
+      <div id="res-items"></div>
+    </div>
+
+    <!-- Totals -->
+    <div class="order-totals">
+      <div class="order-total-row"><span>Subtotal</span><span id="res-subtotal"></span></div>
+      <div class="order-total-row"><span>Shipping</span><span>$3.50</span></div>
+      <div class="order-total-row"><span>Tax (10.25% CA)</span><span id="res-tax"></span></div>
+      <div class="order-total-row order-grand-total"><span>Total</span><span id="res-total"></span></div>
+    </div>
+
+    <div class="order-result-footer">
+      <p id="res-date" class="order-result-date"></p>
+      <button class="btn-outline lookup-again-btn" onclick="lookupAgain()">Look Up Another Order</button>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Fun <span>Travel</span></a>
+    <p class="footer-tagline">Handcrafted jewelry &amp; travel pillows by Elena · Palm Springs, CA</p>
+    <nav class="footer-nav">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="order-lookup.html">Track Order</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Fun Travel by Elena</p>
+  </div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+// Pre-fill order number from URL param (set by success page)
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const on = p.get('order');
+  if (on) document.getElementById('lk-order').value = on.toUpperCase();
+})();
+
+async function lookupOrder(e) {
+  e.preventDefault();
+  const email = document.getElementById('lk-email').value.trim();
+  const orderNumber = document.getElementById('lk-order').value.trim().toUpperCase();
+  const errEl = document.getElementById('lookup-err');
+  const btn = document.getElementById('lookup-btn');
+
+  errEl.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Looking up…';
+
+  try {
+    const res = await fetch('/.netlify/functions/get-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, orderNumber }),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || 'Order not found.');
+    }
+
+    renderResult(data);
+  } catch (err) {
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Look Up Order →';
+  }
+}
+
+function renderResult(data) {
+  document.getElementById('res-order-num').textContent = data.orderNumber;
+  document.getElementById('res-status-badge').textContent = data.status;
+  document.getElementById('res-status-badge').dataset.status = data.status;
+
+  // Tracker
+  const steps = data.statusSteps || ['Order Received','Payment Confirmed','In Production','Shipped','Delivered'];
+  const currentIdx = data.statusIndex !== undefined ? data.statusIndex : steps.indexOf(data.status);
+  const trackerEl = document.getElementById('tracker-steps');
+  trackerEl.innerHTML = steps.map((step, i) =>
+    `<div class="tracker-step ${i <= currentIdx ? 'tracker-step-done' : ''} ${i === currentIdx ? 'tracker-step-active' : ''}">` +
+      `<div class="tracker-dot"></div>` +
+      `<div class="tracker-label">${step}</div>` +
+    `</div>`
+  ).join('<div class="tracker-line"></div>');
+
+  // Tracking number
+  if (data.trackingNumber) {
+    document.getElementById('res-tracking').textContent = data.trackingNumber;
+    document.getElementById('res-tracking-wrap').style.display = 'flex';
+  }
+
+  // Items
+  const itemsEl = document.getElementById('res-items');
+  itemsEl.innerHTML = (data.items || []).map(item =>
+    `<div class="order-result-item">` +
+      (item.image ? `<img class="order-result-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">` : '') +
+      `<div>` +
+        `<p class="order-result-item-name">${item.name}</p>` +
+        (item.variant ? `<p class="order-result-item-variant">${item.variant}</p>` : '') +
+        `<p class="order-result-item-price">$${Number(item.price).toFixed(2)} × ${item.qty}</p>` +
+      `</div>` +
+    `</div>`
+  ).join('');
+
+  // Totals
+  document.getElementById('res-subtotal').textContent = '$' + Number(data.subtotal).toFixed(2);
+  document.getElementById('res-tax').textContent = '$' + Number(data.tax).toFixed(2);
+  document.getElementById('res-total').textContent = '$' + Number(data.total).toFixed(2);
+
+  // Date
+  if (data.createdAt) {
+    document.getElementById('res-date').textContent =
+      'Placed on ' + new Date(data.createdAt).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  }
+
+  document.getElementById('lookup-form-wrap').style.display = 'none';
+  document.getElementById('lookup-result').style.display = 'block';
+}
+
+function lookupAgain() {
+  document.getElementById('lookup-result').style.display = 'none';
+  document.getElementById('lookup-form-wrap').style.display = 'block';
+  document.getElementById('lookup-form').reset();
+}
+</script>
+</body>
+</html>

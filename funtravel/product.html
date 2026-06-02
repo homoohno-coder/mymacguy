@@ -109,6 +109,7 @@
 </div>
 
 <script src="data/products.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/app.js"></script>
 <script>
 (function() {
@@ -207,10 +208,12 @@
   if (product.paypalUrl) {
     buyHtml = `<a class="btn-buy-paypal" href="${product.paypalUrl}" target="_blank" rel="noopener">Buy with PayPal →</a>`;
   } else if (product.category === 'pillow') {
-    buyHtml = `<button class="btn-primary" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Buy Now → Order</button>
+    buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
+               <button class="btn-outline" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Buy Now via PayPal</button>
                <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
   } else {
-    buyHtml = `<button class="btn-primary" onclick="openOrder('${product.id}', this)">Buy Now → Order</button>
+    buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
+               <button class="btn-outline" onclick="openOrder('${product.id}', this)">Buy Now via PayPal</button>
                <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
   }
 
