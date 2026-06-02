@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product — Fun Travel</title>
+<meta name="description" content="Handmade jewelry and travel pillows by Elena at Fun Travel.">
+<meta property="og:title" content="Product — Fun Travel">
+<meta property="og:description" content="Handmade jewelry and travel pillows by Elena.">
+<meta property="og:image" content="images/Resized_20260531_102550.jpeg">
+<meta property="og:type" content="product">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -124,8 +129,16 @@
     return;
   }
 
-  // Update page title
+  // Update page title and OG meta
   document.title = product.name + ' — Fun Travel';
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDesc  = document.querySelector('meta[property="og:description"]');
+  const ogImg   = document.querySelector('meta[property="og:image"]');
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (ogTitle)  ogTitle.setAttribute('content', product.name + ' — Fun Travel');
+  if (ogDesc)   ogDesc.setAttribute('content', product.description);
+  if (ogImg)    ogImg.setAttribute('content', product.image);
+  if (metaDesc) metaDesc.setAttribute('content', product.description);
 
   // Build gallery HTML
   const imgs = product.images && product.images.length ? product.images : [product.image];
@@ -151,9 +164,23 @@
                  <p class="detail-price-note">${product.details || ''}</p>`;
   }
 
-  // Color swatches
+  // Color swatches / radio pickers
+  const colorGroup = product.id + '-color';
   let swatchesHtml = '';
-  if (product.colorSwatches && product.colorSwatches.length) {
+  if (product.category === 'pillow' && product.colorSwatches && product.colorSwatches.length) {
+    swatchesHtml = `
+      <div class="detail-colors">
+        <div class="detail-colors-label">Choose a Color <span style="color:var(--terra);font-size:.75rem;">*required</span></div>
+        <div class="detail-color-radio-list">
+          ${product.colorSwatches.map((s, i) => `
+            <label class="color-option" title="${s.label}">
+              <input type="radio" name="${colorGroup}" value="${s.label}" ${i === 0 ? 'checked' : ''}>
+              <span class="color-swatch-circle" style="background:${s.hex};"></span>
+              <span class="color-option-label">${s.label}</span>
+            </label>`).join('')}
+        </div>
+      </div>`;
+  } else if (product.colorSwatches && product.colorSwatches.length) {
     swatchesHtml = `
       <div class="detail-colors">
         <div class="detail-colors-label">Available Colors</div>
@@ -175,6 +202,9 @@
   let buyHtml = '';
   if (product.paypalUrl) {
     buyHtml = `<a class="btn-buy-paypal" href="${product.paypalUrl}" target="_blank" rel="noopener">Buy with PayPal →</a>`;
+  } else if (product.category === 'pillow') {
+    buyHtml = `<button class="btn-primary" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Buy Now → Order</button>
+               <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
   } else {
     buyHtml = `<button class="btn-primary" onclick="openOrder('${product.id}', this)">Buy Now → Order</button>
                <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
