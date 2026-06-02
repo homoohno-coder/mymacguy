@@ -157,8 +157,12 @@
     priceHtml = `<div class="detail-price">$${product.priceFrom}</div>
                  <p class="detail-price-note">Per pillow · + $${product.shipping || 9.99} shipping</p>`;
   } else if (product.setPrice) {
+    const breakdown = (product.orderItems || []).map(i =>
+      `<span style="display:block;font-size:.8rem;color:var(--mid);margin-top:.15rem;">${i.label} — $${i.price.toFixed(2)}</span>`
+    ).join('');
     priceHtml = `<div class="detail-price">From $${product.priceFrom}</div>
-                 <p class="detail-price-note">Full Set — $${product.setPrice} · Individual pieces available</p>`;
+                 <p class="detail-price-note" style="margin-bottom:.3rem;font-weight:500;">Full Set — $${product.setPrice}</p>
+                 <div style="margin-bottom:.8rem;line-height:1.7;">${breakdown}</div>`;
   } else {
     priceHtml = `<div class="detail-price">From $${product.priceFrom}</div>
                  <p class="detail-price-note">${product.details || ''}</p>`;

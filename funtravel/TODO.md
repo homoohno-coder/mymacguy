@@ -7,6 +7,10 @@
 - [x] **Pillow color picker on product.html** — radio button color pickers added; Buy Now wired to `openOrderWithColor()`
 - [x] **Shipping cost** — fixed to $3.50 flat for all orders (per PDF price list); updated in `app.js` and `contact.html`
 - [x] **Image cropping** — all product images now use `object-fit: contain`; jewelry/necklaces fully visible on all pages
+- [x] **Set pricing** — products 1–5 restored as sets: Necklace $29, Bracelet $16, Earrings $15, Full Set $60
+- [x] **Multi-Color Choker pricing** — corrected from $32 flat to $16 (15–16 in.) / $19 (17–21 in.)
+- [x] **Product descriptions** — all 11 products updated to boutique-quality copy
+- [x] **Pillow shipping on shop/index pages** — corrected from $9.99 to $3.50
 
 ## Medium Priority
 

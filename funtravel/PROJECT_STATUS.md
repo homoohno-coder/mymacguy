@@ -64,19 +64,19 @@
 
 ## Product Data Verification (2026-06-02, verified against PDF price list)
 
-| Product | Price From | Image | Status |
-|---|---|---|---|
-| Kelly Green & Black African Tube Set | $15 | Resized_20260531_100438.jpeg | ✓ |
-| Earth & Fire Bead Set | $15 | Resized_20260531_100359.jpeg | ✓ |
-| Fuchsia & Black Beads — Any Color | $15 | Resized_20260531_100501.jpeg | ✓ |
-| Kelly Green Glass & Orange Synthetic Beads | $15 | Resized_20260531_100506.jpeg | ✓ |
-| Fun Bead Mix — Glass & Synthetic | $15 | Resized_20260531_102515.jpeg | ✓ |
-| Glass Bead Chokers — Green | $16 | Resized_20260531_102540.jpeg | ✓ |
-| Multi-Color Glass Bead Chokers | $32 | Resized_20260531_102550.jpeg | ✓ |
-| Glass Seed Beads — Any Color | $15 | Resized_20260531_102628.jpeg | ✓ |
-| Glass Seed Bead Mix with 4mm Glass Beads | $17 | IMG_3530.jpeg | ✓ |
-| Round Neck Pillow | $24 | Resized_20260529_091718.jpeg | ✓ |
-| Polka Dot Travel Pillow | $24 | Resized_20260301_063640_1_.jpeg | ✓ |
+| # | Product | Set Price | Piece Prices | Image | Status |
+|---|---|---|---|---|---|
+| 1 | Kelly Green & Black African Tube Set | $60 | Neck $29 · Brac $16 · Ear $15 | Resized_20260531_100438.jpeg | ✓ |
+| 2 | Earth & Fire Bead Set | $60 | Neck $29 · Brac $16 · Ear $15 | Resized_20260531_100359.jpeg | ✓ |
+| 3 | Fuchsia & Black Beads with African Tube Beads | $60 | Neck $29 · Brac $16 · Ear $15 | Resized_20260531_100501.jpeg | ✓ |
+| 4 | Kelly Green Glass & Orange Synthetic Beads | $60 | Neck $29 · Brac $16 · Ear $15 | Resized_20260531_100506.jpeg | ✓ |
+| 5 | Fun Bead Mix — Glass & Synthetic | $60 | Neck $29 · Brac $16 · Ear $15 | Resized_20260531_102515.jpeg | ✓ |
+| 6 | Glass Bead Chokers — Green | — | 15–16 in. $16 · 17–21 in. $19 | Resized_20260531_102540.jpeg | ✓ |
+| 7 | Multi-Color Glass Bead Chokers | — | 15–16 in. $16 · 17–21 in. $19 | Resized_20260531_102550.jpeg | ✓ |
+| 8 | Glass Seed Beads — Any Color | — | Up to 18 in. $15 | Resized_20260531_102628.jpeg | ✓ |
+| 9 | Glass Seed Bead Mix with 4mm Glass Beads | — | 15–17 in. $17 · 18–21 in. $19.50 | IMG_3530.jpeg | ✓ |
+| 10 | Round Neck Pillow | — | $24 + $3.50 ship | Resized_20260529_091718.jpeg | ✓ |
+| 11 | Polka Dot Travel Pillow | — | $24 + $3.50 ship | Resized_20260301_063640_1_.jpeg | ✓ |
 
 ---
 

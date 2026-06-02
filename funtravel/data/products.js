@@ -6,7 +6,7 @@ window.FT = window.FT || {};
 
 window.FT.PRODUCTS = [
 
-  /* ── JEWELRY SETS ──────────────────────────────────── */
+  /* ── JEWELRY SETS (1–5) ─────────────────────────────── */
 
   {
     id: 'kelly-green-black-set',
@@ -20,23 +20,25 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100438.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100438.jpeg'],
     priceFrom: 15,
-    description: 'Kelly green & black beads with African tube beads. Each piece hand-strung with care.',
-    details: 'Necklace 15.5 inches including clasp.',
+    setPrice: 60,
+    setLabel: 'Full Set',
+    description: 'Handcrafted African-inspired bead set with rich Kelly green and black beads and traditional tube accents. Sold as a complete set or as individual pieces.',
+    details: 'Necklace 15.5 in. · Bracelet 8 in. · Earrings',
     colors: ['Kelly Green', 'Black'],
     materials: 'Glass beads, African tube beads',
     orderItems: [
       { label: 'Necklace (15.5 in.)', price: 29 },
-      { label: 'Bracelet (8 in.)', price: 16 },
-      { label: 'Earrings', price: 15 }
+      { label: 'Bracelet (8 in.)',    price: 16 },
+      { label: 'Earrings',            price: 15 }
     ],
-    tags: ['necklace', 'bracelet', 'earrings', 'green', 'black']
+    tags: ['necklace', 'bracelet', 'earrings', 'green', 'black', 'set']
   },
 
   {
     id: 'earth-fire-bead-set',
     name: 'Earth & Fire Bead Set',
     category: 'jewelry',
-    type: 'necklace',
+    type: 'necklace-set',
     tagline: '⭐ Best Seller',
     featured: true,
     available: true,
@@ -44,23 +46,25 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg', 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260528_081417.jpeg'],
     priceFrom: 15,
-    description: 'Coral-orange beads paired with earthy patterned wooden beads — warmth and a natural feel.',
-    details: '16 inches including clasp.',
+    setPrice: 60,
+    setLabel: 'Full Set',
+    description: 'Warm coral-orange tones meet patterned wooden beads in this artisan bead set. Earthy, natural, and full of character.',
+    details: 'Necklace 16 in. · Bracelet 8 in. · Earrings',
     colors: ['Coral Orange', 'Earthy Brown'],
     materials: 'Coral-orange beads, wooden beads',
     orderItems: [
       { label: 'Necklace (16 in.)', price: 29 },
       { label: 'Bracelet (8 in.)', price: 16 },
-      { label: 'Earrings', price: 15 }
+      { label: 'Earrings',         price: 15 }
     ],
-    tags: ['necklace', 'bracelet', 'earrings', 'orange', 'tribal', 'bestseller']
+    tags: ['necklace', 'bracelet', 'earrings', 'orange', 'tribal', 'bestseller', 'set']
   },
 
   {
     id: 'fuchsia-black-african-tube-set',
     name: 'Fuchsia & Black Beads with African Tube Beads',
     category: 'jewelry',
-    type: 'necklace',
+    type: 'necklace-set',
     tagline: '⭐ Best Seller',
     featured: true,
     available: true,
@@ -68,21 +72,25 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg'],
     priceFrom: 15,
-    description: 'Bold fuchsia and black beads with African tube accents — striking contrast, handmade with care. Available in many colors — specify your preference in the order notes.',
-    details: 'Necklace 16 inches including clasp.',
+    setPrice: 60,
+    setLabel: 'Full Set',
+    description: 'Bold fuchsia and black beads with African tube accents — striking contrast, handmade with care. Necklace 16 inches. Available in any color.',
+    details: 'Necklace 16 in. · Bracelet 8 in. · Earrings · Any color available',
     colors: ['Any Color'],
     materials: 'Glass beads, African tube beads',
     orderItems: [
-      { label: 'Necklace (16 in.)', price: 15 }
+      { label: 'Necklace (16 in.)', price: 29 },
+      { label: 'Bracelet (8 in.)', price: 16 },
+      { label: 'Earrings',         price: 15 }
     ],
-    tags: ['necklace', 'fuchsia', 'black', 'bestseller']
+    tags: ['necklace', 'bracelet', 'earrings', 'fuchsia', 'black', 'bestseller', 'set']
   },
 
   {
     id: 'kelly-green-orange-african-tube-set',
     name: 'Kelly Green Glass & Orange Synthetic Beads with African Tube Beads',
     category: 'jewelry',
-    type: 'necklace',
+    type: 'necklace-set',
     tagline: '',
     featured: false,
     available: true,
@@ -90,23 +98,25 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100506.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100506.jpeg'],
     priceFrom: 15,
-    description: 'A vibrant pairing of Kelly green glass and orange synthetic beads with African tube accents.',
-    details: 'Necklace 16 inches including clasp.',
+    setPrice: 60,
+    setLabel: 'Full Set',
+    description: 'Vibrant Kelly green glass and orange synthetic beads with African tube accents. A colorful, hand-strung statement piece.',
+    details: 'Necklace 16 in. · Bracelet 8 in. · Earrings',
     colors: ['Kelly Green', 'Orange'],
     materials: 'Glass beads, synthetic beads, African tube beads',
     orderItems: [
       { label: 'Necklace (16 in.)', price: 29 },
       { label: 'Bracelet (8 in.)', price: 16 },
-      { label: 'Earrings', price: 15 }
+      { label: 'Earrings',         price: 15 }
     ],
-    tags: ['necklace', 'bracelet', 'earrings', 'green', 'orange']
+    tags: ['necklace', 'bracelet', 'earrings', 'green', 'orange', 'set']
   },
 
   {
     id: 'fun-bead-mix-glass-synthetic',
     name: 'Fun Bead Mix — Glass & Synthetic',
     category: 'jewelry',
-    type: 'necklace',
+    type: 'necklace-set',
     tagline: '',
     featured: false,
     available: true,
@@ -114,19 +124,21 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102515.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102515.jpeg'],
     priceFrom: 15,
-    description: 'A playful mix of glass and synthetic beads in festive colors — full of energy and personality.',
-    details: 'Necklace 16 inches including clasp.',
+    setPrice: 60,
+    setLabel: 'Full Set',
+    description: 'A festive medley of glass and synthetic beads in a mix of colors — playful, bright, and full of personality.',
+    details: 'Necklace 16 in. · Bracelet 8 in. · Earrings',
     colors: ['Multi-color'],
     materials: 'Glass beads, synthetic beads',
     orderItems: [
       { label: 'Necklace (16 in.)', price: 29 },
       { label: 'Bracelet (8 in.)', price: 16 },
-      { label: 'Earrings', price: 15 }
+      { label: 'Earrings',         price: 15 }
     ],
-    tags: ['necklace', 'bracelet', 'earrings', 'multicolor']
+    tags: ['necklace', 'bracelet', 'earrings', 'multicolor', 'set']
   },
 
-  /* ── CHOKERS & SINGLE NECKLACES ─────────────────────── */
+  /* ── CHOKERS & SINGLE NECKLACES (6–9) ───────────────── */
 
   {
     id: 'glass-bead-chokers-green',
@@ -140,18 +152,18 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102540.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102540.jpeg'],
     priceFrom: 16,
-    description: 'Delicate green glass bead chokers, sold as a single necklace in your choice of length.',
-    details: '15–16 inches: $16. 17–21 inches: $19.',
+    description: 'Delicate green glass bead chokers in your choice of length, from 15 to 21 inches. Single necklace only — no bracelet or earrings.',
+    details: '15–16 in. — $16 · 17–21 in. — $19',
     colors: ['Green'],
     materials: 'Glass beads',
     orderItems: [
-      { label: 'Choker 15 inches', price: 16 },
-      { label: 'Choker 16 inches', price: 16 },
-      { label: 'Choker 17 inches', price: 19 },
-      { label: 'Choker 18 inches', price: 19 },
-      { label: 'Choker 19 inches', price: 19 },
-      { label: 'Choker 20 inches', price: 19 },
-      { label: 'Choker 21 inches', price: 19 }
+      { label: 'Choker 15 in.', price: 16 },
+      { label: 'Choker 16 in.', price: 16 },
+      { label: 'Choker 17 in.', price: 19 },
+      { label: 'Choker 18 in.', price: 19 },
+      { label: 'Choker 19 in.', price: 19 },
+      { label: 'Choker 20 in.', price: 19 },
+      { label: 'Choker 21 in.', price: 19 }
     ],
     tags: ['choker', 'necklace', 'green', 'single']
   },
@@ -167,19 +179,19 @@ window.FT.PRODUCTS = [
     paypalUrl: '',
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg'],
-    priceFrom: 32,
-    description: 'Multi-color glass bead chokers in a stunning array of hues. Seasonal pricing Sept–Oct.',
-    details: '15–21 inches: $32. Sept & Oct: $42.',
+    priceFrom: 16,
+    description: 'A kaleidoscope of glass bead hues in your choice of length. Single necklace only — no bracelet or earrings.',
+    details: '15–16 in. — $16 · 17–21 in. — $19',
     colors: ['Multi-color'],
     materials: 'Glass beads',
     orderItems: [
-      { label: 'Choker 15 inches', price: 32 },
-      { label: 'Choker 16 inches', price: 32 },
-      { label: 'Choker 17 inches', price: 32 },
-      { label: 'Choker 18 inches', price: 32 },
-      { label: 'Choker 19 inches', price: 32 },
-      { label: 'Choker 20 inches', price: 32 },
-      { label: 'Choker 21 inches', price: 32 }
+      { label: 'Choker 15 in.', price: 16 },
+      { label: 'Choker 16 in.', price: 16 },
+      { label: 'Choker 17 in.', price: 19 },
+      { label: 'Choker 18 in.', price: 19 },
+      { label: 'Choker 19 in.', price: 19 },
+      { label: 'Choker 20 in.', price: 19 },
+      { label: 'Choker 21 in.', price: 19 }
     ],
     tags: ['choker', 'necklace', 'multicolor', 'single']
   },
@@ -196,8 +208,8 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102628.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102628.jpeg'],
     priceFrom: 15,
-    description: 'Dainty glass seed bead necklaces available in any color — tell us your preference.',
-    details: '15–18 inches: $15.',
+    description: 'Dainty glass seed bead necklaces hand-strung to order in any color you choose, from 15 to 18 inches.',
+    details: 'Up to 18 in. — $15',
     colors: ['Any Color'],
     materials: 'Glass seed beads',
     orderItems: [
@@ -221,8 +233,8 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/IMG_3530.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/IMG_3530.jpeg'],
     priceFrom: 17,
-    description: 'A beautiful mix of glass seed beads and 4mm glass beads, available in any color.',
-    details: '15–17 inches: $17. 18–21 inches: $19.50.',
+    description: 'A refined strand of mixed glass seed beads and 4mm glass beads, hand-strung in any color and length you choose.',
+    details: '15–17 in. — $17 · 18–21 in. — $19.50',
     colors: ['Any Color'],
     materials: 'Glass seed beads, 4mm glass beads',
     orderItems: [
@@ -237,7 +249,7 @@ window.FT.PRODUCTS = [
     tags: ['necklace', 'seed beads', 'any color', 'single', 'mix']
   },
 
-  /* ── TRAVEL PILLOWS ─────────────────────────────────── */
+  /* ── TRAVEL PILLOWS (10–11) ─────────────────────────── */
 
   {
     id: 'round-neck-pillow',
@@ -254,7 +266,7 @@ window.FT.PRODUCTS = [
       'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg'
     ],
     priceFrom: 24,
-    description: '12 × 12 inches approx. Cotton fabric, machine washable, low dryer temperature. Available in 5 vibrant colors.',
+    description: 'Cozy 12 × 12-inch travel pillow in cotton fabric with synthetic fill. Machine washable, low dryer temperature. Available in 5 colors.',
     details: '12 × 12 inches. Cotton fabric, synthetic fill. Machine washable, low dryer.',
     colors: ['Lime Green', 'Orange', 'Red', 'Yellow', 'Navy'],
     colorSwatches: [
@@ -291,9 +303,9 @@ window.FT.PRODUCTS = [
       'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_085416.jpeg'
     ],
     priceFrom: 24,
-    description: '12 × 16 inches. Cotton fabric with synthetic fill. Machine washable, low dryer temperature. Available in 5 colors.',
+    description: 'Cheerful 12 × 16-inch polka dot travel pillow in cotton fabric with synthetic fill. Machine washable, low dryer temperature. Available in 5 colors.',
     details: '12 × 16 inches. Cotton fabric, synthetic fill. Machine washable, low dryer.',
-    colors: ['Fuchsia with black dots', 'Turquoise with black dots', 'White with black dots', 'Orange with black dots', 'Navy with white dots'],
+    colors: ['Fuchsia', 'Turquoise', 'White', 'Orange', 'Navy'],
     colorSwatches: [
       { label: 'Fuchsia',    hex: '#e91e8c' },
       { label: 'Turquoise',  hex: '#00acc1' },
@@ -303,11 +315,11 @@ window.FT.PRODUCTS = [
     ],
     materials: 'Cotton fabric, synthetic fill',
     orderItems: [
-      { label: 'Fuchsia with black dots',    price: 24 },
-      { label: 'Turquoise with black dots',  price: 24 },
-      { label: 'White with black dots',      price: 24 },
-      { label: 'Orange with black dots',     price: 24 },
-      { label: 'Navy with white dots',       price: 24 }
+      { label: 'Fuchsia',   price: 24 },
+      { label: 'Turquoise', price: 24 },
+      { label: 'White',     price: 24 },
+      { label: 'Orange',    price: 24 },
+      { label: 'Navy',      price: 24 }
     ],
     shipping: 3.50,
     tags: ['pillow', 'travel', 'polka dot', 'cotton']
