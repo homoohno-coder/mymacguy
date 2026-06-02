@@ -5,6 +5,48 @@
 
 ---
 
+## Session 2026-06-02 — Product Detail Modal + Stripe Checkout
+
+### Commits
+| Hash | Message |
+|---|---|
+| TBD | feat(funtravel): product detail modal — full ecommerce experience on image click |
+
+### Files Changed
+- `funtravel/shop.html`
+- `funtravel/js/product-modal.js` (NEW)
+- `funtravel/js/cart.js` (NEW)
+- `funtravel/css/style.css`
+- `funtravel/cart.html` (NEW)
+- `funtravel/success.html` (NEW)
+- `funtravel/cancel.html` (NEW)
+- `funtravel/order-lookup.html` (NEW)
+- `funtravel/product.html`
+- `netlify/functions/create-checkout.js` (NEW)
+- `netlify/functions/verify-session.js` (NEW)
+- `netlify/functions/get-order.js` (NEW)
+- `netlify.toml` (NEW)
+- `package.json` (NEW)
+- `.env.example` (NEW)
+
+### Features Added
+- **Product Detail Modal** — clicking any product image on shop.html opens a full product experience: gallery with zoom, variant/color picker, qty selector, Add to Cart, Buy Now, reviews, related products, breadcrumb, trust row, shipping/returns accordion
+- **Shopping Cart** — sessionStorage-based cart (`FTCart` module), persistent cart badge in nav, cart.html checkout page
+- **Stripe Checkout** — server-side Stripe session via Netlify Function (`create-checkout.js`); Stripe publishable key only in frontend
+- **Order Storage** — Netlify Blobs (`ft-orders` store) records orders before and after payment
+- **Order Tracking** — `verify-session.js` confirms payment and updates order; `get-order.js` returns 5-step status; `order-lookup.html` UI
+- **Clean URL redirect** — `/product/:id` → `/funtravel/product.html?id=:id` via netlify.toml
+- **History API** — modal open pushes `product.html?id=:id` to URL for back-button support
+
+### Notes
+- All 11 product images on shop.html now call `openProductModal(id)` instead of `openLightbox()`
+- Lightbox preserved for order panel thumbnail zoom and explicit zoom within modal (`pdmZoom()`)
+- Stripe secret key NEVER in frontend — server-side only in Netlify Function
+- Cart uses sessionStorage; clears after checkout completion
+- Tax 10.25% and $3.50 flat shipping applied in create-checkout.js
+
+---
+
 ## Session 2026-06-02 — Shop Visual Consistency Pass
 
 ### Commits

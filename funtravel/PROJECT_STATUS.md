@@ -18,7 +18,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 
 ---
 
-## Current Completion: 85%
+## Current Completion: 95%
 
 ---
 
@@ -79,6 +79,15 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 - [x] Product detail OG tags update dynamically from product data
 - [x] Shop page subsection split: Jewelry Sets (1–5) / Single Necklaces & Chokers (6–9) / Travel Pillows (10–11)
 - [x] Equal-height product cards within each subsection (`min-height` on `.product-desc`)
+- [x] **Product Detail Modal** — full ecommerce experience on image click: gallery + zoom, variant picker, qty, Add to Cart, Buy Now, reviews, related products, trust row, accordions
+
+### Ecommerce / Checkout
+- [x] Shopping cart — sessionStorage (`FTCart`), cart badge in nav, cart.html
+- [x] Stripe Checkout — server-side session via Netlify Function; secret key server-only
+- [x] Order storage — Netlify Blobs; orders pre-created before Stripe, updated after payment
+- [x] Order tracking — 5-step status, `order-lookup.html`, email-based lookup
+- [x] Success page — `success.html` confirms payment, shows order summary
+- [x] Clean URL redirect — `/product/:id` → `/funtravel/product.html?id=:id`
 
 ### Image Display
 - [x] All product images: `object-fit: contain` — full jewelry visible, no cropping
@@ -90,7 +99,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 
 ## Features In Progress
 
-None currently active.
+None.
 
 ---
 
@@ -155,4 +164,4 @@ Second priority: Add a favicon (`funtravel/favicon.ico`).
 
 **Date:** 2026-06-02
 **By:** Claude (claude-sonnet-4-6)
-**Commit:** `22c790a`
+**Commit:** TBD (pending push)

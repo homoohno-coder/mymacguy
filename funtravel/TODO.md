@@ -31,6 +31,10 @@
 | ✅ Completed | **Open Graph / social meta tags** | All 5 pages; product.html updates dynamically |
 | ✅ Completed | **Pillow color radio picker** | Radio buttons on shop.html and product.html |
 | ✅ Completed | **Shop page visual consistency** | Split into 3 subsections (Sets 1–5, Singles 6–9, Pillows 10–11); equal card heights via `min-height` on `.product-desc` |
+| ✅ Completed | **Product Detail Modal** | Full ecommerce overlay on product image click — gallery, variants, qty, Add to Cart, Buy Now, reviews, related products |
+| ✅ Completed | **Shopping cart** | sessionStorage FTCart, nav badge, cart.html checkout page |
+| ✅ Completed | **Stripe Checkout** | Server-side session via Netlify Function; secret key never in frontend |
+| ✅ Completed | **Order tracking** | Netlify Blobs storage, verify-session.js, get-order.js, order-lookup.html |
 
 ---
 

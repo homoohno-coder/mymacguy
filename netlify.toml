@@ -11,3 +11,9 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
     Access-Control-Allow-Headers = "Content-Type"
+
+# Clean product URLs: /product/:id → /funtravel/product.html?id=:id
+[[redirects]]
+  from = "/product/:id"
+  to   = "/funtravel/product.html?id=:id"
+  status = 200
