@@ -12,8 +12,186 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .splash-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 5rem 5rem;
+    background:
+      linear-gradient(rgba(20,17,14,0.62), rgba(20,17,14,0.62)),
+      url("https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg") center / cover no-repeat;
+    color: white;
+  }
+
+  .splash-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  .splash-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(17,14,12,0.78) 0%, rgba(17,14,12,0.48) 48%, rgba(17,14,12,0.18) 100%),
+      linear-gradient(0deg, rgba(17,14,12,0.48) 0%, rgba(17,14,12,0.08) 48%, rgba(17,14,12,0.38) 100%);
+    pointer-events: none;
+  }
+
+  .splash-copy {
+    position: relative;
+    z-index: 2;
+    width: min(680px, 100%);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .splash-kicker {
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.1rem;
+  }
+
+  .splash-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(4rem, 10vw, 8.5rem);
+    line-height: 0.92;
+    color: white;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 16px 50px rgba(0,0,0,0.38);
+  }
+
+  .splash-sub {
+    font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.9);
+    max-width: 560px;
+    margin-bottom: 2rem;
+  }
+
+  .splash-actions {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .splash-actions .btn-outline,
+  .splash-actions .btn-gold {
+    border-color: rgba(255,255,255,0.72);
+    color: white;
+    background: rgba(17,14,12,0.18);
+    backdrop-filter: blur(8px);
+  }
+
+  .splash-actions .btn-outline:hover,
+  .splash-actions .btn-gold:hover {
+    background: white;
+    border-color: white;
+    color: var(--deep);
+  }
+
+  .splash-motion-toggle {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 3;
+    border: 1px solid rgba(255,255,255,0.45);
+    background: rgba(17,14,12,0.42);
+    color: white;
+    backdrop-filter: blur(8px);
+    padding: 0.55rem 0.85rem;
+    font-family: "Jost", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .splash-hero.video-failed .splash-video,
+  .splash-hero.video-paused .splash-video {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .splash-video,
+    .splash-motion-toggle {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .splash-page nav {
+      padding: 0.8rem 1rem;
+    }
+
+    .splash-page .nav-links {
+      gap: 1rem;
+    }
+
+    .splash-hero {
+      min-height: 92vh;
+      padding: 6.5rem 1.5rem 4rem;
+    }
+
+    .splash-hero::after {
+      background: linear-gradient(0deg, rgba(17,14,12,0.78) 0%, rgba(17,14,12,0.4) 100%);
+    }
+
+    .splash-title {
+      font-size: clamp(3rem, 15vw, 4.2rem);
+      line-height: 0.98;
+    }
+
+    .splash-sub {
+      font-size: 1rem;
+      max-width: 320px;
+    }
+
+    .splash-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: min(100%, 270px);
+    }
+
+    .splash-actions a {
+      text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .splash-motion-toggle {
+      right: 1rem;
+      bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .splash-page .nav-links {
+      display: none;
+    }
+
+    .splash-motion-toggle {
+      display: none;
+    }
+  }
+</style>
 </head>
-<body>
+<body class="splash-page">
 
 <!-- NAV -->
 <nav>
@@ -27,21 +205,21 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Handmade in the USA · Ships Nationwide</p>
-    <h1 class="hero-title">Travel in <em>style,</em><br>wear with joy.</h1>
-    <p class="hero-sub">Handcrafted beaded jewelry and colorful travel pillows made with care. Affordable, unique, and built for the journey — not the price tag.</p>
-    <div class="hero-ctas">
-      <a href="shop.html" class="btn-primary">Shop All</a>
-      <a href="shop.html#pillows-section" class="btn-outline">Shop Pillows</a>
-      <button onclick="openGallery()" class="btn-gold">✦ Gallery</button>
+<section class="splash-hero" aria-label="Fun Travel handmade jewelry and travel accessories">
+  <video class="splash-video" autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg">
+    <source src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/spalsh.mov">
+  </video>
+  <div class="splash-copy">
+    <p class="splash-kicker">Handmade in the USA · Ships Nationwide</p>
+    <h1 class="splash-title">Fun Travel</h1>
+    <p class="splash-sub">Handcrafted Jewelry &amp; Travel Accessories</p>
+    <div class="splash-actions">
+      <a href="shop.html" class="btn-primary">Shop Collection</a>
+      <a href="#bestsellers" class="btn-outline">View Featured Sets</a>
+      <a href="contact.html" class="btn-gold">Contact</a>
     </div>
   </div>
-  <div class="hero-image" onclick="openLightbox('https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg','Multi-Color Choker Collection')">
-    <img src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg" alt="Fun Travel handmade jewelry collection" onerror="this.style.display='none'">
-    <div class="hero-badge">New Collection 2026</div>
-  </div>
+  <button class="splash-motion-toggle" type="button" aria-pressed="false">Pause Motion</button>
 </section>
 
 <!-- MARQUEE -->
@@ -211,5 +389,44 @@
 
 <script src="data/products.js"></script>
 <script src="js/app.js"></script>
+<script>
+  (function() {
+    const hero = document.querySelector('.splash-hero');
+    const video = document.querySelector('.splash-video');
+    const toggle = document.querySelector('.splash-motion-toggle');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!hero || !video || !toggle) return;
+
+    function setPaused(paused) {
+      hero.classList.toggle('video-paused', paused);
+      toggle.textContent = paused ? 'Play Motion' : 'Pause Motion';
+      toggle.setAttribute('aria-pressed', String(paused));
+      if (paused) {
+        video.pause();
+      } else {
+        video.play().catch(function() {
+          hero.classList.add('video-failed');
+        });
+      }
+    }
+
+    video.addEventListener('error', function() {
+      hero.classList.add('video-failed');
+    });
+
+    if (reduceMotion) {
+      video.pause();
+    } else {
+      video.play().catch(function() {
+        hero.classList.add('video-failed');
+      });
+    }
+
+    toggle.addEventListener('click', function() {
+      setPaused(!hero.classList.contains('video-paused'));
+    });
+  })();
+</script>
 </body>
 </html>
