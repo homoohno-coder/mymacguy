@@ -18,7 +18,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 
 ---
 
-## Current Completion: 82%
+## Current Completion: 85%
 
 ---
 
@@ -31,7 +31,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 
 **Active Branch:** `claude/ecommerce-page-setup-Kdk1P`
 **Open PR:** homoohno-coder/mymacguy#7 (draft)
-**Latest Commit:** `22c790a`
+**Latest Commit:** (pending — shop visual consistency pass)
 
 ---
 
@@ -77,6 +77,8 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 - [x] Active nav link highlighting
 - [x] Open Graph meta tags on all 5 pages
 - [x] Product detail OG tags update dynamically from product data
+- [x] Shop page subsection split: Jewelry Sets (1–5) / Single Necklaces & Chokers (6–9) / Travel Pillows (10–11)
+- [x] Equal-height product cards within each subsection (`min-height` on `.product-desc`)
 
 ### Image Display
 - [x] All product images: `object-fit: contain` — full jewelry visible, no cropping

@@ -474,6 +474,7 @@ section { padding: 5rem 5rem; }
   line-height: 1.55;
   margin-bottom: 0.75rem;
   flex: 1;
+  min-height: 3.5em;
 }
 .product-price-line {
   font-size: 0.85rem;
@@ -482,6 +483,26 @@ section { padding: 5rem 5rem; }
 }
 .product-price-line strong { color: var(--terra); font-weight: 500; }
 .price-lines { line-height: 1.85; }
+
+.shop-subsection {
+  padding: 0 0 2.5rem;
+}
+.shop-subsection:first-of-type {
+  padding-top: 0.5rem;
+}
+.subsection-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--deep);
+  letter-spacing: 0.03em;
+  margin: 0 0 0.3rem;
+}
+.subsection-sub {
+  font-size: 0.82rem;
+  color: var(--mid);
+  margin: 0 0 1.25rem;
+  font-weight: 300;
+}
 
 .product-card-actions {
   display: flex;

@@ -30,6 +30,7 @@
 | ✅ Completed | **Product descriptions** | All 11 products have boutique-quality copy |
 | ✅ Completed | **Open Graph / social meta tags** | All 5 pages; product.html updates dynamically |
 | ✅ Completed | **Pillow color radio picker** | Radio buttons on shop.html and product.html |
+| ✅ Completed | **Shop page visual consistency** | Split into 3 subsections (Sets 1–5, Singles 6–9, Pillows 10–11); equal card heights via `min-height` on `.product-desc` |
 
 ---
 

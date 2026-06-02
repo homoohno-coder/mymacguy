@@ -5,6 +5,33 @@
 
 ---
 
+## Session 2026-06-02 — Shop Visual Consistency Pass
+
+### Commits
+| Hash | Message |
+|---|---|
+| (pending) | feat(funtravel): shop visual consistency — split jewelry into subsections |
+
+### Files Changed
+- `funtravel/shop.html`
+- `funtravel/css/style.css`
+- `funtravel/PROJECT_STATUS.md`
+- `funtravel/TODO.md`
+- `funtravel/CHANGELOG.md`
+
+### Features Added
+- Shop page split into 3 named subsections: Handcrafted Jewelry Sets (1–5), Single Necklaces & Chokers (6–9), Travel Pillows (10–11)
+- New CSS classes: `.shop-subsection`, `.subsection-heading`, `.subsection-sub`
+- `min-height: 3.5em` on `.product-desc` for consistent card heights within each grid
+- Set card descriptions end with "Includes necklace, bracelet, and earrings."
+- Singles card descriptions end with "Single necklace only."
+
+### Notes
+- Filter tabs still work: Jewelry tab hides/shows `#jewelry-section` (both subsections inside); Pillows tab shows `#pillows-section`
+- Product #9 (Glass Seed Bead Mix) verified: correct image, description, pricing ($17/$19.50)
+
+---
+
 ## Session 2026-06-02 — Catalog Update, Image Fix, Shipping Fix
 
 ### Commits
