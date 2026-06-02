@@ -248,9 +248,8 @@ window.FT.PRODUCTS = [
     featured: true,
     available: true,
     paypalUrl: '',
-    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_085416.jpeg',
+    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_091718.jpeg',
     images: [
-      'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_085416.jpeg',
       'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_091718.jpeg',
       'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg'
     ],
@@ -287,7 +286,10 @@ window.FT.PRODUCTS = [
     available: true,
     paypalUrl: '',
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_063640_1_.jpeg',
-    images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_063640_1_.jpeg'],
+    images: [
+      'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_063640_1_.jpeg',
+      'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_085416.jpeg'
+    ],
     priceFrom: 24,
     description: '12 × 16 inches. Cotton fabric with synthetic fill. Machine washable, low dryer temperature. Available in 5 colors.',
     details: '12 × 16 inches. Cotton fabric, synthetic fill. Machine washable, low dryer.',
