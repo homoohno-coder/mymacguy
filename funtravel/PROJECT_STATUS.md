@@ -21,11 +21,11 @@
 - [x] `about.html` — Elena's story, philosophy, stats, CTA
 - [x] `contact.html` — Contact form (mailto), shipping info, returns policy, FAQ
 
-### Product Data (11 products — all verified)
-- [x] 5 jewelry sets (necklace + bracelet + earrings, set price $55)
-- [x] 4 chokers / single necklaces
+### Product Data (11 products — all verified against PDF price list)
+- [x] 9 jewelry products (necklaces, chokers, seed bead strands)
 - [x] 2 travel pillows (Round Neck + Polka Dot)
-- [x] All names, descriptions, prices, images preserved from original
+- [x] Set pricing removed from non-set products (confirmed from PDF: all items sold individually)
+- [x] All images updated to raw GitHub URLs (`homoohno-coder/funtravel` repo)
 
 ### Features
 - [x] Lightbox gallery with keyboard nav, swipe, thumbnail strip
@@ -38,34 +38,44 @@
 - [x] Animated canvas backgrounds (order panel, lightbox)
 - [x] Responsive navigation, responsive grid breakpoints
 - [x] Active nav link highlighting by current page
+- [x] CA sales tax 10.25% (Palm Springs) applied to order totals
 
 ### Bug Fixes
-- [x] Mislabeled pillow image in lightbox gallery (pillow photo was captioned as necklace)
-- [x] Image corrected: `glass-seed-bead-mix-4mm` now uses `IMG_3530.jpeg` (not pillow photo)
+- [x] Mislabeled pillow image in lightbox gallery
+- [x] Round Neck Pillow main image corrected to `Resized_20260529_091718.jpeg`
+- [x] Set pricing removed from 5 individual necklace products
+- [x] Fuchsia & Black necklace corrected to single necklace at $15
+
+### Shipping (fixed per PDF price list)
+- [x] `app.js` shipping: now flat $3.50 for all orders (was $5.99/$7.99/$9.99)
+- [x] `products.js` pillow `shipping` field: $9.99 → $3.50
+- [x] `contact.html` shipping info cards: now show $3.50 flat for all categories
 
 ---
 
-## Product Data Verification (2026-06-02)
+## Product Data Verification (2026-06-02, verified against PDF price list)
 
 | Product | Price From | Image | Status |
 |---|---|---|---|
-| Kelly Green & Black African Tube Set | $15 ($55 set) | Resized_20260531_100438.jpeg | ✓ |
-| Earth & Fire Bead Set | $15 ($55 set) | Resized_20260531_100359.jpeg | ✓ |
-| Fuchsia & Black Beads with African Tube Beads | $15 ($55 set) | Resized_20260531_100501.jpeg | ✓ |
-| Kelly Green Glass & Orange Synthetic Beads with African Tube Beads | $15 ($55 set) | Resized_20260531_100506.jpeg | ✓ |
-| Fun Bead Mix — Glass & Synthetic | $15 ($55 set) | Resized_20260531_102515.jpeg | ✓ |
+| Kelly Green & Black African Tube Set | $15 | Resized_20260531_100438.jpeg | ✓ |
+| Earth & Fire Bead Set | $15 | Resized_20260531_100359.jpeg | ✓ |
+| Fuchsia & Black Beads — Any Color | $15 | Resized_20260531_100501.jpeg | ✓ |
+| Kelly Green Glass & Orange Synthetic Beads | $15 | Resized_20260531_100506.jpeg | ✓ |
+| Fun Bead Mix — Glass & Synthetic | $15 | Resized_20260531_102515.jpeg | ✓ |
 | Glass Bead Chokers — Green | $16 | Resized_20260531_102540.jpeg | ✓ |
 | Multi-Color Glass Bead Chokers | $32 | Resized_20260531_102550.jpeg | ✓ |
 | Glass Seed Beads — Any Color | $15 | Resized_20260531_102628.jpeg | ✓ |
 | Glass Seed Bead Mix with 4mm Glass Beads | $17 | IMG_3530.jpeg | ✓ |
-| Round Neck Pillow | $24 | Resized_20260529_085416.jpeg | ✓ |
+| Round Neck Pillow | $24 | Resized_20260529_091718.jpeg | ✓ |
 | Polka Dot Travel Pillow | $24 | Resized_20260301_063640_1_.jpeg | ✓ |
 
 ---
 
 ## Notes
 
-- Product images live in `homoohno-coder/funtravel` repo — deploy preview shows broken images until merged there
-- `paypalUrl: ''` on all products → order panel flow (contact to purchase); set a URL to enable direct PayPal checkout
+- Product images live in `homoohno-coder/funtravel` repo — using raw GitHub URLs for all images
+- `paypalUrl: ''` on all products → order panel flow; set a URL to enable direct PayPal checkout
 - Elena's email: `picswelove2024@gmail.com`
 - Ships USA only, PayPal accepted
+- Shipping: $3.50 flat on all orders (per PDF price list)
+- CA sales tax: 10.25% (Palm Springs) on subtotal only

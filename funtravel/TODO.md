@@ -5,12 +5,15 @@
 - [ ] **PayPal URLs** — Elena needs to provide PayPal.me links or button URLs for each product; set `paypalUrl` in `data/products.js` to enable direct checkout
 - [ ] **Product images in mymacguy repo** — copy images from `homoohno-coder/funtravel/images/` into `funtravel/images/` so deploy preview works
 - [x] **Pillow color picker on product.html** — radio button color pickers added; Buy Now wired to `openOrderWithColor()`
+- [x] **Shipping cost** — fixed to $3.50 flat for all orders (per PDF price list); updated in `app.js` and `contact.html`
 
 ## Medium Priority
 
 - [x] **Open Graph / social meta tags** — added to all 5 pages; product.html updates dynamically from product data
+- [x] **CA sales tax** — 10.25% (Palm Springs) applied to order totals in app.js
+- [ ] **Product descriptions from PDF** — update product names/descriptions to match the official PDF price list exactly
 - [ ] **Favicon** — add `favicon.ico` or SVG favicon (Fun Travel "FT" monogram or ✦ symbol)
-- [ ] **Page title for product.html** — update `<title>` dynamically from product name (already done in JS, but verify `<meta name="description">` also updates)
+- [ ] **Page title for product.html** — verify `<meta name="description">` updates dynamically from product data
 - [ ] **404 page** — add `404.html` for Netlify / GitHub Pages broken link handling
 - [ ] **Sitemap** — add `sitemap.xml` for SEO
 

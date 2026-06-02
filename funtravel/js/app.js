@@ -347,7 +347,7 @@ function updateOrderSummary() {
 
   const products = window.FT && window.FT.PRODUCTS || [];
   const product  = products.find(p => p.id === currentOrderId);
-  const shipping = (product && product.category === 'pillow') ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  const shipping = 3.50;
   const tax      = total * 0.1025; // CA sales tax — Palm Springs 10.25%
   lines.push(`Shipping — $${shipping.toFixed(2)}`);
   lines.push(`Sales Tax (10.25% CA) — $${tax.toFixed(2)}`);
@@ -393,7 +393,7 @@ function sendOrder() {
     selectedItems.push(`  • ${lbl} — $${price.toFixed(2)}`);
   });
 
-  const shipping = (product && product.category === 'pillow') ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  const shipping = 3.50;
   const tax      = subtotal * 0.1025; // CA sales tax — Palm Springs 10.25%
   const total    = subtotal + shipping + tax;
 

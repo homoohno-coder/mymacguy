@@ -272,7 +272,7 @@ window.FT.PRODUCTS = [
       { label: 'Yellow',     price: 24 },
       { label: 'Navy',       price: 24 }
     ],
-    shipping: 9.99,
+    shipping: 3.50,
     tags: ['pillow', 'travel', 'neck pillow', 'cotton']
   },
 
@@ -309,7 +309,7 @@ window.FT.PRODUCTS = [
       { label: 'Orange with black dots',     price: 24 },
       { label: 'Navy with white dots',       price: 24 }
     ],
-    shipping: 9.99,
+    shipping: 3.50,
     tags: ['pillow', 'travel', 'polka dot', 'cotton']
   }
 
