@@ -348,8 +348,10 @@ function updateOrderSummary() {
   const products = window.FT && window.FT.PRODUCTS || [];
   const product  = products.find(p => p.id === currentOrderId);
   const shipping = (product && product.category === 'pillow') ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
+  const tax      = total * 0.1025; // CA sales tax — Palm Springs 10.25%
   lines.push(`Shipping — $${shipping.toFixed(2)}`);
-  total += shipping;
+  lines.push(`Sales Tax (10.25% CA) — $${tax.toFixed(2)}`);
+  total += shipping + tax;
 
   if (summList) summList.innerHTML = lines.join('<br>');
   if (totalEl)  totalEl.textContent = '$' + total.toFixed(2);
@@ -392,7 +394,8 @@ function sendOrder() {
   });
 
   const shipping = (product && product.category === 'pillow') ? 9.99 : (checks.length > 1 ? 7.99 : 5.99);
-  const total    = subtotal + shipping;
+  const tax      = subtotal * 0.1025; // CA sales tax — Palm Springs 10.25%
+  const total    = subtotal + shipping + tax;
 
   // Open PayPal
   const paypalParams = new URLSearchParams({
@@ -426,6 +429,7 @@ ${selectedItems.join('\n')}
 
 SUBTOTAL: $${subtotal.toFixed(2)}
 SHIPPING: $${shipping.toFixed(2)}
+SALES TAX (10.25% CA): $${tax.toFixed(2)}
 TOTAL: $${total.toFixed(2)}
 
 NOTES: ${notes || 'None'}
