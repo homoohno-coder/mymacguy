@@ -13,7 +13,7 @@ window.FT.PRODUCTS = [
     name: 'Kelly Green & Black African Tube Set',
     category: 'jewelry',
     type: 'necklace-set',
-    tagline: 'Set Available',
+    tagline: '',
     featured: false,
     available: true,
     paypalUrl: '',
@@ -29,16 +29,14 @@ window.FT.PRODUCTS = [
       { label: 'Bracelet (8 in.)', price: 16 },
       { label: 'Earrings', price: 15 }
     ],
-    setPrice: 55,
-    setLabel: 'Full Set (Necklace + Bracelet + Earrings)',
-    tags: ['set', 'necklace', 'bracelet', 'earrings', 'green', 'black']
+    tags: ['necklace', 'bracelet', 'earrings', 'green', 'black']
   },
 
   {
     id: 'earth-fire-bead-set',
     name: 'Earth & Fire Bead Set',
     category: 'jewelry',
-    type: 'necklace-set',
+    type: 'necklace',
     tagline: '⭐ Best Seller',
     featured: true,
     available: true,
@@ -46,7 +44,7 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg', 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260528_081417.jpeg'],
     priceFrom: 15,
-    description: 'Coral-orange beads paired with earthy patterned wooden beads — warmth and a natural feel. Necklace, bracelet, and earrings create a harmonious tribal aesthetic.',
+    description: 'Coral-orange beads paired with earthy patterned wooden beads — warmth and a natural feel.',
     details: '16 inches including clasp.',
     colors: ['Coral Orange', 'Earthy Brown'],
     materials: 'Coral-orange beads, wooden beads',
@@ -55,16 +53,14 @@ window.FT.PRODUCTS = [
       { label: 'Bracelet (8 in.)', price: 16 },
       { label: 'Earrings', price: 15 }
     ],
-    setPrice: 55,
-    setLabel: 'Full Set (Necklace + Bracelet + Earrings)',
-    tags: ['set', 'necklace', 'bracelet', 'earrings', 'orange', 'tribal', 'bestseller']
+    tags: ['necklace', 'bracelet', 'earrings', 'orange', 'tribal', 'bestseller']
   },
 
   {
     id: 'fuchsia-black-african-tube-set',
     name: 'Fuchsia & Black Beads with African Tube Beads',
     category: 'jewelry',
-    type: 'necklace-set',
+    type: 'necklace',
     tagline: '⭐ Best Seller',
     featured: true,
     available: true,
@@ -72,27 +68,22 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg'],
     priceFrom: 15,
-    description: 'Bold fuchsia and black beads with African tube accents — striking contrast, handmade with care.',
+    description: 'Bold fuchsia and black beads with African tube accents — striking contrast, handmade with care. Available in many colors — specify your preference in the order notes.',
     details: 'Necklace 16 inches including clasp.',
-    colors: ['Fuchsia', 'Black'],
+    colors: ['Any Color'],
     materials: 'Glass beads, African tube beads',
     orderItems: [
-      { label: 'Necklace (16 in.)', price: 29 },
-      { label: 'Bracelet (8 in.)', price: 16 },
-      { label: 'Earrings — Magenta/Black', price: 15 },
-      { label: 'Earrings — Black/Zebra drop', price: 15 }
+      { label: 'Necklace (16 in.)', price: 15 }
     ],
-    setPrice: 55,
-    setLabel: 'Full Set (Necklace + Bracelet + Earrings)',
-    tags: ['set', 'necklace', 'bracelet', 'earrings', 'fuchsia', 'black', 'bestseller']
+    tags: ['necklace', 'fuchsia', 'black', 'bestseller']
   },
 
   {
     id: 'kelly-green-orange-african-tube-set',
     name: 'Kelly Green Glass & Orange Synthetic Beads with African Tube Beads',
     category: 'jewelry',
-    type: 'necklace-set',
-    tagline: 'Set Available',
+    type: 'necklace',
+    tagline: '',
     featured: false,
     available: true,
     paypalUrl: '',
@@ -108,17 +99,15 @@ window.FT.PRODUCTS = [
       { label: 'Bracelet (8 in.)', price: 16 },
       { label: 'Earrings', price: 15 }
     ],
-    setPrice: 55,
-    setLabel: 'Full Set (Necklace + Bracelet + Earrings)',
-    tags: ['set', 'necklace', 'bracelet', 'earrings', 'green', 'orange']
+    tags: ['necklace', 'bracelet', 'earrings', 'green', 'orange']
   },
 
   {
     id: 'fun-bead-mix-glass-synthetic',
     name: 'Fun Bead Mix — Glass & Synthetic',
     category: 'jewelry',
-    type: 'necklace-set',
-    tagline: 'Set Available',
+    type: 'necklace',
+    tagline: '',
     featured: false,
     available: true,
     paypalUrl: '',
@@ -134,9 +123,7 @@ window.FT.PRODUCTS = [
       { label: 'Bracelet (8 in.)', price: 16 },
       { label: 'Earrings', price: 15 }
     ],
-    setPrice: 55,
-    setLabel: 'Full Set (Necklace + Bracelet + Earrings)',
-    tags: ['set', 'necklace', 'bracelet', 'earrings', 'multicolor']
+    tags: ['necklace', 'bracelet', 'earrings', 'multicolor']
   },
 
   /* ── CHOKERS & SINGLE NECKLACES ─────────────────────── */
