@@ -1,38 +1,55 @@
 # Fun Travel — TODO
 
-## High Priority
+> Maintained as part of the Project Continuity System.
+> Update item status (Open → In Progress → Completed) before ending any session.
 
-- [ ] **PayPal URLs** — Elena needs to provide PayPal.me links or button URLs for each product; set `paypalUrl` in `data/products.js` to enable direct checkout
-- [ ] **Product images in mymacguy repo** — copy images from `homoohno-coder/funtravel/images/` into `funtravel/images/` so deploy preview works
-- [x] **Pillow color picker on product.html** — radio button color pickers added; Buy Now wired to `openOrderWithColor()`
-- [x] **Shipping cost** — fixed to $3.50 flat for all orders (per PDF price list); updated in `app.js` and `contact.html`
-- [x] **Image cropping** — all product images now use `object-fit: contain`; jewelry/necklaces fully visible on all pages
-- [x] **Set pricing** — products 1–5 restored as sets: Necklace $29, Bracelet $16, Earrings $15, Full Set $60
-- [x] **Multi-Color Choker pricing** — corrected from $32 flat to $16 (15–16 in.) / $19 (17–21 in.)
-- [x] **Product descriptions** — all 11 products updated to boutique-quality copy
-- [x] **Pillow shipping on shop/index pages** — corrected from $9.99 to $3.50
+---
 
-## Medium Priority
+## Priority 1 — Blocking / Business Critical
 
-- [x] **Open Graph / social meta tags** — added to all 5 pages; product.html updates dynamically from product data
-- [x] **CA sales tax** — 10.25% (Palm Springs) applied to order totals in app.js
-- [ ] **Product descriptions from PDF** — update product names/descriptions to match the official PDF price list exactly
-- [ ] **Favicon** — add `favicon.ico` or SVG favicon (Fun Travel "FT" monogram or ✦ symbol)
-- [ ] **Page title for product.html** — verify `<meta name="description">` updates dynamically from product data
-- [ ] **404 page** — add `404.html` for Netlify / GitHub Pages broken link handling
-- [ ] **Sitemap** — add `sitemap.xml` for SEO
+| Status | Task | Notes |
+|---|---|---|
+| 🔴 Open | **PayPal URLs** | Elena must provide PayPal.me or button URLs. Add to `paypalUrl` in `data/products.js`. Currently all products show order-panel + mailto flow. |
+| 🔴 Open | **Copy product images to mymacguy repo** | Images load from raw GitHub URL at `homoohno-coder/funtravel`. If that repo changes, all images break. Copy to `funtravel/images/` as local fallback. |
 
-## Low Priority / Nice to Have
+---
 
-- [ ] **Gallery page** — add `gallery.html` as a standalone page (currently gallery is only accessible via the overlay on the home page)
-- [ ] **Order confirmation** — after `sendOrder()`, show a visual confirmation state in the order panel instead of just opening PayPal
-- [ ] **Seasonal pricing note** — Multi-Color Glass Bead Chokers have Sept/Oct pricing ($42); consider auto-switching based on current date
-- [ ] **Sold-out state** — `available: false` flag exists in product data; wire it up to show "Sold Out" badge on cards
-- [ ] **Print-friendly contact page** — adds a simple print stylesheet so the returns policy is printable
-- [ ] **Analytics** — add a privacy-respecting analytics snippet (e.g., Plausible or Fathom) if Elena wants visitor data
+## Priority 2 — Important
+
+| Status | Task | Notes |
+|---|---|---|
+| 🔴 Open | **Favicon** | No favicon set. Add `funtravel/favicon.ico` or SVG. Suggested: "FT" monogram or ✦ symbol in terra/gold brand colors. |
+| 🔴 Open | **404 page** | Add `funtravel/404.html` for Netlify broken-link handling. |
+| 🔴 Open | **Verify `<meta name="description">` on product.html** | OG tags update dynamically from product data; verify `<meta name="description">` also updates. |
+| 🔴 Open | **Seasonal pricing for Multi-Color Chokers** | Product #7 costs $42 in Sept/Oct per PDF. Currently shows $16/$19 year-round. Consider date-based auto-switch in JS. |
+| ✅ Completed | **Shipping cost** | Fixed to $3.50 flat in app.js, products.js, contact.html, shop.html, index.html |
+| ✅ Completed | **CA sales tax (10.25%)** | Applied to order totals in app.js |
+| ✅ Completed | **Image cropping** | All product images use `object-fit: contain` |
+| ✅ Completed | **Set pricing (Products 1–5)** | Necklace $29 / Bracelet $16 / Earrings $15 / Full Set $60 |
+| ✅ Completed | **Multi-Color Choker pricing** | Corrected from $32 flat → $16 (15–16 in.) / $19 (17–21 in.) |
+| ✅ Completed | **Product descriptions** | All 11 products have boutique-quality copy |
+| ✅ Completed | **Open Graph / social meta tags** | All 5 pages; product.html updates dynamically |
+| ✅ Completed | **Pillow color radio picker** | Radio buttons on shop.html and product.html |
+
+---
+
+## Priority 3 — Nice to Have
+
+| Status | Task | Notes |
+|---|---|---|
+| 🔴 Open | **Gallery standalone page** | `gallery.html` as a real page. Currently gallery is overlay-only from home page. |
+| 🔴 Open | **Order confirmation state** | After `sendOrder()`, show visual confirmation in the order panel instead of just closing it. |
+| 🔴 Open | **Sold-out state** | `available: false` flag exists in product data. Wire to a "Sold Out" badge on cards and disable Buy Now button. |
+| 🔴 Open | **Sitemap** | `funtravel/sitemap.xml` for SEO. |
+| 🔴 Open | **Analytics** | Add Plausible or Fathom if Elena wants visitor tracking. |
+| 🔴 Open | **Print-friendly contact page** | Simple print stylesheet for returns policy. |
+
+---
 
 ## Technical Debt
 
-- [ ] Inline styles in about.html philosophy section — move to `style.css`
-- [ ] Order panel HTML is duplicated in `index.html`, `shop.html`, and `product.html` — consider extracting to a JS-rendered component
-- [ ] `app.js` `sendOrder()` currently opens mailto + PayPal; once real PayPal URLs are set, the mailto flow becomes redundant for direct-checkout products
+| Status | Task | Notes |
+|---|---|---|
+| 🔴 Open | **Order panel HTML duplicated** | `#order-panel` HTML is copy-pasted in `index.html`, `shop.html`, and `product.html`. Could be JS-rendered from a shared template. |
+| 🔴 Open | **index.html bestseller hardcodes price** | Earth & Fire price ($60) and Polka Dot shipping ($3.50) are hardcoded in index.html. Should be driven from `window.FT.PRODUCTS`. |
+| 🔴 Open | **Inline styles in about.html** | Philosophy section uses inline styles. Should move to `style.css`. |
