@@ -4,6 +4,15 @@
 
 window.FT = window.FT || {};
 
+// Shipping rates
+window.FT.SHIPPING = {
+  jewelryItem: 5.99,
+  jewelrySet: 7.99,
+  pillow: 9.99,
+  twoPillows: 14.99,
+  freeThreshold: 50  // free jewelry shipping over $50
+};
+
 window.FT.PRODUCTS = [
 
   /* ── JEWELRY SETS (1–5) ─────────────────────────────── */
@@ -20,7 +29,7 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100438.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100438.jpeg'],
     priceFrom: 15,
-    setPrice: 60,
+    setPrice: 55,
     setLabel: 'Full Set',
     description: 'Handcrafted African-inspired bead set with rich Kelly green and black beads and traditional tube accents. Sold as a complete set or as individual pieces.',
     details: 'Necklace 15.5 in. · Bracelet 8 in. · Earrings',
@@ -35,8 +44,8 @@ window.FT.PRODUCTS = [
   },
 
   {
-    id: 'earth-fire-bead-set',
-    name: 'Earth & Fire Bead Set',
+    id: 'wood-orange-bead-set',
+    name: 'Wood & Orange Synthetic Beads',
     category: 'jewelry',
     type: 'necklace-set',
     tagline: '⭐ Best Seller',
@@ -46,7 +55,7 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg', 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260528_081417.jpeg'],
     priceFrom: 15,
-    setPrice: 60,
+    setPrice: 55,
     setLabel: 'Full Set',
     description: 'Warm coral-orange tones meet patterned wooden beads in this artisan bead set. Earthy, natural, and full of character.',
     details: 'Necklace 16 in. · Bracelet 8 in. · Earrings',
@@ -72,7 +81,7 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg'],
     priceFrom: 15,
-    setPrice: 60,
+    setPrice: 55,
     setLabel: 'Full Set',
     description: 'Bold fuchsia and black beads with African tube accents — striking contrast, handmade with care. Necklace 16 inches. Available in any color.',
     details: 'Necklace 16 in. · Bracelet 8 in. · Earrings · Any color available',
@@ -98,7 +107,7 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100506.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100506.jpeg'],
     priceFrom: 15,
-    setPrice: 60,
+    setPrice: 55,
     setLabel: 'Full Set',
     description: 'Vibrant Kelly green glass and orange synthetic beads with African tube accents. A colorful, hand-strung statement piece.',
     details: 'Necklace 16 in. · Bracelet 8 in. · Earrings',
@@ -124,7 +133,7 @@ window.FT.PRODUCTS = [
     image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102515.jpeg',
     images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102515.jpeg'],
     priceFrom: 15,
-    setPrice: 60,
+    setPrice: 55,
     setLabel: 'Full Set',
     description: 'A festive medley of glass and synthetic beads in a mix of colors — playful, bright, and full of personality.',
     details: 'Necklace 16 in. · Bracelet 8 in. · Earrings',
@@ -230,8 +239,8 @@ window.FT.PRODUCTS = [
     featured: false,
     available: true,
     paypalUrl: '',
-    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/IMG_3530.jpeg',
-    images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/IMG_3530.jpeg'],
+    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260528_081218.jpeg',
+    images: ['https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260528_081218.jpeg'],
     priceFrom: 17,
     description: 'A refined strand of mixed glass seed beads and 4mm glass beads, hand-strung in any color and length you choose.',
     details: '15–17 in. — $17 · 18–21 in. — $19.50',
@@ -252,17 +261,16 @@ window.FT.PRODUCTS = [
   /* ── TRAVEL PILLOWS (10–11) ─────────────────────────── */
 
   {
-    id: 'round-neck-pillow',
-    name: 'Round Neck Pillow',
+    id: 'color-splash-neck-pillow',
+    name: 'Color Splash Neck Pillow',
     category: 'pillow',
     type: 'neck-pillow',
     tagline: '',
     featured: true,
     available: true,
     paypalUrl: '',
-    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_091718.jpeg',
+    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg',
     images: [
-      'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260529_091718.jpeg',
       'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg'
     ],
     priceFrom: 24,
@@ -284,7 +292,7 @@ window.FT.PRODUCTS = [
       { label: 'Yellow',     price: 24 },
       { label: 'Navy',       price: 24 }
     ],
-    shipping: 3.50,
+    shipping: 9.99,
     tags: ['pillow', 'travel', 'neck pillow', 'cotton']
   },
 
@@ -321,7 +329,7 @@ window.FT.PRODUCTS = [
       { label: 'Orange',    price: 24 },
       { label: 'Navy',      price: 24 }
     ],
-    shipping: 3.50,
+    shipping: 9.99,
     tags: ['pillow', 'travel', 'polka dot', 'cotton']
   }
 
