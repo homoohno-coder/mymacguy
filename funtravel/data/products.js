@@ -577,9 +577,9 @@ window.FT.PRODUCTS = [
     featured: true,
     available: true,
     paypalUrl: '',
-    image: 'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg',
+    image: '/funtravel/images/round-neck-pillow.jpeg',
     images: [
-      'https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg'
+      '/funtravel/images/round-neck-pillow.jpeg'
     ],
     priceFrom: 24,
     description: 'Cozy 12 × 12-inch travel pillow in cotton fabric with synthetic fill. Machine washable, low dryer temperature. Available in 5 colors.',
