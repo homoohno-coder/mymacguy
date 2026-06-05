@@ -171,7 +171,7 @@
         <div class="pdm-acc-body">
           <p><strong>$3.50 flat rate</strong> on all orders. Ships within the USA only.</p>
           <p>Elena handcrafts each piece to order. Most orders ship within <strong>3–5 business days</strong>.</p>
-          <p>You will receive a Stripe receipt by email upon payment.</p>
+          <p>Contact Elena to complete your purchase.</p>
         </div>
       </div>
 

@@ -104,8 +104,8 @@
         <span id="order-total" style="color:#c9a84c;font-weight:500;font-size:.97rem;"></span>
       </div>
     </div>
-    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Pay with Wave →</button>
-    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">Wave checkout opens in a new tab. Your order details are also sent to Elena.</p>
+    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Contact to Purchase</button>
+    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">To place an order, contact Elena directly using the Contact page.</p>
   </div>
 </div>
 
@@ -207,14 +207,14 @@
   // Buy button
   let buyHtml = '';
   if (product.paypalUrl) {
-    buyHtml = `<a class="btn-buy-paypal" href="${product.paypalUrl}" target="_blank" rel="noopener">Buy with PayPal →</a>`;
+    buyHtml = `<a class="btn-contact" href="${product.paypalUrl}" target="_blank" rel="noopener">Contact to Purchase</a>`;
   } else if (product.category === 'pillow') {
     buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
-               <button class="btn-outline" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Buy Now via PayPal</button>
+               <button class="btn-outline" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Contact to Purchase</button>
                <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
   } else {
     buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
-               <button class="btn-outline" onclick="openOrder('${product.id}', this)">Buy Now via PayPal</button>
+               <button class="btn-outline" onclick="openOrder('${product.id}', this)">Contact to Purchase</button>
                <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
   }
 

@@ -16,14 +16,14 @@ How to add new products, update prices, and add photos — no coding needed.
 
 ---
 
-## How to Add a Wave Payment Link
+## How to Add a Payment Link
 
-When Wave gives you a payment link for a product:
+When you have a payment link for a product (PayPal or Wave):
 
 1. Open `funtravel/data/products.js` (same steps above)
 2. Find the product by name
 3. Find the line that says: `paypalUrl: '',`
-4. Paste your Wave link between the quotes: `paypalUrl: 'https://your-wave-link-here',`
+4. Paste your payment link between the quotes: `paypalUrl: 'https://your-payment-link-here',`
 5. Commit changes → live in 1 minute ✅
 
 ---
@@ -43,7 +43,7 @@ When Wave gives you a payment link for a product:
   tagline: '',                // optional: '⭐ Best Seller'
   featured: false,
   available: true,
-  paypalUrl: '',              // paste Wave link here when ready
+  paypalUrl: '',              // paste payment link here when ready
   image: 'images/photo-coming-soon.svg',   // replace with photo filename when ready
   images: ['images/photo-coming-soon.svg'],
   priceFrom: 16,              // lowest price

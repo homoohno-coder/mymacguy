@@ -11,7 +11,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 
 - **Owner:** Elena (seller)
 - **Email:** picswelove2024@gmail.com
-- **Payment:** Wave Apps (pending — Elena setting up account). Order form + contact flow active in the meantime.
+- **Payment:** Contact to Purchase. Elena to provide payment links when ready (PayPal or Wave).
 - **Ships:** USA only
 - **Tax:** 10.25% CA sales tax (Palm Springs)
 - **Shipping:** $3.50 flat rate on all orders
@@ -33,7 +33,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 - Merged PR #7 to main — full ecommerce now live
 - Removed Stripe — no server functions, pure static site
 - Added `netlify.toml` with clean URL redirects
-- Checkout button updated to "Pay with Wave" — ready for Wave links
+- Checkout standardized to "Contact to Purchase" — payment links added when Elena is ready
 - SSH auth configured on dev machine for push access
 
 **Active Branch:** `claude/ecommerce-page-setup-Kdk1P`
