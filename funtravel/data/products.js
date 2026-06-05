@@ -258,6 +258,314 @@ window.FT.PRODUCTS = [
     tags: ['necklace', 'seed beads', 'any color', 'single', 'mix']
   },
 
+  /* ── BRACELETS (12–16) ──────────────────────────────── */
+
+  {
+    id: 'multicolored-bracelet-no-clasp',
+    name: 'Multicolored Bracelet',
+    category: 'jewelry',
+    type: 'bracelet',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 16,
+    description: 'Cheerful multicolored beaded bracelet with no clasp — slides on easily and stays put. A fun pop of color for any outfit.',
+    details: 'No clasp · Stretch fit',
+    colors: ['Multi-color'],
+    materials: 'Mixed beads',
+    orderItems: [
+      { label: 'Multicolored Bracelet', price: 16 }
+    ],
+    tags: ['bracelet', 'multicolor', 'no clasp']
+  },
+
+  {
+    id: 'fancy-multicolored-bracelet',
+    name: 'Fancy Multicolored Bracelet',
+    category: 'jewelry',
+    type: 'bracelet',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 21,
+    description: 'Statement multicolored bracelet with large glass and synthetic beads — bold, vibrant, and handcrafted. No clasp for easy wear.',
+    details: 'Large glass & synthetic beads · No clasp · Stretch fit',
+    colors: ['Multi-color'],
+    materials: 'Large glass beads, synthetic beads',
+    orderItems: [
+      { label: 'Fancy Multicolored Bracelet', price: 21 }
+    ],
+    tags: ['bracelet', 'multicolor', 'glass', 'statement']
+  },
+
+  {
+    id: 'blue-black-bracelet',
+    name: 'Blue & Black Bead Bracelet',
+    category: 'jewelry',
+    type: 'bracelet',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 16,
+    description: 'Classic blue and black beaded bracelet with clasp. 8 inches including clasp — a clean, versatile everyday piece.',
+    details: '8 in. including clasp',
+    colors: ['Blue', 'Black'],
+    materials: 'Glass beads',
+    orderItems: [
+      { label: 'Blue & Black Bracelet (8 in.)', price: 16 }
+    ],
+    tags: ['bracelet', 'blue', 'black', 'clasp']
+  },
+
+  {
+    id: 'magenta-green-bracelet',
+    name: 'Magenta & Green Bead Bracelet',
+    category: 'jewelry',
+    type: 'bracelet',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 16,
+    description: 'Vibrant magenta and green beaded bracelet with clasp. 8 inches including clasp — bright and handcrafted with care.',
+    details: '8 in. including clasp',
+    colors: ['Magenta', 'Green'],
+    materials: 'Glass beads',
+    orderItems: [
+      { label: 'Magenta & Green Bracelet (8 in.)', price: 16 }
+    ],
+    tags: ['bracelet', 'magenta', 'green', 'clasp']
+  },
+
+  {
+    id: 'african-mino-beads-bracelet',
+    name: 'African Mino Beads Bracelet',
+    category: 'jewelry',
+    type: 'bracelet',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 18,
+    description: 'Handcrafted bracelet featuring authentic African mino beads. 8 inches including clasp — earthy, artisan, and one of a kind.',
+    details: '8 in. including clasp',
+    colors: ['Multi-color'],
+    materials: 'African mino beads',
+    orderItems: [
+      { label: 'African Mino Beads Bracelet (8 in.)', price: 18 }
+    ],
+    tags: ['bracelet', 'african', 'mino', 'artisan']
+  },
+
+  /* ── EARRINGS (17–19) ────────────────────────────────── */
+
+  {
+    id: 'ceramic-hearts-glass-earrings',
+    name: 'Ceramic Hearts & Glass Bead Earrings',
+    category: 'jewelry',
+    type: 'earrings',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 16,
+    description: 'Charming earrings featuring ceramic heart charms and black glass beads. Handmade and full of personality.',
+    details: 'Ceramic hearts · Black glass beads',
+    colors: ['Black'],
+    materials: 'Ceramic hearts, glass beads',
+    orderItems: [
+      { label: 'Ceramic Hearts & Glass Earrings', price: 16 }
+    ],
+    tags: ['earrings', 'ceramic', 'hearts', 'black']
+  },
+
+  {
+    id: 'ceramic-glass-bead-earrings',
+    name: 'Ceramic & Glass Bead Earrings',
+    category: 'jewelry',
+    type: 'earrings',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 16,
+    description: 'Elegant earrings combining ceramic and glass beads — lightweight, colorful, and handcrafted by Elena.',
+    details: 'Ceramic & glass beads',
+    colors: ['Multi-color'],
+    materials: 'Ceramic beads, glass beads',
+    orderItems: [
+      { label: 'Ceramic & Glass Bead Earrings', price: 16 }
+    ],
+    tags: ['earrings', 'ceramic', 'glass']
+  },
+
+  {
+    id: 'magenta-black-glass-earrings',
+    name: 'Magenta & Black Glass Bead Earrings',
+    category: 'jewelry',
+    type: 'earrings',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 16,
+    description: 'Bold magenta and black glass bead earrings — striking contrast, handmade with care by Elena.',
+    details: 'Magenta & black glass beads',
+    colors: ['Magenta', 'Black'],
+    materials: 'Glass beads',
+    orderItems: [
+      { label: 'Magenta & Black Glass Earrings', price: 16 }
+    ],
+    tags: ['earrings', 'magenta', 'black', 'glass']
+  },
+
+  /* ── CHOKERS & NECKLACES (20–24) ─────────────────────── */
+
+  {
+    id: 'single-strand-multicolor-choker',
+    name: 'Single Strand Multicolored Choker',
+    category: 'jewelry',
+    type: 'choker',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 19,
+    description: 'Single strand multicolored choker necklace, 15 to 16 inches. Every additional inch in length is $2 extra. Over 25 colors available — contact Elena to customize.',
+    details: '15–16 in. · +$2 per additional inch · 25+ colors',
+    colors: ['Any Color'],
+    materials: 'Mixed beads',
+    orderItems: [
+      { label: 'Choker 15 in.', price: 19 },
+      { label: 'Choker 16 in.', price: 19 },
+      { label: 'Choker 17 in.', price: 21 },
+      { label: 'Choker 18 in.', price: 23 },
+      { label: 'Choker 19 in.', price: 25 }
+    ],
+    tags: ['choker', 'necklace', 'multicolor', 'single strand']
+  },
+
+  {
+    id: 'two-strand-multicolor-choker',
+    name: '2-Strand Multicolored Choker',
+    category: 'jewelry',
+    type: 'choker',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 19,
+    description: 'Two-strand multicolored bead choker, 15 to 17 inches including clasp. Every additional inch is $2 extra. A fuller, layered look handmade by Elena.',
+    details: '15–17 in. including clasp · +$2 per additional inch',
+    colors: ['Multi-color'],
+    materials: 'Mixed beads',
+    orderItems: [
+      { label: '2-Strand Choker 15 in.', price: 19 },
+      { label: '2-Strand Choker 16 in.', price: 19 },
+      { label: '2-Strand Choker 17 in.', price: 19 },
+      { label: '2-Strand Choker 18 in.', price: 21 },
+      { label: '2-Strand Choker 19 in.', price: 23 }
+    ],
+    tags: ['choker', 'necklace', 'multicolor', 'two strand']
+  },
+
+  {
+    id: 'two-strand-multicolor-necklace',
+    name: '2-Strand Multicolored Bead Necklace',
+    category: 'jewelry',
+    type: 'necklace',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 19,
+    description: 'Two-strand multicolored bead necklace, 15 to 17 inches including clasp. Every additional inch is $2 extra. Layered, colorful, and handmade.',
+    details: '15–17 in. including clasp · +$2 per additional inch',
+    colors: ['Multi-color'],
+    materials: 'Mixed beads',
+    orderItems: [
+      { label: '2-Strand Necklace 15 in.', price: 19 },
+      { label: '2-Strand Necklace 16 in.', price: 19 },
+      { label: '2-Strand Necklace 17 in.', price: 19 },
+      { label: '2-Strand Necklace 18 in.', price: 21 },
+      { label: '2-Strand Necklace 19 in.', price: 23 }
+    ],
+    tags: ['necklace', 'multicolor', 'two strand']
+  },
+
+  {
+    id: 'single-strand-choker-25-colors',
+    name: 'Single Strand Choker — 25+ Colors',
+    category: 'jewelry',
+    type: 'choker',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 19,
+    description: 'Single strand choker in your choice of over 25 colors, 15 to 17 inches. Every additional inch is $2 extra. Contact Elena to choose your color.',
+    details: '15–17 in. · +$2 per additional inch · 25+ colors available',
+    colors: ['Any Color'],
+    materials: 'Mixed beads',
+    orderItems: [
+      { label: 'Choker 15 in.', price: 19 },
+      { label: 'Choker 16 in.', price: 19 },
+      { label: 'Choker 17 in.', price: 19 },
+      { label: 'Choker 18 in.', price: 21 },
+      { label: 'Choker 19 in.', price: 23 }
+    ],
+    tags: ['choker', 'necklace', 'any color', 'custom']
+  },
+
+  {
+    id: 'multicolor-big-bead-necklace',
+    name: 'Multicolored Big Bead Necklace',
+    category: 'jewelry',
+    type: 'necklace',
+    tagline: '',
+    featured: false,
+    available: true,
+    paypalUrl: '',
+    image: 'images/photo-coming-soon.svg',
+    images: ['images/photo-coming-soon.svg'],
+    priceFrom: 24,
+    description: 'Bold 16-inch necklace featuring large multicolored glass and synthetic beads with clasp. A statement piece that travels well.',
+    details: '16 in. including clasp · Large glass & synthetic beads',
+    colors: ['Multi-color'],
+    materials: 'Large glass beads, synthetic beads',
+    orderItems: [
+      { label: 'Multicolored Big Bead Necklace (16 in.)', price: 24 }
+    ],
+    tags: ['necklace', 'multicolor', 'large beads', 'statement']
+  },
+
   /* ── TRAVEL PILLOWS (10–11) ─────────────────────────── */
 
   {
