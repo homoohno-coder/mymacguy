@@ -2,6 +2,12 @@
   publish = "."
 
 [[redirects]]
+  from = "https://funtravel.mymacguy.us/"
+  to   = "https://funtravel.mymacguy.us/funtravel/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/product/:id"
   to   = "/funtravel/product.html?id=:id"
   status = 200
