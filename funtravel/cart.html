@@ -114,7 +114,7 @@ function renderItems(items) {
     <div class="cart-item" data-cart-id="${item.cartId}">
       <div class="cart-item-img-wrap">
         ${item.image
-          ? `<img class="cart-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">`
+          ? `<img class="cart-item-img" src="${item.image}" alt="${item.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">`
           : `<div class="cart-item-img-placeholder">✦</div>`
         }
       </div>

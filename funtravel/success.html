@@ -128,7 +128,7 @@
     if (data.items && data.items.length) {
       itemsEl.innerHTML = data.items.map(item =>
         `<div class="success-item">` +
-          (item.image ? `<img class="success-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">` : '') +
+          (item.image ? `<img class="success-item-img" src="${item.image}" alt="${item.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">` : '') +
           `<div class="success-item-info">` +
             `<p class="success-item-name">${item.name}</p>` +
             (item.variant ? `<p class="success-item-variant">${item.variant}</p>` : '') +

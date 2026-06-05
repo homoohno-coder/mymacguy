@@ -171,7 +171,7 @@ function renderResult(data) {
   const itemsEl = document.getElementById('res-items');
   itemsEl.innerHTML = (data.items || []).map(item =>
     `<div class="order-result-item">` +
-      (item.image ? `<img class="order-result-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">` : '') +
+      (item.image ? `<img class="order-result-item-img" src="${item.image}" alt="${item.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">` : '') +
       `<div>` +
         `<p class="order-result-item-name">${item.name}</p>` +
         (item.variant ? `<p class="order-result-item-variant">${item.variant}</p>` : '') +

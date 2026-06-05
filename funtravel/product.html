@@ -149,7 +149,7 @@
     ? imgs.map((src, i) =>
         `<img class="gallery-thumb${i===0?' active':''}" src="${src}" alt="${product.name}"
               onclick="setMainImage('${src}', this)"
-              onerror="this.style.display='none'">`
+              onerror="this.src='/funtravel/images/photo-coming-soon.svg'">`
       ).join('')
     : '';
 
@@ -233,7 +233,7 @@
         <!-- Gallery -->
         <div class="product-gallery">
           <div class="gallery-main" onclick="openLightbox('${imgs[0]}','${product.name.replace(/'/g,"\\'")}')">
-            <img id="main-product-img" src="${imgs[0]}" alt="${product.name}" onerror="this.style.display='none'">
+            <img id="main-product-img" src="${imgs[0]}" alt="${product.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">
           </div>
           ${thumbsHtml ? `<div class="gallery-thumbs">${thumbsHtml}</div>` : ''}
         </div>
@@ -289,7 +289,7 @@
         <div class="related-grid">
           ${relatedList.map(p => `
             <a class="related-card" href="product.html?id=${p.id}">
-              <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+              <img src="${p.image}" alt="${p.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">
               <div class="related-card-info">
                 <div class="related-card-name">${p.name}</div>
                 <div class="related-card-price">From $${p.priceFrom}</div>
