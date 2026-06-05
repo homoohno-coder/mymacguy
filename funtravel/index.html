@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Travel — Handmade Jewelry & Travel Pillows</title>
+<meta name="description" content="Handcrafted beaded jewelry and colorful travel pillows made with care. Affordable, unique, and built for the journey.">
+<meta property="og:title" content="Fun Travel — Handmade Jewelry & Travel Pillows">
+<meta property="og:description" content="Handcrafted beaded jewelry and colorful travel pillows by Elena. Affordable, unique, and built for the journey.">
+<meta property="og:image" content="https://homoohno-coder.github.io/funtravel/images/Resized_20260531_102550.jpeg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .splash-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 5rem 5rem;
+    background:
+      linear-gradient(rgba(20,17,14,0.62), rgba(20,17,14,0.62)),
+      url("https://homoohno-coder.github.io/funtravel/images/Resized_20260531_102550.jpeg") center / cover no-repeat;
+    color: white;
+  }
+
+  .splash-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  .splash-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(17,14,12,0.78) 0%, rgba(17,14,12,0.48) 48%, rgba(17,14,12,0.18) 100%),
+      linear-gradient(0deg, rgba(17,14,12,0.48) 0%, rgba(17,14,12,0.08) 48%, rgba(17,14,12,0.38) 100%);
+    pointer-events: none;
+  }
+
+  .splash-copy {
+    position: relative;
+    z-index: 2;
+    width: min(680px, 100%);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .splash-kicker {
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.1rem;
+  }
+
+  .splash-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(4rem, 10vw, 8.5rem);
+    line-height: 0.92;
+    color: white;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 16px 50px rgba(0,0,0,0.38);
+  }
+
+  .splash-sub {
+    font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+    font-weight: 300;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.9);
+    max-width: 560px;
+    margin-bottom: 2rem;
+  }
+
+  .splash-actions {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .splash-actions .btn-outline,
+  .splash-actions .btn-gold {
+    border-color: rgba(255,255,255,0.72);
+    color: white;
+    background: rgba(17,14,12,0.18);
+    backdrop-filter: blur(8px);
+  }
+
+  .splash-actions .btn-outline:hover,
+  .splash-actions .btn-gold:hover {
+    background: white;
+    border-color: white;
+    color: var(--deep);
+  }
+
+  .splash-motion-toggle {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 3;
+    border: 1px solid rgba(255,255,255,0.45);
+    background: rgba(17,14,12,0.42);
+    color: white;
+    backdrop-filter: blur(8px);
+    padding: 0.55rem 0.85rem;
+    font-family: "Jost", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .splash-hero.video-failed .splash-video,
+  .splash-hero.video-paused .splash-video {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .splash-video,
+    .splash-motion-toggle {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .splash-page nav {
+      padding: 0.8rem 1rem;
+    }
+
+    .splash-page .nav-links {
+      gap: 1rem;
+    }
+
+    .splash-hero {
+      min-height: 92vh;
+      padding: 6.5rem 1.5rem 4rem;
+    }
+
+    .splash-hero::after {
+      background: linear-gradient(0deg, rgba(17,14,12,0.78) 0%, rgba(17,14,12,0.4) 100%);
+    }
+
+    .splash-title {
+      font-size: clamp(3rem, 15vw, 4.2rem);
+      line-height: 0.98;
+    }
+
+    .splash-sub {
+      font-size: 1rem;
+      max-width: 320px;
+    }
+
+    .splash-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: min(100%, 270px);
+    }
+
+    .splash-actions a {
+      text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .splash-motion-toggle {
+      right: 1rem;
+      bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .splash-page .nav-links {
+      display: none;
+    }
+
+    .splash-motion-toggle {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body class="splash-page">
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Fun <span>Travel</span></a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="shop.html" class="nav-shop-btn">Shop Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="splash-hero" aria-label="Fun Travel handmade jewelry and travel accessories">
+  <video class="splash-video" autoplay muted loop playsinline preload="metadata" poster="https://homoohno-coder.github.io/funtravel/images/elena-hero.png">
+    <source src="https://homoohno-coder.github.io/funtravel/images/gemini_generated_video_5AF01A89.MP4" type="video/mp4">
+  </video>
+  <div class="splash-copy">
+    <p class="splash-kicker">Handmade in the USA · Ships Nationwide</p>
+    <h1 class="splash-title">Fun Travel</h1>
+    <p class="splash-sub">Handcrafted Jewelry &amp; Travel Accessories</p>
+    <div class="splash-actions">
+      <a href="shop.html" class="btn-primary">Shop Collection</a>
+      <a href="#bestsellers" class="btn-outline">View Featured Sets</a>
+      <a href="contact.html" class="btn-gold">Contact</a>
+    </div>
+  </div>
+  <button class="splash-motion-toggle" type="button" aria-pressed="false">Pause Motion</button>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Handmade Jewelry</span><span class="dot">✦</span>
+    <span>Travel Pillows</span><span class="dot">✦</span>
+    <span>Ships USA Only</span><span class="dot">✦</span>
+    <span>PayPal Accepted</span><span class="dot">✦</span>
+    <span>Made with Love</span><span class="dot">✦</span>
+    <span>Unique Every Piece</span><span class="dot">✦</span>
+    <span>Handmade Jewelry</span><span class="dot">✦</span>
+    <span>Travel Pillows</span><span class="dot">✦</span>
+    <span>Ships USA Only</span><span class="dot">✦</span>
+    <span>PayPal Accepted</span><span class="dot">✦</span>
+    <span>Made with Love</span><span class="dot">✦</span>
+    <span>Unique Every Piece</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- BEST SELLERS -->
+<section id="bestsellers">
+  <p class="section-label" style="text-align:center;">Customer Favorites</p>
+  <h2 class="section-title" style="text-align:center;margin-bottom:.5rem;">Best Sellers</h2>
+  <p class="section-sub" style="text-align:center;margin:0 auto 3rem;">Our two most popular picks — proven crowd pleasers.</p>
+
+  <div class="bestsellers-grid">
+
+    <!-- Best Seller 1 -->
+    <div class="bestseller-card">
+      <div class="bestseller-badge">⭐ Best Seller</div>
+      <img src="https://homoohno-coder.github.io/funtravel/images/Resized_20260531_100359.jpeg" alt="Earth and Fire Bead Set"
+           onclick="openLightbox('https://homoohno-coder.github.io/funtravel/images/Resized_20260531_100359.jpeg','Wood & Orange Synthetic Beads')"
+           onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <div class="bestseller-info">
+        <h3 class="bestseller-name">Wood &amp; Orange Synthetic Beads</h3>
+        <p class="bestseller-desc">Warm coral-orange and earthy wooden beads — natural and artisan. Necklace, bracelet &amp; earrings.</p>
+        <div class="bestseller-price">Full Set — <strong>$55</strong> &nbsp;|&nbsp; Necklace only — <strong>$29</strong></div>
+        <div style="display:flex;gap:.5rem;">
+          <a href="product.html?id=wood-orange-bead-set" class="btn-outline" style="flex:1;text-align:center;padding:.6rem;">View Details</a>
+          <button class="btn-buy" style="flex:1;" onclick="openOrder('wood-orange-bead-set', this)">Buy Now →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Seller 2 -->
+    <div class="bestseller-card">
+      <div class="bestseller-badge">⭐ Best Seller</div>
+      <img src="https://homoohno-coder.github.io/funtravel/images/Resized_20260301_063640_1_.jpeg" alt="Polka Dot Travel Pillow"
+           onclick="openLightbox('https://homoohno-coder.github.io/funtravel/images/Resized_20260301_063640_1_.jpeg','Polka Dot Travel Pillow')"
+           onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      <div class="bestseller-info">
+        <h3 class="bestseller-name">Polka Dot Travel Pillow</h3>
+        <p class="bestseller-desc">12 × 16 inches. Cotton fabric, machine washable. Available in 5 colors.</p>
+        <div class="bestseller-price">Per Pillow — <strong>$24</strong> &nbsp;|&nbsp; + $9.99 shipping</div>
+        <div style="display:flex;gap:.5rem;">
+          <a href="product.html?id=polka-dot-travel-pillow" class="btn-outline" style="flex:1;text-align:center;padding:.6rem;">View Details</a>
+          <button class="btn-buy" style="flex:1;" onclick="openOrder('polka-dot-travel-pillow', this)">Buy Now →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bestsellers-cta">
+    <a href="shop.html" class="btn-primary">Browse All Products →</a>
+  </div>
+</section>
+
+<!-- ABOUT SNIPPET -->
+<section style="background:var(--warm-white);padding:5rem;">
+  <div style="max-width:640px;margin:0 auto;text-align:center;">
+    <p class="section-label">The Maker</p>
+    <h2 class="section-title">Swiss roots,<br>American heart.</h2>
+    <p class="section-sub" style="max-width:100%;text-align:center;margin-bottom:2rem;">Born in Switzerland and proud of 44 years in the USA, Elena spent 24 years in real estate before following her true passion — travel and handcraft.</p>
+    <p style="font-style:italic;color:var(--terra);font-size:.95rem;line-height:1.7;margin-bottom:2rem;">"I will produce reasonably priced travel items that you will not regret buying if a suitcase is lost, stolen or misplaced." — Elena</p>
+    <a href="about.html" class="btn-outline">About Elena →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Fun <span>Travel</span></div>
+  <ul class="footer-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Fun Travel by Elena · Handmade in the USA</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <canvas id="lb-canvas" class="lb-canvas-bg"></canvas>
+  <div class="lb-content">
+    <div class="lb-top-bar">
+      <span id="lb-counter" class="lb-counter"></span>
+      <button class="lb-close" onclick="closeLightbox()">✕ Close</button>
+    </div>
+    <img id="lb-img" src="" alt="">
+    <div class="lb-nav">
+      <button onclick="lbPrev()">← Prev</button>
+      <button onclick="lbNext()">Next →</button>
+    </div>
+    <div id="lb-caption"></div>
+    <div id="lb-thumbs"></div>
+  </div>
+</div>
+
+<!-- GALLERY PAGE -->
+<div id="gallery-page">
+  <canvas id="gallery-canvas" style="position:absolute;inset:0;pointer-events:none;"></canvas>
+  <div class="gallery-page-inner" style="position:relative;z-index:2;">
+    <div class="gallery-page-header">
+      <div class="gallery-page-title">Full Gallery</div>
+      <button onclick="closeGallery()" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:white;padding:.4rem 1rem;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.78rem;">✕ Close</button>
+    </div>
+    <div id="gallery-grid"></div>
+  </div>
+</div>
+
+<!-- ORDER PANEL -->
+<div id="order-panel">
+  <canvas id="order-canvas" class="order-canvas-bg"></canvas>
+  <div class="order-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+      <div>
+        <p style="font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:.25rem;">Fun Travel</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:white;">Your Order</h2>
+      </div>
+      <button onclick="closeOrder()" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:white;padding:.45rem 1rem;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.1em;">✕ Close</button>
+    </div>
+    <div style="display:flex;gap:1rem;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:1rem;margin-bottom:1.8rem;">
+      <img id="order-img" src="" alt="" style="width:80px;height:80px;object-fit:cover;border-radius:3px;flex-shrink:0;cursor:zoom-in;" onclick="openLightbox(this.src,'')">
+      <div>
+        <p style="font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem;">Selected Item</p>
+        <h3 id="order-product-name" style="font-family:'Playfair Display',serif;color:white;font-size:1rem;"></h3>
+      </div>
+    </div>
+    <div style="margin-bottom:1.8rem;">
+      <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem;">Select Items</p>
+      <div id="order-items"></div>
+    </div>
+    <div style="margin-bottom:1.8rem;">
+      <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem;">Your Contact Info</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;">
+        <div><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">First Name *</label><input id="cf-fname" type="text" placeholder="Jane" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Last Name *</label><input id="cf-lname" type="text" placeholder="Smith" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Email *</label><input id="cf-email" type="email" placeholder="jane@example.com" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Phone</label><input id="cf-phone" type="tel" placeholder="(555) 000-0000" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Shipping Address *</label><input id="cf-address" type="text" placeholder="123 Main St, City, State, ZIP" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Notes</label><textarea id="cf-notes" rows="2" placeholder="Special requests, gift messages…" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;resize:vertical;"></textarea></div>
+      </div>
+    </div>
+    <div id="order-summary-box" style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:1rem;margin-bottom:1.2rem;display:none;">
+      <p style="font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#c9a84c;margin-bottom:.6rem;">Order Summary</p>
+      <div id="order-summary-list" style="font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.9;"></div>
+      <div style="border-top:1px solid rgba(201,168,76,.2);margin-top:.7rem;padding-top:.7rem;display:flex;justify-content:space-between;">
+        <span style="color:rgba(255,255,255,.4);font-size:.78rem;">Estimated Total</span>
+        <span id="order-total" style="color:#c9a84c;font-weight:500;font-size:.97rem;"></span>
+      </div>
+    </div>
+    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Pay with PayPal →</button>
+    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">PayPal opens in a new tab. Your order details are also sent to Elena.</p>
+  </div>
+</div>
+
+<script src="data/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script>
+  (function() {
+    const hero = document.querySelector('.splash-hero');
+    const video = document.querySelector('.splash-video');
+    const toggle = document.querySelector('.splash-motion-toggle');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!hero || !video || !toggle) return;
+
+    function setPaused(paused) {
+      hero.classList.toggle('video-paused', paused);
+      toggle.textContent = paused ? 'Play Motion' : 'Pause Motion';
+      toggle.setAttribute('aria-pressed', String(paused));
+      if (paused) {
+        video.pause();
+      } else {
+        video.play().catch(function() {
+          hero.classList.add('video-failed');
+        });
+      }
+    }
+
+    video.addEventListener('error', function() {
+      hero.classList.add('video-failed');
+    });
+
+    if (reduceMotion) {
+      video.pause();
+    } else {
+      video.play().catch(function() {
+        hero.classList.add('video-failed');
+      });
+    }
+
+    toggle.addEventListener('click', function() {
+      setPaused(!hero.classList.contains('video-paused'));
+    });
+  })();
+</script>
+</body>
+</html>

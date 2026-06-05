@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Fun Travel</title>
+<meta name="description" content="Handmade jewelry and travel pillows by Elena at Fun Travel.">
+<meta property="og:title" content="Product — Fun Travel">
+<meta property="og:description" content="Handmade jewelry and travel pillows by Elena.">
+<meta property="og:image" content="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg">
+<meta property="og:type" content="product">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Fun <span>Travel</span></a>
+  <ul class="nav-links">
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PRODUCT DETAIL (rendered by JS) -->
+<div id="product-root" style="padding-top:72px;min-height:60vh;">
+  <div id="product-loading" style="padding:5rem;text-align:center;color:var(--mid);">Loading…</div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<div id="related-root" style="display:none;"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Fun <span>Travel</span></div>
+  <ul class="footer-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Fun Travel by Elena · Handmade in the USA</div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <canvas id="lb-canvas" class="lb-canvas-bg"></canvas>
+  <div class="lb-content">
+    <div class="lb-top-bar">
+      <span id="lb-counter" class="lb-counter"></span>
+      <button class="lb-close" onclick="closeLightbox()">✕ Close</button>
+    </div>
+    <img id="lb-img" src="" alt="">
+    <div class="lb-nav">
+      <button onclick="lbPrev()">← Prev</button>
+      <button onclick="lbNext()">Next →</button>
+    </div>
+    <div id="lb-caption"></div>
+    <div id="lb-thumbs"></div>
+  </div>
+</div>
+
+<!-- ORDER PANEL -->
+<div id="order-panel">
+  <canvas id="order-canvas" class="order-canvas-bg"></canvas>
+  <div class="order-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+      <div>
+        <p style="font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a84c;margin-bottom:.25rem;">Fun Travel</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:white;">Your Order</h2>
+      </div>
+      <button onclick="closeOrder()" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:white;padding:.45rem 1rem;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.1em;">✕ Close</button>
+    </div>
+    <div style="display:flex;gap:1rem;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:1rem;margin-bottom:1.8rem;">
+      <img id="order-img" src="" alt="" style="width:80px;height:80px;object-fit:cover;border-radius:3px;flex-shrink:0;cursor:zoom-in;" onclick="openLightbox(this.src,'')">
+      <div>
+        <p style="font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.25rem;">Selected Item</p>
+        <h3 id="order-product-name" style="font-family:'Playfair Display',serif;color:white;font-size:1rem;"></h3>
+      </div>
+    </div>
+    <div style="margin-bottom:1.8rem;">
+      <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem;">Select Items</p>
+      <div id="order-items"></div>
+    </div>
+    <div style="margin-bottom:1.8rem;">
+      <p style="font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem;">Your Contact Info</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;">
+        <div><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">First Name *</label><input id="cf-fname" type="text" placeholder="Jane" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Last Name *</label><input id="cf-lname" type="text" placeholder="Smith" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Email *</label><input id="cf-email" type="email" placeholder="jane@example.com" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Phone</label><input id="cf-phone" type="tel" placeholder="(555) 000-0000" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Shipping Address *</label><input id="cf-address" type="text" placeholder="123 Main St, City, State, ZIP" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;"></div>
+        <div style="grid-column:1/-1;"><label style="font-size:.7rem;color:rgba(255,255,255,.35);display:block;margin-bottom:.25rem;">Notes</label><textarea id="cf-notes" rows="2" placeholder="Special requests…" style="width:100%;padding:.65rem .8rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:white;border-radius:2px;font-family:'Jost',sans-serif;font-size:.83rem;resize:vertical;"></textarea></div>
+      </div>
+    </div>
+    <div id="order-summary-box" style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:1rem;margin-bottom:1.2rem;display:none;">
+      <p style="font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#c9a84c;margin-bottom:.6rem;">Order Summary</p>
+      <div id="order-summary-list" style="font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.9;"></div>
+      <div style="border-top:1px solid rgba(201,168,76,.2);margin-top:.7rem;padding-top:.7rem;display:flex;justify-content:space-between;">
+        <span style="color:rgba(255,255,255,.4);font-size:.78rem;">Estimated Total</span>
+        <span id="order-total" style="color:#c9a84c;font-weight:500;font-size:.97rem;"></span>
+      </div>
+    </div>
+    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Pay with Wave →</button>
+    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">Wave checkout opens in a new tab. Your order details are also sent to Elena.</p>
+  </div>
+</div>
+
+<script src="data/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script>
+(function() {
+  const params  = new URLSearchParams(window.location.search);
+  const id      = params.get('id');
+  const products = window.FT && window.FT.PRODUCTS || [];
+  const product  = products.find(p => p.id === id);
+
+  const root    = document.getElementById('product-root');
+  const related = document.getElementById('related-root');
+
+  if (!product) {
+    root.innerHTML = `
+      <div style="padding:5rem;text-align:center;">
+        <p style="color:var(--mid);margin-bottom:2rem;">Product not found.</p>
+        <a href="shop.html" class="btn-primary">← Back to Shop</a>
+      </div>`;
+    return;
+  }
+
+  // Update page title and OG meta
+  document.title = product.name + ' — Fun Travel';
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDesc  = document.querySelector('meta[property="og:description"]');
+  const ogImg   = document.querySelector('meta[property="og:image"]');
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (ogTitle)  ogTitle.setAttribute('content', product.name + ' — Fun Travel');
+  if (ogDesc)   ogDesc.setAttribute('content', product.description);
+  if (ogImg)    ogImg.setAttribute('content', product.image);
+  if (metaDesc) metaDesc.setAttribute('content', product.description);
+
+  // Build gallery HTML
+  const imgs = product.images && product.images.length ? product.images : [product.image];
+
+  const thumbsHtml = imgs.length > 1
+    ? imgs.map((src, i) =>
+        `<img class="gallery-thumb${i===0?' active':''}" src="${src}" alt="${product.name}"
+              onclick="setMainImage('${src}', this)"
+              onerror="this.style.display='none'">`
+      ).join('')
+    : '';
+
+  // Price display
+  let priceHtml = '';
+  if (product.category === 'pillow') {
+    priceHtml = `<div class="detail-price">$${product.priceFrom}</div>
+                 <p class="detail-price-note">Per pillow · + $${product.shipping || 9.99} shipping</p>`;
+  } else if (product.setPrice) {
+    const breakdown = (product.orderItems || []).map(i =>
+      `<span style="display:block;font-size:.8rem;color:var(--mid);margin-top:.15rem;">${i.label} — $${i.price.toFixed(2)}</span>`
+    ).join('');
+    priceHtml = `<div class="detail-price">From $${product.priceFrom}</div>
+                 <p class="detail-price-note" style="margin-bottom:.3rem;font-weight:500;">Full Set — $${product.setPrice}</p>
+                 <div style="margin-bottom:.8rem;line-height:1.7;">${breakdown}</div>`;
+  } else {
+    priceHtml = `<div class="detail-price">From $${product.priceFrom}</div>
+                 <p class="detail-price-note">${product.details || ''}</p>`;
+  }
+
+  // Color swatches / radio pickers
+  const colorGroup = product.id + '-color';
+  let swatchesHtml = '';
+  if (product.category === 'pillow' && product.colorSwatches && product.colorSwatches.length) {
+    swatchesHtml = `
+      <div class="detail-colors">
+        <div class="detail-colors-label">Choose a Color <span style="color:var(--terra);font-size:.75rem;">*required</span></div>
+        <div class="detail-color-radio-list">
+          ${product.colorSwatches.map((s, i) => `
+            <label class="color-option" title="${s.label}">
+              <input type="radio" name="${colorGroup}" value="${s.label}" ${i === 0 ? 'checked' : ''}>
+              <span class="color-swatch-circle" style="background:${s.hex};"></span>
+              <span class="color-option-label">${s.label}</span>
+            </label>`).join('')}
+        </div>
+      </div>`;
+  } else if (product.colorSwatches && product.colorSwatches.length) {
+    swatchesHtml = `
+      <div class="detail-colors">
+        <div class="detail-colors-label">Available Colors</div>
+        <div class="detail-swatch-list">
+          ${product.colorSwatches.map(s =>
+            `<div class="detail-swatch" style="background:${s.hex};" title="${s.label}"></div>`
+          ).join('')}
+        </div>
+      </div>`;
+  } else if (product.colors && product.colors.length) {
+    swatchesHtml = `
+      <div class="detail-row">
+        <span class="detail-row-label">Colors</span>
+        <span class="detail-row-value">${product.colors.join(', ')}</span>
+      </div>`;
+  }
+
+  // Buy button
+  let buyHtml = '';
+  if (product.paypalUrl) {
+    buyHtml = `<a class="btn-buy-paypal" href="${product.paypalUrl}" target="_blank" rel="noopener">Buy with PayPal →</a>`;
+  } else if (product.category === 'pillow') {
+    buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
+               <button class="btn-outline" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Buy Now via PayPal</button>
+               <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
+  } else {
+    buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
+               <button class="btn-outline" onclick="openOrder('${product.id}', this)">Buy Now via PayPal</button>
+               <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
+  }
+
+  root.innerHTML = `
+    <div class="product-detail-wrap">
+      <nav class="product-breadcrumb">
+        <a href="shop.html">Shop</a>
+        <span>›</span>
+        <span>${product.category === 'pillow' ? 'Travel Pillows' : 'Jewelry'}</span>
+        <span>›</span>
+        <span style="color:var(--deep);">${product.name}</span>
+      </nav>
+
+      <div class="product-detail-layout">
+
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="gallery-main" onclick="openLightbox('${imgs[0]}','${product.name.replace(/'/g,"\\'")}')">
+            <img id="main-product-img" src="${imgs[0]}" alt="${product.name}" onerror="this.style.display='none'">
+          </div>
+          ${thumbsHtml ? `<div class="gallery-thumbs">${thumbsHtml}</div>` : ''}
+        </div>
+
+        <!-- Info -->
+        <div class="product-detail-info">
+          <p class="detail-category">${product.category === 'pillow' ? 'Travel Pillows' : 'Handcrafted Jewelry'}</p>
+          <h1 class="detail-name">${product.name}</h1>
+          ${priceHtml}
+          <hr class="detail-divider">
+          <p class="detail-desc">${product.description}</p>
+          ${product.details ? `<p class="detail-spec">${product.details}</p>` : ''}
+
+          <div class="detail-row">
+            <span class="detail-row-label">Materials</span>
+            <span class="detail-row-value">${product.materials || '—'}</span>
+          </div>
+          ${product.category === 'pillow' ? `
+          <div class="detail-row">
+            <span class="detail-row-label">Care</span>
+            <span class="detail-row-value">Machine washable, low dryer temperature</span>
+          </div>` : ''}
+          <div class="detail-row">
+            <span class="detail-row-label">Ships to</span>
+            <span class="detail-row-value">USA only</span>
+          </div>
+
+          ${swatchesHtml}
+
+          <hr class="detail-divider">
+          <div class="detail-buy-actions">
+            ${buyHtml}
+          </div>
+          <p style="font-size:.75rem;color:var(--mid);margin-top:.8rem;font-weight:300;">
+            Questions? <a href="contact.html" style="color:var(--terra);text-decoration:none;">Contact Elena →</a>
+          </p>
+        </div>
+
+      </div>
+    </div>`;
+
+  // Related products
+  const sameCategory = products.filter(p => p.id !== id && p.category === product.category);
+  const other = products.filter(p => p.id !== id && p.category !== product.category);
+  const relatedList = [...sameCategory, ...other].slice(0, 4);
+
+  if (relatedList.length) {
+    related.style.display = 'block';
+    related.innerHTML = `
+      <div class="related-section">
+        <p class="section-label">You May Also Like</p>
+        <h2 class="section-title" style="margin-bottom:.5rem;">Related Products</h2>
+        <div class="related-grid">
+          ${relatedList.map(p => `
+            <a class="related-card" href="product.html?id=${p.id}">
+              <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+              <div class="related-card-info">
+                <div class="related-card-name">${p.name}</div>
+                <div class="related-card-price">From $${p.priceFrom}</div>
+              </div>
+            </a>`).join('')}
+        </div>
+      </div>`;
+  }
+
+  // Thumb switching
+  window.setMainImage = function(src, thumbEl) {
+    const mainImg  = document.getElementById('main-product-img');
+    const mainWrap = mainImg ? mainImg.closest('.gallery-main') : null;
+    if (mainImg) mainImg.src = src;
+    if (mainWrap) mainWrap.onclick = () => openLightbox(src, product.name);
+    document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+    if (thumbEl) thumbEl.classList.add('active');
+  };
+})();
+</script>
+</body>
+</html>

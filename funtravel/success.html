@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — Fun Travel</title>
+<meta name="description" content="Your Fun Travel order has been placed successfully.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fun <span>Travel</span></a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="success-section">
+  <div id="success-loading" class="success-loading">
+    <div class="success-spinner"></div>
+    <p>Confirming your order…</p>
+  </div>
+
+  <div id="success-content" class="success-content" style="display:none">
+    <div class="success-icon">✦</div>
+    <h1 class="success-title">Order Confirmed!</h1>
+    <p class="success-sub">Thank you for supporting Elena's handmade work.</p>
+
+    <div class="success-order-card">
+      <div class="success-order-num-row">
+        <span class="success-order-label">Order Number</span>
+        <strong id="suc-order-num" class="success-order-num"></strong>
+      </div>
+      <p class="success-order-hint">Save this number to track your order status.</p>
+    </div>
+
+    <div class="success-items" id="suc-items"></div>
+
+    <div class="success-totals">
+      <div class="success-total-row">
+        <span>Subtotal</span><span id="suc-subtotal"></span>
+      </div>
+      <div class="success-total-row">
+        <span>Shipping</span><span>$3.50</span>
+      </div>
+      <div class="success-total-row">
+        <span>Tax (10.25% CA)</span><span id="suc-tax"></span>
+      </div>
+      <div class="success-total-row success-grand-total">
+        <span>Total Paid</span><span id="suc-total"></span>
+      </div>
+    </div>
+
+    <p class="success-note">
+      Elena hand-makes each piece to order. Most orders ship within 3–5 business days.
+      You'll receive a Stripe receipt by email.
+    </p>
+
+    <div class="success-actions">
+      <a id="track-link" href="order-lookup.html" class="btn-primary">Track Your Order →</a>
+      <a href="shop.html" class="btn-outline">Continue Shopping</a>
+    </div>
+  </div>
+
+  <div id="success-error" class="success-error" style="display:none">
+    <div class="success-icon">◇</div>
+    <h1 class="success-title">Payment Received</h1>
+    <p class="success-sub">Your payment was successful, but we could not load your order details right now.</p>
+    <p>You'll receive a confirmation from Stripe by email. To track your order, visit the link below.</p>
+    <div class="success-actions">
+      <a href="order-lookup.html" class="btn-primary">Track Your Order →</a>
+      <a href="contact.html" class="btn-outline">Contact Elena</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Fun <span>Travel</span></a>
+    <p class="footer-tagline">Handcrafted jewelry &amp; travel pillows by Elena · Palm Springs, CA</p>
+    <nav class="footer-nav">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="order-lookup.html">Track Order</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Fun Travel by Elena</p>
+  </div>
+</footer>
+
+<script>
+(async function loadOrder() {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+
+  if (!sessionId) {
+    showError();
+    return;
+  }
+
+  try {
+    const res = await fetch(`/.netlify/functions/verify-session?session_id=${encodeURIComponent(sessionId)}`);
+    const data = await res.json();
+
+    if (!res.ok || data.status === 'pending') {
+      showError();
+      return;
+    }
+
+    // Populate UI
+    document.getElementById('suc-order-num').textContent = data.orderNumber;
+    document.getElementById('suc-subtotal').textContent = '$' + Number(data.subtotal).toFixed(2);
+    document.getElementById('suc-tax').textContent = '$' + Number(data.tax).toFixed(2);
+    document.getElementById('suc-total').textContent = '$' + Number(data.total).toFixed(2);
+
+    // Pre-fill track link with order number
+    const trackLink = document.getElementById('track-link');
+    trackLink.href = `order-lookup.html?order=${encodeURIComponent(data.orderNumber)}`;
+
+    // Render items
+    const itemsEl = document.getElementById('suc-items');
+    if (data.items && data.items.length) {
+      itemsEl.innerHTML = data.items.map(item =>
+        `<div class="success-item">` +
+          (item.image ? `<img class="success-item-img" src="${item.image}" alt="${item.name}" onerror="this.style.display='none'">` : '') +
+          `<div class="success-item-info">` +
+            `<p class="success-item-name">${item.name}</p>` +
+            (item.variant ? `<p class="success-item-variant">${item.variant}</p>` : '') +
+            `<p class="success-item-price">$${Number(item.price).toFixed(2)} × ${item.qty}</p>` +
+          `</div>` +
+        `</div>`
+      ).join('');
+    }
+
+    document.getElementById('success-loading').style.display = 'none';
+    document.getElementById('success-content').style.display = 'block';
+  } catch {
+    showError();
+  }
+})();
+
+function showError() {
+  document.getElementById('success-loading').style.display = 'none';
+  document.getElementById('success-error').style.display = 'block';
+}
+</script>
+</body>
+</html>

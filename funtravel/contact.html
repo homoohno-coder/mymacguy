@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Fun Travel</title>
+<meta name="description" content="Questions about handmade jewelry or travel pillows? Contact Elena at Fun Travel.">
+<meta property="og:title" content="Contact — Fun Travel">
+<meta property="og:description" content="Questions, custom orders, or just want to say hello? Contact Elena at Fun Travel.">
+<meta property="og:image" content="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Fun <span>Travel</span></a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="page-header-label">Get in Touch</p>
+  <h1 class="page-header-title">Contact</h1>
+  <p class="page-header-sub">Questions, custom orders, or just want to say hello? Elena would love to hear from you.</p>
+</div>
+
+<!-- CONTACT SECTION -->
+<div class="contact-section">
+  <p class="section-label">Reach Elena</p>
+  <h2 class="section-title">Let's talk.</h2>
+  <p class="contact-sub">For product questions, custom requests, or help placing an order — email is the best way to reach Elena directly.</p>
+
+  <div class="contact-methods">
+    <div>
+      <div class="contact-method-label">Email</div>
+      <div class="contact-method-value"><a href="mailto:info@funtravel.jewelry">info@funtravel.jewelry</a></div>
+    </div>
+    <div>
+      <div class="contact-method-label">Ships to</div>
+      <div class="contact-method-value" style="color:rgba(255,255,255,.55);font-size:.9rem;">USA only</div>
+    </div>
+    <div>
+      <div class="contact-method-label">Payment</div>
+      <div class="contact-method-value" style="color:rgba(255,255,255,.55);font-size:.9rem;">PayPal accepted</div>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="contact-form-wrap">
+    <p style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem;text-align:left;">Send a Message</p>
+    <form onsubmit="handleContactForm(event)">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="ct-fname">First Name *</label>
+          <input id="ct-fname" type="text" placeholder="Jane" required>
+        </div>
+        <div class="form-field">
+          <label for="ct-lname">Last Name *</label>
+          <input id="ct-lname" type="text" placeholder="Smith" required>
+        </div>
+        <div class="form-field form-field-full">
+          <label for="ct-email">Email *</label>
+          <input id="ct-email" type="email" placeholder="jane@example.com" required>
+        </div>
+        <div class="form-field form-field-full">
+          <label for="ct-subject">Subject</label>
+          <select id="ct-subject">
+            <option value="Product Question">Product Question</option>
+            <option value="Custom Order">Custom Order Request</option>
+            <option value="Order Status">Order Status</option>
+            <option value="Return / Exchange">Return / Exchange</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-field form-field-full">
+          <label for="ct-message">Message *</label>
+          <textarea id="ct-message" rows="5" placeholder="How can Elena help you?" required></textarea>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">Send Message →</button>
+    </form>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.2);margin-top:.8rem;text-align:center;">Clicking "Send" opens your email app with your message pre-filled.</p>
+  </div>
+</div>
+
+<!-- SHIPPING & RETURNS -->
+<div class="shipping-section">
+  <p class="section-label">Delivery Info</p>
+  <h2 class="section-title">Shipping &amp; Payment</h2>
+  <p class="section-sub">All orders ship within the USA. Payment is processed securely through PayPal.</p>
+
+  <div class="shipping-grid">
+    <div class="shipping-card">
+      <div class="shipping-icon">📦</div>
+      <div class="shipping-title">Jewelry</div>
+      <div class="shipping-price">$5.99</div>
+      <div class="shipping-detail">Single item: $5.99 · Full set: $7.99 · Free on orders $50+. Ships 2–4 business days.</div>
+    </div>
+    <div class="shipping-card">
+      <div class="shipping-icon">🛏️</div>
+      <div class="shipping-title">Pillows</div>
+      <div class="shipping-price">$5.99</div>
+      <div class="shipping-detail">$9.99 per pillow · $14.99 for two pillows. Ships 3–5 business days. USA only.</div>
+    </div>
+    <div class="shipping-card">
+      <div class="shipping-icon">💳</div>
+      <div class="shipping-title">Payment</div>
+      <div class="shipping-price">PayPal</div>
+      <div class="shipping-detail">All orders processed via PayPal for secure checkout. No PayPal account required.</div>
+    </div>
+  </div>
+</div>
+
+<!-- RETURNS POLICY -->
+<div class="policy-section">
+  <p class="section-label">Returns &amp; Exchanges</p>
+  <h2 class="section-title">Our Policy</h2>
+  <p class="section-sub">We stand behind every piece. If something isn't right, contact Elena directly.</p>
+
+  <div class="policy-grid">
+    <div class="policy-card">
+      <h3>Return Window</h3>
+      <p>Returns accepted within 14 days of delivery. Item must be unworn and in original condition.</p>
+    </div>
+    <div class="policy-card">
+      <h3>Restocking Fee</h3>
+      <p>A 15% restocking fee applies to returned items unless the return is due to our error.</p>
+    </div>
+    <div class="policy-card">
+      <h3>Return Shipping</h3>
+      <p>Customer is responsible for return shipping costs unless the item was damaged or incorrect.</p>
+    </div>
+    <div class="policy-card">
+      <h3>Get an RMA First</h3>
+      <p>Please email Elena before sending any return to receive a Return Merchandise Authorization (RMA) number.</p>
+    </div>
+    <div class="policy-card">
+      <h3>Our Error — Full Refund</h3>
+      <p>If we sent the wrong item or it arrived damaged, we will cover return shipping and issue a full refund.</p>
+    </div>
+    <div class="policy-card">
+      <h3>Condition of Returns</h3>
+      <p>Items returned in worn, damaged, or altered condition will not be accepted for a refund.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <p class="section-label">Questions</p>
+  <h2 class="section-title" style="text-align:center;">Frequently Asked</h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-question">Can I request a custom color or size?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes! Elena loves custom work. Email her at <a href="mailto:info@funtravel.jewelry" style="color:var(--terra);">info@funtravel.jewelry</a> with your request and she'll do her best to accommodate.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do I choose a pillow color?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Select your color using the color picker on the shop page, then click "Buy Now". Your selected color will be pre-filled in the order.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do you ship internationally?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">At this time, Fun Travel ships within the USA only. We hope to expand in the future.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do I pay?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">All purchases are processed through PayPal. You do not need a PayPal account — you can pay with any major credit or debit card as a guest.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Are the pieces really handmade?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes, 100%. Every piece of jewelry is hand-strung by Elena, and every pillow is hand-sewn. No two pieces are exactly alike.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can I buy just the necklace or just the earrings?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Absolutely. All sets can be purchased as a complete set (necklace + bracelet + earrings) or as individual pieces. Select exactly what you want in the order form.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do I care for the pillows?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Machine wash cold, tumble dry on low heat. Do not use high heat as it may affect the fill. The pillows are designed to be travel-durable and easy to maintain.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Fun <span>Travel</span></div>
+  <ul class="footer-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Fun Travel by Elena · Handmade in the USA</div>
+</footer>
+
+<script src="data/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+<script>
+function handleContactForm(e) {
+  e.preventDefault();
+  const fname   = document.getElementById('ct-fname').value.trim();
+  const lname   = document.getElementById('ct-lname').value.trim();
+  const email   = document.getElementById('ct-email').value.trim();
+  const subject = document.getElementById('ct-subject').value;
+  const message = document.getElementById('ct-message').value.trim();
+
+  const mailSubject = encodeURIComponent(`Fun Travel — ${subject} from ${fname} ${lname}`);
+  const mailBody = encodeURIComponent(
+`Hi Elena,
+
+Name: ${fname} ${lname}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+
+---
+Sent from Fun Travel contact form`
+  );
+
+  window.location.href = `mailto:info@funtravel.jewelry?subject=${mailSubject}&body=${mailBody}`;
+}
+</script>
+</body>
+</html>
