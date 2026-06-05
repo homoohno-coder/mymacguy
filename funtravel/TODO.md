@@ -9,7 +9,7 @@
 
 | Status | Task | Notes |
 |---|---|---|
-| 🔴 Open | **PayPal URLs** | Elena must provide PayPal.me or button URLs. Add to `paypalUrl` in `data/products.js`. Currently all products show order-panel + mailto flow. |
+| 🟡 In Progress | **Wave payment links** | Elena setting up Wave Apps account. When ready: get one payment link per product, paste into `paypalUrl` field in `funtravel/data/products.js`, push. Site goes live with checkout instantly. |
 | 🔴 Open | **Copy product images to mymacguy repo** | Images load from raw GitHub URL at `homoohno-coder/funtravel`. If that repo changes, all images break. Copy to `funtravel/images/` as local fallback. |
 
 ---
@@ -33,8 +33,9 @@
 | ✅ Completed | **Shop page visual consistency** | Split into 3 subsections (Sets 1–5, Singles 6–9, Pillows 10–11); equal card heights via `min-height` on `.product-desc` |
 | ✅ Completed | **Product Detail Modal** | Full ecommerce overlay on product image click — gallery, variants, qty, Add to Cart, Buy Now, reviews, related products |
 | ✅ Completed | **Shopping cart** | sessionStorage FTCart, nav badge, cart.html checkout page |
-| ✅ Completed | **Stripe Checkout** | Server-side session via Netlify Function; secret key never in frontend |
-| ✅ Completed | **Order tracking** | Netlify Blobs storage, verify-session.js, get-order.js, order-lookup.html |
+| ❌ Removed | **Stripe Checkout** | Removed — switched to Wave Apps. No server functions needed. |
+| ✅ Completed | **PR #7 merged to main** | Full ecommerce live on production Jun 4 2026 |
+| ✅ Completed | **netlify.toml** | Clean URL redirects for all funtravel pages |
 
 ---
 
