@@ -1,0 +1,7 @@
+/product/:id    /product.html?id=:id    200
+/shop           /shop.html              200
+/about          /about.html             200
+/contact        /contact.html           200
+/cart           /cart.html              200
+/order-lookup   /order-lookup.html      200
+/*              /404.html               404
