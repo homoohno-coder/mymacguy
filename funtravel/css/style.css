@@ -37,7 +37,11 @@ nav {
   background: rgba(250,247,242,0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(201,113,74,0.15);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
+nav.headroom--unpinned { transform: translateY(-100%); }
+nav.headroom--pinned   { transform: translateY(0); }
+nav.headroom--not-top  { box-shadow: 0 2px 12px rgba(26,26,24,0.08); }
 
 .nav-logo {
   font-family: 'Playfair Display', serif;

@@ -657,5 +657,7 @@
 <script src="js/cart.js"></script>
 <script src="js/product-modal.js"></script>
 <script src="js/app.js"></script>
+
+<script>(function(){var n=document.querySelector("nav");if(!n)return;var l=0,t=false;function u(){var y=window.scrollY;if(y>60){n.classList.add("headroom--not-top");if(y>l)n.classList.add("headroom--unpinned"),n.classList.remove("headroom--pinned");else if(l-y>5)n.classList.remove("headroom--unpinned"),n.classList.add("headroom--pinned");}else{n.classList.remove("headroom--not-top","headroom--unpinned","headroom--pinned");}l=y;t=false;}window.addEventListener("scroll",function(){if(!t){requestAnimationFrame(u);t=true;}},{passive:true});})();</script>
 </body>
 </html>
