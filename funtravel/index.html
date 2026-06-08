@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
-  .splash-hero 
+  .splash-hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -430,5 +430,41 @@
     });
   })();
 </script>
+
+<script>
+(function() {
+  var nav = document.querySelector('nav');
+  if (!nav) return;
+  var lastY = 0;
+  var ticking = false;
+  var threshold = 80;
+  var tolerance = 5;
+
+  function update() {
+    var y = window.pageYOffset || window.scrollY;
+    var diff = y - lastY;
+    if (y < threshold) {
+      nav.style.transform = 'translateY(0)';
+      nav.style.transition = 'transform 0.3s ease';
+    } else if (diff > tolerance) {
+      nav.style.transform = 'translateY(-100%)';
+      nav.style.transition = 'transform 0.3s ease';
+    } else if (diff < -tolerance) {
+      nav.style.transform = 'translateY(0)';
+      nav.style.transition = 'transform 0.3s ease';
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+
 </body>
 </html>
