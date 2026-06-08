@@ -5,6 +5,9 @@
   "engines": {
     "node": ">=18"
   },
+  "devDependencies": {
+    "wrangler": "^3.99.0"
+  },
   "dependencies": {
     "@netlify/blobs": "^8.1.0",
     "stripe": "^16.12.0"
