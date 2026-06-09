@@ -65,7 +65,7 @@
         </div>
         <p class="cart-summary-note">Ships to USA only · $3.50 flat rate</p>
         <button id="checkout-btn" class="btn-primary cart-checkout-btn" onclick="startCheckout()">
-          Proceed to Checkout →
+          Pay Now via PayPal →
         </button>
         <div id="checkout-error" class="cart-checkout-error" style="display:none"></div>
         <a href="shop.html" class="cart-continue-link">← Continue Shopping</a>
@@ -166,38 +166,33 @@ function removeItem(cartId) {
   refresh();
 }
 
-async function startCheckout() {
-  const items = FTCart.getItems();
-  if (!items.length) return;
-
-  const btn = document.getElementById('checkout-btn');
-  const errEl = document.getElementById('checkout-error');
-  btn.disabled = true;
-  btn.textContent = 'Redirecting…';
-  errEl.style.display = 'none';
-
-  try {
-    const res = await fetch('/.netlify/functions/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items }),
+function startCheckout() {
+    const items = FTCart.getItems();
+    if (!items.length) return;
+    const PAYPAL_EMAIL = 'picswelove2024@gmail.com';
+    const f = document.createElement('form');
+    f.method = 'post';
+    f.action = 'https://www.paypal.com/cgi-bin/webscr';
+    f.target = '_blank';
+    const addField = (n,v) => { const i=document.createElement('input'); i.type='hidden'; i.name=n; i.value=v; f.appendChild(i); };
+    addField('cmd','_cart');
+    addField('upload','1');
+    addField('business', PAYPAL_EMAIL);
+    addField('currency_code','USD');
+    addField('return', window.location.origin + '/shop.html');
+    addField('cancel_return', window.location.href);
+    items.forEach((item, idx) => {
+      const n = idx + 1;
+      const isPillow = (item.productId||'').includes('pillow');
+      addField('item_name_'+n, item.name + (item.variant ? ' — ' + item.variant : ''));
+      addField('amount_'+n, item.price.toFixed(2));
+      addField('quantity_'+n, item.qty);
+      addField('shipping_'+n, isPillow ? '9.99' : '5.99');
     });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.url) {
-      throw new Error(data.error || 'Checkout failed. Please try again.');
-    }
-
-    FTCart.clear();
-    window.location.href = data.url;
-  } catch (err) {
-    errEl.textContent = err.message;
-    errEl.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Proceed to Checkout →';
+    document.body.appendChild(f);
+    f.submit();
+    setTimeout(() => f.remove(), 100);
   }
-}
 </script>
 </body>
 </html>
