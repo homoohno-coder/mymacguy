@@ -35,4 +35,4 @@
 [[redirects]]
   from = "/*"
   to   = "/funtravel/404.html"
-  status = 404
+  status = 301
