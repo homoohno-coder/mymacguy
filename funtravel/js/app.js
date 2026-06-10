@@ -397,20 +397,6 @@ function sendOrder() {
   const tax      = subtotal * 0.1025; // CA sales tax — Palm Springs 10.25%
   const total    = subtotal + shipping + tax;
 
-  // Open PayPal
-  const paypalParams = new URLSearchParams({
-    cmd: '_xclick',
-    business: 'picswelove2024@gmail.com',
-    item_name: `${productName} — Fun Travel by Elena`.substring(0, 127),
-    amount: total.toFixed(2),
-    currency_code: 'USD',
-    no_note: '0',
-    lc: 'US',
-    bn: 'PP-BuyNowBF'
-  });
-  window.open('https://www.paypal.com/cgi-bin/webscr?' + paypalParams.toString(), '_blank');
-
-  // Email Elena
   const subject = encodeURIComponent(`Order: ${productName} — Fun Travel`);
   const body = encodeURIComponent(
 `Hi Elena,
@@ -434,15 +420,12 @@ TOTAL: $${total.toFixed(2)}
 
 NOTES: ${notes || 'None'}
 
-I am paying via PayPal (payment just sent).
+Please reply with payment instructions.
 
 Thank you,
 ${fname} ${lname}`
   );
 
-  setTimeout(() => {
-    window.location.href = `mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`;
-  }, 900);
-
   closeOrder();
+  window.location.href = `mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`;
 }
