@@ -1,5 +1,5 @@
 name = "funtravel"
-compatibility_date = "2024-11-01"
+compatibility_date = "2026-06-10"
 
 [assets]
 directory = "./funtravel"
