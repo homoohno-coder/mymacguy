@@ -1,6 +1,6 @@
 /* Fun Travel — Shared App JS */
 
-/* ── BUILD IMAGE CATALOG FROM PRODUCTS ─────────────── */
+/* ── BUILD IMAGE CATALOG FROM PRODUCTS ─────────────────── */
 
 function buildImageCatalog() {
   const seen = new Set();
@@ -19,7 +19,7 @@ function buildImageCatalog() {
 let allImages = [];
 let currentIdx = 0;
 
-/* ── LIGHTBOX ───────────────────────────────────────── */
+/* ── LIGHTBOX ──────────────────────────────────────── */
 
 function openLightbox(src, caption) {
   if (!allImages.length) allImages = buildImageCatalog();
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ── NAV ACTIVE STATE ───────────────────────────────── */
+/* ── NAV ACTIVE STATE ─────────────────────────────────── */
 
 function setNavActive() {
   const path = window.location.pathname;
@@ -168,7 +168,7 @@ function setNavActive() {
   });
 }
 
-/* ── CANVAS ANIMATION ───────────────────────────────── */
+/* ── CANVAS ANIMATION ─────────────────────────────────── */
 
 const canvasAnims = new Map();
 
@@ -214,7 +214,7 @@ function startCanvas(id) {
   canvasAnims.set(id, raf);
 }
 
-/* ── GALLERY PAGE ───────────────────────────────────── */
+/* ── GALLERY PAGE ─────────────────────────────────────── */
 
 function openGallery() {
   if (!allImages.length) allImages = buildImageCatalog();
@@ -247,7 +247,7 @@ function closeGallery() {
   document.body.style.overflow = '';
 }
 
-/* ── ORDER MODAL ────────────────────────────────────── */
+/* ── ORDER MODAL ──────────────────────────────────────── */
 
 let currentOrderId = null;
 
@@ -342,7 +342,7 @@ function updateOrderSummary() {
     const prEl = parent.querySelector('span:nth-child(3)');
     const price = parseFloat((prEl ? prEl.textContent : '0').replace('$', ''));
     total += price;
-    lines.push(`✦ ${lbl ? lbl.textContent : ''} — $${price.toFixed(2)}`);
+    lines.push(`❆ ${lbl ? lbl.textContent : ''} — $${price.toFixed(2)}`);
   });
 
   const products = window.FT && window.FT.PRODUCTS || [];
@@ -397,10 +397,6 @@ function sendOrder() {
   const tax      = subtotal * 0.1025; // CA sales tax — Palm Springs 10.25%
   const total    = subtotal + shipping + tax;
 
-  // Redirect to contact page
-  window.location.href = 'contact.html';
-
-  // Email Elena
   const subject = encodeURIComponent(`Order: ${productName} — Fun Travel`);
   const body = encodeURIComponent(
 `Hi Elena,
@@ -424,15 +420,12 @@ TOTAL: $${total.toFixed(2)}
 
 NOTES: ${notes || 'None'}
 
-I would like to place an order.
+Please reply with payment instructions.
 
 Thank you,
 ${fname} ${lname}`
   );
 
-  setTimeout(() => {
-    window.location.href = `mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`;
-  }, 900);
-
   closeOrder();
+  window.location.href = `mailto:picswelove2024@gmail.com?subject=${subject}&body=${body}`;
 }
