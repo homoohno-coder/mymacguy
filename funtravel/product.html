@@ -7,19 +7,11 @@
 <meta name="description" content="Handmade jewelry and travel pillows by Elena at Fun Travel.">
 <meta property="og:title" content="Product — Fun Travel">
 <meta property="og:description" content="Handmade jewelry and travel pillows by Elena.">
-<meta property="og:image" content="/funtravel/images/Resized_20260531_102550.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg">
 <meta property="og:type" content="product">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-  <style>
-    .btn-paypal,.btn-paypal-outline{display:block;width:100%;padding:.85rem 1.5rem;font-family:'Jost',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.08em;border-radius:3px;cursor:pointer;text-align:center;transition:all .2s;margin-top:.6rem;}
-    .btn-paypal{background:#0070ba;color:#fff;border:none;}
-    .btn-paypal:hover{background:#005ea6;}
-    .btn-paypal-outline{background:transparent;color:#0070ba;border:1.5px solid #0070ba;}
-    .btn-paypal-outline:hover{background:#0070ba;color:#fff;}
-    </style>
 </head>
 <body>
 
@@ -30,6 +22,8 @@
     <li><a href="shop.html" class="active">Shop</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="policy.html">Policy</a></li>
   </ul>
 </nav>
 
@@ -48,6 +42,8 @@
     <li><a href="shop.html">Shop</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="policy.html">Policy</a></li>
   </ul>
   <div class="footer-copy">© 2026 Fun Travel by Elena · Handmade in the USA</div>
 </footer>
@@ -111,8 +107,8 @@
         <span id="order-total" style="color:#c9a84c;font-weight:500;font-size:.97rem;"></span>
       </div>
     </div>
-    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Contact to Purchase</button>
-    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">To place an order, contact Elena directly using the Contact page.</p>
+    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Send Order to Elena →</button>
+    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">Your order email will open. Elena will reply with payment instructions.</p>
   </div>
 </div>
 
@@ -156,7 +152,7 @@
     ? imgs.map((src, i) =>
         `<img class="gallery-thumb${i===0?' active':''}" src="${src}" alt="${product.name}"
               onclick="setMainImage('${src}', this)"
-              onerror="this.src='/funtravel/images/photo-coming-soon.svg'">`
+              onerror="this.style.display='none'">`
       ).join('')
     : '';
 
@@ -211,29 +207,19 @@
       </div>`;
   }
 
-      // Buy button — PayPal direct checkout
-        // Store product data for PayPal buttons
-        window._ftProduct = product;
-        window._ftColorGroup = colorGroup;
-        const _ship = product.category === 'pillow' ? (product.shipping || 9.99) : 5.99;
-        let buyHtml = '';
-        if (product.category === 'pillow' && product.colorSwatches && product.colorSwatches.length) {
-                  buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
-                                  <button class="btn-paypal" onclick="ftPayPalColor()">Buy Now via PayPal ↗</button>`;
-        } else if (product.setPrice) {
-                  const setRows = (product.orderItems||[]).map(it =>
-                              `<button class="btn-paypal-outline" data-item="${it.label}" data-price="${it.price}" onclick="ftPayPalItem(this)">Buy ${it.label} — $${it.price} via PayPal</button>`
-                            ).join('');
-                  buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
-                                  <button class="btn-paypal" data-item="Full Set" data-price="${product.setPrice}" onclick="ftPayPalItem(this)">Buy Now via PayPal — Full Set $${product.setPrice}</button>
-                                                  ${setRows}`;
-        } else {
-                  const itemRows = (product.orderItems||[]).map(it =>
-                              `<button class="btn-paypal" data-item="${it.label}" data-price="${it.price}" onclick="ftPayPalItem(this)">${it.label} — Buy via PayPal ($${it.price})</button>`
-                            ).join('');
-                  buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
-                                  ${itemRows}`;
-        }
+  // Buy button
+  let buyHtml = '';
+  if (product.paypalUrl) {
+    buyHtml = `<a class="btn-buy-paypal" href="${product.paypalUrl}" target="_blank" rel="noopener">Buy with PayPal →</a>`;
+  } else if (product.category === 'pillow') {
+    buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
+               <button class="btn-outline" onclick="openOrderWithColor('${product.id}','${colorGroup}',this)">Order Now</button>
+               <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
+  } else {
+    buyHtml = `<button class="btn-primary" onclick="addToCartClick('${product.id}', this)">Add to Cart →</button>
+               <button class="btn-outline" onclick="openOrder('${product.id}', this)">Order Now</button>
+               <a class="btn-contact" href="contact.html">Contact to Purchase</a>`;
+  }
 
   root.innerHTML = `
     <div class="product-detail-wrap">
@@ -249,8 +235,8 @@
 
         <!-- Gallery -->
         <div class="product-gallery">
-          <div class="gallery-main" onclick="openLightbox('${imgs[0]}','${product.name.replace(/'/g,"\\'")}')">
-            <img id="main-product-img" src="${imgs[0]}" alt="${product.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">
+          <div class="gallery-main" onclick="openLightbox('${imgs[0]}','${product.name.replace(/'/g,"\\'")}')">  
+            <img id="main-product-img" src="${imgs[0]}" alt="${product.name}" onerror="this.style.display='none'">
           </div>
           ${thumbsHtml ? `<div class="gallery-thumbs">${thumbsHtml}</div>` : ''}
         </div>
@@ -306,7 +292,7 @@
         <div class="related-grid">
           ${relatedList.map(p => `
             <a class="related-card" href="product.html?id=${p.id}">
-              <img src="${p.image}" alt="${p.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">
+              <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'">
               <div class="related-card-info">
                 <div class="related-card-name">${p.name}</div>
                 <div class="related-card-price">From $${p.priceFrom}</div>
@@ -326,48 +312,9 @@
     if (thumbEl) thumbEl.classList.add('active');
   };
 })();
-
-  // PayPal direct checkout helpers
-  function ftPayPalSubmit(itemName, price, shipping) {
-      const PAYPAL_EMAIL = 'picswelove2024@gmail.com';
-      const f = document.createElement('form');
-      f.method = 'post';
-      f.action = 'https://www.paypal.com/cgi-bin/webscr';
-      f.target = '_blank';
-      const d = {
-            cmd: '_xclick', business: PAYPAL_EMAIL,
-            item_name: itemName, amount: parseFloat(price).toFixed(2),
-            shipping: parseFloat(shipping||0).toFixed(2),
-            currency_code: 'USD', no_note: 1, quantity: 1,
-            return: window.location.origin + '/shop.html',
-            cancel_return: window.location.href
-      };
-      Object.entries(d).forEach(([k,v])=>{
-            const i=document.createElement('input');
-            i.type='hidden';i.name=k;i.value=v;f.appendChild(i);
-      });
-      document.body.appendChild(f);
-      f.submit();
-      setTimeout(()=>f.remove(),100);
-  }
-  function ftPayPalItem(btn) {
-      const p = window._ftProduct;
-      if (!p) return;
-      const ship = p.category==='pillow'?(p.shipping||9.99):5.99;
-      const item = btn.dataset.item;
-      const price = btn.dataset.price;
-      const name = p.name + (item ? ' \u2014 ' + item : '');
-      ftPayPalSubmit(name, price, ship);
-  }
-  function ftPayPalColor() {
-      const p = window._ftProduct;
-      const cg = window._ftColorGroup;
-      if (!p||!cg) return;
-      const sel = document.querySelector('input[name="'+cg+'"]:checked');
-      if (!sel) { alert('Please select a color first.'); return; }
-      const ship = p.shipping||9.99;
-      ftPayPalSubmit(p.name+' \u2014 '+sel.value, p.priceFrom, ship);
-  }
 </script>
+
+<script src="js/headroom.min.js"></script>
+<script>new Headroom(document.querySelector("nav"),{offset:60,tolerance:{up:5,down:0}}).init();</script>
 </body>
 </html>

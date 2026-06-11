@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop — Fun Travel Handmade Jewelry & Pillows</title>
+<title>Shop — Fun Travel Handmade Jewelry &amp; Pillows</title>
 <meta name="description" content="Browse all handmade beaded jewelry sets and travel pillows from Fun Travel. Ships USA only.">
-<meta property="og:title" content="Shop — Fun Travel Handmade Jewelry & Pillows">
-<meta property="og:description" content="Browse handmade beaded jewelry and colorful travel pillows. Ships USA only. Contact Elena to order.">
-<meta property="og:image" content="/images/Resized_20260531_102550.jpeg">
+<meta property="og:title" content="Shop — Fun Travel Handmade Jewelry &amp; Pillows">
+<meta property="og:description" content="Browse handmade beaded jewelry and colorful travel pillows. Ships USA only.">
+<meta property="og:image" content="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -23,21 +22,31 @@
     <li><a href="shop.html" class="active">Shop</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="policy.html">Policy</a></li>
   </ul>
 </nav>
 
-<!-- PAGE HEADER + FILTERS -->
-<div style="padding:5rem 5rem 0;background:var(--cream);">
-  <h1 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--deep);margin-bottom:2rem;letter-spacing:0.01em;">Handmade Collection</h1>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <p class="page-header-label">Handmade Collection</p>
+  <h1 class="page-header-title">Shop</h1>
+  <p class="page-header-sub">Beaded jewelry sets, chokers, and travel pillows — all handmade with care. Each piece is one-of-a-kind.</p>
+</div>
+
+<!-- FILTER TABS -->
+<div style="padding:2rem 5rem 0;background:var(--cream);">
   <div class="shop-filters">
-    <button class="filter-tab active" data-filter="all">All</button>
+    <button class="filter-tab active" data-filter="all">All Products</button>
     <button class="filter-tab" data-filter="jewelry">Jewelry</button>
     <button class="filter-tab" data-filter="pillow">Pillows</button>
   </div>
 </div>
 
 <!-- JEWELRY SECTION -->
-<section id="jewelry-section" style="background:var(--cream);padding-top:2.5rem;">
+<section id="jewelry-section" style="background:var(--cream);padding-top:1.5rem;">
+  <div class="section-label">Handcrafted Collection</div>
+  <h2 class="section-title">Beaded Jewelry</h2>
 
   <!-- ── SUBSECTION 1: SETS ────────────────────────────── -->
   <div class="shop-subsection">
@@ -49,9 +58,9 @@
       <!-- Set 1 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260531_100438.jpeg" alt="Kelly Green & Black African Tube Set"
-               onclick="location.href='product.html?id=kelly-green-black-set'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100438.jpeg" alt="Kelly Green &amp; Black African Tube Set"
+               onclick="openProductModal('kelly-green-black-set')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Kelly Green &amp; Black African Tube Set</h3>
@@ -64,7 +73,7 @@
           </div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=kelly-green-black-set">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=kelly-green-black-set'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('kelly-green-black-set', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('kelly-green-black-set', this)">Add to Cart</button>
         </div>
@@ -74,9 +83,9 @@
       <div class="product-card" data-category="jewelry" style="border:2px solid #c9a84c;">
         <div class="product-img-wrap">
           <div class="product-tag bestseller">⭐ Best Seller</div>
-          <img class="product-img" src="/images/Resized_20260531_100359.jpeg" alt="Wood & Orange Synthetic Beads"
-               onclick="location.href='product.html?id=earth-fire-bead-set'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100359.jpeg" alt="Wood &amp; Orange Synthetic Beads"
+               onclick="openProductModal('wood-orange-bead-set')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Wood &amp; Orange Synthetic Beads</h3>
@@ -88,10 +97,10 @@
             Full Set — <strong>$55</strong>
           </div>
           <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=earth-fire-bead-set">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=earth-fire-bead-set'">Buy Now →</button>
+            <a class="btn-details" href="product.html?id=wood-orange-bead-set">View Details</a>
+            <button class="btn-order" onclick="openOrder('wood-orange-bead-set', this)">Buy Now →</button>
           </div>
-            <button class="btn-add-to-cart" onclick="addToCartClick('earth-fire-bead-set', this)">Add to Cart</button>
+            <button class="btn-add-to-cart" onclick="addToCartClick('wood-orange-bead-set', this)">Add to Cart</button>
         </div>
       </div>
 
@@ -99,9 +108,9 @@
       <div class="product-card" data-category="jewelry" style="border:2px solid #c9a84c;">
         <div class="product-img-wrap">
           <div class="product-tag bestseller">⭐ Best Seller</div>
-          <img class="product-img" src="/images/Resized_20260531_100501.jpeg" alt="Fuchsia & Black Beads with African Tube Beads"
-               onclick="location.href='product.html?id=fuchsia-black-african-tube-set'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100501.jpeg" alt="Fuchsia &amp; Black Beads with African Tube Beads"
+               onclick="openProductModal('fuchsia-black-african-tube-set')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Fuchsia &amp; Black Beads with African Tube Beads</h3>
@@ -114,7 +123,7 @@
           </div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=fuchsia-black-african-tube-set">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=fuchsia-black-african-tube-set'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('fuchsia-black-african-tube-set', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('fuchsia-black-african-tube-set', this)">Add to Cart</button>
         </div>
@@ -123,9 +132,9 @@
       <!-- Set 4 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260531_100506.jpeg" alt="Kelly Green Glass & Orange Synthetic Beads with African Tube Beads"
-               onclick="location.href='product.html?id=kelly-green-orange-african-tube-set'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_100506.jpeg" alt="Kelly Green Glass &amp; Orange Synthetic Beads with African Tube Beads"
+               onclick="openProductModal('kelly-green-orange-african-tube-set')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Kelly Green Glass &amp; Orange Synthetic Beads with African Tube Beads</h3>
@@ -138,7 +147,7 @@
           </div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=kelly-green-orange-african-tube-set">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=kelly-green-orange-african-tube-set'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('kelly-green-orange-african-tube-set', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('kelly-green-orange-african-tube-set', this)">Add to Cart</button>
         </div>
@@ -147,9 +156,9 @@
       <!-- Set 5 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260531_102515.jpeg" alt="Fun Bead Mix — Glass & Synthetic"
-               onclick="location.href='product.html?id=fun-bead-mix-glass-synthetic'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102515.jpeg" alt="Fun Bead Mix — Glass &amp; Synthetic"
+               onclick="openProductModal('fun-bead-mix-glass-synthetic')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Fun Bead Mix — Glass &amp; Synthetic</h3>
@@ -162,7 +171,7 @@
           </div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=fun-bead-mix-glass-synthetic">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=fun-bead-mix-glass-synthetic'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('fun-bead-mix-glass-synthetic', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('fun-bead-mix-glass-synthetic', this)">Add to Cart</button>
         </div>
@@ -172,170 +181,6 @@
   </div>
 
   <!-- ── SUBSECTION 2: SINGLES & CHOKERS ──────────────── -->
-  <!-- BRACELETS -->
-  <div class="shop-subsection">
-    <h3 class="subsection-heading">Bracelets</h3>
-    <p class="subsection-sub">Handmade beaded bracelets in a variety of styles and colors. Each one crafted by Elena.</p>
-
-    <div class="product-grid">
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/multicolored-bracelet.jpeg" alt="Multicolored Bracelet"
-               onclick="location.href='product.html?id=multicolored-bracelet-no-clasp'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Multicolored Bracelet</h3>
-          <p class="product-desc">Cheerful multicolored beaded bracelet, no clasp — slides on easily. A fun pop of color for any outfit.</p>
-          <div class="product-price-line"><strong>$16</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=multicolored-bracelet-no-clasp">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=multicolored-bracelet-no-clasp'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('multicolored-bracelet-no-clasp', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/fancy-multicolored-bracelet.jpeg" alt="Fancy Multicolored Bracelet"
-               onclick="location.href='product.html?id=fancy-multicolored-bracelet'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Fancy Multicolored Bracelet</h3>
-          <p class="product-desc">Bold bracelet with large glass and synthetic beads, no clasp. A statement piece handcrafted by Elena.</p>
-          <div class="product-price-line"><strong>$21</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=fancy-multicolored-bracelet">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=fancy-multicolored-bracelet'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('fancy-multicolored-bracelet', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/blue-black-bracelet.jpeg" alt="Blue & Black Bead Bracelet"
-               onclick="location.href='product.html?id=blue-black-bracelet'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Blue &amp; Black Bead Bracelet</h3>
-          <p class="product-desc">Classic blue and black beaded bracelet with clasp, 8 inches including clasp.</p>
-          <div class="product-price-line"><strong>$16</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=blue-black-bracelet">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=blue-black-bracelet'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('blue-black-bracelet', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/magenta-green-bracelet.jpeg" alt="Magenta & Green Bead Bracelet"
-               onclick="location.href='product.html?id=magenta-green-bracelet'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Magenta &amp; Green Bead Bracelet</h3>
-          <p class="product-desc">Vibrant magenta and green beaded bracelet with clasp, 8 inches including clasp.</p>
-          <div class="product-price-line"><strong>$16</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=magenta-green-bracelet">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=magenta-green-bracelet'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('magenta-green-bracelet', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/african-mino-beads-bracelet.jpeg" alt="African Mino Beads Bracelet"
-               onclick="location.href='product.html?id=african-mino-beads-bracelet'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">African Mino Beads Bracelet</h3>
-          <p class="product-desc">Authentic African mino bead bracelet with clasp, 8 inches including clasp. Earthy and artisan.</p>
-          <div class="product-price-line"><strong>$18</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=african-mino-beads-bracelet">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=african-mino-beads-bracelet'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('african-mino-beads-bracelet', this)">Add to Cart</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- EARRINGS -->
-  <div class="shop-subsection">
-    <h3 class="subsection-heading">Earrings</h3>
-    <p class="subsection-sub">Handmade beaded earrings — lightweight, colorful, and crafted by Elena.</p>
-
-    <div class="product-grid">
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/ceramic-hearts-glass-earrings.jpeg" alt="Ceramic Hearts & Glass Bead Earrings"
-               onclick="location.href='product.html?id=ceramic-hearts-glass-earrings'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Ceramic Hearts &amp; Glass Bead Earrings</h3>
-          <p class="product-desc">Charming earrings with ceramic heart charms and black glass beads. Full of personality.</p>
-          <div class="product-price-line"><strong>$16</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=ceramic-hearts-glass-earrings">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=ceramic-hearts-glass-earrings'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('ceramic-hearts-glass-earrings', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/ceramic-glass-bead-earrings.jpeg" alt="Ceramic & Glass Bead Earrings"
-               onclick="location.href='product.html?id=ceramic-glass-bead-earrings'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Ceramic &amp; Glass Bead Earrings</h3>
-          <p class="product-desc">Elegant earrings combining ceramic and glass beads — lightweight and colorful.</p>
-          <div class="product-price-line"><strong>$16</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=ceramic-glass-bead-earrings">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=ceramic-glass-bead-earrings'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('ceramic-glass-bead-earrings', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/magenta-black-glass-earrings.jpeg" alt="Magenta & Black Glass Bead Earrings"
-               onclick="location.href='product.html?id=magenta-black-glass-earrings'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Magenta &amp; Black Glass Bead Earrings</h3>
-          <p class="product-desc">Bold magenta and black glass bead earrings — striking contrast, handmade with care.</p>
-          <div class="product-price-line"><strong>$16</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=magenta-black-glass-earrings">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=magenta-black-glass-earrings'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('magenta-black-glass-earrings', this)">Add to Cart</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
   <div class="shop-subsection">
     <h3 class="subsection-heading">Single Necklaces &amp; Chokers</h3>
     <p class="subsection-sub">Individual handmade necklaces in a variety of styles and lengths. Single piece only — no bracelet or earrings.</p>
@@ -345,9 +190,9 @@
       <!-- Choker 6 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260531_102540.jpeg" alt="Glass Bead Chokers — Green"
-               onclick="location.href='product.html?id=glass-bead-chokers-green'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102540.jpeg" alt="Glass Bead Chokers — Green"
+               onclick="openProductModal('glass-bead-chokers-green')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Glass Bead Chokers — Green</h3>
@@ -355,7 +200,7 @@
           <div class="product-price-line">15–16 in. — <strong>$16</strong> &nbsp;·&nbsp; 17–21 in. — <strong>$19</strong></div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=glass-bead-chokers-green">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=glass-bead-chokers-green'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('glass-bead-chokers-green', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('glass-bead-chokers-green', this)">Add to Cart</button>
         </div>
@@ -364,9 +209,9 @@
       <!-- Choker 7 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260531_102550.jpeg" alt="Multi-Color Glass Bead Chokers"
-               onclick="location.href='product.html?id=multi-color-glass-bead-chokers'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102550.jpeg" alt="Multi-Color Glass Bead Chokers"
+               onclick="openProductModal('multi-color-glass-bead-chokers')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Multi-Color Glass Bead Chokers</h3>
@@ -374,7 +219,7 @@
           <div class="product-price-line">15–16 in. — <strong>$16</strong> &nbsp;·&nbsp; 17–21 in. — <strong>$19</strong></div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=multi-color-glass-bead-chokers">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=multi-color-glass-bead-chokers'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('multi-color-glass-bead-chokers', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('multi-color-glass-bead-chokers', this)">Add to Cart</button>
         </div>
@@ -383,9 +228,9 @@
       <!-- Seed Beads 8 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260531_102628.jpeg" alt="Glass Seed Beads — Any Color"
-               onclick="location.href='product.html?id=glass-seed-beads-any-color'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260531_102628.jpeg" alt="Glass Seed Beads — Any Color"
+               onclick="openProductModal('glass-seed-beads-any-color')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Glass Seed Beads — Any Color</h3>
@@ -393,7 +238,7 @@
           <div class="product-price-line">Up to 18 in. — <strong>$15</strong></div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=glass-seed-beads-any-color">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=glass-seed-beads-any-color'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('glass-seed-beads-any-color', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('glass-seed-beads-any-color', this)">Add to Cart</button>
         </div>
@@ -402,9 +247,9 @@
       <!-- Mixed Seed 9 -->
       <div class="product-card" data-category="jewelry">
         <div class="product-img-wrap">
-          <img class="product-img" src="/images/Resized_20260528_081218.png" alt="Glass Seed Bead Mix with 4mm Glass Beads"
-               onclick="location.href='product.html?id=glass-seed-bead-mix-4mm'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
+          <img class="product-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260528_081218.jpeg" alt="Glass Seed Bead Mix with 4mm Glass Beads"
+               onclick="openProductModal('glass-seed-bead-mix-4mm')"
+               onerror="this.style.display='none'">
         </div>
         <div class="product-info">
           <h3 class="product-name">Glass Seed Bead Mix with 4mm Glass Beads</h3>
@@ -412,99 +257,9 @@
           <div class="product-price-line">15–17 in. — <strong>$17</strong> &nbsp;·&nbsp; 18–21 in. — <strong>$19.50</strong></div>
           <div class="product-card-actions">
             <a class="btn-details" href="product.html?id=glass-seed-bead-mix-4mm">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=glass-seed-bead-mix-4mm'">Buy Now →</button>
+            <button class="btn-order" onclick="openOrder('glass-seed-bead-mix-4mm', this)">Buy Now →</button>
           </div>
             <button class="btn-add-to-cart" onclick="addToCartClick('glass-seed-bead-mix-4mm', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/single-strand-multicolor-choker.jpeg" alt="Single Strand Multicolored Choker"
-               onclick="location.href='product.html?id=single-strand-multicolor-choker'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Single Strand Multicolored Choker</h3>
-          <p class="product-desc">Single strand multicolored choker, 15–16 inches. +$2 per additional inch. 25+ colors available.</p>
-          <div class="product-price-line">From <strong>$19</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=single-strand-multicolor-choker">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=single-strand-multicolor-choker'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('single-strand-multicolor-choker', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/two-strand-multicolor-choker.jpeg" alt="2-Strand Multicolored Choker"
-               onclick="location.href='product.html?id=two-strand-multicolor-choker'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">2-Strand Multicolored Choker</h3>
-          <p class="product-desc">Two-strand multicolored choker with clasp, 15–17 inches. +$2 per additional inch.</p>
-          <div class="product-price-line">From <strong>$19</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=two-strand-multicolor-choker">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=two-strand-multicolor-choker'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('two-strand-multicolor-choker', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/two-strand-multicolor-necklace.jpeg" alt="2-Strand Multicolored Bead Necklace"
-               onclick="location.href='product.html?id=two-strand-multicolor-necklace'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">2-Strand Multicolored Bead Necklace</h3>
-          <p class="product-desc">Two-strand multicolored bead necklace with clasp, 15–17 inches. +$2 per additional inch.</p>
-          <div class="product-price-line">From <strong>$19</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=two-strand-multicolor-necklace">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=two-strand-multicolor-necklace'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('two-strand-multicolor-necklace', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/single-strand-choker-25-colors.jpeg" alt="Single Strand Choker — 25+ Colors"
-               onclick="location.href='product.html?id=single-strand-choker-25-colors'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Single Strand Choker — 25+ Colors</h3>
-          <p class="product-desc">Single strand choker in any of 25+ colors, 15–17 inches. +$2 per additional inch. Contact Elena to customize.</p>
-          <div class="product-price-line">From <strong>$19</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=single-strand-choker-25-colors">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=single-strand-choker-25-colors'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('single-strand-choker-25-colors', this)">Add to Cart</button>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="jewelry">
-        <div class="product-img-wrap">
-          <img class="product-img" src="/images/multicolor-big-bead-necklace.jpeg" alt="Multicolored Big Bead Necklace"
-               onclick="location.href='product.html?id=multicolor-big-bead-necklace'"
-               onerror="this.src='/images/photo-coming-soon.svg'">
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Multicolored Big Bead Necklace</h3>
-          <p class="product-desc">Bold 16-inch necklace with large multicolored glass and synthetic beads. A statement piece that travels well.</p>
-          <div class="product-price-line"><strong>$24</strong></div>
-          <div class="product-card-actions">
-            <a class="btn-details" href="product.html?id=multicolor-big-bead-necklace">View Details</a>
-            <button class="btn-order" onclick="location.href='product.html?id=multicolor-big-bead-necklace'">Buy Now →</button>
-          </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('multicolor-big-bead-necklace', this)">Add to Cart</button>
         </div>
       </div>
 
@@ -524,8 +279,8 @@
     <!-- Neck Pillow -->
     <div class="pillow-card" data-category="pillow">
       <div class="pillow-img-wrap">
-        <img class="pillow-img" src="/images/round-neck-pillow.jpeg" alt="Color Splash Neck Pillow"
-             onclick="location.href='product.html?id=round-neck-pillow'"
+        <img class="pillow-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_070435.jpeg" alt="Color Splash Neck Pillow"
+             onclick="openProductModal('color-splash-neck-pillow')"
              onerror="this.style.background='rgba(255,255,255,.05)'">
       </div>
       <div class="pillow-info">
@@ -541,18 +296,18 @@
         </div>
         <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
         <div class="pillow-card-actions">
-          <a class="btn-details-light" href="product.html?id=round-neck-pillow">View Details</a>
-          <button class="btn-buy-light" onclick="location.href='product.html?id=round-neck-pillow'">Buy Now →</button>
+          <a class="btn-details-light" href="product.html?id=color-splash-neck-pillow">View Details</a>
+          <button class="btn-buy-light" onclick="openOrderWithColor('color-splash-neck-pillow','neck-color',this)">Buy Now →</button>
         </div>
-          <button class="btn-add-to-cart" onclick="addToCartClick('round-neck-pillow', this)">Add to Cart</button>
+          <button class="btn-add-to-cart" onclick="addToCartClick('color-splash-neck-pillow', this)">Add to Cart</button>
       </div>
     </div>
 
     <!-- Polka Dot Pillow -->
     <div class="pillow-card" data-category="pillow">
       <div class="pillow-img-wrap">
-        <img class="pillow-img" src="/images/Resized_20260301_063640_1_.jpeg" alt="Polka Dot Travel Pillow"
-             onclick="location.href='product.html?id=polka-dot-travel-pillow'"
+        <img class="pillow-img" src="https://raw.githubusercontent.com/homoohno-coder/funtravel/main/images/Resized_20260301_063640_1_.jpeg" alt="Polka Dot Travel Pillow"
+             onclick="openProductModal('polka-dot-travel-pillow')"
              onerror="this.style.background='rgba(255,255,255,.05)'">
       </div>
       <div class="pillow-info">
@@ -569,7 +324,7 @@
         <div class="pillow-price">$24 <small>+ $9.99 shipping</small></div>
         <div class="pillow-card-actions">
           <a class="btn-details-light" href="product.html?id=polka-dot-travel-pillow">View Details</a>
-          <button class="btn-buy-light" onclick="location.href='product.html?id=polka-dot-travel-pillow'">Buy Now →</button>
+          <button class="btn-buy-light" onclick="openOrderWithColor('polka-dot-travel-pillow','polka-color',this)">Buy Now →</button>
         </div>
           <button class="btn-add-to-cart" onclick="addToCartClick('polka-dot-travel-pillow', this)">Add to Cart</button>
       </div>
@@ -585,6 +340,8 @@
     <li><a href="shop.html">Shop</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="policy.html">Policy</a></li>
   </ul>
   <div class="footer-copy">© 2026 Fun Travel by Elena · Handmade in the USA</div>
 </footer>
@@ -648,8 +405,8 @@
         <span id="order-total" style="color:#c9a84c;font-weight:500;font-size:.97rem;"></span>
       </div>
     </div>
-    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Contact to Purchase</button>
-    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">To place an order, contact Elena directly using the Contact page.</p>
+    <button onclick="sendOrder()" class="btn-primary" style="width:100%;padding:.9rem;">Send Order to Elena →</button>
+    <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.7rem;">Your order email will open. Elena will reply with payment instructions.</p>
   </div>
 </div>
 
@@ -657,5 +414,8 @@
 <script src="js/cart.js"></script>
 <script src="js/product-modal.js"></script>
 <script src="js/app.js"></script>
+
+<script src="js/headroom.min.js"></script>
+<script>new Headroom(document.querySelector("nav"),{offset:60,tolerance:{up:5,down:0}}).init();</script>
 </body>
 </html>
