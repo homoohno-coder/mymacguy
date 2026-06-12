@@ -27,7 +27,7 @@ Fun Travel is a static multi-page e-commerce website for Elena's handmade jewelr
 | Environment | URL | Status |
 |---|---|---|
 | Production | https://inquisitive-rabanadas-a488c0.netlify.app/funtravel/ | ✅ Live (merged Jun 4 2026) |
-| Custom Domain | funtravel.jewelry | ⏳ Pending DNS setup |
+| Custom Domain | funtravel.mymacguy.us | ⏳ Pending DNS setup |
 
 ### Recent Changes (Jun 4 2026)
 - Merged PR #7 to main — full ecommerce now live
