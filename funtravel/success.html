@@ -95,60 +95,10 @@
 </footer>
 
 <script>
-(async function loadOrder() {
-  const params = new URLSearchParams(window.location.search);
-  const sessionId = params.get('session_id');
-
-  if (!sessionId) {
-    showError();
-    return;
-  }
-
-  try {
-    const res = await fetch(`/.netlify/functions/verify-session?session_id=${encodeURIComponent(sessionId)}`);
-    const data = await res.json();
-
-    if (!res.ok || data.status === 'pending') {
-      showError();
-      return;
-    }
-
-    // Populate UI
-    document.getElementById('suc-order-num').textContent = data.orderNumber;
-    document.getElementById('suc-subtotal').textContent = '$' + Number(data.subtotal).toFixed(2);
-    document.getElementById('suc-tax').textContent = '$' + Number(data.tax).toFixed(2);
-    document.getElementById('suc-total').textContent = '$' + Number(data.total).toFixed(2);
-
-    // Pre-fill track link with order number
-    const trackLink = document.getElementById('track-link');
-    trackLink.href = `order-lookup.html?order=${encodeURIComponent(data.orderNumber)}`;
-
-    // Render items
-    const itemsEl = document.getElementById('suc-items');
-    if (data.items && data.items.length) {
-      itemsEl.innerHTML = data.items.map(item =>
-        `<div class="success-item">` +
-          (item.image ? `<img class="success-item-img" src="${item.image}" alt="${item.name}" onerror="this.src='/funtravel/images/photo-coming-soon.svg'">` : '') +
-          `<div class="success-item-info">` +
-            `<p class="success-item-name">${item.name}</p>` +
-            (item.variant ? `<p class="success-item-variant">${item.variant}</p>` : '') +
-            `<p class="success-item-price">$${Number(item.price).toFixed(2)} × ${item.qty}</p>` +
-          `</div>` +
-        `</div>`
-      ).join('');
-    }
-
-    document.getElementById('success-loading').style.display = 'none';
-    document.getElementById('success-content').style.display = 'block';
-  } catch {
-    showError();
-  }
-})();
-
-function showError() {
+(function showSuccess() {
   document.getElementById('success-loading').style.display = 'none';
-  document.getElementById('success-error').style.display = 'block';
-}
+  document.getElementById('success-content').style.display = 'block';
+})();
 </script>
 </body>
 </html>

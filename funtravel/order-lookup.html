@@ -124,18 +124,7 @@ async function lookupOrder(e) {
   btn.textContent = 'Looking up…';
 
   try {
-    const res = await fetch('/.netlify/functions/get-order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, orderNumber }),
-    });
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.error || 'Order not found.');
-    }
-
-    renderResult(data);
+    throw new Error('Order lookup is not currently available. Please contact us at wahed@mymacguy.net with your order number.');
   } catch (err) {
     errEl.textContent = err.message;
     errEl.style.display = 'block';
