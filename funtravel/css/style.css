@@ -433,12 +433,12 @@ section { padding: 5rem 5rem; }
   position: relative;
   overflow: hidden;
   background: #f5f2ee;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
 }
 .product-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
   cursor: pointer;
@@ -2399,8 +2399,8 @@ footer .footer-copy { color: rgba(255,255,255,0.18); }
 }
 .pdm-main-img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
   display: block;
   transition: opacity 0.15s;
 }
