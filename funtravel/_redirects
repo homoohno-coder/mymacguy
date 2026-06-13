@@ -1,4 +1,2 @@
-/product/:id    /product.html?id=:id    200
-/shop           /shop.html              200
-/about          /about.html             200
-/contact        /contact.html           200
+# Cloudflare Workers static assets already serve clean URLs for .html files.
+# Keep this file comment-only to avoid redirect loops such as /shop -> /shop.
