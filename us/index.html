@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>mymacguy — Apple support, made personal.</title>
+<meta name="description" content="Personal Apple support in Los Angeles. Mac, iPhone, iPad, Wi-Fi, iCloud and smart home — handled by one expert, same day. No queue. No ticket." />
+<meta property="og:title" content="mymacguy — Apple support, made personal." />
+<meta property="og:description" content="One expert. Same day. Greater Los Angeles. Mac, iPhone, iPad, Wi-Fi, iCloud and smart home." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="/images/logo-mono.jpg" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white:   #ffffff;
+    --gray:    #f5f5f7;   /* Apple section gray */
+    --ink:     #1d1d1f;   /* Apple near-black */
+    --muted:   #86868b;   /* Apple secondary text */
+    --line:    #d2d2d7;   /* hairline */
+    --blue:    #0071e3;   /* Apple action blue */
+    --blue-h:  #0077ed;
+    --max:     980px;     /* Apple content width */
+    --wide:    1240px;
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.47;
+    letter-spacing: -.01em;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+    height: 48px;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,.08);
+  }
+  .nav-inner {
+    max-width: var(--wide); height: 100%; margin: 0 auto;
+    padding: 0 22px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: .55rem;
+    font-size: 19px; font-weight: 600; color: var(--ink);
+    letter-spacing: -.02em;
+  }
+  .nav-logo:hover { text-decoration: none; }
+  .nav-logo .apple-mark {
+    width: 15px; height: 18px; display: inline-block; opacity: .9;
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 400; color: var(--ink); opacity: .8;
+    letter-spacing: -.01em;
+  }
+  .nav-links a:hover { opacity: 1; text-decoration: none; }
+  .nav-call {
+    font-size: 12px; font-weight: 500; color: var(--blue) !important; opacity: 1 !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 120px 22px 80px;
+    text-align: center;
+    background: var(--white);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -.025em;
+    margin: 0 auto;
+    max-width: 14ch;
+  }
+  .hero .sub {
+    font-size: clamp(19px, 2.4vw, 28px);
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 18px auto 0;
+    max-width: 30ch;
+  }
+  .hero .links {
+    margin-top: 26px;
+    display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;
+  }
+  .chev {
+    font-size: clamp(17px, 1.6vw, 21px);
+    font-weight: 400;
+    color: var(--blue);
+    display: inline-flex; align-items: center; gap: 2px;
+  }
+  .chev:hover { text-decoration: underline; }
+  .chev::after { content: "›"; font-size: 1.1em; line-height: 0; transform: translateY(.04em); }
+
+  .hero-visual {
+    margin: 56px auto 0;
+    max-width: 980px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,.16);
+    background: var(--gray);
+    aspect-ratio: 16 / 9;
+  }
+  .hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ── PROMO TILES (the two-up Apple grid) ── */
+  .tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 12px 12px 0;
+    max-width: 1600px; margin: 0 auto;
+  }
+  .tile {
+    background: var(--gray);
+    border-radius: 0;
+    text-align: center;
+    padding: 56px 28px;
+    min-height: 520px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .tile.dark { background: var(--ink); color: var(--white); }
+  .tile h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 600; letter-spacing: -.02em; line-height: 1.08;
+  }
+  .tile .eyebrow {
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 600; color: var(--blue);
+    margin-bottom: 6px; letter-spacing: 0;
+  }
+  .tile .desc {
+    font-size: clamp(17px, 1.7vw, 21px);
+    color: var(--muted); margin-top: 8px; max-width: 30ch;
+  }
+  .tile.dark .desc { color: #a1a1a6; }
+  .tile .links { margin-top: 16px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── SECTION (centered statement) ── */
+  .statement {
+    padding: 100px 22px;
+    text-align: center;
+  }
+  .statement .inner { max-width: 800px; margin: 0 auto; }
+  .statement h2 {
+    font-size: clamp(32px, 4.4vw, 56px);
+    font-weight: 600; line-height: 1.08; letter-spacing: -.02em;
+  }
+  .statement h2 .dim { color: var(--muted); }
+  .statement p.lead {
+    font-size: clamp(19px, 2vw, 24px);
+    color: var(--muted); margin-top: 22px; line-height: 1.45;
+  }
+
+  /* ── SERVICES GRID ── */
+  .services { background: var(--gray); padding: 100px 22px; }
+  .services .head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+  .services .head h2 {
+    font-size: clamp(32px, 4.4vw, 56px); font-weight: 600;
+    letter-spacing: -.02em; line-height: 1.08;
+  }
+  .services .head p {
+    font-size: clamp(18px, 1.9vw, 21px); color: var(--muted); margin-top: 16px;
+  }
+  .svc-grid {
+    max-width: var(--wide); margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .svc {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 34px 30px;
+    transition: transform .35s cubic-bezier(.25,.1,.25,1), box-shadow .35s;
+  }
+  .svc:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.08); }
+  .svc .ico {
+    width: 40px; height: 40px; color: var(--ink); margin-bottom: 18px;
+  }
+  .svc .ico svg { width: 100%; height: 100%; display: block; }
+  .svc h3 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+  .svc p { font-size: 16px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
+  /* ── STATS STRIP ── */
+  .stats {
+    max-width: var(--wide); margin: 0 auto; padding: 90px 22px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;
+  }
+  .stat .num {
+    font-size: clamp(40px, 5vw, 64px); font-weight: 600;
+    letter-spacing: -.03em; line-height: 1;
+  }
+  .stat .lbl { font-size: 16px; color: var(--muted); margin-top: 10px; }
+
+  /* ── COMPARE ── */
+  .compare { background: var(--gray); padding: 100px 22px; }
+  .compare .head { text-align: center; max-width: 760px; margin: 0 auto 48px; }
+  .compare .head h2 { font-size: clamp(32px, 4.4vw, 56px); font-weight: 600; letter-spacing: -.02em; line-height: 1.08; }
+  .compare .head p { font-size: clamp(18px, 1.9vw, 21px); color: var(--muted); margin-top: 16px; }
+  .cmp-wrap { max-width: var(--max); margin: 0 auto; background: var(--white); border-radius: 18px; overflow: hidden; }
+  table.cmp { width: 100%; border-collapse: collapse; }
+  table.cmp th, table.cmp td { padding: 18px 22px; text-align: left; font-size: 16px; border-bottom: 1px solid var(--line); }
+  table.cmp tr:last-child td { border-bottom: none; }
+  table.cmp thead th { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+  table.cmp thead th.us { color: var(--ink); }
+  table.cmp td.us { font-weight: 600; }
+  table.cmp .yes { color: var(--ink); }
+  table.cmp .no { color: var(--muted); }
+  .dotcheck { display:inline-block; width: 18px; height: 18px; vertical-align: -3px; margin-right: 6px; }
+
+  /* ── CTA ── */
+  .cta {
+    text-align: center; padding: 110px 22px;
+    background: var(--white);
+  }
+  .cta .portrait {
+    width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: center top;
+    margin: 0 auto 26px; display: block; box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  }
+  .cta h2 { font-size: clamp(32px, 4.4vw, 56px); font-weight: 600; letter-spacing: -.02em; line-height: 1.08; }
+  .cta p.lead { font-size: clamp(18px, 1.9vw, 21px); color: var(--muted); margin: 18px auto 0; max-width: 32ch; }
+
+  .btn-row { margin-top: 34px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    font-size: 17px; font-weight: 400; line-height: 1;
+    padding: 14px 24px; border-radius: 980px;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .25s, color .25s, border-color .25s;
+    border: 1px solid transparent;
+  }
+  .btn:hover { text-decoration: none; }
+  .btn-primary { background: var(--blue); color: var(--white); }
+  .btn-primary:hover { background: var(--blue-h); }
+  .btn-secondary { background: transparent; color: var(--blue); border-color: var(--blue); }
+  .btn-secondary:hover { background: var(--blue); color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--gray);
+    color: var(--muted);
+    font-size: 12px; line-height: 1.5;
+    padding: 40px 22px 30px;
+  }
+  .foot-inner { max-width: var(--wide); margin: 0 auto; }
+  .foot-note {
+    padding-bottom: 18px; border-bottom: 1px solid var(--line);
+    max-width: var(--wide);
+  }
+  .foot-cols {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  .foot-cols h4 { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .foot-cols ul { list-style: none; }
+  .foot-cols li { margin-bottom: 8px; }
+  .foot-cols a { color: var(--muted); }
+  .foot-cols a:hover { color: var(--ink); text-decoration: none; }
+  .foot-legal {
+    padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  .foot-legal .disc { max-width: 70ch; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 833px) {
+    .nav-links { gap: 1.3rem; }
+    .nav-links a:not(.nav-call) { display: none; }
+    .tiles { grid-template-columns: 1fr; }
+    .tile { min-height: 460px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
+    .foot-cols { grid-template-columns: 1fr 1fr; }
+    table.cmp th:nth-child(3), table.cmp td:nth-child(3),
+    table.cmp th:nth-child(4), table.cmp td:nth-child(4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/us/">
+        <svg class="apple-mark" viewBox="0 0 14 17" fill="currentColor" aria-hidden="true"><path d="M11.6 9c0-1.5.7-2.4 1.6-3-.5-.8-1.4-1.3-2.5-1.3-1.1-.1-2.2.6-2.7.6-.6 0-1.5-.6-2.4-.6-1.7 0-3.3 1.4-3.3 4 0 .8.1 1.6.5 2.6.4 1.2 1.8 4.1 3.3 4 .8 0 1.3-.5 2.3-.5s1.5.5 2.4.5c1.5 0 2.7-2.6 3.1-3.8-2-1-2.1-2.9-2.1-3zM9.7 3.3c.8-.9 1.1-2.2 1-3-1.1.1-2.3.7-3 1.6-.7.7-1.2 2-1 3.1 1.1.1 2.2-.6 3-1.7z"/></svg>
+        mymacguy
+      </a>
+      <ul class="nav-links">
+        <li><a href="#what">Support</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why mymacguy</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a class="nav-call" href="tel:3109801964">Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Apple support,<br>made personal.</h1>
+    <p class="sub">One expert. Same day. Greater Los Angeles.</p>
+    <div class="links">
+      <a class="chev" href="#services">Explore services</a>
+      <a class="chev" href="tel:3109801964">Call (310) 980-1964</a>
+    </div>
+    <div class="hero-visual reveal">
+      <img src="/images/wahed-editorial.jpg" alt="Wahed — your personal Apple support specialist in Los Angeles" loading="lazy" />
+    </div>
+  </header>
+
+  <!-- TWO-UP PROMO TILES -->
+  <section class="tiles">
+    <article class="tile reveal">
+      <p class="eyebrow">Same-day</p>
+      <h2>Help today.<br>Not in five days.</h2>
+      <p class="desc">No appointment system. No waiting room. Often available the same day across the LA basin.</p>
+      <div class="links">
+        <a class="chev" href="tel:3109801964">Call now</a>
+        <a class="chev" href="#what">Learn more</a>
+      </div>
+    </article>
+    <article class="tile dark reveal">
+      <p class="eyebrow">One number</p>
+      <h2>No ticket.<br>My number.</h2>
+      <p class="desc">You always reach the same person — who already knows your devices and your setup.</p>
+      <div class="links">
+        <a class="chev" href="sms:3109801964">Text Wahed</a>
+        <a class="chev" href="#about">About</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="statement" id="what">
+    <div class="inner reveal">
+      <h2>Tech support shouldn't feel like <span class="dim">another problem to solve.</span></h2>
+      <p class="lead">Skip the Genius Bar queue and the big-box upsell. Get one expert who picks up the phone, explains everything in plain language, and fixes it — in person or remotely.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="head reveal">
+      <h2>Everything Apple. Handled.</h2>
+      <p>From a frozen Mac to a full office setup — diagnosed fast and explained clearly, with no jargon.</p>
+    </div>
+    <div class="svc-grid">
+
+      <article class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.5"/><path d="M1 20h22"/></svg></div>
+        <h3>Mac support</h3>
+        <p>Slow performance, crashes, startup trouble and software glitches — diagnosed fast. Hardware handled through our partner, Melrose Mac.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
+        <h3>iPhone &amp; iPad</h3>
+        <p>Setup, data transfer, iCloud issues, app troubleshooting, iOS updates — and everything in between.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.3-8 9.5-4.6-1.2-8-4.5-8-9.5v-6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Security &amp; privacy</h3>
+        <p>Account recovery, malware removal, password management, two-factor and privacy — set up properly.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5C5 6 9 4.5 12 4.5S19 6 22 8.5"/><path d="M5 12c2-1.7 4.5-2.7 7-2.7S17 10.3 19 12"/><path d="M8 15.3c1.3-1 2.6-1.5 4-1.5s2.7.5 4 1.5"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Wi-Fi &amp; networks</h3>
+        <p>Dead zones, slow speeds, router and mesh setup, plus connecting every smart-home device on your network.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 1 1 .9-8.9A6 6 0 0 1 19.5 11 3.75 3.75 0 0 1 18.5 18z"/></svg></div>
+        <h3>iCloud &amp; backup</h3>
+        <p>Set it up right, recover lost files, migrate your Photo Library, and make sure nothing is ever lost again.</p>
+      </article>
+
+      <article class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5l9-7 9 7"/><path d="M5 10v9.5h14V10"/><path d="M10 19.5v-5h4v5"/></svg></div>
+        <h3>Smart home</h3>
+        <p>HomeKit, Apple TV, HomePod, Nest and Ring — setup, troubleshooting and full ecosystem integration.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stat reveal"><div class="num">Same&nbsp;day</div><div class="lbl">Help often available</div></div>
+    <div class="stat reveal"><div class="num">15+</div><div class="lbl">Years of Apple experience</div></div>
+    <div class="stat reveal"><div class="num">1:1</div><div class="lbl">Personal attention, every time</div></div>
+    <div class="stat reveal"><div class="num">$0</div><div class="lbl">Diagnostic fee</div></div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="compare" id="why">
+    <div class="head reveal">
+      <h2>Why mymacguy.</h2>
+      <p>The personal alternative to the Genius Bar queue and the big-box upsell.</p>
+    </div>
+    <div class="cmp-wrap reveal">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="us">mymacguy</th>
+            <th>Genius Bar</th>
+            <th>Geek Squad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Same-day availability</td>
+            <td class="us yes">Often available</td>
+            <td class="no">3–5 day wait</td>
+            <td class="no">Variable</td>
+          </tr>
+          <tr>
+            <td>Knows your setup</td>
+            <td class="us yes">Always</td>
+            <td class="no">New tech each time</td>
+            <td class="no">No continuity</td>
+          </tr>
+          <tr>
+            <td>In-home / on-site</td>
+            <td class="us yes">Greater LA</td>
+            <td class="no">Store only</td>
+            <td class="no">Store only</td>
+          </tr>
+          <tr>
+            <td>No upsell pressure</td>
+            <td class="us yes">Always</td>
+            <td class="no">Varies</td>
+            <td class="no">Built on upsell</td>
+          </tr>
+          <tr>
+            <td>Direct phone &amp; text</td>
+            <td class="us yes">(310) 980-1964</td>
+            <td class="no">800-number queue</td>
+            <td class="no">800-number queue</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ABOUT STATEMENT -->
+  <section class="statement" id="about">
+    <div class="inner reveal">
+      <h2>Hi, I'm Wahed. <span class="dim">Your Mac guy.</span></h2>
+      <p class="lead">Fifteen-plus years of Apple expertise, an enterprise IT background at a major LA talent agency, and a simple promise: one person, one call, clear answers. No queue, no ticket, no technobabble.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <img class="portrait reveal" src="/images/wahed-headshot.jpg" alt="Wahed" loading="lazy" />
+    <h2 class="reveal">Ready when you are.</h2>
+    <p class="lead reveal">Whatever Apple problem you're facing — big or small — reach out anytime. Just call.</p>
+    <div class="btn-row reveal">
+      <a class="btn btn-primary" href="tel:3109801964">Call (310) 980-1964</a>
+      <a class="btn btn-secondary" href="mailto:wahed@mymacguy.net">Email Wahed</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-note">
+        Personal Apple support serving Greater Los Angeles. In-person and remote.
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Mac support</a></li>
+            <li><a href="#services">iPhone &amp; iPad</a></li>
+            <li><a href="#services">Wi-Fi &amp; networks</a></li>
+            <li><a href="#services">Smart home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get help</h4>
+          <ul>
+            <li><a href="tel:3109801964">Call (310) 980-1964</a></li>
+            <li><a href="sms:3109801964">Text</a></li>
+            <li><a href="mailto:wahed@mymacguy.net">Email</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Wahed</a></li>
+            <li><a href="#why">Why mymacguy</a></li>
+            <li><a href="https://mymacguy.net">mymacguy.net</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Coverage</h4>
+          <ul>
+            <li>Greater Los Angeles</li>
+            <li>In-person &amp; on-site</li>
+            <li>Remote support</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <span class="disc">mymacguy is an independent service provider and is not affiliated with, authorized or endorsed by Apple Inc. Apple, Mac, iPhone, iPad, iCloud and HomeKit are trademarks of Apple Inc.</span>
+        <span>Copyright © 2026 Wahed Tech Support. Los Angeles, CA.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
