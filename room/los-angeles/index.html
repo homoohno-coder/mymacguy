@@ -25,108 +25,110 @@
 
   <!-- Schema -->
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "Accommodation",
-      "name": "Furnished Private Rooms — Central Los Angeles",
-      "description": "Two furnished private rooms in central Los Angeles, within minutes of Mid-Wilshire, Koreatown, Miracle Mile, Culver City, West Hollywood, Beverly Hills, Hollywood, and Downtown LA. Gigabit Wi-Fi, in-unit laundry, private gated yard. 5 miles from SoFi Stadium — ideal for FIFA World Cup 2026 visitors.",
-      "url": "https://mymacguy.net/room/los-angeles/",
-      "image": "https://mymacguy.net/room/aerial-hero.jpg",
+  {
+    "@context": "https://schema.org",
+    "@type": "Accommodation",
+    "name": "Furnished Private Rooms — Central Los Angeles",
+    "description": "Two furnished private rooms in central Los Angeles, within minutes of Mid-Wilshire, Koreatown, Miracle Mile, Culver City, West Hollywood, Beverly Hills, Hollywood, and Downtown LA. Gigabit Wi-Fi, in-unit laundry, private gated yard. 5 miles from SoFi Stadium — ideal for FIFA World Cup 2026 visitors.",
+    "url": "https://mymacguy.net/room/los-angeles/",
+    "image": "https://mymacguy.net/room/aerial-hero.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "postalCode": "90016",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 34.0349,
+      "longitude": -118.3392
+    },
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Gigabit Wi-Fi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "In-unit laundry", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Furnished", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Hardwood floors", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Private gated yard", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Near SoFi Stadium", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Near Metro", "value": true}
+    ],
+    "telephone": "+13232139697",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Master Bedroom — Furnished",
+        "price": "1350",
+        "priceCurrency": "USD",
+        "priceSpecification": {"@type": "UnitPriceSpecification", "price": 1350, "priceCurrency": "USD", "unitText": "MON"},
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-06-15"
+      },
+      {
+        "@type": "Offer",
+        "name": "Junior Bedroom — Furnished",
+        "price": "1200",
+        "priceCurrency": "USD",
+        "priceSpecification": {"@type": "UnitPriceSpecification", "price": 1200, "priceCurrency": "USD", "unitText": "MON"},
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-06-17"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is this furnished room located in Los Angeles?",
+        "acceptedAnswer": {"@type": "Answer", "text": "The property is in central Los Angeles — within minutes of Mid-Wilshire, Koreatown, Miracle Mile, Culver City, West Hollywood, Beverly Hills, Hollywood Hills, and Downtown LA. It sits between the 10 and 110 freeways with easy Metro access via the Expo/Crenshaw line."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is this room available during FIFA World Cup 2026 in Los Angeles?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both rooms are available starting June 15 and June 17, 2026. The FIFA World Cup runs June 11–July 19 at SoFi Stadium in Inglewood, approximately 5 miles from the property."}
+      },
+      {
+        "@type": "Question",
+        "name": "How far is the room from SoFi Stadium for the World Cup?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Approximately 5 miles — about 10 to 15 minutes by car. The Expo/Crenshaw Metro line provides direct transit access to Inglewood without needing to drive or park."}
+      },
+      {
+        "@type": "Question",
+        "name": "How much is a furnished room for rent in Los Angeles?",
+        "acceptedAnswer": {"@type": "Answer", "text": "The master bedroom is $1,350/month and the junior bedroom is $1,200/month, both plus 50% of shared utilities. No application fee. One month deposit, fully refundable."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is the furnished room near Koreatown or Miracle Mile?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. The property is centrally located — Koreatown is approximately 10 minutes east, Miracle Mile and LACMA are about 8 minutes north, and Culver City is 10 minutes west."}
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "FIFA World Cup 2026 — Los Angeles",
+    "startDate": "2026-06-11",
+    "endDate": "2026-07-19",
+    "location": {
+      "@type": "Place",
+      "name": "SoFi Stadium",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Los Angeles",
+        "streetAddress": "1001 Stadium Dr",
+        "addressLocality": "Inglewood",
         "addressRegion": "CA",
-        "postalCode": "90016",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 34.0349,
-        "longitude": -118.3392
-      },
-      "amenityFeature": [
-        {"@type": "LocationFeatureSpecification", "name": "Gigabit Wi-Fi", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "In-unit laundry", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Furnished", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Hardwood floors", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Private gated yard", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Near SoFi Stadium", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Near Metro", "value": true}
-      ],
-      "telephone": "+13232139697",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Master Bedroom — Furnished",
-          "price": "1350",
-          "priceCurrency": "USD",
-          "priceSpecification": {"@type": "UnitPriceSpecification", "price": 1350, "priceCurrency": "USD", "unitText": "MON"},
-          "availability": "https://schema.org/InStock",
-          "validFrom": "2026-06-15"
-        },
-        {
-          "@type": "Offer",
-          "name": "Junior Bedroom — Furnished",
-          "price": "1200",
-          "priceCurrency": "USD",
-          "priceSpecification": {"@type": "UnitPriceSpecification", "price": 1200, "priceCurrency": "USD", "unitText": "MON"},
-          "availability": "https://schema.org/InStock",
-          "validFrom": "2026-06-17"
-        }
-      ]
+        "postalCode": "90301"
+      }
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Where is this furnished room located in Los Angeles?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The property is in central Los Angeles — within minutes of Mid-Wilshire, Koreatown, Miracle Mile, Culver City, West Hollywood, Beverly Hills, Hollywood Hills, and Downtown LA. It sits between the 10 and 110 freeways with easy Metro access via the Expo/Crenshaw line."}
-        },
-        {
-          "@type": "Question",
-          "name": "Is this room available during FIFA World Cup 2026 in Los Angeles?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both rooms are available starting June 15 and June 17, 2026. The FIFA World Cup runs June 11–July 19 at SoFi Stadium in Inglewood, approximately 5 miles from the property."}
-        },
-        {
-          "@type": "Question",
-          "name": "How far is the room from SoFi Stadium for the World Cup?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Approximately 5 miles — about 10 to 15 minutes by car. The Expo/Crenshaw Metro line provides direct transit access to Inglewood without needing to drive or park."}
-        },
-        {
-          "@type": "Question",
-          "name": "How much is a furnished room for rent in Los Angeles?",
-          "acceptedAnswer": {"@type": "Answer", "text": "The master bedroom is $1,350/month and the junior bedroom is $1,200/month, both plus 50% of shared utilities. No application fee. One month deposit, fully refundable."}
-        },
-        {
-          "@type": "Question",
-          "name": "Is the furnished room near Koreatown or Miracle Mile?",
-          "acceptedAnswer": {"@type": "Answer", "text": "Yes. The property is centrally located — Koreatown is approximately 10 minutes east, Miracle Mile and LACMA are about 8 minutes north, and Culver City is 10 minutes west."}
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "FIFA World Cup 2026 — Los Angeles",
-      "startDate": "2026-06-11",
-      "endDate": "2026-07-19",
-      "location": {
-        "@type": "Place",
-        "name": "SoFi Stadium",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "1001 Stadium Dr",
-          "addressLocality": "Inglewood",
-          "addressRegion": "CA",
-          "postalCode": "90301"
-        }
-      },
-      "description": "FIFA World Cup 2026 matches hosted at SoFi Stadium, Inglewood, Los Angeles."
-    }
-  ]
+    "description": "FIFA World Cup 2026 matches hosted at SoFi Stadium, Inglewood, Los Angeles."
+  }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,6 +1,7 @@
 {
   "name": "funtravel",
   "compatibility_date": "2026-06-11",
+  "workers_dev": true,
   "assets": {
     "directory": ".",
     "not_found_handling": "404-page"
