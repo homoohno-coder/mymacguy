@@ -196,6 +196,83 @@
   .svc .ico svg { width: 100%; height: 100%; display: block; }
   .svc h3 { font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
   .svc p { font-size: 16px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+  .svc-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+  .svc-button {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 980px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    line-height: 1;
+    padding: 11px 16px;
+    text-align: center;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .svc-button:hover, .svc-button[aria-expanded="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--white);
+    text-decoration: none;
+  }
+  .svc-help {
+    margin-top: 18px;
+    padding: 18px;
+    background: #f5f5f7;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .svc-help-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .svc-help-link {
+    min-height: 42px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    background: var(--white);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .svc-help-link:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .svc-help-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    margin-bottom: 7px;
+  }
+  .svc-prompt {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 12px;
+  }
+  .copy-prompt {
+    margin-top: 12px;
+  }
 
   /* ── STATS STRIP ── */
   .stats {
@@ -287,6 +364,7 @@
     .tiles { grid-template-columns: 1fr; }
     .tile { min-height: 460px; }
     .svc-grid { grid-template-columns: 1fr; }
+    .svc-help-links { grid-template-columns: 1fr; }
     .stats { grid-template-columns: 1fr 1fr; gap: 40px 20px; }
     .foot-cols { grid-template-columns: 1fr 1fr; }
     table.cmp th:nth-child(3), table.cmp td:nth-child(3),
@@ -299,7 +377,7 @@
   <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
-      <a class="nav-logo" href="/us/">
+      <a class="nav-logo" href="/">
         <svg class="apple-mark" viewBox="0 0 14 17" fill="currentColor" aria-hidden="true"><path d="M11.6 9c0-1.5.7-2.4 1.6-3-.5-.8-1.4-1.3-2.5-1.3-1.1-.1-2.2.6-2.7.6-.6 0-1.5-.6-2.4-.6-1.7 0-3.3 1.4-3.3 4 0 .8.1 1.6.5 2.6.4 1.2 1.8 4.1 3.3 4 .8 0 1.3-.5 2.3-.5s1.5.5 2.4.5c1.5 0 2.7-2.6 3.1-3.8-2-1-2.1-2.9-2.1-3zM9.7 3.3c.8-.9 1.1-2.2 1-3-1.1.1-2.3.7-3 1.6-.7.7-1.2 2-1 3.1 1.1.1 2.2-.6 3-1.7z"/></svg>
         mymacguy
       </a>
@@ -368,36 +446,114 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="12.5" rx="1.5"/><path d="M1 20h22"/></svg></div>
         <h3>Mac support</h3>
         <p>Slow performance, crashes, startup trouble and software glitches — diagnosed fast. Hardware handled through our partner, Melrose Mac.</p>
+        <div class="svc-actions">
+          <button class="svc-button" onclick="toggleSelfHelp(this)" aria-expanded="false">Self-help</button>
+        </div>
+        <div class="svc-help" hidden>
+          <div class="svc-help-links">
+            <a class="svc-help-link" href="https://support.apple.com/mac" target="_blank" rel="noopener noreferrer">Apple Help</a>
+            <a class="svc-help-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">AI Help</a>
+            <a class="svc-help-link" href="#contact">My Help</a>
+          </div>
+          <div class="svc-help-label">Diagnostic prompt</div>
+          <div class="svc-prompt">Help me diagnose why my Mac is slow, crashing, or having startup problems. Ask me one question at a time and give me safe steps before recommending repair.</div>
+          <button class="svc-button copy-prompt" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </article>
 
       <article class="svc reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2" width="11" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
         <h3>iPhone &amp; iPad</h3>
         <p>Setup, data transfer, iCloud issues, app troubleshooting, iOS updates — and everything in between.</p>
+        <div class="svc-actions">
+          <button class="svc-button" onclick="toggleSelfHelp(this)" aria-expanded="false">Self-help</button>
+        </div>
+        <div class="svc-help" hidden>
+          <div class="svc-help-links">
+            <a class="svc-help-link" href="https://support.apple.com/iphone" target="_blank" rel="noopener noreferrer">Apple Help</a>
+            <a class="svc-help-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">AI Help</a>
+            <a class="svc-help-link" href="#contact">My Help</a>
+          </div>
+          <div class="svc-help-label">Diagnostic prompt</div>
+          <div class="svc-prompt">Help me troubleshoot my iPhone or iPad issue. Ask me what model I have, what iOS version I'm using, and what problem I'm seeing. Give simple step-by-step fixes.</div>
+          <button class="svc-button copy-prompt" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </article>
 
       <article class="svc reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.4 8.3-8 9.5-4.6-1.2-8-4.5-8-9.5v-6z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Security &amp; privacy</h3>
         <p>Account recovery, malware removal, password management, two-factor and privacy — set up properly.</p>
+        <div class="svc-actions">
+          <button class="svc-button" onclick="toggleSelfHelp(this)" aria-expanded="false">Self-help</button>
+        </div>
+        <div class="svc-help" hidden>
+          <div class="svc-help-links">
+            <a class="svc-help-link" href="https://support.apple.com/apple-id" target="_blank" rel="noopener noreferrer">Apple Help</a>
+            <a class="svc-help-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">AI Help</a>
+            <a class="svc-help-link" href="#contact">My Help</a>
+          </div>
+          <div class="svc-help-label">Diagnostic prompt</div>
+          <div class="svc-prompt">Help me check whether my Apple ID, iPhone, Mac, or email account may be compromised. Ask me one question at a time and give safe steps only.</div>
+          <button class="svc-button copy-prompt" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </article>
 
       <article class="svc reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5C5 6 9 4.5 12 4.5S19 6 22 8.5"/><path d="M5 12c2-1.7 4.5-2.7 7-2.7S17 10.3 19 12"/><path d="M8 15.3c1.3-1 2.6-1.5 4-1.5s2.7.5 4 1.5"/><circle cx="12" cy="19" r="1.1" fill="currentColor" stroke="none"/></svg></div>
         <h3>Wi-Fi &amp; networks</h3>
         <p>Dead zones, slow speeds, router and mesh setup, plus connecting every smart-home device on your network.</p>
+        <div class="svc-actions">
+          <button class="svc-button" onclick="toggleSelfHelp(this)" aria-expanded="false">Self-help</button>
+        </div>
+        <div class="svc-help" hidden>
+          <div class="svc-help-links">
+            <a class="svc-help-link" href="https://support.apple.com/?q=wifi" target="_blank" rel="noopener noreferrer">Apple Help</a>
+            <a class="svc-help-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">AI Help</a>
+            <a class="svc-help-link" href="#contact">My Help</a>
+          </div>
+          <div class="svc-help-label">Diagnostic prompt</div>
+          <div class="svc-prompt">Help me diagnose my home Wi-Fi problem. Ask about my router, modem, speed, weak areas, and devices. Give step-by-step fixes.</div>
+          <button class="svc-button copy-prompt" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </article>
 
       <article class="svc reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 1 1 .9-8.9A6 6 0 0 1 19.5 11 3.75 3.75 0 0 1 18.5 18z"/></svg></div>
         <h3>iCloud &amp; backup</h3>
         <p>Set it up right, recover lost files, migrate your Photo Library, and make sure nothing is ever lost again.</p>
+        <div class="svc-actions">
+          <button class="svc-button" onclick="toggleSelfHelp(this)" aria-expanded="false">Self-help</button>
+        </div>
+        <div class="svc-help" hidden>
+          <div class="svc-help-links">
+            <a class="svc-help-link" href="https://support.apple.com/icloud" target="_blank" rel="noopener noreferrer">Apple Help</a>
+            <a class="svc-help-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">AI Help</a>
+            <a class="svc-help-link" href="#contact">My Help</a>
+          </div>
+          <div class="svc-help-label">Diagnostic prompt</div>
+          <div class="svc-prompt">Help me troubleshoot my iCloud issue. Ask what device I'm using, what account type it is, and what error I see.</div>
+          <button class="svc-button copy-prompt" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </article>
 
       <article class="svc reveal">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5l9-7 9 7"/><path d="M5 10v9.5h14V10"/><path d="M10 19.5v-5h4v5"/></svg></div>
         <h3>Smart home</h3>
         <p>HomeKit, Apple TV, HomePod, Nest and Ring — setup, troubleshooting and full ecosystem integration.</p>
+        <div class="svc-actions">
+          <button class="svc-button" onclick="toggleSelfHelp(this)" aria-expanded="false">Self-help</button>
+        </div>
+        <div class="svc-help" hidden>
+          <div class="svc-help-links">
+            <a class="svc-help-link" href="https://support.apple.com/?q=homekit" target="_blank" rel="noopener noreferrer">Apple Help</a>
+            <a class="svc-help-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">AI Help</a>
+            <a class="svc-help-link" href="#contact">My Help</a>
+          </div>
+          <div class="svc-help-label">Diagnostic prompt</div>
+          <div class="svc-prompt">Help me troubleshoot my smart home setup. Ask what devices I have (Apple TV, HomePod, HomeKit, Nest, Ring), what's not working, and give step-by-step fixes.</div>
+          <button class="svc-button copy-prompt" onclick="copyPrompt(this)">Copy prompt</button>
+        </div>
       </article>
 
     </div>
@@ -473,7 +629,7 @@
 
   <!-- CTA -->
   <section class="cta" id="contact">
-    <img class="portrait reveal" src="/images/wahed-headhsot.jpg" alt="Wahed" loading="lazy" />
+    <img class="portrait reveal" src="/images/wahed-headshot.jpg" alt="Wahed" loading="lazy" />
     <h2 class="reveal">Ready when you are.</h2>
     <p class="lead reveal">Whatever Apple problem you're facing — big or small — reach out anytime. Just call.</p>
     <div class="btn-row reveal">
@@ -538,6 +694,34 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    function toggleSelfHelp(btn) {
+      const panel = btn.closest('.svc').querySelector('.svc-help');
+      const isOpen = !panel.hidden;
+      panel.hidden = isOpen;
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      btn.textContent = isOpen ? 'Self-help' : 'Hide self-help';
+    }
+
+    function copyPrompt(btn) {
+      const text = btn.parentElement.querySelector('.svc-prompt').textContent;
+      const reset = () => setTimeout(() => { btn.textContent = 'Copy prompt'; }, 1800);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied';
+          reset();
+        });
+        return;
+      }
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+      btn.textContent = 'Copied';
+      reset();
+    }
   </script>
 
 </body>
