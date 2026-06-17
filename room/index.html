@@ -285,10 +285,15 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="IMG_3071.webp" aria-label="Walkthrough video of the furnished Mid-City / West Adams rooms">
-      <source src="hero-video.mp4" type="video/mp4">
-      <source src="75B090B6-4344-4C63-B879-F183EDF4E257-CINEMATIC.mov" type="video/quicktime">
-      <source src="25076DB9-239B-4E4E-89CE-15A07E8141BF-CINEMATIC.mov" type="video/quicktime">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      playsinline
+      preload="metadata"
+      poster="IMG_3071.webp"
+      aria-label="Walkthrough video of the furnished Mid-City / West Adams rooms"
+      data-playlist='["75B090B6-4344-4C63-B879-F183EDF4E257-CINEMATIC.mov","25076DB9-239B-4E4E-89CE-15A07E8141BF-CINEMATIC.mov"]'>
     </video>
   </div>
   <div class="hero-overlay"></div>
@@ -448,6 +453,26 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    const playlist = JSON.parse(heroVideo.dataset.playlist || '[]');
+    let currentIndex = 0;
+
+    const playClip = (index) => {
+      if (!playlist.length) return;
+      currentIndex = index % playlist.length;
+      heroVideo.src = playlist[currentIndex];
+      heroVideo.load();
+      const attempt = heroVideo.play();
+      if (attempt && typeof attempt.catch === 'function') {
+        attempt.catch(() => {});
+      }
+    };
+
+    heroVideo.addEventListener('ended', () => playClip(currentIndex + 1));
+    playClip(0);
+  }
 </script>
 
 </body>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mymacguy.us/sitemap.xml
+Sitemap: https://mymacguy.net/sitemap.xml
