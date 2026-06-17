@@ -14,14 +14,14 @@
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Furnished Rooms · Mid-City / West Adams · From $1,250/mo · Near World Cup 2026"/>
   <meta property="og:description" content="Two furnished private rooms in Mid-City / West Adams. Close to major LA neighborhoods and 5 miles from SoFi Stadium. Available June 2026."/>
-  <meta property="og:image" content="https://mymacguy.net/room/aerial-hero.jpg"/>
+  <meta property="og:image" content="https://mymacguy.net/room/og-image.jpg"/>
   <meta property="og:url" content="https://mymacguy.net/room/los-angeles/"/>
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Furnished Rooms · Mid-City / West Adams · From $1,250/mo · World Cup 2026"/>
   <meta name="twitter:description" content="Private furnished rooms in Mid-City / West Adams. 5 miles from SoFi Stadium. Available June 2026. No app fee."/>
-  <meta name="twitter:image" content="https://mymacguy.net/room/aerial-hero.jpg"/>
+  <meta name="twitter:image" content="https://mymacguy.net/room/og-image.jpg"/>
 
   <!-- Schema -->
   <script type="application/ld+json">
@@ -32,7 +32,7 @@
       "name": "Furnished Private Rooms — Mid-City / West Adams",
       "description": "Two furnished private rooms in Mid-City / West Adams, within minutes of Mid-Wilshire, Koreatown, Miracle Mile, Culver City, West Hollywood, Beverly Hills, Hollywood, and Downtown LA. Gigabit Wi-Fi, in-unit laundry, private gated yard. 5 miles from SoFi Stadium — ideal for FIFA World Cup 2026 visitors.",
       "url": "https://mymacguy.net/room/los-angeles/",
-      "image": "https://mymacguy.net/room/aerial-hero.jpg",
+      "image": "https://mymacguy.net/room/og-image.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Los Angeles",
@@ -157,7 +157,13 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background: url('../aerial-hero.jpg') center/cover no-repeat;
+      background: url('../IMG_3071.webp') center/cover no-repeat;
+    }
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
@@ -287,18 +293,21 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      align-items: start;
       gap: 12px;
       margin-top: 36px;
     }
     .gallery-card {
       position: relative;
-      min-height: 220px;
+      min-height: 0;
+      aspect-ratio: 4 / 3;
       border-radius: 6px;
       overflow: hidden;
       background: var(--cream);
       border: 1px solid var(--border);
     }
-    .gallery-card.featured { grid-column: span 2; min-height: 300px; }
+    .gallery-card.featured { grid-column: span 2; aspect-ratio: 16 / 10; }
+    .gallery-card.portrait { aspect-ratio: 3 / 4; }
     .gallery-card img {
       width: 100%;
       height: 100%;
@@ -389,7 +398,8 @@
       .hero { padding-bottom: 80px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-card,
-      .gallery-card.featured { grid-column: auto; min-height: 240px; }
+      .gallery-card.featured,
+      .gallery-card.portrait { grid-column: auto; aspect-ratio: 4 / 3; }
     }
   </style>
 </head>
@@ -403,7 +413,13 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="../IMG_3071.webp" aria-label="Walkthrough video of the furnished Mid-City / West Adams rooms">
+      <source src="../hero-video.mp4" type="video/mp4">
+      <source src="../75B090B6-4344-4C63-B879-F183EDF4E257-CINEMATIC.mov" type="video/quicktime">
+      <source src="../25076DB9-239B-4E4E-89CE-15A07E8141BF-CINEMATIC.mov" type="video/quicktime">
+    </video>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">🏆 Available for World Cup 2026 · Mid-City / West Adams</div>
@@ -506,7 +522,7 @@
   <div class="container">
     <div class="eyebrow reveal">Photos</div>
     <h2 class="reveal">Rooms and shared spaces. <em>Move-in ready.</em></h2>
-    <p class="reveal">Both furnished bedrooms are shown below, along with the living room, kitchen, laundry, bathroom, gated yard, and building exterior.</p>
+    <p class="reveal">Both furnished bedrooms are shown below, along with the living room, kitchen, laundry, bathroom, and gated yard.</p>
     <div class="gallery-grid reveal">
       <figure class="gallery-card featured">
         <img src="../IMG_2846.webp" alt="Master bedroom with queen bed, dresser, closet, and windows" loading="lazy" decoding="async" />
@@ -528,21 +544,17 @@
         <img src="../IMG_1397.webp" alt="Shared living and dining room with sofa, TV, fireplace, and exercise area" loading="lazy" decoding="async" />
         <figcaption>Living room</figcaption>
       </figure>
-      <figure class="gallery-card">
+      <figure class="gallery-card portrait">
         <img src="../IMG_1401.webp" alt="Kitchen with stainless refrigerator and in-unit laundry" loading="lazy" decoding="async" />
         <figcaption>Kitchen + laundry</figcaption>
       </figure>
-      <figure class="gallery-card">
+      <figure class="gallery-card portrait">
         <img src="../img_bath2.jpeg" alt="Shared bathroom vanity, tile floor, and tub" loading="lazy" decoding="async" />
         <figcaption>Bathroom</figcaption>
       </figure>
       <figure class="gallery-card featured">
         <img src="../IMG_3071.webp" alt="Gated yard and exterior at night with string lights" loading="lazy" decoding="async" />
         <figcaption>Private gated yard</figcaption>
-      </figure>
-      <figure class="gallery-card">
-        <img src="../aerial-hero.jpg" alt="Aerial view of the Mid-City / West Adams building and neighborhood" loading="lazy" decoding="async" />
-        <figcaption>Mid-City / West Adams</figcaption>
       </figure>
     </div>
   </div>
