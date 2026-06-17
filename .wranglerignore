@@ -1,1 +1,9 @@
-.git
+.git/
+.github/
+node_modules/
+*.mp4
+*.pack
+*.jpeg
+*.jpg
+main_archive_2026.html
+main.html
