@@ -1,2 +1,0 @@
-# Cloudflare Workers static assets already serve clean URLs for .html files.
-# Keep this file comment-only to avoid redirect loops such as /shop -> /shop.
