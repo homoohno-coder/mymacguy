@@ -6,16 +6,4 @@
     <priority>1.0</priority>
     <lastmod>2026-07-24</lastmod>
   </url>
-  <url>
-    <loc>https://mymacguy.net/room/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2026-06-17</lastmod>
-  </url>
-  <url>
-    <loc>https://mymacguy.net/room/los-angeles/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2026-06-17</lastmod>
-  </url>
 </urlset>
