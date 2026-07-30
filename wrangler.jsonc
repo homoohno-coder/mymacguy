@@ -1,5 +1,6 @@
 {
-  "name": "mymacguy",
+ // wrangler.jsonc
+"name": "mymacguy-us", 
   "compatibility_date": "2026-06-17",
   "assets": {
     "directory": "."
