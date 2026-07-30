@@ -3,6 +3,12 @@
 "name": "mymacguy-us", 
   "compatibility_date": "2026-06-17",
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "exclude": [
+      ".git/**",
+      ".github/**",
+      "node_modules/**",
+      "netlify/**"
+    ]
   }
 }
